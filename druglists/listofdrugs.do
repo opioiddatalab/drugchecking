@@ -12,3 +12,4 @@ replace ConfirmedSubstance=subinstr(ConfirmedSubstance," (DMT metabolite)","",.)
 replace ConfirmedSubstance=strtrim(ConfirmedSubstance)
 duplicates drop
 rename ConfirmedSubstance substance
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/druglists/druglist.csv", delimiter(tab) replace
