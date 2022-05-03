@@ -10,6 +10,7 @@ replace ConfirmedSubstance=subinstr(ConfirmedSubstance," (trace)","",.)
 replace ConfirmedSubstance=subinstr(ConfirmedSubstance," (Ketamine precursor)","",.)
 replace ConfirmedSubstance=subinstr(ConfirmedSubstance," (DMT metabolite)","",.)
 replace ConfirmedSubstance=strtrim(ConfirmedSubstance)
+drop if ConfirmedSubstance=="No compounds of interest detected detected"
 duplicates drop
 rename ConfirmedSubstance substance
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/druglists/druglist.csv", delimiter(tab) replace
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/druglists/druglist.csv", delimiter(tab) novarnames replace
