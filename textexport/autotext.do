@@ -1,0 +1,399 @@
+* state names and abbreviations
+clear all
+cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/List-of-US-States"
+import delimited states.csv, varname(1)
+rename state statename
+rename abbreviation state
+set obs `=_N+1'
+replace statename = "Puerto Rico" in 52
+replace state = "PR" in 52
+
+cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
+
+save states, replace
+
+* change file extension from .xlsm to .xlsx
+*! mv "LabResults.xlsm" "LabResults.xlsx"
+
+* Import common names/explanations of substances 
+import excel "LabResults.xlsx", sheet("druglist") firstrow case(lower) clear
+keep chemicalname commonrole
+rename chemicalname substance
+duplicates drop
+frame put *, into(translation)
+
+// Harm Reduction Chemical Dictionary
+frame change translation
+export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/chemdictionary.xls", firstrow(variables) replace
+
+* Import lab data
+frame change default
+import excel "LabResults.xlsx", sheet("LAB data") firstrow case(lower) clear
+drop f g
+drop if sampleid == ""
+
+replace sampleid=subinstr(sampleid,"_","-",.)
+
+frame put *, into(lab) 
+
+* Import card data
+import excel "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
+drop  linkedsample howlongagowasthesampleobta
+
+* Variable cleanup
+** residue
+gen residueflag = regexm(lower(sampletype),"residue|cotton|swab")
+order residueflag, a(sampletype)
+	la var residueflag "Dichotmous flag for reside sample from cotton or swab 1=resiude"
+
+** date
+gen date_sample = date(date, "MDY")
+	la var date_sample "Date sample collected"
+order date_sample, a(date)
+format date_sample %td
+
+
+** overdose
+gen odflag = regexm(lower(overdose), "involved")
+	la var odflag "Dichotmous flag for OD involvement 1=OD"
+		order odflag, a(overdose)
+
+** pill flag
+gen pillflag = regexm(lower(sampletype), "pill") | regexm(lower(texture), "pill")
+	order pillflag, a(texture)
+		la var pillflag "Composite dichotomous flag for pills, real or counterfeit, 1=pill"
+
+		
+* add state names for search
+merge m:1 state using states, nogen keep(1 3)
+drop state
+rename statename state		
+		
+* Generate text: Location and date
+replace date = subinstr(date," ", "",1)
+gen t_location = "From " + location + ", " + state + " on " + date
+	replace t_location = "From " + state + " on " + date if location=="" | regexm(lower(location),"spec")
+	replace t_location = "From " + state if date==""
+	replace t_location = "Collected on " + date if state==""
+	replace t_location = "" if state=="" & date=="" | lower(date)=="unknown" | regexm(lower(state),"international")
+
+
+ * Color and texture
+gen temp_color=color
+	replace temp_color="" if regexm(lower(color), "not spec")
+gen temp_texture=texture
+	replace temp_texture="" if regexm(lower(texture), "not spec")
+gen t_color="Looks = " + temp_color + " " + temp_texture + "<br><br>"
+	replace t_color = "Looks = " + temp_color + "<br><br>" if temp_texture==""
+	replace t_color = "Looks = " + temp_texture + "<br><br>" if temp_color==""
+	replace t_color = "Appearance not described" if temp_color=="" & temp_texture==""
+		drop temp*
+	replace t_color = subinstr(t_color,";",",",.)
+
+* Sensations
+gen t_sensations="Sensations = " + sensations + "<br><br>"
+	replace t_sensations="Sensations not reported" if regexm(lower(sensations), "not specified|not used by participant") | sensations==""
+	replace t_sensations = subinstr(t_sensations,";",",",.)
+			
+* Overdose involvement
+gen t_od = "<strong>Careful! This sample caused an overdose.</strong>" + "<br><br>" if regexm(overdose,"OD")
+	replace t_od = "Not involved in overdose." + "<br><br>" if regexm(overdose,"not")
+	replace t_od = "Not sure if caused overdose." + "<br><br>" if regexm(overdose,"unknown")
+	
+* Expected Drug
+gen t_expected = "Supposed to be " + expectedsubstance
+	replace expectedsubstance=subinstr(expectedsubstance, "Unknown", "unknown", 1)
+		gen temp_expected=subinstr(expectedsubstance,"; unknown"," and something else?",1) if regexm(expectedsubstance,"unknown")
+			replace t_expected = "Supposed to be " + temp_expected if regexm(expectedsubstance,"unknown")
+	replace t_expected = "Unclear what it was before the lab" if expectedsubstance=="unknown" | expectedsubstance=="other"
+		drop temp*
+		replace t_expected = subinstr(t_expected,";",",",.)
+		
+
+quietly compress
+frame put *, into(card)
+
+frame put sampleid  t_*, into(text)  
+	
+// Lab Results
+
+* Commonality of substances
+
+frame change lab
+
+distinct sampleid
+
+** Number of substances
+bysort sampleid: egen totalsubstances=count(substance)
+	la var totalsubstances "Total number of substances detected in sample"
+
+
+frame put sampleid substance, into(common)
+frame change common
+gen counter=1
+collapse (sum) counter, by(substance)
+means counter
+gen uncommon=0
+	replace uncommon=1 if counter<r(mean_h)
+		la var uncommon "Substances ocurring less frequently than harmonic mean of frequency in entire databse"
+		
+
+frame change lab
+frlink m:1 substance, frame(common)
+frget uncommon, from(common)
+
+frame put sampleid substance if uncommon==1, into(uncommontext)
+frame change uncommontext
+bysort sampleid: gen counter=_n
+reshape wide substance, i(sampleid) j(counter)
+egen t_temp = concat(substance*), punct(" + ")
+replace t_temp=subinstr(t_temp,"  +  +","",.)
+replace t_temp=subinstr(t_temp," +  +","",.)
+replace t_temp=regexr(t_temp," \+$","")
+drop substance*
+gen t_uncommon = "Uncommon substance(s): " + t_temp
+
+frame change text
+frlink 1:1 sampleid, frame(uncommontext)
+frget t_uncommon, from(uncommontext)
+drop uncommontext
+	
+* Frames for major and minor
+frame change lab
+frame put sampleid substance if abundance=="", into(major)
+frame put sampleid substance if abundance=="trace", into(trace)
+
+* Major substances
+
+frame change major
+bysort sampleid: gen counter=_n
+bysort sampleid: egen maxnum=max(counter)
+
+** use this later to insert vernacular names
+frame put sampleid substance, into(linebyline)
+*** end of that section
+
+reshape wide substance, i(sampleid) j(counter)
+
+* drop pending
+drop if substance1==""
+
+foreach var of varlist substance* {
+	
+	replace `var' = "<li>" + `var' + "</li>"
+	
+}
+
+foreach var of varlist substance* {
+	
+	replace `var' = "" if `var'=="<li></li>"
+	
+}
+
+
+egen t_temp = concat(substance*), punct("")
+drop substance*
+
+tostring maxnum, g(maxstr)
+gen t_preamble = "Pretty simple with only " + maxstr + " major substance detected:"
+replace t_preamble = maxstr + " major substances detected:" if maxnum>1
+replace t_preamble = "This is a messy brew of " + maxstr + " major substances:" if maxnum>5
+
+gen t_major = "<strong>" + t_preamble + "<ul>" + t_temp + "</ul>" + "</strong>"
+replace t_major = "<strong>" + "Sorry, no substances of interest detected." + "</strong>" if regexm(t_temp,"no compounds")
+
+drop t_temp t_preamble maxstr maxnum
+
+frame change text
+frlink 1:1 sampleid, frame(major)
+frget t_major, from(major)
+drop major
+
+
+* Trace results
+frame change trace
+bysort sampleid: gen counter=_n
+bysort sampleid: egen maxnum=max(counter)
+reshape wide substance, i(sampleid) j(counter)
+egen t_temp = concat(substance*), punct(" + ")
+replace t_temp=subinstr(t_temp,"  +  +","",.)
+replace t_temp=subinstr(t_temp," +  +","",.)
+replace t_temp=regexr(t_temp," \+$","")
+drop substance*
+tostring maxnum, g(maxstr)
+gen t_trace = "And we also found traces of " + t_temp + "."
+replace t_trace = "But we found lots of contaminants too, with traces of " + t_temp + "." if maxnum>3
+
+frame change text
+frlink 1:1 sampleid, frame(trace)
+frget t_trace, from(trace)
+drop trace
+
+* Scientific info
+frame change lab
+drop date* method abundance common uncommon
+drop if peak==""
+replace peak=subinstr(peak,"9999999999999","",.)
+replace peak=subinstr(peak,"0000000000001","",.)
+gen text = "Peak " + peak + " = " + substance
+sort sampleid peak
+bysort sampleid: gen counter=_n
+drop substance peak* spectra_uploaded 
+reshape wide text, i(sampleid) j(counter)
+
+foreach var of varlist text* {
+	
+	replace `var' = "<li>" + `var' + "</li>"
+	
+}
+
+foreach var of varlist text* {
+	
+	replace `var' = "" if `var'=="<li></li>"
+	
+}
+
+
+egen t_temp = concat(text*), punct("")
+drop text*
+gen t_detail = "<strong>Graph details:<br></strong><ul>" + t_temp + "</ul>"
+drop t_temp
+
+frame change text
+frlink 1:1 sampleid, frame(lab)
+frget t_detail, from(lab)
+drop lab
+replace t_detail="" if regexm(t_major,"Sorry")
+
+
+
+// Add warnings and notes
+
+** Xylazine
+gen t_xylazine = "<strong>Xylazine</strong> causes serious skin problems. These can happen anywhere on the body and don't heal quickly. And, <strong>xylazine</strong> can come on stronger than traditional dope and knock you out, so be mindful of your surroundings. It's best to avoid dope with xylazine. You might need medical attention to prevent long-term damage.<br><br>" if regexm(lower(t_major), "xylazine") | regexm(lower(t_trace), "xylazine")
+
+** Fentanyl
+gen t_fentanyl = "<strong>Fentanyl</strong> is potent and the amount changes by batch. If you weren't expecting it, consider getting test strips online or from a harm reduction program. <strong>Carry naloxone (Narcan)</strong> to reverse overdoses. <strong>Don't use alone</strong> so someone can help if you go out.<br><br>" if regexm(lower(t_major), "fentanyl")
+
+replace t_fentanyl = "There were just traces of <strong>fentanyl</strong>. This could have been contamination, like if drugs were stored in old bags. But since fentanyl is so potent and the amount changes by batch, you should be prepared. Consider getting <strong>fentanyl test strips</strong> online or from a harm reduction program. <strong>Carry naloxone (Narcan)</strong> to reverse overdoses. Even traces of fentanyl could be a problem if you don't use opioids regularly. Don't use alone so someone can help if you go out.<br><br>" if regexm(lower(t_trace), "fentanyl")
+
+** Complex mixtures
+gen t_mix = "There are a lot of different substances in this sample. We don't know the harms that some of these can cause. Be careful and be prepared for unexpected reactions.<br><br>" if strlen(t_major)>120
+
+** fluorofentanyl
+gen t_fluoro = "<strong>Fluorofentanyl</strong> is showing up recently. It's usually just a leftover from manufacturing. It's potency is similar to straight fentanyl, but we don't know yet if it causes other problems.<br><br>" if regexm(lower(t_major), "fluorofentanyl") | regexm(lower(t_trace), "fluorofentanyl")
+
+** Unknown substance
+gen t_unknown = "This sample contains unknown substances(s). This means we couldn't find a match for it in our library. It could be a new chemical or something that's interfering with our machine. We are investigating it and will update the results.<br><br>" if regexm(lower(t_major), "unknown substance") | regexm(lower(t_trace), "unknown substance")
+
+// Methods details
+* Import lab data
+frame create labtemp
+frame change labtemp
+import excel "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx", sheet("LAB data") firstrow case(lower) clear
+frame put sampleid method, into(method)
+frame change method
+duplicates drop
+drop if sampleid==""
+gsort sampleid -method
+bysort sampleid: gen counter=_n
+reshape wide method, i(sampleid) j(counter)
+egen t_method = concat(method*), punct(" + ")
+replace t_method=subinstr(t_method,"  +  +","",.)
+replace t_method=subinstr(t_method," +  +","",.)
+replace t_method=regexr(t_method," \+$","")
+
+frame change text
+frlink 1:1 sampleid, frame(method)
+frget t_method, from(method)
+drop method
+
+** Record update date
+gen t_recorddate = "Record last updated: " + "$S_DATE"
+
+// Remove missing fields
+replace t_color="" if t_color=="Appearance not described"
+replace t_sensations="" if t_sensations=="Sensations not reported"
+replace t_od="" if t_od=="Not sure if caused overdose."
+
+// Assemble for HTML
+gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + "<br><br>" + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_detail + "<br>" + "Method(s): " + t_method + "<br><br>" + t_recorddate
+
+
+// File cleanup and save
+frame change text
+keep if t_major!=""
+
+order t_expected t_major t_trace, a(t_location)
+order t_detail, last
+
+* Daterestrict to last 2 weeks - code not final
+*frlink m:1 sampleid, frame(lab)
+*frget t_method, from(lab)
+*drop method
+
+save text, replace
+
+export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/textexport/textexport.xls", firstrow(variables) replace
+
+* Delete original excel file
+*! rm "LabResults.xlsm" "LabResults.xlsx"
+
+
+// Save pending list
+import excel "LabResults.xlsx", sheet("LAB data") firstrow case(lower) clear
+keep sampleid lab_status
+replace sampleid=subinstr(sampleid,"_","-",.)
+keep if lab_status=="pending"
+gen mail="received by lab"
+order mail, first
+gen status_date = "$S_DATE"
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
+
+// Open final text file back up
+use text, clear
+keep sampleid Description
+gen productid=""
+gen variantid=""
+gen producttype="PHYSICAL"
+gen productpage="results"
+gen productURL=sampleid
+gen title=sampleid
+order Description, a(title)
+gen SKU=""
+gen optionname1=""
+gen optionvalue1=""
+gen optionname2=""
+gen optionvalue2=""
+gen optionname3=""
+gen optionvalue3=""
+gen price=0
+gen saleprice=0
+gen onsale="No"
+gen stock="Unlimited"
+gen tags=""
+gen weight=""
+gen length=""
+gen width=""
+gen height=""
+gen visible="Yes"
+	gen catt1="xylazine" if regexm(lower(Description),"xylazine")
+	gen catt2="fentanyl" if regexm(lower(Description),"fentanyl")
+	gen catt3="nc-samples" if regexm(lower(Description),"north carolina")
+	gen catt4="overdoses" if regexm(lower(Description),"this sample caused an overdose")
+	gen catt5="stimulants" if regexm(lower(Description),"cocaine|methamphetamine|crack")
+	gen catt6="psychedelics" if regexm(lower(Description),"dmt|mdma|molly|mushrooms|psilocybin")
+		egen categories=concat(catt*), punc(", ")
+			order categories, a(stock)
+				replace categories=subinstr(categories," ,","",.)
+				replace categories="" if categories==","
+				replace categories=subinstr(categories,"^, ","",1)
+				gen flag = regexm(categories,"^, ")
+					order flag,a(categories)
+						replace categories=subinstr(categories,", ","",1) if flag==1
+							drop flag
+				replace categories=regexr(categories,",$","")
+					drop catt*
+gen hostedimage="https://opioiddatalab.github.io/drugchecking/spectra/" + sampleid + ".PNG"
+drop sampleid
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/textexport/textexport.csv", novarnames quote replace
