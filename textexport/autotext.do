@@ -16,6 +16,7 @@ save states, replace
 
 *"https://adminliveunc.sharepoint.com/:x:/s/DrugChecking/EV8rGFC42NtCkh3V5AUyw6sBg0C2RZDnRN3A3iQdNB_Hxg?email=nab%40email.unc.edu&e=toB4YL" 
 
+! mv "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
 ! mv "LabResults.xlsm" "LabResults.xlsx"
 ! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
 
@@ -391,7 +392,7 @@ export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/tex
 import excel "LabResults.xlsx", sheet("LAB data") firstrow case(lower) clear
 keep sampleid lab_status
 replace sampleid=subinstr(sampleid,"_","-",.)
-keep if lab_status=="pending"
+keep if regexm(lab_status,"pending")
 gen mail="received by lab"
 order mail, first
 gen status_date = "$S_DATE"
@@ -445,3 +446,5 @@ gen visible="Yes"
 gen hostedimage="https://opioiddatalab.github.io/drugchecking/spectra/" + sampleid + ".PNG"
 drop sampleid
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/textexport/textexport.csv", novarnames quote replace
+
+! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx"
