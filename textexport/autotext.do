@@ -13,6 +13,9 @@ cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
 save states, replace
 
 * change file extension from .xlsm to .xlsx
+
+*"https://adminliveunc.sharepoint.com/:x:/s/DrugChecking/EV8rGFC42NtCkh3V5AUyw6sBg0C2RZDnRN3A3iQdNB_Hxg?email=nab%40email.unc.edu&e=toB4YL" 
+
 ! mv "LabResults.xlsm" "LabResults.xlsx"
 ! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
 
@@ -25,7 +28,9 @@ frame put *, into(translation)
 
 // Harm Reduction Chemical Dictionary
 frame change translation
-export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/chemdictionary.xls", firstrow(variables) replace
+*export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/.xls", firstrow(variables) replace
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/chemdictionary.csv", quote replace
+
 
 * Import lab data
 frame change default
@@ -164,6 +169,7 @@ drop uncommontext
 frame change lab
 frame put sampleid substance if abundance=="", into(major)
 frame put sampleid substance if abundance=="trace", into(trace)
+frame put sampleid substance if abundance=="indication of", into(hint)
 
 * Major substances
 
@@ -231,6 +237,24 @@ frlink 1:1 sampleid, frame(trace)
 frget t_trace, from(trace)
 drop trace
 
+
+* Indication of results
+frame change hint
+bysort sampleid: gen counter=_n
+reshape wide substance, i(sampleid) j(counter)
+egen t_temp = concat(substance*), punct(" + ")
+replace t_temp=subinstr(t_temp,"  +  +","",.)
+replace t_temp=subinstr(t_temp," +  +","",.)
+replace t_temp=regexr(t_temp," \+$","")
+drop substance*
+gen t_hint = "There was also a hint of " + t_temp + ", but we were unable to see it clearly.<br><br>"
+drop t_temp
+
+frame change text
+frlink 1:1 sampleid, frame(hint)
+frget t_hint, from(hint)
+drop hint
+
 * Scientific info
 frame change lab
 drop date* method common uncommon
@@ -287,7 +311,7 @@ replace t_fentanyl = "<strong>Fentanyl</strong> is potent and the amount changes
 gen t_mix = "There are a lot of different substances in this sample. We don't know the harms that some of these can cause. Be careful and be prepared for unexpected reactions.<br><br>" if strlen(t_major)>120
 
 ** fluorofentanyl
-gen t_fluoro = "<strong>Fluorofentanyl</strong> is showing up recently. It can be a leftover from manufacturing. It's potency is similar to straight fentanyl, but we don't know yet if it causes other problems.<br><br>" if regexm(lower(t_major), "fluorofentanyl") | regexm(lower(t_trace), "fluorofentanyl")
+gen t_fluoro = "<strong>Fluorofentanyl</strong> is showing up recently. It's the result of a different raw materials being used to make fentanyl. We don't know yet if it causes any specific problems.<br><br>" if regexm(lower(t_major), "fluorofentanyl") | regexm(lower(t_trace), "fluorofentanyl")
 
 ** Unknown substance
 gen t_unknown = "This sample contains unknown substances(s). This means we couldn't find a match for it in our library. It could be a new chemical or something that's interfering with our machine. We are investigating it and will update the results.<br><br>" if regexm(lower(t_major), "unknown substance") | regexm(lower(t_trace), "unknown substance")
@@ -337,7 +361,7 @@ replace t_sensations="" if t_sensations=="Sensations not reported"
 replace t_od="" if t_od=="Not sure if caused overdose."
 
 // Assemble for HTML
-gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_recorddate
+gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_hint + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_recorddate
 
 // Sort by Date
 gsort -date_sample
