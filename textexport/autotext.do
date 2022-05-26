@@ -13,11 +13,12 @@ cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
 save states, replace
 
 * change file extension from .xlsm to .xlsx
-*! mv "LabResults.xlsm" "LabResults.xlsx"
+! mv "LabResults.xlsm" "LabResults.xlsx"
+! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
 
 * Import common names/explanations of substances 
 import excel "LabResults.xlsx", sheet("druglist") firstrow case(lower) clear
-keep chemicalname commonrole
+keep chemicalname commonrole pronunciation
 rename chemicalname substance
 duplicates drop
 frame put *, into(translation)
@@ -51,7 +52,6 @@ gen date_sample = date(date, "MDY")
 	la var date_sample "Date sample collected"
 order date_sample, a(date)
 format date_sample %td
-
 
 ** overdose
 gen odflag = regexm(lower(overdose), "involved")
@@ -113,7 +113,8 @@ gen t_expected = "Assumed to be " + expectedsubstance
 quietly compress
 frame put *, into(card)
 
-frame put sampleid  t_*, into(text)  
+frame put sampleid  t_* date_sample, into(text)  
+gsort -date_sample
 	
 // Lab Results
 
@@ -233,11 +234,12 @@ drop trace
 * Scientific info
 frame change lab
 drop date* method common uncommon
-drop if peak==""
+drop if peak==.
 drop if abundance=="trace"
-drop abundance
-replace peak=subinstr(peak,"9999999999999","",.)
-replace peak=subinstr(peak,"0000000000001","",.)
+drop abundance lab_status
+*replace peak=subinstr(peak,"9999999999999","",.)
+*replace peak=subinstr(peak,"0000000000001","",.)
+tostring peak, replace
 gen text = "Peak " + peak + " = " + substance
 sort sampleid peak
 bysort sampleid: gen counter=_n
@@ -273,7 +275,7 @@ replace t_detail="" if regexm(t_major,"Sorry")
 // Add warnings and notes
 
 ** Xylazine
-gen t_xylazine = "<strong>Xylazine</strong> causes serious skin problems. These can happen anywhere on the body and don't heal quickly. And, <strong>xylazine</strong> can come on stronger than traditional dope and knock you out, so be mindful of your surroundings. It's best to avoid dope with xylazine. You might need medical attention to prevent long-term damage.<br><br>" if regexm(lower(t_major), "xylazine") | regexm(lower(t_trace), "xylazine")
+gen t_xylazine = "<strong>Xylazine</strong> causes serious skin problems. These can happen anywhere on the body and don't heal quickly. And, <strong>xylazine</strong> can come on stronger than traditional dope and knock you out, so <strong>be mindful of your surroundings</strong>. It's best to avoid dope with xylazine. You might need medical attention to prevent long-term damage.<br><br>" if regexm(lower(t_major), "xylazine") | regexm(lower(t_trace), "xylazine")
 
 ** Fentanyl
 gen t_fentanyl = "There were just traces of <strong>fentanyl</strong>. This could have been contamination, like if drugs were stored in old bags. But since fentanyl is so potent you should be prepared. Consider getting <strong>fentanyl test strips</strong> online or from a harm reduction program if you weren't expecting it. <strong>Carry naloxone (Narcan)</strong> to reverse overdoses. Even traces of fentanyl could be a problem if you don't use opioids regularly. <strong>Don't use alone</strong> so someone can help if you go out.<br><br>" if regexm(lower(t_trace), "fentanyl")
@@ -337,6 +339,9 @@ replace t_od="" if t_od=="Not sure if caused overdose."
 // Assemble for HTML
 gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_recorddate
 
+// Sort by Date
+gsort -date_sample
+drop date_sample
 
 // File cleanup and save
 frame change text
