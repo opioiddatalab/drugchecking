@@ -101,10 +101,10 @@ gen t_od = "<strong>Careful! This sample caused an overdose.</strong>" + "<br><b
 	replace t_od = "Not sure if caused overdose." + "<br><br>" if regexm(overdose,"unknown")
 	
 * Expected Drug
-gen t_expected = "Supposed to be " + expectedsubstance
+gen t_expected = "Assumed to be " + expectedsubstance
 	replace expectedsubstance=subinstr(expectedsubstance, "Unknown", "unknown", 1)
 		gen temp_expected=subinstr(expectedsubstance,"; unknown"," and something else?",1) if regexm(expectedsubstance,"unknown")
-			replace t_expected = "Supposed to be " + temp_expected if regexm(expectedsubstance,"unknown")
+			replace t_expected = "Assumed to be " + temp_expected if regexm(expectedsubstance,"unknown")
 	replace t_expected = "Unclear what it was before the lab" if expectedsubstance=="unknown" | expectedsubstance=="other"
 		drop temp*
 		replace t_expected = subinstr(t_expected,";",",",.)
@@ -137,7 +137,8 @@ gen uncommon=0
 	replace uncommon=1 if counter<r(mean_h)
 		la var uncommon "Substances ocurring less frequently than harmonic mean of frequency in entire databse"
 		
-
+// Uncommon Substances
+		
 frame change lab
 frlink m:1 substance, frame(common)
 frget uncommon, from(common)
@@ -195,7 +196,7 @@ egen t_temp = concat(substance*), punct("")
 drop substance*
 
 tostring maxnum, g(maxstr)
-gen t_preamble = "Pretty simple with only " + maxstr + " major substance detected:"
+gen t_preamble = "Pretty sample with only " + maxstr + " major substance detected:"
 replace t_preamble = maxstr + " major substances detected:" if maxnum>1
 replace t_preamble = "This is a messy brew of " + maxstr + " major substances:" if maxnum>5
 
@@ -231,8 +232,10 @@ drop trace
 
 * Scientific info
 frame change lab
-drop date* method abundance common uncommon
+drop date* method common uncommon
 drop if peak==""
+drop if abundance=="trace"
+drop abundance
 replace peak=subinstr(peak,"9999999999999","",.)
 replace peak=subinstr(peak,"0000000000001","",.)
 gen text = "Peak " + peak + " = " + substance
@@ -256,7 +259,7 @@ foreach var of varlist text* {
 
 egen t_temp = concat(text*), punct("")
 drop text*
-gen t_detail = "<strong>Graph details:<br></strong><ul>" + t_temp + "</ul>"
+gen t_detail = "<strong>Major substances in graph:<br></strong><ul>" + t_temp + "</ul>"
 drop t_temp
 
 frame change text
@@ -273,18 +276,33 @@ replace t_detail="" if regexm(t_major,"Sorry")
 gen t_xylazine = "<strong>Xylazine</strong> causes serious skin problems. These can happen anywhere on the body and don't heal quickly. And, <strong>xylazine</strong> can come on stronger than traditional dope and knock you out, so be mindful of your surroundings. It's best to avoid dope with xylazine. You might need medical attention to prevent long-term damage.<br><br>" if regexm(lower(t_major), "xylazine") | regexm(lower(t_trace), "xylazine")
 
 ** Fentanyl
-gen t_fentanyl = "<strong>Fentanyl</strong> is potent and the amount changes by batch. If you weren't expecting it, consider getting test strips online or from a harm reduction program. <strong>Carry naloxone (Narcan)</strong> to reverse overdoses. <strong>Don't use alone</strong> so someone can help if you go out.<br><br>" if regexm(lower(t_major), "fentanyl")
+gen t_fentanyl = "There were just traces of <strong>fentanyl</strong>. This could have been contamination, like if drugs were stored in old bags. But since fentanyl is so potent you should be prepared. Consider getting <strong>fentanyl test strips</strong> online or from a harm reduction program if you weren't expecting it. <strong>Carry naloxone (Narcan)</strong> to reverse overdoses. Even traces of fentanyl could be a problem if you don't use opioids regularly. <strong>Don't use alone</strong> so someone can help if you go out.<br><br>" if regexm(lower(t_trace), "fentanyl")
 
-replace t_fentanyl = "There were just traces of <strong>fentanyl</strong>. This could have been contamination, like if drugs were stored in old bags. But since fentanyl is so potent and the amount changes by batch, you should be prepared. Consider getting <strong>fentanyl test strips</strong> online or from a harm reduction program. <strong>Carry naloxone (Narcan)</strong> to reverse overdoses. Even traces of fentanyl could be a problem if you don't use opioids regularly. Don't use alone so someone can help if you go out.<br><br>" if regexm(lower(t_trace), "fentanyl")
+
+replace t_fentanyl = "<strong>Fentanyl</strong> is potent and the amount changes by batch. If you weren't expecting it, consider getting test strips online or from a harm reduction program. <strong>Carry naloxone (Narcan)</strong> to reverse overdoses. <strong>Don't use alone</strong> so someone can help if you go out.<br><br>" if regexm(lower(t_major), "fentanyl")
 
 ** Complex mixtures
 gen t_mix = "There are a lot of different substances in this sample. We don't know the harms that some of these can cause. Be careful and be prepared for unexpected reactions.<br><br>" if strlen(t_major)>120
 
 ** fluorofentanyl
-gen t_fluoro = "<strong>Fluorofentanyl</strong> is showing up recently. It's usually just a leftover from manufacturing. It's potency is similar to straight fentanyl, but we don't know yet if it causes other problems.<br><br>" if regexm(lower(t_major), "fluorofentanyl") | regexm(lower(t_trace), "fluorofentanyl")
+gen t_fluoro = "<strong>Fluorofentanyl</strong> is showing up recently. It can be a leftover from manufacturing. It's potency is similar to straight fentanyl, but we don't know yet if it causes other problems.<br><br>" if regexm(lower(t_major), "fluorofentanyl") | regexm(lower(t_trace), "fluorofentanyl")
 
 ** Unknown substance
 gen t_unknown = "This sample contains unknown substances(s). This means we couldn't find a match for it in our library. It could be a new chemical or something that's interfering with our machine. We are investigating it and will update the results.<br><br>" if regexm(lower(t_major), "unknown substance") | regexm(lower(t_trace), "unknown substance")
+
+** Sugar peaks
+gen t_sugars = "Non-specific sugars won't show up on the graph. See note below under 'What we can and can't tell'. <br><br>" if regexm(lower(t_major), "sugars") | regexm(lower(t_trace), "sugars")
+
+** Peaks caveat
+gen t_caveat = "Peaks that don't appear on the graph were detected using other advanced methods. Contact us if you want details." + "<br><br>" if regexm(t_detail,"Major substances in graph")
+replace t_caveat="" if regexm(lower(t_major),"no substances of interest detected")
+
+** Trace
+gen t_tracetext=" Trace substances in small quantities can sometimes be harmless, but other times can cause health problems. If you have unexpected sensations, it may be due to these.<br><br>" if t_trace!=""
+
+// Harm Reduction program information
+gen t_hr = "Need free supplies and advice to keep you safe? Find your nearest harm reduction program at harmreduction.org<br><br>"
+replace t_hr = "The Xchange in Greensboro can help provide you with free supplies and advice to stay safe. 'If you want to improve your life we are here to help you. One goal at a time. You make the goals... we listen to you.'<br>1114 Grove Street, Greensboro, NC 27403<br>Phone: 336-669-5543<br>Open: Mon 1-7pm, Tue 1-7pm, Thu 1-5pm, Fri 1-8pm<br>ncurbansurvivorunion.org<br><br>" if regexm(lower(t_location),"greensboro")
 
 // Methods details
 * Import lab data
@@ -309,7 +327,7 @@ frget t_method, from(method)
 drop method
 
 ** Record update date
-gen t_recorddate = "Record last updated: " + "$S_DATE"
+gen t_recorddate = "Record for Sample " + sampleid + " last updated " + "$S_DATE" + "."
 
 // Remove missing fields
 replace t_color="" if t_color=="Appearance not described"
@@ -317,7 +335,7 @@ replace t_sensations="" if t_sensations=="Sensations not reported"
 replace t_od="" if t_od=="Not sure if caused overdose."
 
 // Assemble for HTML
-gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + "<br><br>" + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_detail + "<br>" + "Method(s): " + t_method + "<br><br>" + t_recorddate
+gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_recorddate
 
 
 // File cleanup and save
@@ -383,6 +401,7 @@ gen visible="Yes"
 	gen catt4="overdoses" if regexm(lower(Description),"this sample caused an overdose")
 	gen catt5="stimulants" if regexm(lower(Description),"cocaine|methamphetamine|crack")
 	gen catt6="psychedelics" if regexm(lower(Description),"dmt|mdma|molly|mushrooms|psilocybin")
+	gen catt7="werid-samples" if regexm(lower(Description),"uncommon substance(s):")
 		egen categories=concat(catt*), punc(", ")
 			order categories, a(stock)
 				replace categories=subinstr(categories," ,","",.)
