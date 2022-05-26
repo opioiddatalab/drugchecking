@@ -119,7 +119,7 @@ quietly compress
 frame put *, into(card)
 
 frame put sampleid  t_* date_sample, into(text)  
-gsort -date_sample
+sort date_sample
 	
 // Lab Results
 
@@ -320,7 +320,7 @@ gen t_unknown = "This sample contains unknown substances(s). This means we could
 gen t_sugars = "Non-specific sugars won't show up on the graph. See note below under 'What we can and can't tell'. <br><br>" if regexm(lower(t_major), "sugars") | regexm(lower(t_trace), "sugars")
 
 ** Peaks caveat
-gen t_caveat = "Peaks that don't appear on the graph were detected using other advanced methods. Contact us if you want details." + "<br><br>" if regexm(t_detail,"Major substances in graph")
+gen t_caveat = "Peaks that don't appear on the graph were detected using other advanced methods. If a peak appears on the graph but isn't listed above, then we reviewed it and determined it's unimporant. Contact us if you want details." + "<br><br>" if regexm(t_detail,"Major substances in graph")
 replace t_caveat="" if regexm(lower(t_major),"no substances of interest detected")
 
 ** Trace
