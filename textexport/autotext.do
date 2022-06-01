@@ -115,11 +115,15 @@ gen t_expected = "Assumed to be " + expectedsubstance
 		drop temp*
 		replace t_expected = subinstr(t_expected,";",",",.)
 		
+// Flag recent samples
+*gen t_recent="recent" if date_sample>today()-62 & date_sample!=.
+	gen catt8="recent" if date_sample>today()-62 & date_sample!=.
 
+		
 quietly compress
 frame put *, into(card)
 
-frame put sampleid  t_* date_sample, into(text)  
+frame put sampleid  t_* date_sample catt8, into(text)  
 sort date_sample
 	
 // Lab Results
@@ -312,7 +316,7 @@ replace t_fentanyl = "<strong>Fentanyl</strong> is potent and the amount changes
 gen t_mix = "There are a lot of different substances in this sample. We don't know the harms that some of these can cause. Be careful and be prepared for unexpected reactions.<br><br>" if strlen(t_major)>120
 
 ** fluorofentanyl
-gen t_fluoro = "<strong>Fluorofentanyl</strong> is showing up recently. It's the result of a different raw materials being used to make fentanyl. We don't know yet if it causes any specific problems.<br><br>" if regexm(lower(t_major), "fluorofentanyl") | regexm(lower(t_trace), "fluorofentanyl")
+gen t_fluoro = "<strong>Fluorofentanyl</strong> is showing up recently. It's the result of different raw materials being used to make fentanyl. We don't know yet if it causes any specific problems.<br><br>" if regexm(lower(t_major), "fluorofentanyl") | regexm(lower(t_trace), "fluorofentanyl")
 
 ** Unknown substance
 gen t_unknown = "This sample contains unknown substances(s). This means we couldn't find a match for it in our library. It could be a new chemical or something that's interfering with our machine. We are investigating it and will update the results.<br><br>" if regexm(lower(t_major), "unknown substance") | regexm(lower(t_trace), "unknown substance")
@@ -353,6 +357,7 @@ frlink 1:1 sampleid, frame(method)
 frget t_method, from(method)
 drop method
 
+
 ** Record update date
 gen t_recorddate = "Record for Sample " + sampleid + " last updated " + "$S_DATE" + "."
 
@@ -364,9 +369,6 @@ replace t_od="" if t_od=="Not sure if caused overdose."
 // Assemble for HTML
 gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_hint + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_recorddate
 
-// Sort by Date
-gsort -date_sample
-drop date_sample
 
 // File cleanup and save
 frame change text
@@ -400,7 +402,7 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 
 // Open final text file back up
 use text, clear
-keep sampleid Description
+keep sampleid Description catt8
 gen productid=""
 gen variantid=""
 gen producttype="PHYSICAL"
@@ -432,6 +434,8 @@ gen visible="Yes"
 	gen catt5="stimulants" if regexm(lower(Description),"cocaine|methamphetamine|crack")
 	gen catt6="psychedelics" if regexm(lower(Description),"dmt|mdma|molly|mushrooms|psilocybin")
 	gen catt7="werid-samples" if regexm(lower(Description),"uncommon substance(s):")
+	*gen catt8="recent" if regexm(t_recent,"recent")
+	gen catt9="fake-pills" if regexm(lower(Description),"pill")
 		egen categories=concat(catt*), punc(", ")
 			order categories, a(stock)
 				replace categories=subinstr(categories," ,","",.)
