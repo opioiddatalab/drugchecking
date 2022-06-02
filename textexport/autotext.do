@@ -398,6 +398,7 @@ keep if regexm(lab_status,"pending")
 gen mail="received by lab"
 order mail, first
 gen status_date = "$S_DATE"
+duplicates drop
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
 
 // Open final text file back up
