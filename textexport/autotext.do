@@ -29,7 +29,6 @@ frame put *, into(translation)
 
 // Harm Reduction Chemical Dictionary
 frame change translation
-*export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/.xls", firstrow(variables) replace
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/chemdictionary.csv", quote replace
 
 
@@ -115,9 +114,10 @@ gen t_expected = "Assumed to be " + expectedsubstance
 		drop temp*
 		replace t_expected = subinstr(t_expected,";",",",.)
 		
+gen t_labnotes="<br> Lab Notes: " + lab_notes_share + "<br>"
+		
 // Flag recent samples
-*gen t_recent="recent" if date_sample>today()-62 & date_sample!=.
-	gen catt8="recent" if date_sample>today()-62 & date_sample!=.
+gen catt8="recent" if date_sample>today()-62 & date_sample!=.
 
 		
 quietly compress
@@ -208,7 +208,7 @@ egen t_temp = concat(substance*), punct("")
 drop substance*
 
 tostring maxnum, g(maxstr)
-gen t_preamble = "Pretty sample with only " + maxstr + " major substance detected:"
+gen t_preamble = "Only " + maxstr + " major substance detected:"
 replace t_preamble = maxstr + " major substances detected:" if maxnum>1
 replace t_preamble = "This is a messy brew of " + maxstr + " major substances:" if maxnum>5
 
@@ -299,6 +299,8 @@ frget t_detail, from(lab)
 drop lab
 replace t_detail="" if regexm(t_major,"Sorry")
 
+// Lab notes
+
 
 
 // Add warnings and notes
@@ -325,7 +327,7 @@ gen t_unknown = "This sample contains unknown substances(s). This means we could
 gen t_sugars = "Non-specific sugars won't show up on the graph. See note below under 'What we can and can't tell'. <br><br>" if regexm(lower(t_major), "sugars") | regexm(lower(t_trace), "sugars")
 
 ** Peaks caveat
-gen t_caveat = "Peaks that don't appear on the graph were detected using other advanced methods. If a peak appears on the graph but isn't listed above, then we reviewed it and determined it's unimporant. Contact us if you want details." + "<br><br>" if regexm(t_detail,"Major substances in graph")
+gen t_caveat = "Peaks that don't appear on the graph were detected using other advanced methods. If a peak appears on the graph but isn't listed above, then we reviewed it and determined it's unimportant. Contact us if you want details." + "<br><br>" if regexm(t_detail,"Major substances in graph")
 replace t_caveat="" if regexm(lower(t_major),"no substances of interest detected")
 
 ** Trace
@@ -367,7 +369,7 @@ replace t_sensations="" if t_sensations=="Sensations not reported"
 replace t_od="" if t_od=="Not sure if caused overdose."
 
 // Assemble for HTML
-gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_hint + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_recorddate
+gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_hint + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_labnotes + t_recorddate
 
 
 // File cleanup and save
@@ -397,8 +399,10 @@ replace sampleid=subinstr(sampleid,"_","-",.)
 keep if regexm(lab_status,"pending")
 gen mail="received by lab"
 order mail, first
-gen status_date = "$S_DATE"
-duplicates drop
+drop if sampleid==""
+tab sampleid
+append using allcomplete 
+drop if sampleid=="" & r(N)>1
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
 
 // Open final text file back up
@@ -428,15 +432,21 @@ gen length=""
 gen width=""
 gen height=""
 gen visible="Yes"
+
+* Create categories
 	gen catt1="xylazine" if regexm(lower(Description),"xylazine")
 	gen catt2="fentanyl" if regexm(lower(Description),"fentanyl")
-	gen catt3="nc-samples" if regexm(lower(Description),"north carolina")
+	gen catt3="/location/nc-samples" if regexm(lower(Description),"north carolina")
 	gen catt4="overdoses" if regexm(lower(Description),"this sample caused an overdose")
 	gen catt5="stimulants" if regexm(lower(Description),"cocaine|methamphetamine|crack")
 	gen catt6="psychedelics" if regexm(lower(Description),"dmt|mdma|molly|mushrooms|psilocybin")
 	gen catt7="werid-samples" if regexm(lower(Description),"uncommon substance(s):")
-	*gen catt8="recent" if regexm(t_recent,"recent")
+	* gen catt8="recent" if regexm(t_recent,"recent")
 	gen catt9="fake-pills" if regexm(lower(Description),"pill")
+	gen catt10="/location/texas" if regexm(lower(Description),"texas")
+	gen catt11="/location/new-york" if regexm(lower(Description),"new york")
+	
+	* Put categories together
 		egen categories=concat(catt*), punc(", ")
 			order categories, a(stock)
 				replace categories=subinstr(categories," ,","",.)
@@ -448,7 +458,11 @@ gen visible="Yes"
 							drop flag
 				replace categories=regexr(categories,",$","")
 					drop catt*
+
+* Add images from GitHub				
+* (Separate multiple images with spaces or line breaks.)	
 gen hostedimage="https://opioiddatalab.github.io/drugchecking/spectra/" + sampleid + ".PNG"
+
 drop sampleid
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/textexport/textexport.csv", novarnames quote replace
 
