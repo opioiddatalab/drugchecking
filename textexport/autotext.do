@@ -359,6 +359,9 @@ frlink 1:1 sampleid, frame(method)
 frget t_method, from(method)
 drop method
 
+/// CREATE CANONINCAL LIST OF SAMPLES AND FLAG TO MOST RECENT
+*frame create posted
+*frame put sampleid, into(posted)
 
 ** Record update date
 gen t_recorddate = "Record for Sample " + sampleid + " last updated " + "$S_DATE" + "."
