@@ -405,7 +405,9 @@ order mail, first
 drop if sampleid==""
 tab sampleid
 append using allcomplete 
-drop if sampleid=="" & r(N)>1
+tab lab_status
+drop if lab_status=="" & r(N)>1
+replace status_date="$S_DATE"
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
 
 // Open final text file back up
