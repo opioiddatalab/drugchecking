@@ -1,2 +1,5 @@
 mail,sampleid,lab_status,status_date
+"received by lab","NC01312","pending",""
+"received by lab","300323","pending",""
+"received by lab","300360","pending",""
 "All received samples have been processed.","","",""
