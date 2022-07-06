@@ -263,16 +263,16 @@ drop hint
 * Scientific info
 frame change lab
 drop date* method common uncommon
-drop if peak==.
+drop if peak==""
 drop if abundance=="trace"
 drop abundance lab_status
-*replace peak=subinstr(peak,"9999999999999","",.)
-*replace peak=subinstr(peak,"0000000000001","",.)
 tostring peak, replace
+replace peak=subinstr(peak,"9999999999999","",.)
+replace peak=subinstr(peak,"0000000000001","",.)
 gen text = "Peak " + peak + " = " + substance
 sort sampleid peak
 bysort sampleid: gen counter=_n
-drop substance peak* spectra_uploaded 
+drop substance peak* spectra_uploaded lab_notes
 reshape wide text, i(sampleid) j(counter)
 
 foreach var of varlist text* {
