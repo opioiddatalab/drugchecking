@@ -12,6 +12,35 @@ cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
 
 save states, replace
 
+
+// Get posted products from Squarespace API
+
+python
+import json
+import pandas as pd
+import requests
+headers = {
+    "Authorization": "Bearer 6d9de38d-ab00-4fcc-9360-ec87952425cb",
+    "User-Agent": "Get all samples",
+  	"Content-Type": "application/json",
+}
+
+response = requests.get("https://api.squarespace.com/1.0/commerce/products", headers=headers)
+data = response.json()
+df = pd.DataFrame(data["products"], columns=['id', 'createdOn', 'description', 'isVisible', 'modifiedOn', 'name', 'seoOptions', 'storePageId', 'type', 'url' ])
+df.to_csv('mostrecent50.csv')
+end
+
+import delimited "mostrecent50.csv", varnames(1) stringcols(7) clear
+keep name
+rename name title
+append using canonical_list
+duplicates drop
+save canonical_list, replace
+erase "mostrecent50.csv"
+
+
+// Download the data file and modify
 * change file extension from .xlsm to .xlsx
 
 *"https://adminliveunc.sharepoint.com/:x:/s/DrugChecking/EV8rGFC42NtCkh3V5AUyw6sBg0C2RZDnRN3A3iQdNB_Hxg?email=nab%40email.unc.edu&e=toB4YL" 
@@ -37,6 +66,7 @@ frame change default
 import excel "LabResults.xlsx", sheet("LAB data") firstrow case(lower) clear
 drop f g
 drop if sampleid == ""
+drop if lab_status== "pending"
 
 replace sampleid=subinstr(sampleid,"_","-",.)
 
@@ -382,10 +412,6 @@ keep if t_major!=""
 order t_expected t_major t_trace, a(t_location)
 order t_detail, last
 
-* Daterestrict to last 2 weeks - code not final
-*frlink m:1 sampleid, frame(lab)
-*frget t_method, from(lab)
-*drop method
 
 save text, replace
 
@@ -469,7 +495,24 @@ gen visible="Yes"
 * (Separate multiple images with spaces or line breaks.)	
 gen hostedimage="https://opioiddatalab.github.io/drugchecking/spectra/" + sampleid + ".PNG"
 
+// Check against canonical list to only keep samples that have not been uploaded to site
+
+merge 1:1 title using canonical_list, keep(1) 
+
+* Drop error sample
+drop if title=="06082021"
+
 drop sampleid
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/textexport/textexport.csv", novarnames quote replace
+export delimited using "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", novarnames quote replace
 
 ! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx"
+
+python
+import pandas as pd
+df = pd.read_csv("/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", header=None)
+df.rename(columns={0: 'Product ID [Non Editable]', 1: 'Variant ID [Non Editable]', 2: 'Product Type [Non Editable]', 3: 'Product Page', 4: 'Product URL', 5: 'Title', 6: 'Description', 7: 'SKU', 8: 'Option Name 1', 9: 'Option Value 1', 10: 'Option Name 2', 11: 'Option Value 2', 12: 'Option Name 3', 13: 'Option Value 3', 14: 'Price', 15: 'Sale Price', 16: 'On Sale', 17: 'Stock', 18: 'Categories', 19: 'Tags', 20: 'Weight', 21: 'Length', 22: 'Width', 23: 'Height', 24: 'Visible', 25: 'Hosted Image URLs'}, inplace=True)
+df.to_csv("/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv", index=False)
+end
+
+clear all
+frames reset
