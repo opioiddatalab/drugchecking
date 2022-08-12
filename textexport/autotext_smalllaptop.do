@@ -45,9 +45,21 @@ erase "mostrecent50.csv"
 
 *"https://adminliveunc.sharepoint.com/:x:/s/DrugChecking/EV8rGFC42NtCkh3V5AUyw6sBg0C2RZDnRN3A3iQdNB_Hxg?email=nab%40email.unc.edu&e=toB4YL" 
 
-! mv "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
+
+
+// For big laptop
+*! mv "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
+*! mv "LabResults.xlsm" "LabResults.xlsx"
+*! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
+
+
+// For small laptop
+! mv "/Users/nabarun/downloads/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
 ! mv "LabResults.xlsm" "LabResults.xlsx"
-! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
+! rm "/Users/nabarun/downloads/LabResults.xlsm"
+
+cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
+
 
 * Import common names/explanations of substances 
 import excel "LabResults.xlsx", sheet("druglist") firstrow case(lower) clear
@@ -415,7 +427,8 @@ order t_detail, last
 
 save text, replace
 
-export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/textexport/textexport.xls", firstrow(variables) replace
+
+*export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/textexport/textexport.xls", firstrow(variables) replace
 
 * Delete original excel file
 *! rm "LabResults.xlsm" "LabResults.xlsx"
@@ -430,12 +443,13 @@ gen mail="received by lab"
 order mail, first
 drop if sampleid==""
 tab sampleid
-*append using allcomplete 
+append using allcomplete 
 tab lab_status
 drop if lab_status=="" & r(N)>1
-gen status_date="$S_DATE"
+replace status_date="$S_DATE"
 duplicates drop
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
+*export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
+export delimited using "/Users/nabarun/Documents/GitHub/drugchecking/status/pending.csv", quote  replace
 
 // Open final text file back up
 use text, clear
@@ -503,9 +517,10 @@ merge 1:1 title using canonical_list, keep(1)
 drop if title=="06082021"
 
 drop sampleid
-export delimited using "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", novarnames quote replace
+export delimited using "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", replace novarnames quote
 
 ! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx"
+
 
 python
 import pandas as pd
