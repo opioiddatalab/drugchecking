@@ -430,7 +430,7 @@ gen mail="received by lab"
 order mail, first
 drop if sampleid==""
 tab sampleid
-*append using allcomplete 
+append using allcomplete 
 tab lab_status
 drop if lab_status=="" & r(N)>1
 gen status_date="$S_DATE"
@@ -495,8 +495,11 @@ gen visible="Yes"
 * (Separate multiple images with spaces or line breaks.)	
 gen hostedimage="https://opioiddatalab.github.io/drugchecking/spectra/" + sampleid + ".PNG"
 
-// Check against canonical list to only keep samples that have not been uploaded to site
 
+// For manual updates of specific samples, keep the following line and comment out the merge with canonical_list.
+* keep if sampleid=="300398" | sampleid=="300349"
+
+// Check against canonical list to only keep samples that have not been uploaded to site
 merge 1:1 title using canonical_list, keep(1) 
 
 * Drop error sample
