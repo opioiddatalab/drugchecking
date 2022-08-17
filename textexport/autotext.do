@@ -436,6 +436,9 @@ drop if lab_status=="" & r(N)>1
 gen status_date="$S_DATE"
 duplicates drop
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
+** Share copies to Dropbox for Erin
+! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
+export delimited using "/Users/nabarun/Dropbox/Drug Checking Autotext/pending.csv", quote replace
 
 // Open final text file back up
 use text, clear
@@ -506,16 +509,27 @@ merge 1:1 title using canonical_list, keep(1)
 drop if title=="06082021"
 
 drop sampleid
+
 export delimited using "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", novarnames quote replace
 
 ! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx"
+! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv"
+! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
+
 
 python
 import pandas as pd
 df = pd.read_csv("/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", header=None)
 df.rename(columns={0: 'Product ID [Non Editable]', 1: 'Variant ID [Non Editable]', 2: 'Product Type [Non Editable]', 3: 'Product Page', 4: 'Product URL', 5: 'Title', 6: 'Description', 7: 'SKU', 8: 'Option Name 1', 9: 'Option Value 1', 10: 'Option Name 2', 11: 'Option Value 2', 12: 'Option Name 3', 13: 'Option Value 3', 14: 'Price', 15: 'Sale Price', 16: 'On Sale', 17: 'Stock', 18: 'Categories', 19: 'Tags', 20: 'Weight', 21: 'Length', 22: 'Width', 23: 'Height', 24: 'Visible', 25: 'Hosted Image URLs'}, inplace=True)
 df.to_csv("/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv", index=False)
+df.to_csv("/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv", index=False)
+
 end
 
 clear all
 frames reset
+
+
+// GitHub commit
+* ! cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/"
+* ! cd git commit -a -m "automated daily results update"
