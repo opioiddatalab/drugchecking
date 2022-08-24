@@ -37,7 +37,7 @@ rename name title
 append using canonical_list
 duplicates drop
 save canonical_list, replace
-erase "mostrecent50.csv"
+! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/mostrecent50.csv"
 
 
 // Download the data file and modify
