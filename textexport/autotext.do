@@ -293,7 +293,8 @@ drop hint
 * Scientific info
 frame change lab
 drop date* method common uncommon
-drop if peak==""
+*drop if peak==""
+drop if peak==.
 drop if abundance=="trace"
 drop abundance lab_status
 tostring peak, replace
