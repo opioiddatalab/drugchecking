@@ -3,12 +3,12 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/da
 > tasets/unc_druchecking_codebook.txt
   log type:  text
- opened on:  15 Dec 2022, 12:52:09
+ opened on:  15 Dec 2022, 13:13:14
 
 . codebook, n h
 
                Dataset: */drugchecking/datasets/analysis_dataset.dta
-            Last saved: 15 Dec 2022 12:52
+            Last saved: 15 Dec 2022 13:13
 
                  Label: [none]
    Number of variables: 63
@@ -1090,5 +1090,5 @@ lab_heroin_impurity:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/da
 > tasets/unc_druchecking_codebook.txt
   log type:  text
- closed on:  15 Dec 2022, 12:52:09
+ closed on:  15 Dec 2022, 13:13:15
 ------------------------------------------------------------------------
