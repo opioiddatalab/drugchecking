@@ -144,8 +144,8 @@ replace expect_benzo=1 if regexm(lower(expectedsubstance),"benzo|xanax|alprazola
 la var expect_benzo "1 if expected benzodiazepine circled on card or specific substance named"
 
 gen expect_cannabis=0
-replace expect_benzo=1 if regexm(lower(expectedsubstance),"weed|cbd|delta|canna|pot")
-la var expect_benzo "1 if expected CBD, Delta-8 or weed circled on card"
+replace expect_cannabis=1 if regexm(lower(expectedsubstance),"weed|cbd|delta|canna|pot") | regexm(texture,"plant") | regexm(texture_notes,"joint|weed|pot")
+la var expect_cannabis "1 if expected CBD, Delta-8 or weed circled on card"
 
 gen expect_hall=0
 replace expect_hall=1 if regexm(lower(expectedsubstance),"lsd|mda|molly|mdma|mushroom|dmt|ketamine|ecstacy|psilocybin")
@@ -459,6 +459,7 @@ frame drop heroin
 
 
 * Save dataset for internal analysis
+drop card
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", replace
 
 // Merge in lab results to card data to create analytic dataset

@@ -3,12 +3,12 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/da
 > tasets/unc_druchecking_codebook.txt
   log type:  text
- opened on:  15 Dec 2022, 13:21:23
+ opened on:  16 Dec 2022, 10:11:53
 
 . codebook, n h
 
                Dataset: */drugchecking/datasets/analysis_dataset.dta
-            Last saved: 15 Dec 2022 13:21
+            Last saved: 16 Dec 2022 10:11
 
                  Label: [none]
    Number of variables: 63
@@ -225,7 +225,9 @@ expect_stimulant                       1 if expected cocaine, crack,
                             5  1
 
 ------------------------------------------------------------------------
-expect_benzo          1 if expected CBD, Delta-8 or weed circled on card
+expect_benzo                           1 if expected benzodiazepine
+                                       circled on card or specific
+                                       substance named
 ------------------------------------------------------------------------
 
                   Type: Numeric (float)
@@ -237,7 +239,7 @@ expect_benzo          1 if expected CBD, Delta-8 or weed circled on card
                            20  0
 
 ------------------------------------------------------------------------
-expect_cannabis                                              (unlabeled)
+expect_cannabis       1 if expected CBD, Delta-8 or weed circled on card
 ------------------------------------------------------------------------
 
                   Type: Numeric (float)
@@ -1090,5 +1092,5 @@ lab_heroin_impurity:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/da
 > tasets/unc_druchecking_codebook.txt
   log type:  text
- closed on:  15 Dec 2022, 13:21:23
+ closed on:  16 Dec 2022, 10:11:53
 ------------------------------------------------------------------------
