@@ -24,7 +24,7 @@ If you are ready to start durg checking by mail, [request a startup kit](https:/
 
 There are two results files, `analysis_dataset.*` and `lab_detail.*`. They are provided in Stata, Excel, SAS, and CSV (tab-separated) formats. The `sampleid` variable links the datasets.<br>
 
-The file `analysis_dataset.*` contains one row for each sample. It includes the characteristics that were reported on the card, and handy pre-processed variables to aid data analysis and visualization. The variable convention allows the analyst to quickly tabulate how many samples contained fentanyl, for example in Stata:
+The file `analysis_dataset.*` contains one row for each sample. It includes the characteristics that were reported on the card, and handy pre-processed variables to aid data analysis and visualization. The variable convention allows the analyst to quickly generate a time-series of how many samples contained fentanyl, for example in Stata:
 
 ```
 table date if lab_fentany_any==1
