@@ -20,7 +20,9 @@ Results files `analysis_dataset.*` and `lab_detail.*` are provided in:
 + CSV (tab-separated)
 
 <br>
+
 The `sampleid` variable links the datasets `analysis_dataset.*` and `lab_detail.*`.<br>
+
 <br>
 
 # Analysis Dataset
