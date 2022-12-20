@@ -4,26 +4,18 @@ All samples were collected anonymously. No individually identifying information 
 
 If you are ready to start durg checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
 
-## Individual results with chromatogram
-+ [All results](https://www.streetsafe.supply/results) (searchable)
-+ List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
-+ All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
+# File Inventory
++ Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
++ [Processing code](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/result_processing.do) showing variable creation
++ `analysis_dataset` Example analysis dataset with processed and derived variables (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
++ `lab_detail` Example lab detail dataset with standardized chemical names (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
 
-## Data Tables for Analysis
+Results files `analysis_dataset.*` and `lab_detail.*` are provided in Stata, Excel, SAS (transport v8), and CSV (tab-separated) formats. 
+<br>
+The `sampleid` variable links the datasets.<br>
+<br>
 
-### File Inventory
-+ Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
-+ Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
-+ Chem Dictionary with pronunciations and classifications [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/chemdictionary.csv)
-+ Laboratory protocols (coming soon)
-+ Decriptive methods text for proposals and manuscripts (coming soon)
-+ Processing code displaying every raw data processing step and variable creation [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/result_processing.do)
-+ Full documentation in codebook [TXT](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
-+ Example analysis dataset with processed and derived variables (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
-+ Example lab detail dataset with standardized chemical names (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
-
-There are two results files, `analysis_dataset.*` and `lab_detail.*`. They are provided in Stata, Excel, SAS, and CSV (tab-separated) formats. The `sampleid` variable links the datasets.<br>
-
+# Analysis Dataset
 The file `analysis_dataset.*` contains one row for each sample. It includes the characteristics that were reported on the card, and handy pre-processed variables to aid data analysis and visualization. The variable convention allows the analyst to quickly generate a time-series of how many samples contained fentanyl, for example in Stata:
 
 ```
@@ -37,7 +29,10 @@ It also contains 1/0 derived flags to help easily answer many common analytic qu
 |-------:|--------------|--------|-----|-----|--------------|--------|---------------|--------|------------|------|
 123|12dec2022|heroin|Raleigh|NC|blue|1|1|1|0|0|1|
 
-<br>The `lab_detail.*` file contains one row for each substance detected for each sample. The derived variables use the same naming convention and allow for understanding how each substance is clasified. Additional variables can be constructed using searches on the `substance` variable. This file does not contain the information from the card provided during sample collection, which instead appears in `analysis_dataset.*` for the sake of data efficiency.<br><br>
+<br>
+
+# Lab Detail Dataset
+The `lab_detail.*` file contains one row for each substance detected for each sample. The derived variables use the same naming convention and allow for understanding how each substance is clasified. Additional variables can be constructed using searches on the `substance` variable. This file does not contain the information from the card provided during sample collection, which instead appears in `analysis_dataset.*` for the sake of data efficiency.<br><br>
 
 | sampleid | substance | method | abundance |lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
 |-----:|---------------|--------|-----------|------------|-----------------------|------------|----------------|
@@ -45,3 +40,22 @@ It also contains 1/0 derived flags to help easily answer many common analytic qu
 |   123| xylazine      |GCMS    |      trace|0           |0                      |0           |1|                   
 |   123| 4-ANPP        |GCMS    |           |0           |1                      |0           |0|
 
+<br>
+
+# Chromatograms
+All chromatograms can be [found in this folder](https://github.com/opioiddatalab/drugchecking/tree/main/spectra) in PNG format. File naming convention is just the sample ID followed by `.PNG`. Syntax for directly call spectra via URL:
+
+```
+https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/200250.PNG
+```
+<br>
+
+# Human readable outputs
++ [All results](https://www.streetsafe.supply/results) (searchable)
++ List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
++ All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
+
+# Other Resources
++ Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
++ Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
++ Chem Dictionary with pronunciations and classifications [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/chemdictionary.csv)
