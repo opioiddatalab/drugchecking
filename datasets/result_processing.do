@@ -401,60 +401,10 @@ note lab_carfentanil_any: "Exact match for tramadol in primary or trace abundanc
 
 
 // Impurities and drug categories
-* These commands pull in the chem dictionary from GitHub and use the categoriezed columns to 
-* create derived variables that classify the substance.
-/*
-** cocaine impurities
-frame create cocaine
-frame change cocaine
-import delimited "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/chemdictionary/chemdictionary.csv"
-keep if cocaine_impurities==1
-keep substance cocaine_impurities
-gen i=_n
-reshape wide substance, i(cocaine_impurities) j(i) 
-keep substance* 
-foreach var of varlist subs* {
-	replace `var'=`"""'+`var'+`"""'+","
-}
-egen search=concat(subs*)
-replace search = substr(search, 1, length(search) - 1) if substr(search, -1, 1) ==  ","
-keep search
-local find=search[1]
-frame change lab
-gen lab_cocaine_impurity=0
-replace lab_cocaine_impurity=1 if inlist(substance,`find')
-la var lab_cocaine_impurity "cocaine impurities detected"
-note lab_cocaine_impurity: "Known cocaine processing impurities, metabolites, and starting material detected in primary or trace abundance."
-note lab_cocaine_impurity: `find'
-frame drop cocaine
-
-
-** heroin impurities
-frame create heroin
-frame change heroin
-import delimited "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/chemdictionary/chemdictionary.csv"
-keep if heroin_impurities==1
-keep substance heroin_impurities
-gen i=_n
-reshape wide substance, i(heroin_impurities) j(i) 
-keep substance* 
-foreach var of varlist subs* {
-	replace `var'=`"""'+`var'+`"""'+","
-}
-egen search=concat(subs*)
-replace search = substr(search, 1, length(search) - 1) if substr(search, -1, 1) ==  ","
-keep search
-local find=search[1]
-frame change lab
-gen lab_heroin_impurity=0
-replace lab_heroin_impurity=1 if inlist(substance,`find')
-la var lab_heroin_impurity "heroin impurities detected"
-note lab_heroin_impurity: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
-note lab_heroin_impurity: `find'
-frame drop heroin
-
-*/
-** Substituted cathinones
+* These commands pull in the chem dictionary from GitHub (chemdictionary.csv) and use
+* the categoriezed columns to create derived variables that classify the substance.
+* The file categorize.do is a script that imports the metadata from GitHub and runs is against
+* the lab results.
 
 cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/"
 do categorize "designer_benzos"
@@ -473,39 +423,8 @@ do categorize "pf_fent_impurities"
 do categorize "substituted_cathinones"
 
 
-/*
-foreach i of local drug {
-frame create temp
-frame change temp
-import delimited "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/chemdictionary/chemdictionary.csv"
-keep if `i'==1
-keep substance `i'
-gen i=_n
-reshape wide substance, i(`i') j(i) 
-keep substance* 
-foreach var of varlist subs* {
-	*replace `var'=`"""'+`var'+`"""'+","
-	replace `var'=`var'+"|"
-}
-egen search=concat(subs*)
-replace search = substr(search, 1, length(search) - 1) if substr(search, -1, 1) ==  "|"
-replace search = `"""'+search+`"""'
-keep search
-local find=search[1]
-frame change lab
-gen lab_`i'=regexm(substance,`find')
-la var lab_`i' "Detected as primary or trace"
-note lab_`i': "`find'"
-frame drop temp
-}
+// Save dataset for internal analysis
 
-
-** CREATE MORE CATEGORIES
-** cannabinoids, hallucinogens, opioids, benzos, stimulants, fentanyl analogues
-*/
-
-* Save dataset for internal analysis
-*drop card
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", replace
 
 // Merge in lab results to card data to create analytic dataset
