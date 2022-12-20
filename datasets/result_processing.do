@@ -469,7 +469,7 @@ do categorize "common_cuts"
 do categorize "heroin_impurities"
 do categorize "cannabinoids"
 do categorize "fentanyl_impurities"
-do categorize "p_fluorofentanyl_impurities"
+do categorize "pf_fent_impurities"
 do categorize "substituted_cathinones"
 
 
@@ -563,6 +563,7 @@ note lab_cocaine_impurities_any: "Known cocaine processing impurities, metabolit
 la var lab_heroin_impurities_any "heroin impurities detected"
 note lab_heroin_impurities_any: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
 note lab_common_cuts_any: "If only GCMS was used, this may not detect all large molecule (e.g., sugars) cuts. Derivitized GCMS and FTIR are more able to identify these molecules. Therefore this field should be more accurately interpreted as common small molecule  cuts that are likely to be psychoactive or have key physiological roles."
+la var lab_pf_fent_impurities_any "p-fluorofentanyl synthesis impurities"
 
 save merge, replace
 
