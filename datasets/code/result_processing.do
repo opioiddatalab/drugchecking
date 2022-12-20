@@ -4,6 +4,8 @@
 
 do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/getfile.do"
 
+cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/"
+
 clear all
 frames reset
 
@@ -411,7 +413,7 @@ note lab_carfentanil_any: "Exact match for tramadol in primary or trace abundanc
 * The file categorize.do is a script that imports the metadata from GitHub and runs is against
 * the lab results.
 
-cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/"
+cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/"
 do categorize "designer_benzos"
 do categorize "benzos"
 do categorize "nitazenes"
@@ -465,6 +467,8 @@ la var lab_xylazine "xylazine detected in lab"
 note lab_xylazine: "Exact match for xylazine as a primary substance, does not include other alpha-2 agonists."
 la var lab_xylazine_any "xylazine detected in any abundance"
 note lab_xylazine_any: "Exact match for xylazine as a primary or trace substance, does not include other alpha-2 agonists."
+la var lab_xylazine_trace "xylazine detected"
+note lab_xylazine_trace: "Exact match for xylazine in trace abundance only."
 la var lab_meth "xylazine detected in lab"
 note lab_meth: "Exact match for methamphetamine as a primary substance."
 la var  lab_meth_any "methamphetamine detected in lab in any abundance"
@@ -496,6 +500,7 @@ frame change card
 
 merge 1:1 sampleid using merge, nogen
 
+erase merge.dta
 
 ** Save dataset for internal analysis
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", replace
