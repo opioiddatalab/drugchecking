@@ -400,10 +400,10 @@ la var lab_carfentanil_any "carfentanil detected in lab"
 note lab_carfentanil_any: "Exact match for tramadol in primary or trace abundance."
 
 
-* Impurities and drug categories
+// Impurities and drug categories
 * These commands pull in the chem dictionary from GitHub and use the categoriezed columns to 
 * create derived variables that classify the substance.
-
+/*
 ** cocaine impurities
 frame create cocaine
 frame change cocaine
@@ -453,12 +453,56 @@ note lab_heroin_impurity: "Known heroin processing impurities, metabolites, and 
 note lab_heroin_impurity: `find'
 frame drop heroin
 
+*/
+** Substituted cathinones
 
+cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/"
+do categorize "designer_benzos"
+do categorize "benzos"
+do categorize "nitazenes"
+do categorize "opiates_opioids"
+do categorize "synthetic_cannabinoids"
+do categorize "meth_impurities"
+do categorize "mdma_impurities"
+do categorize "cocaine_impurities"
+do categorize "common_cuts"
+do categorize "heroin_impurities"
+do categorize "cannabinoids"
+do categorize "fentanyl_impurities"
+do categorize "p_fluorofentanyl_impurities"
+do categorize "substituted_cathinones"
+
+
+/*
+foreach i of local drug {
+frame create temp
+frame change temp
+import delimited "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/chemdictionary/chemdictionary.csv"
+keep if `i'==1
+keep substance `i'
+gen i=_n
+reshape wide substance, i(`i') j(i) 
+keep substance* 
+foreach var of varlist subs* {
+	*replace `var'=`"""'+`var'+`"""'+","
+	replace `var'=`var'+"|"
+}
+egen search=concat(subs*)
+replace search = substr(search, 1, length(search) - 1) if substr(search, -1, 1) ==  "|"
+replace search = `"""'+search+`"""'
+keep search
+local find=search[1]
+frame change lab
+gen lab_`i'=regexm(substance,`find')
+la var lab_`i' "Detected as primary or trace"
+note lab_`i': "`find'"
+frame drop temp
+}
 
 
 ** CREATE MORE CATEGORIES
 ** cannabinoids, hallucinogens, opioids, benzos, stimulants, fentanyl analogues
-
+*/
 
 * Save dataset for internal analysis
 *drop card
@@ -514,10 +558,11 @@ la var lab_carfentanil "carfentanil detected in lab"
 note lab_carfentanil: "Exact match for tramadol as a primary substance."
 la var lab_carfentanil_any "carfentanil detected in lab"
 note lab_carfentanil_any: "Exact match for tramadol in primary or trace abundance."
-la var lab_cocaine_impurity "cocaine impurities detected"
-note lab_cocaine_impurity: "Known cocaine processing impurities, metabolites, and starting material detected in primary or trace abundance."
-la var lab_heroin_impurity "heroin impurities detected"
-note lab_heroin_impurity: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
+la var lab_cocaine_impurities_any "cocaine impurities detected"
+note lab_cocaine_impurities_any: "Known cocaine processing impurities, metabolites, and starting material detected in primary or trace abundance."
+la var lab_heroin_impurities_any "heroin impurities detected"
+note lab_heroin_impurities_any: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
+note lab_common_cuts_any: "If only GCMS was used, this may not detect all large molecule (e.g., sugars) cuts. Derivitized GCMS and FTIR are more able to identify these molecules. Therefore this field should be more accurately interpreted as common small molecule  cuts that are likely to be psychoactive or have key physiological roles."
 
 save merge, replace
 
