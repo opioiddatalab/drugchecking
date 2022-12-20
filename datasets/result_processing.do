@@ -148,7 +148,7 @@ replace expect_cannabis=1 if regexm(lower(expectedsubstance),"weed|cbd|delta|can
 la var expect_cannabis "1 if expected CBD, Delta-8 or weed circled on card"
 
 gen expect_hall=0
-replace expect_hall=1 if regexm(lower(expectedsubstance),"lsd|mda|molly|mdma|mushroom|dmt|ketamine|ecstacy|psilocybin")
+replace expect_hall=1 if regexm(lower(expectedsubstance),"lsd|mda|molly|mdma|mda|mushroom|dmt|ketamine|esketamine|ecstacy|psilocybin|eutylone")
 la var expect_hall "1 if expected hallucinogen"
 note expect_hall: "lsd|mda|molly|mdma|mushroom|dmt|ketamine|ecstacy|psilocybin"
 
@@ -454,12 +454,14 @@ note lab_heroin_impurity: `find'
 frame drop heroin
 
 
+
+
 ** CREATE MORE CATEGORIES
 ** cannabinoids, hallucinogens, opioids, benzos, stimulants, fentanyl analogues
 
 
 * Save dataset for internal analysis
-drop card
+*drop card
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", replace
 
 // Merge in lab results to card data to create analytic dataset
@@ -572,8 +574,10 @@ export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/dat
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/lab_detail.csv", delimiter(tab) replace
 
 	
+// Save custom datasets for each client in a separate GitHub repository
 
-
+** Western North Carolina (STEADY + Holler)
+do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/export_wnc.do"
 
 
 
