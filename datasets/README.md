@@ -10,7 +10,7 @@ If you are ready to start durg checking by mail, [request a startup kit](https:/
 + `analysis_dataset` Example analysis dataset with processed and derived variables (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
 + `lab_detail` Example lab detail dataset with standardized chemical names (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
 
-Results files `analysis_dataset.*` and `lab_detail.*` are provided in Stata (v14 or later), Excel (.xlsx), SAS (transport v8), and CSV (tab-separated) formats. 
+Results files `analysis_dataset.*` and `lab_detail.*` are provided in Stata (v14 or later), Excel (.xlsx), SAS (transport v8), and CSV (tab-separated) formats. <br>
 <br>
 The `sampleid` variable links the datasets.<br>
 <br>
