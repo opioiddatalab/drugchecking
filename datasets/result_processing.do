@@ -354,6 +354,11 @@ replace lab_xylazine_any=1 if substance=="xylazine"
 la var lab_xylazine_any "xylazine detected in any abundance"
 note lab_xylazine_any: "Exact match for xylazine as a primary or trace substance, does not include other alpha-2 agonists."
 
+gen lab_xylazine_trace=0
+replace lab_xylazine_trace=1 if substance=="xylazine" & abundance=="trace"
+la var lab_xylazine_trace "xylazine detected"
+note lab_xylazine_trace: "Exact match for xylazine in trace abundance only."
+
 gen lab_meth=0
 replace lab_meth=1 if substance=="methamphetamine" & abundance==""
 la var lab_meth "xylazine detected in lab"
@@ -425,6 +430,7 @@ do categorize "substituted_cathinones"
 
 // Save dataset for internal analysis
 
+quietly compress
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", replace
 
 // Merge in lab results to card data to create analytic dataset
@@ -474,9 +480,9 @@ note lab_mdma: "Exact match for 3,4-MDMA as a primary substance."
 la var lab_tramadol "tramadol detected in lab"
 note lab_tramadol: "Exact match for tramadol as a primary substance."
 la var lab_carfentanil "carfentanil detected in lab"
-note lab_carfentanil: "Exact match for tramadol as a primary substance."
+note lab_carfentanil: "Exact match for carfentanil as a primary substance."
 la var lab_carfentanil_any "carfentanil detected in lab"
-note lab_carfentanil_any: "Exact match for tramadol in primary or trace abundance."
+note lab_carfentanil_any: "Exact match for carfentanil in primary or trace abundance."
 la var lab_cocaine_impurities_any "cocaine impurities detected"
 note lab_cocaine_impurities_any: "Known cocaine processing impurities, metabolites, and starting material detected in primary or trace abundance."
 la var lab_heroin_impurities_any "heroin impurities detected"
