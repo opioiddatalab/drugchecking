@@ -17,7 +17,7 @@ Results files `analysis_dataset.*` and `lab_detail.*` are provided in:
 + Stata (v14 or later)
 + Excel (.xlsx)
 + SAS (transport v8)
-+ CSV (tab-separated)
++ CSV (comma-separated with quote enclosure for strings)
 
 <br>
 
