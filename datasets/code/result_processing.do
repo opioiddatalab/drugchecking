@@ -522,7 +522,8 @@ export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datas
 export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/analysis_dataset.xlsx", firstrow(variables) nolabel replace
 
 *** Delimited CSV (tab)
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/analysis_dataset.csv", delimiter(tab) replace
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/analysis_dataset.csv", quote replace
+
 
 
 // Generate codebook on public data
@@ -547,7 +548,7 @@ export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datas
 export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/lab_detail.xlsx", firstrow(variables) nolabel replace
 
 ** Delimited CSV (tab)
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/lab_detail.csv", delimiter(tab) replace
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/lab_detail.csv", quote replace
 
 	
 // Save custom datasets for each client in a separate GitHub repository
