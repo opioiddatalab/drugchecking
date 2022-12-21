@@ -7,6 +7,7 @@ If you are ready to start durg checking by mail, [request a startup kit](https:/
 # File Inventory
 + Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
 + [Processing code](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/result_processing.do) showing variable creation
++ [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) viewer
 + `analysis_dataset` Example analysis dataset with processed and derived variables (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
 + `lab_detail` Example lab detail dataset with standardized chemical names (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
 
@@ -25,6 +26,10 @@ The `sampleid` variable links the datasets `analysis_dataset.*` and `lab_detail.
 
 <br>
 
+For a quick view of the data, see this [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example as a single file with 2 tabs.
+
+<br>
+
 # Analysis Dataset
 The file `analysis_dataset.*` contains one row for each sample. It includes the characteristics that were reported on the card, and handy pre-processed variables to aid data analysis and visualization. The variable convention allows the analyst to quickly generate a time-series of how many samples contained fentanyl, for example in Stata:
 
@@ -38,6 +43,13 @@ It also contains 1/0 derived flags to help easily answer many common analytic qu
 |sampleid|date collected|expected substance|location|state|color|OD involvement|lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
 |-------:|--------------|--------|-----|-----|--------------|--------|---------------|--------|------------|------|
 123|12dec2022|heroin|Raleigh|NC|blue|1|1|1|0|1|
+<br><br>
+
+You can import the example `analysis_dataset.csv` instantly into Google sheets by pasting this one line of code into the first cell (A1):
+```
+=importData("https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/analysis_dataset.csv")
+
+```
 
 <br>
 
@@ -51,6 +63,12 @@ The `lab_detail.*` file contains one row for each substance detected for each sa
 |   123| 4-ANPP        |GCMS    |           |0           |1                      |0           |0|
 
 <br>
+
+You can import the example `lab_detail.csv` instantly into Google sheets by pasting this one line of code into the first cell (A1):
+```
+=importData("https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/lab_detail.csv")
+
+```
 
 # Chromatograms
 
