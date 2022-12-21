@@ -43,6 +43,7 @@ It also contains 1/0 derived flags to help easily answer many common analytic qu
 |sampleid|date collected|expected substance|location|state|color|OD involvement|lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
 |-------:|--------------|--------|-----|-----|--------------|--------|---------------|--------|------------|------|
 123|12dec2022|heroin|Raleigh|NC|blue|1|1|1|0|1|
+
 <br><br>
 
 You can import the example `analysis_dataset.csv` instantly into Google sheets by pasting this one line of code into the first cell (A1):
