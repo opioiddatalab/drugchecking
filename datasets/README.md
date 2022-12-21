@@ -37,12 +37,12 @@ It also contains 1/0 derived flags to help easily answer many common analytic qu
 
 |sampleid|date collected|expected substance|location|state|color|OD involvement|lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
 |-------:|--------------|--------|-----|-----|--------------|--------|---------------|--------|------------|------|
-123|12dec2022|heroin|Raleigh|NC|blue|1|1|1|0|0|1|
+123|12dec2022|heroin|Raleigh|NC|blue|1|1|1|0|1|
 
 <br>
 
 # Lab Detail Dataset
-The `lab_detail.*` file contains one row for each substance detected for each sample. The derived variables use the same naming convention and allow for understanding how each substance is clasified. Additional variables can be constructed using searches on the `substance` variable. This file does not contain the information from the card provided during sample collection, which instead appears in `analysis_dataset.*` for the sake of data efficiency.<br><br>
+The `lab_detail.*` file contains one row for each substance detected for each sample. The derived variables use the same naming convention and allow for understanding how each substance is clasified. Additional variables can be constructed using searches on the `substance` variable. This file does not contain the information from the card provided during sample collection, which instead appears in `analysis_dataset.*` for the sake of data efficiency. This also allows you to see trace back and see how variable was contructed at an individual chemical level.<br><br>
 
 | sampleid | substance | method | abundance |lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
 |-----:|---------------|--------|-----------|------------|-----------------------|------------|----------------|
@@ -53,12 +53,25 @@ The `lab_detail.*` file contains one row for each substance detected for each sa
 <br>
 
 # Chromatograms
-All chromatograms can be [found in this folder](https://github.com/opioiddatalab/drugchecking/tree/main/spectra) in PNG format. File naming convention is just the sample ID followed by `.PNG`. Syntax for directly call spectra via URL:
+
+![chromatogram](https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830.PNG)
+
+The chromatogram is one of the outputs we analyze, a summary of the constituents (note: the chromatogram above is similar to, but not exactly the same, as the structured data example). All chromatograms can be [found in this folder](https://github.com/opioiddatalab/drugchecking/tree/main/spectra) in PNG format. File naming convention is just the sample ID followed by `.PNG`. Syntax for direct call for spectra image files via URL:
 
 ```
-https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/200250.PNG
+https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830.PNG
 ```
 <br>
+
+Peaks are labeled in the [human readable record](https://www.streetsafe.supply/results/p/300830), which can be [searched here](https://www.streetsafe.supply/results).<br>
+
+Major substances in graph:<br>
+
++ Peak 6.65 = caffeine
++ Peak 7.2 = xylazine
++ Peak 8.74 = 4-ANPP
++ Peak 9.35 = heroin
++ Peak 9.71 = fentanyl
 
 # Human readable outputs
 + [All results](https://www.streetsafe.supply/results) (searchable)
