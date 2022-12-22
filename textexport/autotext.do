@@ -436,6 +436,7 @@ tab lab_status
 drop if lab_status=="" & r(N)>1
 gen status_date="$S_DATE"
 duplicates drop
+sort sampleid
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
 ** Share copies to Dropbox for Erin
 ! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
