@@ -14,31 +14,10 @@ save states, replace
 
 
 // Get posted products from Squarespace API
+** Retrives last 50 sample ID numbers that have been posted to create canonical list
+** Code hidden to protect endpoint
 
-python
-import json
-import pandas as pd
-import requests
-headers = {
-    "Authorization": "Bearer 6d9de38d-ab00-4fcc-9360-ec87952425cb",
-    "User-Agent": "Get all samples",
-  	"Content-Type": "application/json",
-}
-
-response = requests.get("https://api.squarespace.com/1.0/commerce/products", headers=headers)
-data = response.json()
-df = pd.DataFrame(data["products"], columns=['id', 'createdOn', 'description', 'isVisible', 'modifiedOn', 'name', 'seoOptions', 'storePageId', 'type', 'url' ])
-df.to_csv('mostrecent50.csv')
-end
-
-import delimited "mostrecent50.csv", varnames(1) stringcols(7) clear
-keep name
-rename name title
-append using canonical_list
-duplicates drop
-save canonical_list, replace
-! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/mostrecent50.csv"
-
+do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/sqapi_last50.do"
 
 // Download the data file and modify
 * change file extension from .xlsm to .xlsx
