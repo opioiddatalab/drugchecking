@@ -96,8 +96,11 @@ Major substances in graph:<br>
 + [All results](https://www.streetsafe.supply/results) (searchable)
 + List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
 + All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
++ [NLP code](https://github.com/opioiddatalab/drugchecking/blob/main/textexport/autotext.do) for converting sample results into human readable indivdual records for [website](https://streetsafe.supply)
+
 
 # Other Resources
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
 + Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
 + Chem Dictionary with pronunciations and classifications [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/chemdictionary.csv)
++ [List](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample IDs
