@@ -71,7 +71,7 @@ You can import the example `lab_detail.csv` instantly into Google sheets by past
 
 ```
 
-# Chromatograms
+# GCMS Chromatograms
 
 ![chromatogram](https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830.PNG)
 
