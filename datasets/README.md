@@ -37,12 +37,12 @@ The file `analysis_dataset.*` contains one row for each sample. It includes the 
 table date if lab_fentanyl_any==1
 ```
 
-It also contains 1/0 derived flags to help easily answer many common analytic questions, such as whether the sample contains xylazine, or if any fentanyl processing impurities (like 4-ANPP) were detected. These derived variables are indicated with the naming convention `lab_` in the variable name. The presence of particular compounds is marked `_any` in the variable name to indicate that the substance was detected in primary or trace amounts. The lack of a `_any` in the variable name means that it was the detected as a primary substance. Therefore, this sample contains xylazine in trace abundance `lab_xylazine_any=1` but not as a primary constituent `lab_xylazine=0`. It was reported to have been involved in an overdose.<br><br>
+It also contains 1/0 derived flags to help easily answer many common analytic questions, such as whether the sample contains xylazine, or if any fentanyl processing impurities (like 4-ANPP) were detected. These derived variables are indicated with the naming convention `lab_` in the variable name. The presence of particular compounds is marked `_any` in the variable name to indicate that the substance was detected in primary or trace amounts. The lack of a `_any` in the variable name means that it was the detected as a primary substance. Therefore, this sample contains xylazine in trace abundance `lab_xylazine_any=1` but not as a primary constituent `lab_xylazine=0`.<br><br>
 
 
-|sampleid|date collected|expected substance|location|state|color|OD involvement|lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
-|-------:|--------------|--------|-----|-----|--------------|--------|---------------|--------|------------|------|
-123|12dec2022|heroin|Raleigh|NC|blue|1|1|1|0|1|
+|sampleid|date collected|lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
+|-------:|--------------|--------|-----|-----|--------------|
+123|12dec2022|1|1|0|1|
 
 <br><br>
 
