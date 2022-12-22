@@ -1,5 +1,9 @@
 # UNC Drug Checking Lab Data
 
+
+*This documentation is in beta release. Code will undergo QC as we finalize.*
+<br>
+<br>
 All samples were collected anonymously. No individually identifying information was collected.
 
 If you are ready to start durg checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
