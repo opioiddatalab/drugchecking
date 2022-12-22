@@ -103,4 +103,4 @@ Major substances in graph:<br>
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
 + Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
 + Chem Dictionary with pronunciations and classifications [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/chemdictionary.csv)
-+ [List](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample IDs
++ [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample IDs
