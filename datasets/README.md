@@ -1,5 +1,9 @@
 # UNC Drug Checking Lab Data
 
+
+*This documentation is in beta release. Code will undergo QC as we finalize.*
+<br>
+<br>
 All samples were collected anonymously. No individually identifying information was collected.
 
 If you are ready to start durg checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
@@ -37,12 +41,12 @@ The file `analysis_dataset.*` contains one row for each sample. It includes the 
 table date if lab_fentanyl_any==1
 ```
 
-It also contains 1/0 derived flags to help easily answer many common analytic questions, such as whether the sample contains xylazine, or if any fentanyl processing impurities (like 4-ANPP) were detected. These derived variables are indicated with the naming convention `lab_` in the variable name. The presence of particular compounds is marked `_any` in the variable name to indicate that the substance was detected in primary or trace amounts. The lack of a `_any` in the variable name means that it was the detected as a primary substance. Therefore, this sample contains xylazine in trace abundance `lab_xylazine_any=1` but not as a primary constituent `lab_xylazine=0`. It was reported to have been involved in an overdose.<br><br>
+It also contains 1/0 derived flags to help easily answer many common analytic questions, such as whether the sample contains xylazine, or if any fentanyl processing impurities (like 4-ANPP) were detected. These derived variables are indicated with the naming convention `lab_` in the variable name. The presence of particular compounds is marked `_any` in the variable name to indicate that the substance was detected in primary or trace amounts. The lack of a `_any` in the variable name means that it was the detected as a primary substance. Therefore, this sample contains xylazine in trace abundance `lab_xylazine_any=1` but not as a primary constituent `lab_xylazine=0`.<br><br>
 
 
-|sampleid|date collected|expected substance|location|state|color|OD involvement|lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
-|-------:|--------------|--------|-----|-----|--------------|--------|---------------|--------|------------|------|
-123|12dec2022|heroin|Raleigh|NC|blue|1|1|1|0|1|
+|sampleid|date collected|lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
+|-------:|--------------|--------|-----|-----|--------------|
+123|12dec2022|1|1|0|1|
 
 <br><br>
 
@@ -71,7 +75,7 @@ You can import the example `lab_detail.csv` instantly into Google sheets by past
 
 ```
 
-# Chromatograms
+# GCMS Chromatograms
 
 ![chromatogram](https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830.PNG)
 
@@ -96,8 +100,11 @@ Major substances in graph:<br>
 + [All results](https://www.streetsafe.supply/results) (searchable)
 + List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
 + All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
++ [NLP code](https://github.com/opioiddatalab/drugchecking/blob/main/textexport/autotext.do) for converting sample results into human readable indivdual records for [website](https://streetsafe.supply)
+
 
 # Other Resources
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
 + Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
 + Chem Dictionary with pronunciations and classifications [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/chemdictionary.csv)
++ [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample IDs
