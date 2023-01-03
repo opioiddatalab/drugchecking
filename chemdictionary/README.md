@@ -1,6 +1,6 @@
 # UNC Drug Checking Chemical Dictionary
 <br>
-The CSV file above is a canonical list of substances detected/execpted by the UNC drug checking lab starting in 2021.
+The CSV file above is a [canonical list of substances detected/execpted](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/chemdictionary.csv) by the UNC drug checking lab starting in 2021.
 <br><br>
 
 ## File and Variable Conventions
