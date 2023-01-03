@@ -1,7 +1,9 @@
 # UNC Drug Checking Chemical Dictionary
 <br>
+
 The CSV file above is a [canonical list of substances detected/execpted](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/chemdictionary.csv) by the UNC drug checking lab starting in 2021.
-<br><br>
+
+<br>
 
 ## File and Variable Conventions
 + Chemical names are listed in the first column `substance`
@@ -16,7 +18,7 @@ The CSV file above is a [canonical list of substances detected/execpted](https:/
 + Classifiations are intended to be most relevant for public health and drug checking professionals.
 + Chemical names are standardized according to our internal expertise and conventions. They may or may not match literal text in cheminformatics databases without additional pre-processing. Example: `p-fluorofentanyl` versus `para-fluorofentaynl`
 + The `commonrole` column is being worked on and not standardized. Use with discretion and submit suggestions.
-
+<br>
 
 ## Progammers Note
 Direct path access to raw CSV 
