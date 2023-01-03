@@ -102,8 +102,6 @@ frlink m:1 sampleid, frame(card)
 
 *use full_analysis, clear
 
-// Create subsets for different customers
-** To be completed later
 
 // Describe lab sample 
 frame lab: distinct sampleid
@@ -441,7 +439,7 @@ frame copy lab merge
 frame change merge
 
 collapse (max) date_complete primary trace lab_*, by(sampleid)
-
+  
 * Clean up logic for samples with no substances detected
 replace lab_num_substances_any=0 if lab_null==1
 replace lab_num_substances=0 if lab_null==1
@@ -487,12 +485,30 @@ la var lab_carfentanil "carfentanil detected in lab"
 note lab_carfentanil: "Exact match for carfentanil as a primary substance."
 la var lab_carfentanil_any "carfentanil detected in lab"
 note lab_carfentanil_any: "Exact match for carfentanil in primary or trace abundance."
-la var lab_cocaine_impurities_any "cocaine impurities detected"
+la var lab_cocaine_impurities_any "Any cocaine impurities detected"
 note lab_cocaine_impurities_any: "Known cocaine processing impurities, metabolites, and starting material detected in primary or trace abundance."
-la var lab_heroin_impurities_any "heroin impurities detected"
+la var lab_heroin_impurities_any "Any heroin impurities detected"
 note lab_heroin_impurities_any: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
 note lab_common_cuts_any: "If only GCMS was used, this may not detect all large molecule (e.g., sugars) cuts. Derivitized GCMS and FTIR are more able to identify these molecules. Therefore this field should be more accurately interpreted as common small molecule  cuts that are likely to be psychoactive or have key physiological roles."
 la var lab_pf_fent_impurities_any "p-fluorofentanyl synthesis impurities"
+la var lab_designer_benzos_any "Any designer benzodizaepine detected"
+la var lab_benzos_any "Any benzodiazepine detected"
+la var lab_nitazenes_any "Any nitazene detected"
+la var lab_opiates_opioids_any "Any opioids detected"
+la var lab_synthetic_cannabinoids_any "Any synthetic cannabinoids detected"
+la var lab_meth_impurities_any "Any methamphetamine impurities"
+la var lab_mdma_impurities_any "Any MDMA impurities"
+la var lab_cannabinoids_any "Any natural or synthetic cannabinoids detected"
+la var lab_fentanyl_impurities_any "Any fentanyl synthesis impurities detected"
+note lab_fentanyl_impurities_any: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
+la var lab_substituted_cathinones_any "Any substituted cathinone detected"
+
+foreach var of varlist lab_designer_benzos_any-lab_substituted_cathinones_any {
+	
+	note `var': "Detected in primary or trace abundance."
+	note `var': "Specific substance classifications: go.unc.edu/chemdict"
+	
+}
 
 save merge, replace
 
