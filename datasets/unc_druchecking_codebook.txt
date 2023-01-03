@@ -3,12 +3,12 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/unc_druchec
 > king_codebook.txt
   log type:  text
- opened on:  21 Dec 2022, 09:01:29
+ opened on:   3 Jan 2023, 10:34:55
 
 . codebook, n h
 
                Dataset: */Documents/GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 21 Dec 2022 09:01
+            Last saved: 3 Jan 2023 10:34
 
                  Label: [none]
    Number of variables: 76
@@ -1033,7 +1033,7 @@ lab_carfentanil_any:
   1.  "Exact match for carfentanil in primary or trace abundance."
 
 ------------------------------------------------------------------------------------------
-lab_designer_benzos_any                                      (max) lab_designer_benzos_any
+lab_designer_benzos_any                               Any designer benzodizaepine detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1044,8 +1044,12 @@ lab_designer_benzos_any                                      (max) lab_designer_
             Tabulation: Freq.  Value
                            20  0
 
+lab_designer_benzos_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
+
 ------------------------------------------------------------------------------------------
-lab_benzos_any                                                        (max) lab_benzos_any
+lab_benzos_any                                                 Any benzodiazepine detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1056,8 +1060,12 @@ lab_benzos_any                                                        (max) lab_
             Tabulation: Freq.  Value
                            20  0
 
+lab_benzos_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
+
 ------------------------------------------------------------------------------------------
-lab_nitazenes_any                                                  (max) lab_nitazenes_any
+lab_nitazenes_any                                                    Any nitazene detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1069,8 +1077,12 @@ lab_nitazenes_any                                                  (max) lab_nit
                            19  0
                             1  1
 
+lab_nitazenes_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
+
 ------------------------------------------------------------------------------------------
-lab_opiates_opioids_any                                      (max) lab_opiates_opioids_any
+lab_opiates_opioids_any                                               Any opioids detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1082,20 +1094,12 @@ lab_opiates_opioids_any                                      (max) lab_opiates_o
                             8  0
                            12  1
 
-------------------------------------------------------------------------------------------
-lab_synthetic_cannabinoids_any                        (max) lab_synthetic_cannabinoids_any
-------------------------------------------------------------------------------------------
-
-                  Type: Numeric (byte)
-
-                 Range: [0,0]                         Units: 1
-         Unique values: 1                         Missing .: 0/20
-
-            Tabulation: Freq.  Value
-                           20  0
+lab_opiates_opioids_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
 
 ------------------------------------------------------------------------------------------
-lab_meth_impurities_any                                      (max) lab_meth_impurities_any
+lab_synthetic_cannabinoids_any                         Any synthetic cannabinoids detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1106,8 +1110,12 @@ lab_meth_impurities_any                                      (max) lab_meth_impu
             Tabulation: Freq.  Value
                            20  0
 
+lab_synthetic_cannabinoids_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
+
 ------------------------------------------------------------------------------------------
-lab_mdma_impurities_any                                      (max) lab_mdma_impurities_any
+lab_meth_impurities_any                                     Any methamphetamine impurities
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1118,8 +1126,28 @@ lab_mdma_impurities_any                                      (max) lab_mdma_impu
             Tabulation: Freq.  Value
                            20  0
 
+lab_meth_impurities_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
+
 ------------------------------------------------------------------------------------------
-lab_cocaine_impurities_any                                     cocaine impurities detected
+lab_mdma_impurities_any                                                Any MDMA impurities
+------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+
+                 Range: [0,0]                         Units: 1
+         Unique values: 1                         Missing .: 0/20
+
+            Tabulation: Freq.  Value
+                           20  0
+
+lab_mdma_impurities_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
+
+------------------------------------------------------------------------------------------
+lab_cocaine_impurities_any                                 Any cocaine impurities detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1134,6 +1162,8 @@ lab_cocaine_impurities_any                                     cocaine impuritie
 lab_cocaine_impurities_any:
   1.  "Known cocaine processing impurities, metabolites, and starting material detected in
       primary or trace abundance."
+  2.  "Detected in primary or trace abundance."
+  3.  "Specific substance classifications: go.unc.edu/chemdict"
 
 ------------------------------------------------------------------------------------------
 lab_common_cuts_any                                              (max) lab_common_cuts_any
@@ -1153,9 +1183,11 @@ lab_common_cuts_any:
       Derivitized GCMS and FTIR are more able to identify these molecules. Therefore this
       field should be more accurately interpreted as common small molecule cuts that are
       likely to be psychoactive or have key physiological roles."
+  2.  "Detected in primary or trace abundance."
+  3.  "Specific substance classifications: go.unc.edu/chemdict"
 
 ------------------------------------------------------------------------------------------
-lab_heroin_impurities_any                                       heroin impurities detected
+lab_heroin_impurities_any                                   Any heroin impurities detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1170,9 +1202,11 @@ lab_heroin_impurities_any                                       heroin impuritie
 lab_heroin_impurities_any:
   1.  "Known heroin processing impurities, metabolites, and starting material detected in
       primary or trace abundance."
+  2.  "Detected in primary or trace abundance."
+  3.  "Specific substance classifications: go.unc.edu/chemdict"
 
 ------------------------------------------------------------------------------------------
-lab_cannabinoids_any                                            (max) lab_cannabinoids_any
+lab_cannabinoids_any                        Any natural or synthetic cannabinoids detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1183,8 +1217,12 @@ lab_cannabinoids_any                                            (max) lab_cannab
             Tabulation: Freq.  Value
                            20  0
 
+lab_cannabinoids_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
+
 ------------------------------------------------------------------------------------------
-lab_fentanyl_impurities_any                              (max) lab_fentanyl_impurities_any
+lab_fentanyl_impurities_any                     Any fentanyl synthesis impurities detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1195,6 +1233,12 @@ lab_fentanyl_impurities_any                              (max) lab_fentanyl_impu
             Tabulation: Freq.  Value
                            10  0
                            10  1
+
+lab_fentanyl_impurities_any:
+  1.  "Known heroin processing impurities, metabolites, and starting material detected in
+      primary or trace abundance."
+  2.  "Detected in primary or trace abundance."
+  3.  "Specific substance classifications: go.unc.edu/chemdict"
 
 ------------------------------------------------------------------------------------------
 lab_pf_fent_impurities_any                           p-fluorofentanyl synthesis impurities
@@ -1209,8 +1253,12 @@ lab_pf_fent_impurities_any                           p-fluorofentanyl synthesis 
                            17  0
                             3  1
 
+lab_pf_fent_impurities_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
+
 ------------------------------------------------------------------------------------------
-lab_substituted_cathinones_any                        (max) lab_substituted_cathinones_any
+lab_substituted_cathinones_any                          Any substituted cathinone detected
 ------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
@@ -1222,10 +1270,14 @@ lab_substituted_cathinones_any                        (max) lab_substituted_cath
                            19  0
                             1  1
 
+lab_substituted_cathinones_any:
+  1.  "Detected in primary or trace abundance."
+  2.  "Specific substance classifications: go.unc.edu/chemdict"
+
 . log close
       name:  <unnamed>
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/unc_druchec
 > king_codebook.txt
   log type:  text
- closed on:  21 Dec 2022, 09:01:29
+ closed on:   3 Jan 2023, 10:34:55
 ------------------------------------------------------------------------------------------
