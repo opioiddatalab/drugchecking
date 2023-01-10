@@ -578,3 +578,11 @@ do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/export_wnc.do"
 ! rm "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx"
 
 
+// Create frequency list of substances detected
+use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", clear
+keep substance abundance
+gen any=1
+gen primary=1 if abundance==""
+gen trace=1 if abundance=="trace"
+collapse (sum) any primary trace, by(substance)
+gsort -any
