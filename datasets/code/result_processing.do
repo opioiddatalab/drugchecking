@@ -14,6 +14,8 @@ import excel "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults
 drop text
 rename county p_city
 rename state p_state
+drop if program==""
+drop F
 save programloc, replace
 
 
@@ -573,5 +575,6 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/export_wnc.do"
 
 
+! rm "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx"
 
 

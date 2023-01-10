@@ -1,27 +1,27 @@
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/unc_druchec
-> king_codebook.txt
+       log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
+> unc_druchecking_codebook.txt
   log type:  text
- opened on:  10 Jan 2023, 09:34:54
+ opened on:  10 Jan 2023, 14:41:42
 
 . codebook, n h
 
-               Dataset: */Documents/GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 10 Jan 2023 09:34
+               Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
+            Last saved: 10 Jan 2023 14:41
 
                  Label: [none]
    Number of variables: 76
 Number of observations: 20
-                  Size: 17,820 bytes ignoring labels, etc.
+                  Size: 17,860 bytes ignoring labels, etc.
 
 _dta:
-  1.  "Example dataset (N=20) from UNC lab drug checking services. Lab results, notes,
-      sensations, etc. are real, but locations have been redacted."
+  1.  "Example dataset (N=20) from UNC lab drug checking services. Lab results,
+      notes, sensations, etc. are real, but locations have been redacted."
 
-------------------------------------------------------------------------------------------
-sampleid                                                                       (unlabeled)
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sampleid                                                            (unlabeled)
+-------------------------------------------------------------------------------
 
                   Type: String (str3)
 
@@ -32,11 +32,11 @@ sampleid                                                                       (
                         "424"
                         "644"
 
-------------------------------------------------------------------------------------------
-program                                                                       Program name
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+program                                                            Program name
+-------------------------------------------------------------------------------
 
-                  Type: String (str37), but longest is str21
+                  Type: String (str41), but longest is str21
 
          Unique values: 1                         Missing "": 0/20
 
@@ -45,9 +45,9 @@ program                                                                       Pr
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-location                                                                    City or County
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+location                                                         City or County
+-------------------------------------------------------------------------------
 
                   Type: String (str17), but longest is str9
 
@@ -59,12 +59,13 @@ location                                                                    City
                Warning: Variable has embedded blanks.
 
 location:
-  1.  "Write-in on card, minimally standardized. Could be neighborhood, city, or county.
-      Not required. Filled in with program mailing address city if unspecified."
+  1.  "Write-in on card, minimally standardized. Could be neighborhood, city,
+      or county. Not required. Filled in with program mailing address city if
+      unspecified."
 
-------------------------------------------------------------------------------------------
-state                                                               State sample collected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+state                                                    State sample collected
+-------------------------------------------------------------------------------
 
                   Type: String (str13), but longest is str2
 
@@ -83,9 +84,9 @@ state                                                               State sample
 state:
   1.  "Minimum required geographic identifier."
 
-------------------------------------------------------------------------------------------
-date_collect                                                         Date sample collected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+date_collect                                              Date sample collected
+-------------------------------------------------------------------------------
 
                   Type: Numeric daily date (float)
 
@@ -99,9 +100,9 @@ date_collect                                                         Date sample
                             22758      22788      22861    22944.5      22963
                         23apr2022  23may2022  04aug2022  26oct2022  14nov2022
 
-------------------------------------------------------------------------------------------
-sampletype                                                    Verbatim sample type on card
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sampletype                                         Verbatim sample type on card
+-------------------------------------------------------------------------------
 
                   Type: String (str15), but longest is str13
 
@@ -118,9 +119,9 @@ sampletype                                                    Verbatim sample ty
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-collection                                   Collection method, consolidated for reporting
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+collection                        Collection method, consolidated for reporting
+-------------------------------------------------------------------------------
 
                   Type: String (str16)
 
@@ -137,9 +138,9 @@ collection                                   Collection method, consolidated for
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-expectedsubstance                                      Verbatim expected substance on card
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+expectedsubstance                           Verbatim expected substance on card
+-------------------------------------------------------------------------------
 
                   Type: String (str51), but longest is str16
 
@@ -157,9 +158,10 @@ expectedsubstance                                      Verbatim expected substan
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-expect_opioid   1 if expected heroin or fentanyl circled on card, or specific opioid named
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+expect_opioid                          1 if expected heroin or fentanyl circled
+                                       on card, or specific opioid named
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -173,9 +175,9 @@ expect_opioid   1 if expected heroin or fentanyl circled on card, or specific op
 expect_opioid:
   1.  "Named opioid could include Percocet, Vicodin, Roxicodone, etc."
 
-------------------------------------------------------------------------------------------
-expect_fentanyl                                     1 if expected fentanyl circled on card
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+expect_fentanyl                          1 if expected fentanyl circled on card
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -186,9 +188,10 @@ expect_fentanyl                                     1 if expected fentanyl circl
                            10  0
                            10  1
 
-------------------------------------------------------------------------------------------
-expect_xylazine     1 if expected xylazine circled on card or mentioned in sensation notes
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+expect_xylazine                        1 if expected xylazine circled on card
+                                       or mentioned in sensation notes
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -201,9 +204,10 @@ expect_xylazine     1 if expected xylazine circled on card or mentioned in sensa
 expect_xylazine:
   1.  "Added in version 3 of card"
 
-------------------------------------------------------------------------------------------
-expect_stimulant             1 if expected cocaine, crack, methamphetamine circled on card
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+expect_stimulant                       1 if expected cocaine, crack,
+                                       methamphetamine circled on card
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -214,9 +218,10 @@ expect_stimulant             1 if expected cocaine, crack, methamphetamine circl
                            15  0
                             5  1
 
-------------------------------------------------------------------------------------------
-expect_benzo      1 if expected benzodiazepine circled on card or specific substance named
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+expect_benzo                           1 if expected benzodiazepine circled on
+                                       card or specific substance named
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -226,9 +231,9 @@ expect_benzo      1 if expected benzodiazepine circled on card or specific subst
             Tabulation: Freq.  Value
                            20  0
 
-------------------------------------------------------------------------------------------
-expect_cannabis                         1 if expected CBD, Delta-8 or weed circled on card
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+expect_cannabis              1 if expected CBD, Delta-8 or weed circled on card
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -238,9 +243,9 @@ expect_cannabis                         1 if expected CBD, Delta-8 or weed circl
             Tabulation: Freq.  Value
                            20  0
 
-------------------------------------------------------------------------------------------
-expect_hall                                                     1 if expected hallucinogen
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+expect_hall                                          1 if expected hallucinogen
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -254,9 +259,9 @@ expect_hall                                                     1 if expected ha
 expect_hall:
   1.  "lsd|mda|molly|mdma|mushroom|dmt|ketamine|ecstacy|psilocybin"
 
-------------------------------------------------------------------------------------------
-color                                                                Color circled on card
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+color                                                     Color circled on card
+-------------------------------------------------------------------------------
 
                   Type: String (str50), but longest is str12
 
@@ -269,9 +274,9 @@ color                                                                Color circl
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-bright_color                                      Bright color of original sample reported
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+bright_color                           Bright color of original sample reported
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -283,12 +288,12 @@ bright_color                                      Bright color of original sampl
                             3  1
 
 bright_color:
-  1.  "Recoded variable that excludes white, gray, tan, beige, black, brown, and similar
-      variations."
+  1.  "Recoded variable that excludes white, gray, tan, beige, black, brown,
+      and similar variations."
 
-------------------------------------------------------------------------------------------
-texture                                                            Texture circled on card
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+texture                                                 Texture circled on card
+-------------------------------------------------------------------------------
 
                   Type: String (str33), but longest is str24
 
@@ -310,9 +315,11 @@ texture                                                            Texture circl
 texture:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-tar       Derived flag (1) if notes on card or conversations with donor indicate sample wa
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+tar                                    Derived flag (1) if notes on card or
+                                       conversations with donor indicate sample
+                                       wa
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -322,9 +329,9 @@ tar       Derived flag (1) if notes on card or conversations with donor indicate
             Tabulation: Freq.  Value
                            20  .
 
-------------------------------------------------------------------------------------------
-pill                          Composite flag (1) if indication that sample was from a pill
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+pill               Composite flag (1) if indication that sample was from a pill
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -335,9 +342,9 @@ pill                          Composite flag (1) if indication that sample was f
                             2  1
                            18  .
 
-------------------------------------------------------------------------------------------
-powder                                                                         (unlabeled)
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+powder                                                              (unlabeled)
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -348,9 +355,9 @@ powder                                                                         (
                            14  1
                             6  .
 
-------------------------------------------------------------------------------------------
-plant                                             Sample from plant or leaf noted on card.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+plant                                  Sample from plant or leaf noted on card.
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -360,9 +367,9 @@ plant                                             Sample from plant or leaf note
             Tabulation: Freq.  Value
                            20  .
 
-------------------------------------------------------------------------------------------
-crystals                                                        Texture noted as crystals.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+crystals                                             Texture noted as crystals.
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -373,9 +380,9 @@ crystals                                                        Texture noted as
                             2  1
                            18  .
 
-------------------------------------------------------------------------------------------
-lustre                               Lustre either shiny (1) or dull (-1). Cannot be both.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lustre                    Lustre either shiny (1) or dull (-1). Cannot be both.
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
                  Label: lustre_label
@@ -387,9 +394,9 @@ lustre                               Lustre either shiny (1) or dull (-1). Canno
                             1         1  shiny
                            19         .  
 
-------------------------------------------------------------------------------------------
-sensations                                                      Sensations circled on card
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sensations                                           Sensations circled on card
+-------------------------------------------------------------------------------
 
                   Type: String (str48), but longest is str29
 
@@ -411,9 +418,9 @@ sensations                                                      Sensations circl
 sensations:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-sen_strength                    Derived 3-level flag where -1 weaker, 0 normal, 1 stronger
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sen_strength         Derived 3-level flag where -1 weaker, 0 normal, 1 stronger
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
                  Label: sennormal
@@ -427,10 +434,10 @@ sen_strength                    Derived 3-level flag where -1 weaker, 0 normal, 
                             5         1  stronger
                             8         .  
 
-------------------------------------------------------------------------------------------
-sen_weird                              Derived flag (1) if sensation was noted as 'weird'
-                                       or 'unpleasant' or notes indi
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sen_weird                              Derived flag (1) if sensation was noted
+                                       as 'weird' or 'unpleasant' or notes indi
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -442,12 +449,14 @@ sen_weird                              Derived flag (1) if sensation was noted a
                            13  .
 
 sen_weird:
-  1.  "Check sensations and sensation_notes to verify. See code for search strings."
+  1.  "Check sensations and sensation_notes to verify. See code for search
+      strings."
 
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 sen_hall                               Derived flag (1) if sensation included
-                                       hallucinations. Check sensations and sens
-------------------------------------------------------------------------------------------
+                                       hallucinations. Check sensations and
+                                       sens
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -458,11 +467,12 @@ sen_hall                               Derived flag (1) if sensation included
                            20  .
 
 sen_hall:
-  1.  "Check sensations and sensation_notes to verify. See code for search strings."
+  1.  "Check sensations and sensation_notes to verify. See code for search
+      strings."
 
-------------------------------------------------------------------------------------------
-sen_up                           Derived flag (1) if sensation was described as 'more up'.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sen_up                Derived flag (1) if sensation was described as 'more up'.
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -474,12 +484,14 @@ sen_up                           Derived flag (1) if sensation was described as 
                            19  .
 
 sen_up:
-  1.  "Check sensations and sensation_notes to verify. See code for search strings."
+  1.  "Check sensations and sensation_notes to verify. See code for search
+      strings."
 
-------------------------------------------------------------------------------------------
-sen_down                               Derived flag (1) if sensation was described as
-                                       'more down' or notes indicating d
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sen_down                               Derived flag (1) if sensation was
+                                       described as 'more down' or notes
+                                       indicating d
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -491,12 +503,12 @@ sen_down                               Derived flag (1) if sensation was describ
                            18  .
 
 sen_down:
-  1.  "Check sensations and sensation_notes and overdose_notes to verify. See code for
-      search strings."
+  1.  "Check sensations and sensation_notes and overdose_notes to verify. See
+      code for search strings."
 
-------------------------------------------------------------------------------------------
-sen_nice                              Derived flag (1) if sensation was circled as 'nice'.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sen_nice                   Derived flag (1) if sensation was circled as 'nice'.
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -508,12 +520,14 @@ sen_nice                              Derived flag (1) if sensation was circled 
                            19  .
 
 sen_nice:
-  1.  "Check sensations and sensation_notes to verify. See code for search strings."
+  1.  "Check sensations and sensation_notes to verify. See code for search
+      strings."
 
-------------------------------------------------------------------------------------------
-sen_long                               Derived flag (1) if sensation was described as
-                                       'long'. Check sensations and sens
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sen_long                               Derived flag (1) if sensation was
+                                       described as 'long'. Check sensations
+                                       and sens
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -524,10 +538,11 @@ sen_long                               Derived flag (1) if sensation was describ
                             1  1
                            19  .
 
-------------------------------------------------------------------------------------------
-sen_burn                               Derived flag (1) if burning sensation was
-                                       described. Check sensations and sensat
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sen_burn                               Derived flag (1) if burning sensation
+                                       was described. Check sensations and
+                                       sensat
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -540,9 +555,10 @@ sen_burn                               Derived flag (1) if burning sensation was
 sen_burn:
   1.  "Contains negation rule for 'heart burn'"
 
-------------------------------------------------------------------------------------------
-sen_skin          Derived flag (1) if skin involvement noted in free text, like abscesses.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sen_skin                               Derived flag (1) if skin involvement
+                                       noted in free text, like abscesses.
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -554,13 +570,13 @@ sen_skin          Derived flag (1) if skin involvement noted in free text, like 
                            19  .
 
 sen_skin:
-  1.  "Check sensations and sensation_notes, overdose_notes to verify. See code for search
-      strings."
+  1.  "Check sensations and sensation_notes, overdose_notes to verify. See code
+      for search strings."
 
-------------------------------------------------------------------------------------------
-sen_seizure                            Derived flag if seizures were noted on sensations,
-                                       or overdose/sensation notes.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sen_seizure                            Derived flag if seizures were noted on
+                                       sensations, or overdose/sensation notes.
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -572,11 +588,12 @@ sen_seizure                            Derived flag if seizures were noted on se
                            19  .
 
 sen_seizure:
-  1.  "Check text match on overdose_notes and sensation_notes for drug 'seizure'."
+  1.  "Check text match on overdose_notes and sensation_notes for drug
+      'seizure'."
 
-------------------------------------------------------------------------------------------
-texture_notes                                                    Texture verbatim write-in
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+texture_notes                                         Texture verbatim write-in
+-------------------------------------------------------------------------------
 
                   Type: String (str104), but longest is str24
 
@@ -593,9 +610,9 @@ texture_notes                                                    Texture verbati
 texture_notes:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-sensation_notes                                               Sensations verbatim write-in
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+sensation_notes                                    Sensations verbatim write-in
+-------------------------------------------------------------------------------
 
                   Type: String (str105), but longest is str46
 
@@ -617,9 +634,9 @@ sensation_notes                                               Sensations verbati
 sensation_notes:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-overdose                                                           Invovlement in overdose
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+overdose                                                Invovlement in overdose
+-------------------------------------------------------------------------------
 
                   Type: String (str29), but longest is str20
 
@@ -635,9 +652,9 @@ overdose                                                           Invovlement i
 overdose:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-od                                              Recoded overdose involvement for reporting
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+od                                   Recoded overdose involvement for reporting
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
                  Label: odlabel
@@ -651,15 +668,16 @@ od                                              Recoded overdose involvement for
                             2         .  
 
 od:
-  1.  "1 if OD related, 0 if explicitly stated sample was not involved in an overdose. Set
-      to missing if OD involvement was not reported. Could be fatal or non-fatal overdose.
-      Question was added to card in Version 2."
+  1.  "1 if OD related, 0 if explicitly stated sample was not involved in an
+      overdose. Set to missing if OD involvement was not reported. Could be
+      fatal or non-fatal overdose. Question was added to card in Version 2."
 
-------------------------------------------------------------------------------------------
-overdose_notes            Verbatim description of overdose event. Not routinely completed.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+overdose_notes                         Verbatim description of overdose event.
+                                       Not routinely completed.
+-------------------------------------------------------------------------------
 
-                  Type: String (str223), but longest is str63
+                  Type: String (str221), but longest is str63
 
          Unique values: 3                         Missing "": 17/20
 
@@ -673,9 +691,9 @@ overdose_notes            Verbatim description of overdose event. Not routinely 
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-fatal_od               Derived flag (1) if fatal overdose was mentioned in overdose_notes.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+fatal_od    Derived flag (1) if fatal overdose was mentioned in overdose_notes.
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -686,11 +704,12 @@ fatal_od               Derived flag (1) if fatal overdose was mentioned in overd
                            20  .
 
 fatal_od:
-  1.  "Not considered a complete case enumeration because not uniformly reported."
+  1.  "Not considered a complete case enumeration because not uniformly
+      reported."
 
-------------------------------------------------------------------------------------------
-confirmatory                             Submitted from FTIR site for confirmatory testing
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+confirmatory                  Submitted from FTIR site for confirmatory testing
+-------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
@@ -704,9 +723,9 @@ confirmatory                             Submitted from FTIR site for confirmato
 confirmatory:
   1.  "Confirtmatory or complementary testing with GCMS"
 
-------------------------------------------------------------------------------------------
-date_complete                                                  Date lab analysis completed
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+date_complete                                       Date lab analysis completed
+-------------------------------------------------------------------------------
 
                   Type: Numeric daily date (int)
 
@@ -720,9 +739,9 @@ date_complete                                                  Date lab analysis
                           22794.5    22823.5      22880      22956    22977.5
                         29may2022  27jun2022  23aug2022  07nov2022  28nov2022
 
-------------------------------------------------------------------------------------------
-primary                                                   Primary drug(s) confirmed in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+primary                                        Primary drug(s) confirmed in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -733,9 +752,9 @@ primary                                                   Primary drug(s) confir
                             1  0
                            19  1
 
-------------------------------------------------------------------------------------------
-trace                                                      Trace substance detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+trace                                           Trace substance detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -749,9 +768,9 @@ trace                                                      Trace substance detec
 trace:
   1.  "Includes trace and 'indication of' designations"
 
-------------------------------------------------------------------------------------------
-lab_null                            Derived flag (1) if no compounds of interest detected.
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_null                 Derived flag (1) if no compounds of interest detected.
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -763,12 +782,12 @@ lab_null                            Derived flag (1) if no compounds of interest
                            19  .
 
 lab_null:
-  1.  "For non-derivitized GCMS, this means no small psychoactive or biological molecules
-      detected."
+  1.  "For non-derivitized GCMS, this means no small psychoactive or biological
+      molecules detected."
 
-------------------------------------------------------------------------------------------
-lab_num_substances_any                                 Total number of substances detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_num_substances_any                      Total number of substances detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -784,9 +803,9 @@ lab_num_substances_any                                 Total number of substance
 lab_num_substances_any:
   1.  "Includes substances in primary and trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_num_substances                             Total number of PRIMARY substances detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_num_substances                  Total number of PRIMARY substances detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -805,11 +824,12 @@ lab_num_substances                             Total number of PRIMARY substance
                             1  11
 
 lab_num_substances:
-  1.  "Priamry substances only. Does NOT include substances in trace abundance."
+  1.  "Priamry substances only. Does NOT include substances in trace
+      abundance."
 
-------------------------------------------------------------------------------------------
-lab_fentanyl                                                      fentanyl detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_fentanyl                                           fentanyl detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -821,11 +841,12 @@ lab_fentanyl                                                      fentanyl detec
                            10  1
 
 lab_fentanyl:
-  1.  "Exact match for fentanyl as a primary substance, does not include analogues."
+  1.  "Exact match for fentanyl as a primary substance, does not include
+      analogues."
 
-------------------------------------------------------------------------------------------
-lab_fentanyl_any                                        fentanyl detected in any abundance
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_fentanyl_any                             fentanyl detected in any abundance
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -837,12 +858,12 @@ lab_fentanyl_any                                        fentanyl detected in any
                            11  1
 
 lab_fentanyl_any:
-  1.  "Exact match for fentanyl as a primary or trace substance, does not include
-      analogues."
+  1.  "Exact match for fentanyl as a primary or trace substance, does not
+      include analogues."
 
-------------------------------------------------------------------------------------------
-lab_xylazine                                                      xylazine detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_xylazine                                           xylazine detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -854,12 +875,12 @@ lab_xylazine                                                      xylazine detec
                             4  1
 
 lab_xylazine:
-  1.  "Exact match for xylazine as a primary substance, does not include other alpha-2
-      agonists."
+  1.  "Exact match for xylazine as a primary substance, does not include other
+      alpha-2 agonists."
 
-------------------------------------------------------------------------------------------
-lab_xylazine_any                                        xylazine detected in any abundance
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_xylazine_any                             xylazine detected in any abundance
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -871,12 +892,12 @@ lab_xylazine_any                                        xylazine detected in any
                             5  1
 
 lab_xylazine_any:
-  1.  "Exact match for xylazine as a primary or trace substance, does not include other
-      alpha-2 agonists."
+  1.  "Exact match for xylazine as a primary or trace substance, does not
+      include other alpha-2 agonists."
 
-------------------------------------------------------------------------------------------
-lab_xylazine_trace                                                       xylazine detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_xylazine_trace                                            xylazine detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -890,9 +911,9 @@ lab_xylazine_trace                                                       xylazin
 lab_xylazine_trace:
   1.  "Exact match for xylazine in trace abundance only."
 
-------------------------------------------------------------------------------------------
-lab_meth                                                          xylazine detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_meth                                               xylazine detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -906,9 +927,9 @@ lab_meth                                                          xylazine detec
 lab_meth:
   1.  "Exact match for methamphetamine as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_meth_any                              methamphetamine detected in lab in any abundance
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_meth_any                   methamphetamine detected in lab in any abundance
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -922,9 +943,9 @@ lab_meth_any                              methamphetamine detected in lab in any
 lab_meth_any:
   1.  "Exact match for methamphetamine in primary or trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_caffeine                                                      caffeine detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_caffeine                                           caffeine detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -938,9 +959,9 @@ lab_caffeine                                                      caffeine detec
 lab_caffeine:
   1.  "Exact match for caffeine as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_gabapentin                                                  gabapentin detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_gabapentin                                       gabapentin detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -954,9 +975,9 @@ lab_gabapentin                                                  gabapentin detec
 lab_gabapentin:
   1.  "Exact match for gabapentin as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_levamisole_any                                              levamisole detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_levamisole_any                                   levamisole detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -970,9 +991,9 @@ lab_levamisole_any                                              levamisole detec
 lab_levamisole_any:
   1.  "Exact match for levamisole in primary or trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_mdma                                                          3,4-MDMA detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_mdma                                               3,4-MDMA detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -986,9 +1007,9 @@ lab_mdma                                                          3,4-MDMA detec
 lab_mdma:
   1.  "Exact match for 3,4-MDMA as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_tramadol                                                      tramadol detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_tramadol                                           tramadol detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1002,9 +1023,9 @@ lab_tramadol                                                      tramadol detec
 lab_tramadol:
   1.  "Exact match for tramadol as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_carfentanil                                                carfentanil detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_carfentanil                                     carfentanil detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1017,9 +1038,9 @@ lab_carfentanil                                                carfentanil detec
 lab_carfentanil:
   1.  "Exact match for carfentanil as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_carfentanil_any                                            carfentanil detected in lab
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_carfentanil_any                                 carfentanil detected in lab
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1032,9 +1053,9 @@ lab_carfentanil_any                                            carfentanil detec
 lab_carfentanil_any:
   1.  "Exact match for carfentanil in primary or trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_designer_benzos_any                               Any designer benzodizaepine detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_designer_benzos_any                    Any designer benzodizaepine detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1048,9 +1069,9 @@ lab_designer_benzos_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_benzos_any                                                 Any benzodiazepine detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_benzos_any                                      Any benzodiazepine detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1064,9 +1085,9 @@ lab_benzos_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_nitazenes_any                                                    Any nitazene detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_nitazenes_any                                         Any nitazene detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1081,9 +1102,9 @@ lab_nitazenes_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_opiates_opioids_any                                               Any opioids detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_opiates_opioids_any                                    Any opioids detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1098,9 +1119,9 @@ lab_opiates_opioids_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_synthetic_cannabinoids_any                         Any synthetic cannabinoids detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_synthetic_cannabinoids_any              Any synthetic cannabinoids detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1114,9 +1135,9 @@ lab_synthetic_cannabinoids_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_meth_impurities_any                                     Any methamphetamine impurities
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_meth_impurities_any                          Any methamphetamine impurities
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1130,9 +1151,9 @@ lab_meth_impurities_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_mdma_impurities_any                                                Any MDMA impurities
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_mdma_impurities_any                                     Any MDMA impurities
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1146,9 +1167,9 @@ lab_mdma_impurities_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_cocaine_impurities_any                                 Any cocaine impurities detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_cocaine_impurities_any                      Any cocaine impurities detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1160,14 +1181,14 @@ lab_cocaine_impurities_any                                 Any cocaine impuritie
                             2  1
 
 lab_cocaine_impurities_any:
-  1.  "Known cocaine processing impurities, metabolites, and starting material detected in
-      primary or trace abundance."
+  1.  "Known cocaine processing impurities, metabolites, and starting material
+      detected in primary or trace abundance."
   2.  "Detected in primary or trace abundance."
   3.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_common_cuts_any                                              (max) lab_common_cuts_any
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_common_cuts_any                                   (max) lab_common_cuts_any
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1179,16 +1200,17 @@ lab_common_cuts_any                                              (max) lab_commo
                            10  1
 
 lab_common_cuts_any:
-  1.  "If only GCMS was used, this may not detect all large molecule (e.g., sugars) cuts.
-      Derivitized GCMS and FTIR are more able to identify these molecules. Therefore this
-      field should be more accurately interpreted as common small molecule cuts that are
-      likely to be psychoactive or have key physiological roles."
+  1.  "If only GCMS was used, this may not detect all large molecule (e.g.,
+      sugars) cuts. Derivitized GCMS and FTIR are more able to identify these
+      molecules. Therefore this field should be more accurately interpreted as
+      common small molecule cuts that are likely to be psychoactive or have key
+      physiological roles."
   2.  "Detected in primary or trace abundance."
   3.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_heroin_impurities_any                                   Any heroin impurities detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_heroin_impurities_any                        Any heroin impurities detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1200,14 +1222,14 @@ lab_heroin_impurities_any                                   Any heroin impuritie
                             3  1
 
 lab_heroin_impurities_any:
-  1.  "Known heroin processing impurities, metabolites, and starting material detected in
-      primary or trace abundance."
+  1.  "Known heroin processing impurities, metabolites, and starting material
+      detected in primary or trace abundance."
   2.  "Detected in primary or trace abundance."
   3.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_cannabinoids_any                        Any natural or synthetic cannabinoids detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_cannabinoids_any             Any natural or synthetic cannabinoids detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1221,9 +1243,9 @@ lab_cannabinoids_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_fentanyl_impurities_any                     Any fentanyl synthesis impurities detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_fentanyl_impurities_any          Any fentanyl synthesis impurities detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1235,14 +1257,14 @@ lab_fentanyl_impurities_any                     Any fentanyl synthesis impuritie
                            10  1
 
 lab_fentanyl_impurities_any:
-  1.  "Known heroin processing impurities, metabolites, and starting material detected in
-      primary or trace abundance."
+  1.  "Known heroin processing impurities, metabolites, and starting material
+      detected in primary or trace abundance."
   2.  "Detected in primary or trace abundance."
   3.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_pf_fent_impurities_any                           p-fluorofentanyl synthesis impurities
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_pf_fent_impurities_any                p-fluorofentanyl synthesis impurities
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1257,9 +1279,9 @@ lab_pf_fent_impurities_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_substituted_cathinones_any                          Any substituted cathinone detected
-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+lab_substituted_cathinones_any               Any substituted cathinone detected
+-------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
@@ -1276,8 +1298,8 @@ lab_substituted_cathinones_any:
 
 . log close
       name:  <unnamed>
-       log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/unc_druchec
-> king_codebook.txt
+       log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
+> unc_druchecking_codebook.txt
   log type:  text
- closed on:  10 Jan 2023, 09:34:54
-------------------------------------------------------------------------------------------
+ closed on:  10 Jan 2023, 14:41:42
+-------------------------------------------------------------------------------
