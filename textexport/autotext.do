@@ -22,27 +22,24 @@ do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/sqapi_last50.do"
 
 // Download the data file and modify
 * change file extension from .xlsm to .xlsx
-
-*"https://adminliveunc.sharepoint.com/:x:/s/DrugChecking/EV8rGFC42NtCkh3V5AUyw6sBg0C2RZDnRN3A3iQdNB_Hxg?email=nab%40email.unc.edu&e=toB4YL" 
-
 ! mv "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
 ! mv "LabResults.xlsm" "LabResults.xlsx"
 ! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
 
 * Import common names/explanations of substances 
-import excel "LabResults.xlsx", sheet("druglist") firstrow case(lower) clear
-keep chemicalname commonrole pronunciation
-rename chemicalname substance
-duplicates drop
-frame put *, into(translation)
+*import excel "LabResults.xlsx", sheet("druglist") firstrow case(lower) clear
+*keep chemicalname commonrole pronunciation
+*rename chemicalname substance
+*duplicates drop
+*frame put *, into(translation)
 
 // Harm Reduction Chemical Dictionary
 *frame change translation
 *export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/chemdictionary.csv", quote replace
+*frame change default
 
 
 * Import lab data
-frame change default
 import excel "LabResults.xlsx", sheet("LAB data") firstrow case(lower) clear
 drop f g
 drop if sampleid == ""
@@ -338,11 +335,14 @@ gen t_unknown = "This sample contains unknown substances(s). This means we could
 gen t_sugars = "Non-specific sugars won't show up on the graph. See note below under 'What we can and can't tell'. <br><br>" if regexm(lower(t_major), "sugars") | regexm(lower(t_trace), "sugars")
 
 ** Peaks caveat
-gen t_caveat = "Peaks that don't appear on the graph were detected using other advanced methods. If a peak appears on the graph but isn't listed above, then we reviewed it and determined it's unimportant. Contact us if you want details." + "<br><br>" if regexm(t_detail,"Major substances in graph")
+gen t_caveat = "Peaks that don't appear on the graph were detected using other advanced methods. If a peak appears on the graph but isn't listed above, then we reviewed it and determined it is inactive background noise. Contact us if you want details." + "<br><br>" if regexm(t_detail,"Major substances in graph")
 replace t_caveat="" if regexm(lower(t_major),"no substances of interest detected")
 
+** Pill caveat
+gen t_pill = "For pills and fake pills, you may see extra peaks on the left hand part of the chromatogram. These represent fillers and trace chemicals from the pill binder. These substances are better isolated using infrared light (FTIR), and GCMS only provides limited information. See note below under 'What we can and can't tell'. Contact us if you want details.<br><br>" if regexm(lower(t_detail, "pill|xanax|alprazolam|m30|fake|counterfeit"))
+
 ** Trace
-gen t_tracetext=" Trace substances in small quantities can sometimes be harmless, but other times can cause health problems. If you have unexpected sensations, it may be due to these.<br><br>" if t_trace!=""
+gen t_tracetext="Trace substances in small quantities are usually harmless, but can sometimes cause health problems. Unexpected sensations may be due to these.<br><br>" if t_trace!=""
 
 // Harm Reduction program information
 gen t_hr = "Need free supplies and advice to keep you safe? Find your nearest harm reduction program at harmreduction.org<br><br>"
@@ -383,7 +383,7 @@ replace t_sensations="" if t_sensations=="Sensations not reported"
 replace t_od="" if t_od=="Not sure if caused overdose."
 
 // Assemble for HTML
-gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_hint + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_labnotes + t_recorddate
+gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_hint + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + + t_pill + t_labnotes + t_recorddate
 
 
 // File cleanup and save
