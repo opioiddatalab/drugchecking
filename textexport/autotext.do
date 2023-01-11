@@ -37,8 +37,8 @@ duplicates drop
 frame put *, into(translation)
 
 // Harm Reduction Chemical Dictionary
-frame change translation
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/chemdictionary.csv", quote replace
+*frame change translation
+*export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/chemdictionary.csv", quote replace
 
 
 * Import lab data

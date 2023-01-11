@@ -575,6 +575,7 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/export_wnc.do"
 
 
+// Clean up files no longer needed
 ! rm "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx"
 
 
@@ -586,3 +587,9 @@ gen primary=1 if abundance==""
 gen trace=1 if abundance=="trace"
 collapse (sum) any primary trace, by(substance)
 gsort -any
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/substances_detected.csv", quote replace
+
+
+
+clear all
+frames reset
