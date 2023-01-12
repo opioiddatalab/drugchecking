@@ -585,6 +585,10 @@ la var lon_program "Longitude county centroid of program location"
 
 order program_county lat_program lon_program, b(lat)
 
+// Fix date formats for easier import into Python
+format date_collect %tdDDMonCCYY
+format date_complete %tdDDMonCCYY
+
 ** Save dataset for internal analysis
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", replace
 
