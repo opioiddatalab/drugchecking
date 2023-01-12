@@ -15,7 +15,7 @@ drop text
 rename county p_city
 rename state p_state
 drop if program==""
-drop F
+drop I
 save programloc, replace
 
 
@@ -82,7 +82,7 @@ note overdose: "Added in card version 3"
 la var overdose_notes "Verbatim description of overdose event. Not routinely completed."
 la var card_notes "Any additional messages on card or observations"
 
-frame put sampleid sampletype expectedsubstance program date color texture sensations texture_notes sensation_notes state location overdose overdose_notes, into(card)
+frame put sampleid sampletype expectedsubstance program date color texture sensations texture_notes sensation_notes state location overdose overdose_notes program_county lat_program lon_program, into(card)
 
 use lab, clear
 merge m:1 sampleid using keeplist, keep(3) nogen
@@ -144,6 +144,10 @@ la var expect_stimulant "1 if expected cocaine, crack, methamphetamine circled o
 gen expect_benzo=0
 replace expect_benzo=1 if regexm(lower(expectedsubstance),"benzo|xanax|alprazolam") | regexm(lower(sensation_notes),"benzo")
 la var expect_benzo "1 if expected benzodiazepine circled on card or specific substance named"
+
+gen expect_cocaine=0
+replace expect_cocaine=1 if regexm(lower(expectedsubstance),"cocaine|crack") | regexm(lower(sensation_notes),"cocaine|crack")
+la var expect_cocaine "1 if expected cocaine or crack circled on card or specific substance named"
 
 gen expect_cannabis=0
 replace expect_cannabis=1 if regexm(lower(expectedsubstance),"weed|cbd|delta|canna|pot") | regexm(texture,"plant") | regexm(texture_notes,"joint|weed|pot")
@@ -371,6 +375,16 @@ replace  lab_meth_any=1 if substance=="methamphetamine"
 la var  lab_meth_any "methamphetamine detected in lab in any abundance"
 note lab_meth_any: "Exact match for methamphetamine in primary or trace abundance."
 
+gen lab_cocaine=0
+replace lab_cocaine=1 if substance=="cocaine" & abundance==""
+la var lab_cocaine "cocaine detected in lab"
+note lab_cocaine: "Exact match for cocaine as a primary substance."
+
+gen lab_cocaine_any=0
+replace lab_cocaine_any=1 if substance=="cocaine"
+la var lab_cocaine_any "cocaine detected in lab in any abundance"
+note lab_cocaine_any: "Exact match for cocaine in primary or trace abundance."
+
 gen lab_caffeine=0
 replace lab_caffeine=1 if substance=="caffeine" & abundance==""
 la var lab_caffeine "caffeine detected in lab"
@@ -430,8 +444,7 @@ do categorize "pf_fent_impurities"
 do categorize "substituted_cathinones"
 
 
-// Save dataset for internal analysis
-
+// Save dataset for internal analysis 
 quietly compress
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", replace
 
@@ -473,6 +486,8 @@ la var lab_meth "xylazine detected in lab"
 note lab_meth: "Exact match for methamphetamine as a primary substance."
 la var  lab_meth_any "methamphetamine detected in lab in any abundance"
 note lab_meth_any: "Exact match for methamphetamine in primary or trace abundance."
+la var lab_cocaine "cocaine detected in lab"
+la var lab_cocaine_any "cocaine detected in lab in any abundance"
 la var lab_caffeine "caffeine detected in lab"
 note lab_caffeine: "Exact match for caffeine as a primary substance."
 la var lab_gabapentin "gabapentin detected in lab"
@@ -520,14 +535,91 @@ merge 1:1 sampleid using merge, nogen
 
 erase merge.dta
 
+**# Bookmark #2
+// Geocode using GeoCage API
+** Merge in canonical data to limit API calls
+merge 1:1 sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geo_canonical.dta", nogen keep(1 3)
+
+
+
+** API call using stored key
+do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geocode_samples.do"
+
+** Variable cleanup
+capture drop g_country g_city g_postcode g_street g_confidence g_formatted g_quality g_number
+capture replace county=g_county if county==""
+capture replace full_state=g_state if full_state==""
+order full_state, a(state)
+la var full_state "Full state name"
+note full_state: Useful for maps and tables and viz
+
+la var county "County where sample collected"
+note county: If no location given, then program location entered
+note county: Geocoded using OpenCage API, review for accuracy
+note county:Geolocated at centroid of city or county polygon
+note county: Does not represent precise physical location of sample or program
+note county: OpenCageData.com for documentation
+order county, b(state)
+
+capture replace lat=g_lat if lat==""
+la var lat "Lattitude"
+note lat: If no location given, then program location entered
+note lat: Geocoded using OpenCage API, review for accuracy
+note lat: Does not represent precise physical location of sample or program
+note lat: Geolocated at centroid of city or county polygon
+note lat: OpenCageData.com for documentation
+
+capture replace lon=g_lon if lon==""
+la var lon "Longitude"
+note lon: If no location given, then program location entered
+note lon: Geocoded using OpenCage API, review for accuracy
+note lon: Does not represent precise physical location of sample or program
+note lon: Geolocated at centroid of city or county polygon
+note lon: OpenCageData.com for documentation
+
+capture drop g_state g_county g_lat g_lon g_county
+
+la var program_county "County name of program location"
+la var lat_program "Lattitude county centroid of program location"
+la var lon_program "Longitude county centroid of program location"
+
+order program_county lat_program lon_program, b(lat)
+
 ** Save dataset for internal analysis
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", replace
 
+// Generate canonical list of geocoded locations
+keep sampleid county full_state lat lon
+save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geo_canonical.dta", replace
+
+// Save NC Public Dataset without program name
+use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", clear
+keep if state=="NC"
+sort date_complete
+drop program
+
+save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.dta", replace
+
+*** SAS
+export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.v8xpt", replace
+
+*** Excel
+export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.xlsx", firstrow(variables) nolabel replace
+
+*** Delimited CSV (tab)
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.csv", quote replace
+
+** Generate canonical list of NC samples to generate NC lab dataset
+**# Bookmark #1
+keep sampleid
+merge 1:m sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", nogen keep(1)
+save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/nc_lab_detail.dta", replace
 
 // Save public demo datasets with name and location redacted
 
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/savepublic.do"
+use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", clear
 
+do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/savepublic.do"
 
 note: "Example dataset (N=20) from UNC lab drug checking services. Lab results, notes, sensations, etc. are real, but locations have been redacted."
 
@@ -549,7 +641,6 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 log using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/unc_druchecking_codebook.txt", text replace
 codebook, n h
 log close
-			
 
 // Save public lab detail file
 
