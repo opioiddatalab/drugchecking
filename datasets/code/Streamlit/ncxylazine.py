@@ -7,10 +7,8 @@ This is a temporary script file.
 
 import pandas as pd
 import streamlit as st
-import plotly.express as px
 import numpy as np
-import datetime
-import sidetable as stb
+
 
 
 # Import public NC sample data and cache for Streamlit
@@ -52,9 +50,9 @@ latest = dfxyl['date_collect'].max()
 latest = latest.strftime('%A %B %d, %Y')
 
 # Sensation graph
-dfxyl.loc['total', 'lab_fentanyl'] = dfxyl['lab_fentanyl'].sum()
-dfxyl.loc['total', 'lab_cocaine'] = dfxyl['lab_cocaine'].sum()
-dfxyl.loc['total', 'lab_meth'] = dfxyl['lab_meth'].sum()
+#fent = dfxyl.loc['total', 'lab_fentanyl'] = dfxyl['lab_fentanyl'].sum()
+#cocaine = dfxyl.loc['total', 'lab_cocaine'] = dfxyl['lab_cocaine'].sum()
+#meth = dfxyl.loc['total', 'lab_meth'] = dfxyl['lab_meth'].sum()
 
 
 
