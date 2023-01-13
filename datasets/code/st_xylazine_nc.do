@@ -48,3 +48,13 @@ gen rank = _n
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/x_subs.csv", quote replace
 
 // What sensations were reported?
+frame change default
+frame put sen_strength, into(strength)
+frame change strength
+gen counter=1
+collapse (sum) counter, by(sen_strength)
+drop if sen_strength==.
+gen order = _n
+rename sen_strength sensations
+rename counter samples
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/x_strength.csv", quote replace

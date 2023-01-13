@@ -6,13 +6,13 @@ substance,samples,rank
 "heroin",33,5
 "cocaine",27,6
 "lidocaine",24,7
-"N-phenylpropanamide",22,8
-"despropionyl p-fluorofentanyl",22,9
+"despropionyl p-fluorofentanyl",22,8
+"N-phenylpropanamide",22,9
 "dimethyl sulfone (methylsulfonylmethane MSM)",20,10
 "methamphetamine",19,11
-"6-monoacetylmorphine (6-MAM)",17,12
-"non-specific sugars",17,13
-"acetylcodeine",17,14
+"acetylcodeine",17,12
+"6-monoacetylmorphine (6-MAM)",17,13
+"non-specific sugars",17,14
 "N-ethyl-4-ANPP",15,15
 "tramadol",14,16
 "caffeine",14,17
@@ -21,39 +21,39 @@ substance,samples,rank
 "acetaminophen",11,20
 "procaine",7,21
 "phenethylbromide",6,22
-"diphenhydramine",5,23
+"methyl ecgonidine (MED)",5,23
 "1-phenyl-1-propanamine",5,24
-"methyl ecgonidine (MED)",5,25
+"diphenhydramine",5,25
 "1-phenethyl-4-propionyloxypiperidine",4,26
 "phenacetin",3,27
-"quinine",3,28
-"meconin",3,29
-"melatonin",2,30
-"hydrocotarnine",2,31
-"valeryl fentanyl",2,32
-"phenethyl chloride",2,33
-"benzoylecgonine (BZ)",2,34
-"sucrose",2,35
-"urea",2,36
-"tropacocaine",2,37
-"mannitol",2,38
-"levamisole",2,39
-"menthol",2,40
-"nicotine",1,41
-"ibuprofen",1,42
-"ecgonine methylester (EME)",1,43
-"ketamine",1,44
-"methylparaben",1,45
-"delta-9-THC",1,46
-"lactose",1,47
-"N-propionyl norfentanyl",1,48
-"benzocaine",1,49
-"non-specific organic acids",1,50
-"gabapentin",1,51
-"medetomidine",1,52
-"norcocaine",1,53
-"p-fluoroacetylfentanyl",1,54
+"meconin",3,28
+"quinine",3,29
+"sucrose",2,30
+"urea",2,31
+"phenethyl chloride",2,32
+"levamisole",2,33
+"tropacocaine",2,34
+"mannitol",2,35
+"valeryl fentanyl",2,36
+"benzoylecgonine (BZ)",2,37
+"menthol",2,38
+"melatonin",2,39
+"hydrocotarnine",2,40
+"ecgonine methylester (EME)",1,41
+"acetyl fentanyl",1,42
+"N-propionyl norfentanyl",1,43
+"ibuprofen",1,44
+"benzocaine",1,45
+"noscapine",1,46
+"delta-9-THC",1,47
+"ketamine",1,48
+"benzoic acid",1,49
+"p-fluoroacetylfentanyl",1,50
+"norcocaine",1,51
+"gabapentin",1,52
+"non-specific organic acids",1,53
+"nicotine",1,54
 "papaverine",1,55
-"noscapine",1,56
-"acetyl fentanyl",1,57
-"benzoic acid",1,58
+"medetomidine",1,56
+"methylparaben",1,57
+"lactose",1,58
