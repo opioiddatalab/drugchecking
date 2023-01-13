@@ -9,19 +9,6 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 
-
-
-# Import public NC sample data and cache for Streamlit
-@st.cache
-def get_data():
-    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_analysis_dataset.csv"
-    return pd.read_csv(url)
-df = get_data()
-df = pd.DataFrame(df)
-df.set_index('sampleid', inplace=True)
-#df = df['county'].replace(np.nan, "")
-
-@st.cache
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
     return pd.read_csv(url)
@@ -29,14 +16,21 @@ x_subs = get_data()
 x_subs = pd.DataFrame(x_subs)
 x_subs.set_index('rank', inplace=True)
 
-
-@st.cache
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_strength.csv"
     return pd.read_csv(url)
 x_strength = get_data()
 x_strength = pd.DataFrame(x_strength)
 x_strength.set_index('order', inplace=True)
+
+# Import public NC sample data and cache for Streamlit
+@st.cache(suppress_st_warning=True)
+def get_data():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_analysis_dataset.csv"
+    return pd.read_csv(url)
+df = get_data()
+df = pd.DataFrame(df)
+df.set_index('sampleid', inplace=True)
 
 # Jitter locations where sample collected for mapping
 sigma = 0.1
@@ -74,10 +68,35 @@ latestreport["date_collect"] = latestreport["date_collect"].dt.strftime('%B %d, 
 mostrecent = latestreport[['date_collect']].copy()
 mostrecent.rename(columns={'date_collect': 'Most_Recent'}, inplace=True)
 
+# Sensations Graph
+import altair as alt
+
+url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_strength.csv"
+
+sensations = alt.Chart(url).mark_bar(size=40).encode(
+    x=alt.X('sensations:N',
+            sort=['weaker', 'normal', 'stronger'],
+            axis=alt.Axis(title="Relative to Typical Current Supply")),
+    y=alt.Y('samples:Q',
+            axis=alt.Axis(title="Number of Samples")),
+).properties(
+    width=alt.Step(80),
+    title="Sensations of Drugs Containing Xylazine"
+).configure_axis(
+   labelFontSize=13,
+   titleFontSize=15,
+   labelAngle=0
+).configure_title(
+   fontSize=16
+)
+
+
+
 
 # Streamlit
 st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from the [UNC Drug Analysis Lab](https://streetsafe.supply)")
+st.markdown("Our lab in Chapel Hill tests street drugs sent to us by 19 North Carolina harm reduction programs. We analyze the samples using GCMS (mass spec).")
 st.markdown("---")
 
 # Layout 2 headline data boxes
@@ -112,7 +131,8 @@ with col2:
     value=xyl_counties
     )
     
-    
+st.markdown(":label: Our samples do not represent the entrire drug supply. People may send us samples because they suspect xylazine or have unexpected reactions.")
+
 st.markdown("---")
 
 st.write(
@@ -130,21 +150,29 @@ st.markdown("---")
 st.subheader(":hospital: [More info on xylazine](https://harmreduction.org/wp-content/uploads/2022/11/Xylazine-in-the-Drug-Supply-one-pager.pdf) in the street drug supply")
 st.markdown("---")
 st.header("Where has xylzine been detected?")
-st.markdown("The following map shows places where we have detected xylazine in street drugs.")
-
+st.markdown("The map shows where we have detected xylazine in street drugs.")
+st.markdown(":label: Keep in mind we have more programs and samples from the center of the state. Xylazine is certainly present elsewhere.")
 
 # Render the map
 st.map(dfxyl)                         
-st.markdown("_Exact locations have been shifted to preserve anonymity._")
+st.markdown("_Exact locations shifted to preserve anonymity. Don't bother zooming into street level._")
+
+st.subheader("Latest xylazine detection dates by location")
 
 st.table(mostrecent)
 
+st.markdown("---")
+
 st.subheader("What substances were also detected?")
-st.dataframe(x_subs)
+st.markdown("Xylazine was found mostly mixed with fentanyl and heroin. But cociane and xylazine were routinely found together. Less often, we found xylazine in trace amounts with methamphetamine and other drugs. Samples containing xylazine are most often reported to feel stronger.")
 
-st.bar_chart(x_strength, x="sen_strength")
+col1, col2 = st.columns(2)
 
-# st.bar_chart(dfxyl['sen_strength'])
+with col1:
+    st.dataframe(x_subs)
+
+with col2:
+    st.altair_chart(sensations)
 
 st.markdown("---")
 
@@ -156,7 +184,9 @@ st.markdown("Data documentation available [here](https://opioiddatalab.github.io
 
 st.markdown("---")
 st.subheader("Funding")
-st.markdown("Foundation for Opioid Response Efforts and UNC Collaboratory via the NC General Assembly using opioid litigation settlement funds.")
+st.markdown("We are grateful to our two funders: Foundation for Opioid Response Efforts ([FORE](https://forefdn.org)) and the [UNC Collaboratory via the NC General Assembly](https://collaboratory.unc.edu/news/2022/12/09/north-carolina-collaboratory-launches-research-projects-to-support-local-opioid-abatement-and-recovery-efforts/) using opioid litigation settlement funds.")
 
 st.markdown("---")
 st.markdown("_fin._")
+
+
