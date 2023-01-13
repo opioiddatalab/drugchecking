@@ -19,7 +19,7 @@ frame change default
 //                  //
 /////////////////////
 
-
+// LIMIT TO NC XYLAZINE (ANY) samples
 keep if state=="NC" & lab_xylazine_any==1
 
 
@@ -49,6 +49,31 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 
 // What sensations were reported?
 frame change default
+frame put sen_strength, into(strength)
+frame change strength
+gen counter=1
+collapse (sum) counter, by(sen_strength)
+drop if sen_strength==.
+gen order = _n
+rename sen_strength sensations
+rename counter samples
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/x_strength.csv", quote replace
+
+// Trace versus primary
+frame change default
+frame put lab_xylazine lab_xylazine_any, into(trace)
+frame change trace
+collapse (sum) lab_xylazine lab_xylazine_any
+rename lab_xylazine Primary
+rename lab_xylazine_any Trace
+gen num=_n
+reshape long num, i(Primary Trace)
+
+// What colors were reported?
+* frame change default
+
+
+/*
 frame put sen_strength, into(strength)
 frame change strength
 gen counter=1
