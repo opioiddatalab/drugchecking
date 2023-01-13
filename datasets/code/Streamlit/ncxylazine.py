@@ -21,6 +21,21 @@ df = pd.DataFrame(df)
 df.set_index('sampleid', inplace=True)
 #df = df['county'].replace(np.nan, "")
 
+@st.cache
+def get_data():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
+    return pd.read_csv(url)
+x_subs = get_data()
+x_subs = pd.DataFrame(x_subs)
+x_subs.set_index('rank', inplace=True)
+
+
+@st.cache
+def get_data():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_strength.csv"
+    return pd.read_csv(url)
+x_strength = get_data()
+x_strength = pd.DataFrame(x_strength)
 
 # Jitter locations where sample collected for mapping
 sigma = 0.1
@@ -51,13 +66,6 @@ xyl_counties = dfxyl['county'].nunique()
 latest = dfxyl['date_collect'].max()
 latest = latest.strftime('%A %B %d, %Y')
 
-# Sensation graph
-#fent = dfxyl.loc['total', 'lab_fentanyl'] = dfxyl['lab_fentanyl'].sum()
-#cocaine = dfxyl.loc['total', 'lab_cocaine'] = dfxyl['lab_cocaine'].sum()
-#meth = dfxyl.loc['total', 'lab_meth'] = dfxyl['lab_meth'].sum()
-
-nums = dfxyl['lab_cocaine'].value_counts().rename_axis('unique_values').reset_index(name='counts')
-
 
 # Latest xylazine reports by county
 latestreport = dfxyl.groupby(by=["county"]).max()
@@ -67,7 +75,7 @@ mostrecent.rename(columns={'date_collect': 'Most_Recent'}, inplace=True)
 
 
 # Streamlit
-st.title("North Carolina Xylazine Reports")
+st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from the [UNC Drug Analysis Lab](https://streetsafe.supply)")
 st.markdown("---")
 
@@ -130,6 +138,9 @@ st.markdown("_Exact locations have been shifted to preserve anonymity._")
 
 st.table(mostrecent)
 
+st.subheader("What substances were also detected?")
+st.dataframe(x_subs)
+
 # st.bar_chart(dfxyl['sen_strength'])
 
 st.markdown("---")
@@ -139,6 +150,10 @@ st.markdown("A public service of the University of North Carolina. Data from Nor
 st.video('https://youtu.be/cWbOeo6pm8A')
 
 st.markdown("Data documentation available [here](https://opioiddatalab.github.io/drugchecking/datasets/).")
+
+st.markdown("---")
+st.subheader("Funding")
+st.markdown("Foundation for Opioid Response Efforts and UNC Collaboratory via the NC General Assembly using opioid litigation settlement funds.")
 
 st.markdown("---")
 st.markdown("_fin._")
