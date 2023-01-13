@@ -163,7 +163,7 @@ st.table(mostrecent)
 
 st.markdown("---")
 
-st.subheader("What substances were also detected?")
+st.header("What substances were also detected?")
 st.markdown("Xylazine was found mostly mixed with fentanyl and heroin. But cociane and xylazine were routinely found together. Less often, we found xylazine in trace amounts with methamphetamine and other drugs. Samples containing xylazine are most often reported to feel stronger.")
 
 col1, col2 = st.columns(2)
