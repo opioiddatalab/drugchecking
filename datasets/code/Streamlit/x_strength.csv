@@ -1,4 +1,4 @@
-sen_strength,counter
-"weaker",8
-"normal",25
-"stronger",38
+sen_strength,counter,order
+"weaker",8,1
+"normal",25,2
+"stronger",38,3
