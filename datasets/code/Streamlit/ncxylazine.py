@@ -54,7 +54,7 @@ latest = latest.strftime('%A %B %d, %Y')
 #cocaine = dfxyl.loc['total', 'lab_cocaine'] = dfxyl['lab_cocaine'].sum()
 #meth = dfxyl.loc['total', 'lab_meth'] = dfxyl['lab_meth'].sum()
 
-
+df1 = df['column_name'].value_counts().rename_axis('unique_values').reset_index(name='counts')
 
 
 # Latest xylazine reports by county
