@@ -61,13 +61,21 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 
 // Trace versus primary
 frame change default
-frame put lab_xylazine lab_xylazine_any, into(trace)
+frame put lab_xylazine lab_xylazine_any sampleid, into(trace)
 frame change trace
-collapse (sum) lab_xylazine lab_xylazine_any
 rename lab_xylazine Primary
 rename lab_xylazine_any Trace
-gen num=_n
-reshape long num, i(Primary Trace)
+replace Trace=0 if Primary==1
+
+collapse (sum) Primary Trace
+ 
+xpose, clear varname
+
+rename _varname category
+rename v1 values
+
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/x_trace.csv", quote replace
+
 
 // What colors were reported?
 * frame change default
