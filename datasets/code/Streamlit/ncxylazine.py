@@ -20,6 +20,8 @@ df = get_data()
 df = pd.DataFrame(df)
 df.set_index('sampleid', inplace=True)
 #df = df['county'].replace(np.nan, "")
+
+
 # Jitter locations where sample collected for mapping
 sigma = 0.1
 df['lat'] = df['lat'].apply(lambda x: np.random.normal(x, sigma))
@@ -54,7 +56,7 @@ latest = latest.strftime('%A %B %d, %Y')
 #cocaine = dfxyl.loc['total', 'lab_cocaine'] = dfxyl['lab_cocaine'].sum()
 #meth = dfxyl.loc['total', 'lab_meth'] = dfxyl['lab_meth'].sum()
 
-df1 = df['column_name'].value_counts().rename_axis('unique_values').reset_index(name='counts')
+nums = dfxyl['lab_cocaine'].value_counts().rename_axis('unique_values').reset_index(name='counts')
 
 
 # Latest xylazine reports by county

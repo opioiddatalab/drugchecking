@@ -617,7 +617,7 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 **# Bookmark #1
 keep sampleid
 merge 1:m sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", nogen keep(1)
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/nc_lab_detail.dta", replace
+save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.dta", replace
 
 // Save public demo datasets with name and location redacted
 
