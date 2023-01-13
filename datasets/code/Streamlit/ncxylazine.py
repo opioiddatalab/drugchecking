@@ -36,6 +36,7 @@ def get_data():
     return pd.read_csv(url)
 x_strength = get_data()
 x_strength = pd.DataFrame(x_strength)
+x_strength.set_index('order', inplace=True)
 
 # Jitter locations where sample collected for mapping
 sigma = 0.1
@@ -140,6 +141,8 @@ st.table(mostrecent)
 
 st.subheader("What substances were also detected?")
 st.dataframe(x_subs)
+
+st.bar_chart(x_strength, x="sen_strength")
 
 # st.bar_chart(dfxyl['sen_strength'])
 
