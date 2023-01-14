@@ -342,7 +342,7 @@ replace t_caveat="" if regexm(lower(t_major),"no substances of interest detected
 gen t_pill = "For pills and fake pills, you may see extra peaks on the left hand part of the chromatogram. These represent fillers and trace chemicals from the pill binder. These substances are better isolated using infrared light (FTIR), and GCMS only provides limited information. See note below under 'What we can and can't tell'. Contact us if you want details.<br><br>" if regexm(lower(t_detail), "pill|xanax|alprazolam|m30|fake|counterfeit")
 
 ** Trace
-gen t_tracetext="Trace substances in small quantities are usually harmless, but can sometimes cause health problems. Unexpected sensations may be due to these.<br><br>" if t_trace!=""
+gen t_tracetext=" Trace substances in small quantities are usually harmless, but can sometimes cause health problems. Unexpected sensations may be due to these.<br><br>" if t_trace!=""
 
 // Harm Reduction program information
 gen t_hr = "Need free supplies and advice to keep you safe? Find your nearest harm reduction program at harmreduction.org<br><br>"
