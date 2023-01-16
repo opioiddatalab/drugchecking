@@ -685,6 +685,9 @@ gsort -any
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/substances_detected.csv", quote replace
 
 
-
 clear all
 frames reset
+
+// Tigger Streamlit to refresh by adding line to python script(s) that the app(s) build on
+
+do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/st_triggers.do"

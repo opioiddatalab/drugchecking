@@ -3,5 +3,5 @@
 
 python
 with open("/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/ncxylazine.py","a") as f:
-    f.write("import pandas as again")
+    f.write("#delete me")
 end
