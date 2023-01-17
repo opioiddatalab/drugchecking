@@ -98,6 +98,9 @@ st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from UNC Drug Analysis Lab")
 st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 19 North Carolina harm reduction programs. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
 st.markdown("---")
+st.markdown("There is a new cut in street drugs causing and it causes terrible skin problems. But we didnt have a way to track it to warn people. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
+
+st.markdown("---")
 
 # Layout 2 headline data boxes
 col1, col2 = st.columns(2)
@@ -148,6 +151,8 @@ st.markdown("---")
 
 
 st.subheader(":hospital: [More info on xylazine](https://harmreduction.org/wp-content/uploads/2022/11/Xylazine-in-the-Drug-Supply-one-pager.pdf) in the street drug supply")
+st.markdown("Xylazine (sigh-la-scene) is a cut mixed in with other street drugs. It can cause horrific skin ulcers, beyond the site of injection. If treated early, we can prvent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
+
 st.markdown("---")
 st.header("Where has xylzine been detected?")
 st.markdown("The map shows where we have detected xylazine in street drugs.")
