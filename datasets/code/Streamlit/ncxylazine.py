@@ -185,10 +185,9 @@ st.markdown("Data documentation available [here](https://opioiddatalab.github.io
 st.markdown("---")
 st.header("Why are we concerned about xylazine?")
 st.video('https://www.youtube.com/watch?v=orzgwi7sxFM')
-st.markdown("---")
-
 
 st.markdown("---")
+
 st.subheader("Funding")
 st.markdown("We are grateful to our two funders: Foundation for Opioid Response Efforts ([FORE](https://forefdn.org)) and the [UNC Collaboratory via the NC General Assembly](https://collaboratory.unc.edu/news/2022/12/09/north-carolina-collaboratory-launches-research-projects-to-support-local-opioid-abatement-and-recovery-efforts/) using opioid litigation settlement funds.")
 
