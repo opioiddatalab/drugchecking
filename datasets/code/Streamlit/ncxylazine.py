@@ -98,7 +98,7 @@ st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from UNC Drug Analysis Lab")
 st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 19 North Carolina harm reduction programs. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
 st.markdown("---")
-st.markdown("There is a new cut in street drugs causing and it causes terrible skin problems. But we didnt have a way to track it to warn people. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
+st.markdown("There is a new cut in street drugs causing and it causes terrible skin problems. But we didn't have a way to track it. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
 
 st.markdown("---")
 
