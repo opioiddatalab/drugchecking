@@ -107,7 +107,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.metric(
-    label="Total drug samples analayzed",
+    label="Total NC drug samples analayzed",
     value=rows_count
     )
 
