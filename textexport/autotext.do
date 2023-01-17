@@ -515,7 +515,5 @@ end
 clear all
 frames reset
 
-
-// GitHub commit
-* ! cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/"
-* ! cd git commit -a -m "automated daily results update"
+// Trigger data set processing code
+do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/result_processing.do"
