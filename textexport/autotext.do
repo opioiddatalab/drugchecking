@@ -494,9 +494,13 @@ drop sampleid
 
 export delimited using "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", novarnames quote replace
 
-! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx"
+* Move file for results_processing.do
+! mv "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx" "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx" 
+
+* Delete previous versions of files
 ! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv"
 ! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
+
 
 
 python

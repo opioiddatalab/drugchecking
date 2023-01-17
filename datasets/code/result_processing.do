@@ -2,7 +2,7 @@
 
 // Import results files
 
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/getfile.do"
+*do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/getfile.do"
 
 cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/"
 
