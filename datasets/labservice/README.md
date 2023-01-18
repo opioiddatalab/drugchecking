@@ -24,7 +24,7 @@ The data elements are:<br>
 |`date_complete`|Date analysis was completed in lab in format `01jan2023`|
 |`substance`|Substance(s) identified using our [controlled vocabulary](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/substances_detected.csv)|
 |`abundance`|Whether the substance was detected in primary or trace amounts. Trace elements are noted, and primary are left blank. Trace is defined as <5% of the most abundant peak in the chromatogram.|
-|`method`|Laboratory method used for confirming substance. Takes values of GCMS, derivatized GCMS, and FTIR. When designated as "FTIR" this means GCMS followed by FTIR for further investigation. Rarely, We occasionally have to use FTIR to confirm which isomer a substance is once there is a match on GC.|
+|`method`|Laboratory method used for confirming substance. Takes values of GCMS, derivatized GCMS, and FTIR. When designated as "FTIR" this means GCMS followed by FTIR for further investigation. (We occasionally have to use FTIR to confirm which isomer a substance is once there is a match on GC.)|
 |`peak`|Identifies the corresponding retention time peak (in minutes) from the chromatogram.|
 <br>
 
