@@ -107,7 +107,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.metric(
-    label="Total drug samples analayzed",
+    label="Total NC drug samples analayzed",
     value=rows_count
     )
 
@@ -151,7 +151,7 @@ st.markdown("---")
 
 
 st.subheader(":hospital: [More info on xylazine](https://harmreduction.org/wp-content/uploads/2022/11/Xylazine-in-the-Drug-Supply-one-pager.pdf) in the street drug supply")
-st.markdown("Xylazine (sigh-la-scene) is a cut mixed in with other street drugs. It can cause horrific skin ulcers, beyond the site of injection. If treated early, we can prvent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
+st.markdown("Xylazine (sigh-la-scene) is a cut mixed in with other street drugs. It can cause horrific skin ulcers, beyond the site of injection. If treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
 
 st.markdown("---")
 st.header("Where has xylzine been detected?")
