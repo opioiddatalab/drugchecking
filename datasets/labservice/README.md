@@ -1,13 +1,12 @@
 # Confirmatory/Complementary Test Results
 
-This folder contains lab results from UNC's confirmatory/complementary [drug checking service](https://streetsafe.supply).<br>
-<br>
 > **Warning**<br>
-> By downloading or accessing these datasets you are affirming that you are not a member of a law enforcement agency.<br>
-
+> By downloading or accessing these datasets you are affirming that you are NOT a member of a law enforcement agency.<br>
 <br>
 
-# File Format
+This folder contains lab results from UNC's confirmatory/complementary [drug checking service](https://streetsafe.supply). <br>
+
+## File Format
 The file has multiple rows per sample, with one substance on each row. The datasets do not contain geographic identifiers. Datasets are updated daily. They are available in CSV, SAS, Stata, and Excel formats (above). Data availability using these files started on January 1, 2023.<br>
 
 Syntax for direct call of the CSV via URL:
@@ -21,7 +20,7 @@ The data elements are:<br>
 
 |Variable|Description|
 |:----|:----|
-|`sampleid`|Sample identification number from vial (begins with 800xxx). This is *not* the StreetCheck app ID.|
+|`sampleid`|Sample identification number from vial (begins with 800xxx). For StreetCheck app users, this is the number from the vial that should be entered by the FTIR technician, specifying "UNC Lab" in the Laboratory selection screen.|
 |`date_complete`|Date analysis was completed in lab in format `01jan2023`|
 |`substance`|Substance(s) identified using our [controlled vocabulary](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/substances_detected.csv)|
 |`abundance`|Whether the substance was detected in primary or trace amounts. Trace elements are noted, and primary are left blank. Trace is defined as <5% of the most abundant peak in the chromatogram.|
@@ -29,7 +28,7 @@ The data elements are:<br>
 |`peak`|Identifies the corresponding retention time peak (in minutes) from the chromatogram.|
 <br>
 
-# GCMS Chromatograms
+## GCMS Chromatograms
 
 ![chromatogram](https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830.PNG)
 
@@ -47,7 +46,7 @@ https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830
 
 For samples with multiple chromatograms (e.g., removing acetaminophen), peaks correspond to the composite chromatogram.
 
-# Other Resources
+## Other Resources
 + [All results](https://www.streetsafe.supply/results) (searchable)
 + List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
 + All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
