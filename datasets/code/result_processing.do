@@ -330,9 +330,12 @@ replace confirmatory=1 if regexm(sampleid,"^800")
 replace confirmatory=1 if regexm(sampleid,"300555|300561|300572|300577|300593|300715|300717|300748|300755|300760|300764|300788|300790|300796")
 la var confirmatory "Sample for GCMS confirmatory or complementary testing"
 
-replace peak = round(peak,.01)
+** Convert peaks to string to get around float numerical issue
+tostring peak, g(gcms_peak) force
+drop peak
+la var gcms_peak "Retention time in minutes"
 
-frame put sampleid substance abundance method date_complete confirmatory peak, into(confirmatory)
+frame put sampleid substance abundance method date_complete confirmatory gcms_peak, into(confirmatory)
 frame change confirmatory
 keep if confirmatory==1
 
@@ -348,7 +351,7 @@ export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/dat
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/labservice/unc_gcms.csv", quote replace
 
 frame change lab
-drop peak
+drop gcms_peak
 
 * For specific substances, the convention is lab_ to indicate lab result, _any to indicate presence in trace or abundance
 * Conversely, if lab_substance, the substance was detected as a primary constituent.
@@ -539,6 +542,7 @@ la var lab_fentanyl_impurities_any "Any fentanyl synthesis impurities detected"
 note lab_fentanyl_impurities_any: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
 la var lab_substituted_cathinones_any "Any substituted cathinone detected"
 la var confirmatory "Sample for GCMS confirmatory or complementary testing"
+
 
 foreach var of varlist lab_designer_benzos_any-lab_substituted_cathinones_any {
 	
