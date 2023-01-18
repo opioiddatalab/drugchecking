@@ -294,10 +294,6 @@ label values lustre lustre_label
 
 order tar pill powder plant crystals lustre, a(texture)
 
-* Create indicator for if this sample was submitted to UNC as part of "confirmatory" testing for FTIR 
-gen confirmatory=0
-la var confirmatory "Submitted from FTIR site for confirmatory testing"
-note confirmatory: "Confirtmatory or complementary testing with GCMS"
 
 save card_processed, replace
 
@@ -330,6 +326,12 @@ bysort sampleid: egen lab_num_substances=count(temp)
 drop temp
 la var lab_num_substances "Total number of PRIMARY substances detected"
 note lab_num_substances: "Priamry substances only. Does NOT include substances in trace abundance."
+
+* Create indicator for if this sample was submitted to UNC as part of "confirmatory" testing for FTIR 
+***  Uses regex for samples starting with ID numbers 800xxx. Excludes NC Survivors Union samples.
+drop confirmatory
+gen confirmatory=0
+replace confirmatory=1 if regexm(sampleid,"^800")
 
 * For specific substances, the convention is lab_ to indicate lab result, _any to indicate presence in trace or abundance
 * Conversely, if lab_substance, the substance was detected as a primary constituent.
