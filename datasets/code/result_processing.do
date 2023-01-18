@@ -2,8 +2,6 @@
 
 // Import results files
 
-*do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/getfile.do"
-
 cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/"
 
 clear all
@@ -24,7 +22,7 @@ import excel "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults
 
 * Keep only samples with completed lab analysis and relevant variables
 keep if lab_status=="complete"
-keep sampleid substance abundance method date_complete
+keep sampleid substance abundance method date_complete peak
 duplicates drop
 save lab, replace
 
@@ -95,15 +93,12 @@ la var abundance "Primary or trace level of abundance as detected by GCMS. Trace
 la var method "Lab method used to confirm presence of substance."
 la var date_complete "Date analysis completed by UNC lab."
 
-frame put sampleid substance abundance method date_complete, into(lab)
+frame put sampleid substance abundance method date_complete peak, into(lab)
 
 * Link frames
 frame change lab
 frlink m:1 sampleid, frame(card)
  
-
-*use full_analysis, clear
-
 
 // Describe lab sample 
 frame lab: distinct sampleid
@@ -329,9 +324,29 @@ note lab_num_substances: "Priamry substances only. Does NOT include substances i
 
 * Create indicator for if this sample was submitted to UNC as part of "confirmatory" testing for FTIR 
 ***  Uses regex for samples starting with ID numbers 800xxx. Excludes NC Survivors Union samples.
-drop confirmatory
 gen confirmatory=0
 replace confirmatory=1 if regexm(sampleid,"^800")
+*****  Initial OutsideIn samples with 300xxx numbering
+replace confirmatory=1 if regexm(sampleid,"300555|300561|300572|300577|300593|300715|300717|300748|300755|300760|300764|300788|300790|300796")
+la var confirmatory "Sample for GCMS confirmatory or complementary testing"
+
+frame put sampleid substance abundance method date_complete confirmatory, into(confirmatory)
+frame change confirmatory
+keep if confirmatory==1
+
+save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/labservice/unc_gcms.dta", replace
+
+** SAS
+export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/labservice/unc_gcms.v8xpt", replace
+
+** Excel
+export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/labservice/unc_gcms.xlsx", firstrow(variables) replace
+
+** Delimited CSV (tab)
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/labservice/unc_gcms.csv", quote replace
+
+frame change lab
+drop peak
 
 * For specific substances, the convention is lab_ to indicate lab result, _any to indicate presence in trace or abundance
 * Conversely, if lab_substance, the substance was detected as a primary constituent.
@@ -455,7 +470,7 @@ save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", r
 frame copy lab merge
 frame change merge
 
-collapse (max) date_complete primary trace lab_*, by(sampleid)
+collapse (max) confirmatory date_complete primary trace lab_*, by(sampleid)
   
 * Clean up logic for samples with no substances detected
 replace lab_num_substances_any=0 if lab_null==1
@@ -521,6 +536,7 @@ la var lab_cannabinoids_any "Any natural or synthetic cannabinoids detected"
 la var lab_fentanyl_impurities_any "Any fentanyl synthesis impurities detected"
 note lab_fentanyl_impurities_any: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
 la var lab_substituted_cathinones_any "Any substituted cathinone detected"
+la var confirmatory "Sample for GCMS confirmatory or complementary testing"
 
 foreach var of varlist lab_designer_benzos_any-lab_substituted_cathinones_any {
 	
