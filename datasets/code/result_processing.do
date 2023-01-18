@@ -330,7 +330,9 @@ replace confirmatory=1 if regexm(sampleid,"^800")
 replace confirmatory=1 if regexm(sampleid,"300555|300561|300572|300577|300593|300715|300717|300748|300755|300760|300764|300788|300790|300796")
 la var confirmatory "Sample for GCMS confirmatory or complementary testing"
 
-frame put sampleid substance abundance method date_complete confirmatory, into(confirmatory)
+replace peak = round(peak,.01)
+
+frame put sampleid substance abundance method date_complete confirmatory peak, into(confirmatory)
 frame change confirmatory
 keep if confirmatory==1
 
