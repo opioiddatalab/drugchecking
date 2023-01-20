@@ -114,7 +114,7 @@ Major substances in graph:<br>
 
 # Other Resources
 + GitHub repo for [data products](https://github.com/opioiddatalab/drugchecking/tree/main/datasets)
-+ [API-style access]https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md to results for confirmatory/complementary testing
++ [API-style access](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md) to results for confirmatory/complementary testing
 + [List of all substances detected](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/substances_detected.csv) with frequencies
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
 + Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
