@@ -3,12 +3,12 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:  20 Jan 2023, 14:33:32
+ opened on:  23 Jan 2023, 14:44:35
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 20 Jan 2023 14:33
+            Last saved: 23 Jan 2023 14:44
 
                  Label: [none]
    Number of variables: 86
@@ -151,6 +151,11 @@ county:
  70.  Geolocated at centroid of city or county polygon
  71.  Does not represent precise physical location of sample or program
  72.  OpenCageData.com for documentation
+ 73.  If no location given, then program location entered
+ 74.  Geocoded using OpenCage API, review for accuracy
+ 75.  Geolocated at centroid of city or county polygon
+ 76.  Does not represent precise physical location of sample or program
+ 77.  OpenCageData.com for documentation
 
 -------------------------------------------------------------------------------
 state                                                    State sample collected
@@ -209,6 +214,7 @@ full_state:
  13.  Useful for maps and tables and viz
  14.  Useful for maps and tables and viz
  15.  Useful for maps and tables and viz
+ 16.  Useful for maps and tables and viz
 
 -------------------------------------------------------------------------------
 date_collect                                              Date sample collected
@@ -1590,6 +1596,11 @@ lat:
  70.  Does not represent precise physical location of sample or program
  71.  Geolocated at centroid of city or county polygon
  72.  OpenCageData.com for documentation
+ 73.  If no location given, then program location entered
+ 74.  Geocoded using OpenCage API, review for accuracy
+ 75.  Does not represent precise physical location of sample or program
+ 76.  Geolocated at centroid of city or county polygon
+ 77.  OpenCageData.com for documentation
 
 -------------------------------------------------------------------------------
 lon                                                                   Longitude
@@ -1677,11 +1688,16 @@ lon:
  70.  Does not represent precise physical location of sample or program
  71.  Geolocated at centroid of city or county polygon
  72.  OpenCageData.com for documentation
+ 73.  If no location given, then program location entered
+ 74.  Geocoded using OpenCage API, review for accuracy
+ 75.  Does not represent precise physical location of sample or program
+ 76.  Geolocated at centroid of city or county polygon
+ 77.  OpenCageData.com for documentation
 
 . log close
       name:  <unnamed>
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:  20 Jan 2023, 14:33:33
+ closed on:  23 Jan 2023, 14:44:35
 -------------------------------------------------------------------------------
