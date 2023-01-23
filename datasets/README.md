@@ -1,10 +1,18 @@
 # UNC Drug Checking Lab Data
 
 
-*This documentation is in beta release. Code will undergo QC as we finalize.*
+*This documentation is in beta release. Code will undergo QC as we finalize.*<br>
 <br>
+
+> **Warning**<br>
+> By downloading or accessing these datasets you are affirming that you are NOT a member of a law enforcement agency.<br>
+
+# Audience
++ Documentation below is intended for data analysts and epidemiologists.
++ Machine-oriented [API-style access](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md) to results for confirmatory/complementary testing is also available.
+
 <br>
-All samples were collected anonymously. No individually identifying information was collected.
+All samples were collected anonymously. No information idenitfying individuals or programs is available.
 
 If you are ready to start durg checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
 
@@ -101,9 +109,12 @@ Major substances in graph:<br>
 + List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
 + All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
 + [NLP code](https://github.com/opioiddatalab/drugchecking/blob/main/textexport/autotext.do) for converting sample results into human readable indivdual records for [website](https://streetsafe.supply)
++ North Carolina [xylazine report webapp](https://ncxylazine.streamlit.app) with live updated data
 
 
 # Other Resources
++ GitHub repo for [data products](https://github.com/opioiddatalab/drugchecking/tree/main/datasets)
++ [API-style access](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md) to results for confirmatory/complementary testing
 + [List of all substances detected](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/substances_detected.csv) with frequencies
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
 + Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
