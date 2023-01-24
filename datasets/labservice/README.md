@@ -6,8 +6,23 @@
 
 This folder contains lab results from UNC's confirmatory/complementary [drug checking service](https://streetsafe.supply). <br>
 
-## File Format
-The file has multiple rows per sample, with one substance on each row. The datasets do not contain geographic identifiers. Datasets are updated daily. They are available in CSV, SAS, Stata, and Excel formats (above). Data availability using these files started on January 1, 2023.<br>
+# File Inventory
+Files `unc_gcms.*` contain public confirmatory/complementary GCMS testing results, without site identifiers. The specific files are:
++ [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/unc_gcms.dta)
++ [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/unc_gcms.xlsx)
++ [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/unc_gcms.v8xpt)
++ [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/unc_gcms.csv)
+
+<br>
+
+# File Formats
+
+The file has multiple rows per sample, with one substance on each row. The datasets do not contain geographic identifiers. They are available in the following file formats:
+
++ Stata (v14 or later)
++ Excel (.xlsx)
++ SAS (transport v8)
++ CSV (comma-separated with quote enclosure for strings)
 
 Syntax for direct call of the CSV via URL:
 
@@ -16,7 +31,9 @@ https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/labse
 ```
 <br>
 
-The data elements are:<br>
+Data Elements<br>
+
+The `unc_gcms.*` files contain the following fields.
 
 |Variable|Description|
 |:----|:----|
@@ -28,7 +45,11 @@ The data elements are:<br>
 |`peak`|Identifies the corresponding retention time peak (in minutes) from the chromatogram.|
 <br>
 
-## GCMS Chromatograms
+# Timing of Data Availability
+
+Data availability using these files started on January 1, 2023. Results are updated daily (usually late afternoon or evening), or whenever new results are available.<br>
+
+# GCMS Chromatograms
 
 ![chromatogram](https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830.PNG)
 
@@ -46,7 +67,7 @@ https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830
 
 For samples with multiple chromatograms (e.g., removing acetaminophen), peaks correspond to the composite chromatogram.
 
-## Other Resources
+# Other Resources
 + [All results](https://www.streetsafe.supply/results) (searchable)
 + List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
 + All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
@@ -57,3 +78,6 @@ For samples with multiple chromatograms (e.g., removing acetaminophen), peaks co
 + [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
 + [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample ID
 + [Laboratory methods](https://github.com/opioiddatalab/drugchecking/blob/main/docs/lab_methods.md) description
++ Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
++ [Processing code](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/result_processing.do) showing variable creation
+
