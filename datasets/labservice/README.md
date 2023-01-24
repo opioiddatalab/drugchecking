@@ -7,31 +7,34 @@
 This folder contains lab results from UNC's confirmatory/complementary [drug checking service](https://streetsafe.supply). <br>
 
 # File Inventory
-Files `unc_gcms.*` contain public confirmatory/complementary GCMS testing results, without site identifiers. The specific files are:
+Files `unc_gcms.*` contain public confirmatory/complementary GCMS testing results, without site identifiers.<br>
+The specific files are:
 + [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/unc_gcms.dta)
 + [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/unc_gcms.xlsx)
 + [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/unc_gcms.v8xpt)
 + [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/unc_gcms.csv)
 
 <br>
+Syntax for direct call of the CSV via URL:
+
+```
+https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/labservice/unc_gcms.csv
+```
 
 # File Formats
 
-The file has multiple rows per sample, with one substance on each row. The datasets do not contain geographic identifiers. They are available in the following file formats:
+The file has multiple rows per sample, with one substance on each row.<br>
+The datasets do not contain geographic identifiers.<br>
+They are available in the following file formats:
 
 + Stata (v14 or later)
 + Excel (.xlsx)
 + SAS (transport v8)
 + CSV (comma-separated with quote enclosure for strings)
 
-Syntax for direct call of the CSV via URL:
-
-```
-https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/labservice/unc_gcms.csv
-```
 <br>
 
-Data Elements<br>
+# Data Elements<br>
 
 The `unc_gcms.*` files contain the following fields.
 
@@ -47,7 +50,7 @@ The `unc_gcms.*` files contain the following fields.
 
 # Timing of Data Availability
 
-Data availability using these files started on January 1, 2023. Results are updated daily (usually late afternoon or evening), or whenever new results are available.<br>
+Data availability using these files started on January 1, 2023. Results are updated daily (usually late afternoon or evening), or whenever new results are available.<br><br>
 
 # GCMS Chromatograms
 
@@ -65,7 +68,8 @@ https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830
 + Peak 9.35 = heroin
 + Peak 9.71 = fentanyl
 
-For samples with multiple chromatograms (e.g., removing acetaminophen), peaks correspond to the composite chromatogram.
+For samples with multiple chromatograms (e.g., [removing acetaminophen](https://www.streetsafe.supply/results/p/800190)), peaks correspond to the composite chromatogram.
+<br>
 
 # Other Resources
 + [All results](https://www.streetsafe.supply/results) (searchable)
