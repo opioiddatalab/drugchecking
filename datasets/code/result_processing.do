@@ -712,6 +712,27 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 clear all
 frames reset
 
+// Create datasets for NC Xylazine Streamlit report
+
+use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta"
+keep if state=="NC"
+keep if lab_xylazine_any==1
+frame put sampleid, into(xylazine)
+frame change xylazine
+gen samples=1
+save temp, replace
+
+use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", clear
+
+merge m:1 sampleid using temp, keep(3) nogen
+
+collapse (sum) samples, by(substance)
+gsort -samples
+gen rank = _n
+erase "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/temp.dta"
+
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/x_subs.csv", quote replace
+
 // Tigger Streamlit to refresh by adding line to python script(s) that the app(s) build on
 
 do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/st_triggers.do"

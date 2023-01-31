@@ -33,16 +33,16 @@ df = pd.DataFrame(df)
 df.set_index('sampleid', inplace=True)
 
 # Jitter locations where sample collected for mapping
-sigma = 0.1
+sigma = 0.08
 df['lat'] = df['lat'].apply(lambda x: np.random.normal(x, sigma))
 df['lon'] = df['lon'].apply(lambda x: np.random.normal(x, sigma))
 
 # Set date format
 ## Retains seconds unfortunately and NaT
-df['date_collect'] = pd.to_datetime(df['date_collect'], format='%d%b%Y', errors = 'coerce')
+df['date_complete'] = pd.to_datetime(df['date_complete'], format='%d%b%Y', errors = 'coerce')
 
 # Limit to samples with any xylazine detected
-dfxyl = df[['date_collect', 'lab_xylazine_any', 'lab_cocaine', 'lab_cocaine', 'lab_meth', 'lab_fentanyl', 'expect_fentanyl', 'county', 'sen_strength', 'sen_strength', 'color', 'texture','lat', 'lon']]
+dfxyl = df[['date_complete', 'lab_xylazine_any', 'lab_cocaine', 'lab_cocaine', 'lab_meth', 'lab_fentanyl', 'expect_fentanyl', 'county', 'sen_strength', 'sen_strength', 'color', 'texture','lat', 'lon']]
 dfxyl = dfxyl[dfxyl.lab_xylazine_any==1]
 
 # Count total number of samples processed
@@ -58,15 +58,15 @@ counties_sampled = df['county'].nunique()
 xyl_counties = dfxyl['county'].nunique() 
 
 # Latest date xylazine was detected
-latest = dfxyl['date_collect'].max()
+latest = dfxyl['date_complete'].max()
 latest = latest.strftime('%A %B %d, %Y')
 
 
 # Latest xylazine reports by county
 latestreport = dfxyl.groupby(by=["county"]).max()
-latestreport["date_collect"] = latestreport["date_collect"].dt.strftime('%B %d, %Y')
-mostrecent = latestreport[['date_collect']].copy()
-mostrecent.rename(columns={'date_collect': 'Most_Recent'}, inplace=True)
+latestreport["date_complete"] = latestreport["date_complete"].dt.strftime('%B %d, %Y')
+mostrecent = latestreport[['date_complete']].copy()
+mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
 
 # Sensations Graph
 import altair as alt
