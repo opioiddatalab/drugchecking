@@ -7,13 +7,13 @@ substance,samples,rank
 "heroin",33,6
 "cocaine",28,7
 "lidocaine",24,8
-"despropionyl p-fluorofentanyl",22,9
-"N-phenylpropanamide",22,10
-"dimethyl sulfone (methylsulfonylmethane MSM)",20,11
-"methamphetamine",20,12
+"N-phenylpropanamide",22,9
+"despropionyl p-fluorofentanyl",22,10
+"methamphetamine",20,11
+"dimethyl sulfone (methylsulfonylmethane MSM)",20,12
 "6-monoacetylmorphine (6-MAM)",17,13
-"acetylcodeine",17,14
-"non-specific sugars",17,15
+"non-specific sugars",17,14
+"acetylcodeine",17,15
 "N-ethyl-4-ANPP",16,16
 "caffeine",15,17
 "tramadol",14,18
@@ -23,38 +23,38 @@ substance,samples,rank
 "procaine",7,22
 "diphenhydramine",6,23
 "phenethylbromide",6,24
-"1-phenyl-1-propanamine",5,25
-"methyl ecgonidine (MED)",5,26
+"methyl ecgonidine (MED)",5,25
+"1-phenyl-1-propanamine",5,26
 "1-phenethyl-4-propionyloxypiperidine",4,27
-"meconin",3,28
-"phenacetin",3,29
-"menthol",3,30
-"quinine",3,31
-"levamisole",2,32
-"valeryl fentanyl",2,33
-"hydrocotarnine",2,34
-"tropacocaine",2,35
-"mannitol",2,36
-"phenethyl chloride",2,37
-"benzoylecgonine (BZ)",2,38
-"urea",2,39
+"quinine",3,28
+"menthol",3,29
+"meconin",3,30
+"phenacetin",3,31
+"tropacocaine",2,32
+"benzoylecgonine (BZ)",2,33
+"melatonin",2,34
+"mannitol",2,35
+"phenethyl chloride",2,36
+"urea",2,37
+"valeryl fentanyl",2,38
+"hydrocotarnine",2,39
 "sucrose",2,40
-"melatonin",2,41
-"ecgonine methylester (EME)",1,42
-"ibuprofen",1,43
-"non-specific organic acids",1,44
-"N-propionyl norfentanyl",1,45
-"gabapentin",1,46
-"acetyl fentanyl",1,47
-"p-fluoroacetylfentanyl",1,48
-"methylparaben",1,49
-"noscapine",1,50
-"benzocaine",1,51
-"nicotine",1,52
-"lactose",1,53
-"norcocaine",1,54
-"medetomidine",1,55
-"papaverine",1,56
-"benzoic acid",1,57
-"ketamine",1,58
-"delta-9-THC",1,59
+"levamisole",2,41
+"non-specific organic acids",1,42
+"ecgonine methylester (EME)",1,43
+"benzoic acid",1,44
+"p-fluoroacetylfentanyl",1,45
+"ketamine",1,46
+"delta-9-THC",1,47
+"papaverine",1,48
+"medetomidine",1,49
+"gabapentin",1,50
+"noscapine",1,51
+"N-propionyl norfentanyl",1,52
+"norcocaine",1,53
+"ibuprofen",1,54
+"benzocaine",1,55
+"acetyl fentanyl",1,56
+"nicotine",1,57
+"methylparaben",1,58
+"lactose",1,59
