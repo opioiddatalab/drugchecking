@@ -1,3 +1,8 @@
+
+
+// Set python environment
+set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
+
 * state names and abbreviations
 clear all
 cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/List-of-US-States"
