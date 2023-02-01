@@ -1,3 +1,5 @@
+// Set python environment
+*set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
 
 
 // Import results files
@@ -714,17 +716,19 @@ frames reset
 
 // Create datasets for NC Xylazine Streamlit report
 
+** x_subs.csv has substances detected along with xylazine
+
 use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta"
 keep if state=="NC"
 keep if lab_xylazine_any==1
 frame put sampleid, into(xylazine)
 frame change xylazine
 gen samples=1
-save temp, replace
+save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/temp.dta", replace
 
 use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", clear
 
-merge m:1 sampleid using temp, keep(3) nogen
+merge m:1 sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/temp.dta", keep(3) nogen
 
 collapse (sum) samples, by(substance)
 gsort -samples
@@ -732,6 +736,22 @@ gen rank = _n
 erase "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/temp.dta"
 
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/x_subs.csv", quote replace
+
+** x_strength.csv has self-reported sensations
+use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", clear
+keep if state=="NC"
+keep if lab_xylazine_any==1
+keep sen_strength
+gen samples=1
+collapse (sum) samples, by(sen_strength)
+gen order = _n
+rename sen_strength sensations
+drop if sensations==.
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/x_strength.csv", quote replace
+
+clear all
+frames reset
+
 
 // Tigger Streamlit to refresh by adding line to python script(s) that the app(s) build on
 
