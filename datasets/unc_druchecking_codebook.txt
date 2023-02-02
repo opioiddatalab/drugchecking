@@ -3,17 +3,17 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:   1 Feb 2023, 15:14:38
+ opened on:   2 Feb 2023, 17:32:02
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 1 Feb 2023 15:14
+            Last saved: 2 Feb 2023 17:32
 
                  Label: [none]
-   Number of variables: 86
+   Number of variables: 87
 Number of observations: 20
-                  Size: 20,520 bytes ignoring labels, etc.
+                  Size: 20,600 bytes ignoring labels, etc.
 
 _dta:
   1.  "Example dataset (N=20) from UNC lab drug checking services. Lab results,
@@ -181,6 +181,11 @@ county:
 100.  Geolocated at centroid of city or county polygon
 101.  Does not represent precise physical location of sample or program
 102.  OpenCageData.com for documentation
+103.  If no location given, then program location entered
+104.  Geocoded using OpenCage API, review for accuracy
+105.  Geolocated at centroid of city or county polygon
+106.  Does not represent precise physical location of sample or program
+107.  OpenCageData.com for documentation
 
 -------------------------------------------------------------------------------
 state                                                    State sample collected
@@ -245,6 +250,7 @@ full_state:
  19.  Useful for maps and tables and viz
  20.  Useful for maps and tables and viz
  21.  Useful for maps and tables and viz
+ 22.  Useful for maps and tables and viz
 
 -------------------------------------------------------------------------------
 date_collect                                              Date sample collected
@@ -392,6 +398,20 @@ expect_benzo                           1 if expected benzodiazepine circled on
 
             Tabulation: Freq.  Value
                            20  0
+
+-------------------------------------------------------------------------------
+expect_meth                            1 if expected methamphetamine circled on
+                                       card or specific substance named
+-------------------------------------------------------------------------------
+
+                  Type: Numeric (float)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/20
+
+            Tabulation: Freq.  Value
+                           17  0
+                            3  1
 
 -------------------------------------------------------------------------------
 expect_cocaine                         1 if expected cocaine or crack circled
@@ -1656,6 +1676,11 @@ lat:
 100.  Does not represent precise physical location of sample or program
 101.  Geolocated at centroid of city or county polygon
 102.  OpenCageData.com for documentation
+103.  If no location given, then program location entered
+104.  Geocoded using OpenCage API, review for accuracy
+105.  Does not represent precise physical location of sample or program
+106.  Geolocated at centroid of city or county polygon
+107.  OpenCageData.com for documentation
 
 -------------------------------------------------------------------------------
 lon                                                                   Longitude
@@ -1773,11 +1798,16 @@ lon:
 100.  Does not represent precise physical location of sample or program
 101.  Geolocated at centroid of city or county polygon
 102.  OpenCageData.com for documentation
+103.  If no location given, then program location entered
+104.  Geocoded using OpenCage API, review for accuracy
+105.  Does not represent precise physical location of sample or program
+106.  Geolocated at centroid of city or county polygon
+107.  OpenCageData.com for documentation
 
 . log close
       name:  <unnamed>
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:   1 Feb 2023, 15:14:38
+ closed on:   2 Feb 2023, 17:32:02
 -------------------------------------------------------------------------------
