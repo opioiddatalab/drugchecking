@@ -142,6 +142,10 @@ gen expect_benzo=0
 replace expect_benzo=1 if regexm(lower(expectedsubstance),"benzo|xanax|alprazolam") | regexm(lower(sensation_notes),"benzo")
 la var expect_benzo "1 if expected benzodiazepine circled on card or specific substance named"
 
+gen expect_meth=0
+replace expect_meth=1 if regexm(lower(expectedsubstance),"methamph")
+la var expect_meth "1 if expected methamphetamine circled on card or specific substance named"
+
 gen expect_cocaine=0
 replace expect_cocaine=1 if regexm(lower(expectedsubstance),"cocaine|crack") | regexm(lower(sensation_notes),"cocaine|crack")
 la var expect_cocaine "1 if expected cocaine or crack circled on card or specific substance named"
