@@ -581,9 +581,11 @@ capture replace county=g_county if county==""
 capture replace full_state=g_state if full_state==""
 order full_state, a(state)
 la var full_state "Full state name"
+note drop full_state
 note full_state: Useful for maps and tables and viz
 
 la var county "County where sample collected"
+note drop county
 note county: If no location given, then program location entered
 note county: Geocoded using OpenCage API, review for accuracy
 note county:Geolocated at centroid of city or county polygon
@@ -593,6 +595,7 @@ order county, b(state)
 
 capture replace lat=g_lat if lat==""
 la var lat "Lattitude"
+note drop lat
 note lat: If no location given, then program location entered
 note lat: Geocoded using OpenCage API, review for accuracy
 note lat: Does not represent precise physical location of sample or program
@@ -601,6 +604,7 @@ note lat: OpenCageData.com for documentation
 
 capture replace lon=g_lon if lon==""
 la var lon "Longitude"
+note drop lon
 note lon: If no location given, then program location entered
 note lon: Geocoded using OpenCage API, review for accuracy
 note lon: Does not represent precise physical location of sample or program

@@ -3,12 +3,12 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:   2 Feb 2023, 17:32:02
+ opened on:   3 Feb 2023, 17:04:00
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 2 Feb 2023 17:32
+            Last saved: 3 Feb 2023 17:04
 
                  Label: [none]
    Number of variables: 87
@@ -81,111 +81,9 @@ county                                            County where sample collected
 county:
   1.  If no location given, then program location entered
   2.  Geocoded using OpenCage API, review for accuracy
-  3.  If no location given, then program location entered
-  4.  Geocoded using OpenCage API, review for accuracy
-  5.  Geolocated at centroid of city or county polygon
-  6.  Does not represent precise physical location of sample or program
-  7.  OpenCageData.com for documentation
-  8.  If no location given, then program location entered
-  9.  Geocoded using OpenCage API, review for accuracy
- 10.  Geolocated at centroid of city or county polygon
- 11.  Does not represent precise physical location of sample or program
- 12.  OpenCageData.com for documentation
- 13.  If no location given, then program location entered
- 14.  Geocoded using OpenCage API, review for accuracy
- 15.  Geolocated at centroid of city or county polygon
- 16.  Does not represent precise physical location of sample or program
- 17.  OpenCageData.com for documentation
- 18.  If no location given, then program location entered
- 19.  Geocoded using OpenCage API, review for accuracy
- 20.  Geolocated at centroid of city or county polygon
- 21.  Does not represent precise physical location of sample or program
- 22.  OpenCageData.com for documentation
- 23.  If no location given, then program location entered
- 24.  Geocoded using OpenCage API, review for accuracy
- 25.  Geolocated at centroid of city or county polygon
- 26.  Does not represent precise physical location of sample or program
- 27.  OpenCageData.com for documentation
- 28.  If no location given, then program location entered
- 29.  Geocoded using OpenCage API, review for accuracy
- 30.  Geolocated at centroid of city or county polygon
- 31.  Does not represent precise physical location of sample or program
- 32.  OpenCageData.com for documentation
- 33.  If no location given, then program location entered
- 34.  Geocoded using OpenCage API, review for accuracy
- 35.  Geolocated at centroid of city or county polygon
- 36.  Does not represent precise physical location of sample or program
- 37.  OpenCageData.com for documentation
- 38.  If no location given, then program location entered
- 39.  Geocoded using OpenCage API, review for accuracy
- 40.  Geolocated at centroid of city or county polygon
- 41.  Does not represent precise physical location of sample or program
- 42.  OpenCageData.com for documentation
- 43.  If no location given, then program location entered
- 44.  Geocoded using OpenCage API, review for accuracy
- 45.  Geolocated at centroid of city or county polygon
- 46.  Does not represent precise physical location of sample or program
- 47.  OpenCageData.com for documentation
- 48.  If no location given, then program location entered
- 49.  Geocoded using OpenCage API, review for accuracy
- 50.  Geolocated at centroid of city or county polygon
- 51.  Does not represent precise physical location of sample or program
- 52.  OpenCageData.com for documentation
- 53.  If no location given, then program location entered
- 54.  Geocoded using OpenCage API, review for accuracy
- 55.  Geolocated at centroid of city or county polygon
- 56.  Does not represent precise physical location of sample or program
- 57.  OpenCageData.com for documentation
- 58.  If no location given, then program location entered
- 59.  Geocoded using OpenCage API, review for accuracy
- 60.  Geolocated at centroid of city or county polygon
- 61.  Does not represent precise physical location of sample or program
- 62.  OpenCageData.com for documentation
- 63.  If no location given, then program location entered
- 64.  Geocoded using OpenCage API, review for accuracy
- 65.  Geolocated at centroid of city or county polygon
- 66.  Does not represent precise physical location of sample or program
- 67.  OpenCageData.com for documentation
- 68.  If no location given, then program location entered
- 69.  Geocoded using OpenCage API, review for accuracy
- 70.  Geolocated at centroid of city or county polygon
- 71.  Does not represent precise physical location of sample or program
- 72.  OpenCageData.com for documentation
- 73.  If no location given, then program location entered
- 74.  Geocoded using OpenCage API, review for accuracy
- 75.  Geolocated at centroid of city or county polygon
- 76.  Does not represent precise physical location of sample or program
- 77.  OpenCageData.com for documentation
- 78.  If no location given, then program location entered
- 79.  Geocoded using OpenCage API, review for accuracy
- 80.  Geolocated at centroid of city or county polygon
- 81.  Does not represent precise physical location of sample or program
- 82.  OpenCageData.com for documentation
- 83.  If no location given, then program location entered
- 84.  Geocoded using OpenCage API, review for accuracy
- 85.  Geolocated at centroid of city or county polygon
- 86.  Does not represent precise physical location of sample or program
- 87.  OpenCageData.com for documentation
- 88.  If no location given, then program location entered
- 89.  Geocoded using OpenCage API, review for accuracy
- 90.  Geolocated at centroid of city or county polygon
- 91.  Does not represent precise physical location of sample or program
- 92.  OpenCageData.com for documentation
- 93.  If no location given, then program location entered
- 94.  Geocoded using OpenCage API, review for accuracy
- 95.  Geolocated at centroid of city or county polygon
- 96.  Does not represent precise physical location of sample or program
- 97.  OpenCageData.com for documentation
- 98.  If no location given, then program location entered
- 99.  Geocoded using OpenCage API, review for accuracy
-100.  Geolocated at centroid of city or county polygon
-101.  Does not represent precise physical location of sample or program
-102.  OpenCageData.com for documentation
-103.  If no location given, then program location entered
-104.  Geocoded using OpenCage API, review for accuracy
-105.  Geolocated at centroid of city or county polygon
-106.  Does not represent precise physical location of sample or program
-107.  OpenCageData.com for documentation
+  3.  Geolocated at centroid of city or county polygon
+  4.  Does not represent precise physical location of sample or program
+  5.  OpenCageData.com for documentation
 
 -------------------------------------------------------------------------------
 state                                                    State sample collected
@@ -230,27 +128,6 @@ full_state                                                      Full state name
 
 full_state:
   1.  Useful for maps and tables and viz
-  2.  Useful for maps and tables and viz
-  3.  Useful for maps and tables and viz
-  4.  Useful for maps and tables and viz
-  5.  Useful for maps and tables and viz
-  6.  Useful for maps and tables and viz
-  7.  Useful for maps and tables and viz
-  8.  Useful for maps and tables and viz
-  9.  Useful for maps and tables and viz
- 10.  Useful for maps and tables and viz
- 11.  Useful for maps and tables and viz
- 12.  Useful for maps and tables and viz
- 13.  Useful for maps and tables and viz
- 14.  Useful for maps and tables and viz
- 15.  Useful for maps and tables and viz
- 16.  Useful for maps and tables and viz
- 17.  Useful for maps and tables and viz
- 18.  Useful for maps and tables and viz
- 19.  Useful for maps and tables and viz
- 20.  Useful for maps and tables and viz
- 21.  Useful for maps and tables and viz
- 22.  Useful for maps and tables and viz
 
 -------------------------------------------------------------------------------
 date_collect                                              Date sample collected
@@ -1576,111 +1453,9 @@ lat                                                                   Lattitude
 lat:
   1.  If no location given, then program location entered
   2.  Geocoded using OpenCage API, review for accuracy
-  3.  If no location given, then program location entered
-  4.  Geocoded using OpenCage API, review for accuracy
-  5.  Does not represent precise physical location of sample or program
-  6.  Geolocated at centroid of city or county polygon
-  7.  OpenCageData.com for documentation
-  8.  If no location given, then program location entered
-  9.  Geocoded using OpenCage API, review for accuracy
- 10.  Does not represent precise physical location of sample or program
- 11.  Geolocated at centroid of city or county polygon
- 12.  OpenCageData.com for documentation
- 13.  If no location given, then program location entered
- 14.  Geocoded using OpenCage API, review for accuracy
- 15.  Does not represent precise physical location of sample or program
- 16.  Geolocated at centroid of city or county polygon
- 17.  OpenCageData.com for documentation
- 18.  If no location given, then program location entered
- 19.  Geocoded using OpenCage API, review for accuracy
- 20.  Does not represent precise physical location of sample or program
- 21.  Geolocated at centroid of city or county polygon
- 22.  OpenCageData.com for documentation
- 23.  If no location given, then program location entered
- 24.  Geocoded using OpenCage API, review for accuracy
- 25.  Does not represent precise physical location of sample or program
- 26.  Geolocated at centroid of city or county polygon
- 27.  OpenCageData.com for documentation
- 28.  If no location given, then program location entered
- 29.  Geocoded using OpenCage API, review for accuracy
- 30.  Does not represent precise physical location of sample or program
- 31.  Geolocated at centroid of city or county polygon
- 32.  OpenCageData.com for documentation
- 33.  If no location given, then program location entered
- 34.  Geocoded using OpenCage API, review for accuracy
- 35.  Does not represent precise physical location of sample or program
- 36.  Geolocated at centroid of city or county polygon
- 37.  OpenCageData.com for documentation
- 38.  If no location given, then program location entered
- 39.  Geocoded using OpenCage API, review for accuracy
- 40.  Does not represent precise physical location of sample or program
- 41.  Geolocated at centroid of city or county polygon
- 42.  OpenCageData.com for documentation
- 43.  If no location given, then program location entered
- 44.  Geocoded using OpenCage API, review for accuracy
- 45.  Does not represent precise physical location of sample or program
- 46.  Geolocated at centroid of city or county polygon
- 47.  OpenCageData.com for documentation
- 48.  If no location given, then program location entered
- 49.  Geocoded using OpenCage API, review for accuracy
- 50.  Does not represent precise physical location of sample or program
- 51.  Geolocated at centroid of city or county polygon
- 52.  OpenCageData.com for documentation
- 53.  If no location given, then program location entered
- 54.  Geocoded using OpenCage API, review for accuracy
- 55.  Does not represent precise physical location of sample or program
- 56.  Geolocated at centroid of city or county polygon
- 57.  OpenCageData.com for documentation
- 58.  If no location given, then program location entered
- 59.  Geocoded using OpenCage API, review for accuracy
- 60.  Does not represent precise physical location of sample or program
- 61.  Geolocated at centroid of city or county polygon
- 62.  OpenCageData.com for documentation
- 63.  If no location given, then program location entered
- 64.  Geocoded using OpenCage API, review for accuracy
- 65.  Does not represent precise physical location of sample or program
- 66.  Geolocated at centroid of city or county polygon
- 67.  OpenCageData.com for documentation
- 68.  If no location given, then program location entered
- 69.  Geocoded using OpenCage API, review for accuracy
- 70.  Does not represent precise physical location of sample or program
- 71.  Geolocated at centroid of city or county polygon
- 72.  OpenCageData.com for documentation
- 73.  If no location given, then program location entered
- 74.  Geocoded using OpenCage API, review for accuracy
- 75.  Does not represent precise physical location of sample or program
- 76.  Geolocated at centroid of city or county polygon
- 77.  OpenCageData.com for documentation
- 78.  If no location given, then program location entered
- 79.  Geocoded using OpenCage API, review for accuracy
- 80.  Does not represent precise physical location of sample or program
- 81.  Geolocated at centroid of city or county polygon
- 82.  OpenCageData.com for documentation
- 83.  If no location given, then program location entered
- 84.  Geocoded using OpenCage API, review for accuracy
- 85.  Does not represent precise physical location of sample or program
- 86.  Geolocated at centroid of city or county polygon
- 87.  OpenCageData.com for documentation
- 88.  If no location given, then program location entered
- 89.  Geocoded using OpenCage API, review for accuracy
- 90.  Does not represent precise physical location of sample or program
- 91.  Geolocated at centroid of city or county polygon
- 92.  OpenCageData.com for documentation
- 93.  If no location given, then program location entered
- 94.  Geocoded using OpenCage API, review for accuracy
- 95.  Does not represent precise physical location of sample or program
- 96.  Geolocated at centroid of city or county polygon
- 97.  OpenCageData.com for documentation
- 98.  If no location given, then program location entered
- 99.  Geocoded using OpenCage API, review for accuracy
-100.  Does not represent precise physical location of sample or program
-101.  Geolocated at centroid of city or county polygon
-102.  OpenCageData.com for documentation
-103.  If no location given, then program location entered
-104.  Geocoded using OpenCage API, review for accuracy
-105.  Does not represent precise physical location of sample or program
-106.  Geolocated at centroid of city or county polygon
-107.  OpenCageData.com for documentation
+  3.  Does not represent precise physical location of sample or program
+  4.  Geolocated at centroid of city or county polygon
+  5.  OpenCageData.com for documentation
 
 -------------------------------------------------------------------------------
 lon                                                                   Longitude
@@ -1698,116 +1473,14 @@ lon                                                                   Longitude
 lon:
   1.  If no location given, then program location entered
   2.  Geocoded using OpenCage API, review for accuracy
-  3.  If no location given, then program location entered
-  4.  Geocoded using OpenCage API, review for accuracy
-  5.  Does not represent precise physical location of sample or program
-  6.  Geolocated at centroid of city or county polygon
-  7.  OpenCageData.com for documentation
-  8.  If no location given, then program location entered
-  9.  Geocoded using OpenCage API, review for accuracy
- 10.  Does not represent precise physical location of sample or program
- 11.  Geolocated at centroid of city or county polygon
- 12.  OpenCageData.com for documentation
- 13.  If no location given, then program location entered
- 14.  Geocoded using OpenCage API, review for accuracy
- 15.  Does not represent precise physical location of sample or program
- 16.  Geolocated at centroid of city or county polygon
- 17.  OpenCageData.com for documentation
- 18.  If no location given, then program location entered
- 19.  Geocoded using OpenCage API, review for accuracy
- 20.  Does not represent precise physical location of sample or program
- 21.  Geolocated at centroid of city or county polygon
- 22.  OpenCageData.com for documentation
- 23.  If no location given, then program location entered
- 24.  Geocoded using OpenCage API, review for accuracy
- 25.  Does not represent precise physical location of sample or program
- 26.  Geolocated at centroid of city or county polygon
- 27.  OpenCageData.com for documentation
- 28.  If no location given, then program location entered
- 29.  Geocoded using OpenCage API, review for accuracy
- 30.  Does not represent precise physical location of sample or program
- 31.  Geolocated at centroid of city or county polygon
- 32.  OpenCageData.com for documentation
- 33.  If no location given, then program location entered
- 34.  Geocoded using OpenCage API, review for accuracy
- 35.  Does not represent precise physical location of sample or program
- 36.  Geolocated at centroid of city or county polygon
- 37.  OpenCageData.com for documentation
- 38.  If no location given, then program location entered
- 39.  Geocoded using OpenCage API, review for accuracy
- 40.  Does not represent precise physical location of sample or program
- 41.  Geolocated at centroid of city or county polygon
- 42.  OpenCageData.com for documentation
- 43.  If no location given, then program location entered
- 44.  Geocoded using OpenCage API, review for accuracy
- 45.  Does not represent precise physical location of sample or program
- 46.  Geolocated at centroid of city or county polygon
- 47.  OpenCageData.com for documentation
- 48.  If no location given, then program location entered
- 49.  Geocoded using OpenCage API, review for accuracy
- 50.  Does not represent precise physical location of sample or program
- 51.  Geolocated at centroid of city or county polygon
- 52.  OpenCageData.com for documentation
- 53.  If no location given, then program location entered
- 54.  Geocoded using OpenCage API, review for accuracy
- 55.  Does not represent precise physical location of sample or program
- 56.  Geolocated at centroid of city or county polygon
- 57.  OpenCageData.com for documentation
- 58.  If no location given, then program location entered
- 59.  Geocoded using OpenCage API, review for accuracy
- 60.  Does not represent precise physical location of sample or program
- 61.  Geolocated at centroid of city or county polygon
- 62.  OpenCageData.com for documentation
- 63.  If no location given, then program location entered
- 64.  Geocoded using OpenCage API, review for accuracy
- 65.  Does not represent precise physical location of sample or program
- 66.  Geolocated at centroid of city or county polygon
- 67.  OpenCageData.com for documentation
- 68.  If no location given, then program location entered
- 69.  Geocoded using OpenCage API, review for accuracy
- 70.  Does not represent precise physical location of sample or program
- 71.  Geolocated at centroid of city or county polygon
- 72.  OpenCageData.com for documentation
- 73.  If no location given, then program location entered
- 74.  Geocoded using OpenCage API, review for accuracy
- 75.  Does not represent precise physical location of sample or program
- 76.  Geolocated at centroid of city or county polygon
- 77.  OpenCageData.com for documentation
- 78.  If no location given, then program location entered
- 79.  Geocoded using OpenCage API, review for accuracy
- 80.  Does not represent precise physical location of sample or program
- 81.  Geolocated at centroid of city or county polygon
- 82.  OpenCageData.com for documentation
- 83.  If no location given, then program location entered
- 84.  Geocoded using OpenCage API, review for accuracy
- 85.  Does not represent precise physical location of sample or program
- 86.  Geolocated at centroid of city or county polygon
- 87.  OpenCageData.com for documentation
- 88.  If no location given, then program location entered
- 89.  Geocoded using OpenCage API, review for accuracy
- 90.  Does not represent precise physical location of sample or program
- 91.  Geolocated at centroid of city or county polygon
- 92.  OpenCageData.com for documentation
- 93.  If no location given, then program location entered
- 94.  Geocoded using OpenCage API, review for accuracy
- 95.  Does not represent precise physical location of sample or program
- 96.  Geolocated at centroid of city or county polygon
- 97.  OpenCageData.com for documentation
- 98.  If no location given, then program location entered
- 99.  Geocoded using OpenCage API, review for accuracy
-100.  Does not represent precise physical location of sample or program
-101.  Geolocated at centroid of city or county polygon
-102.  OpenCageData.com for documentation
-103.  If no location given, then program location entered
-104.  Geocoded using OpenCage API, review for accuracy
-105.  Does not represent precise physical location of sample or program
-106.  Geolocated at centroid of city or county polygon
-107.  OpenCageData.com for documentation
+  3.  Does not represent precise physical location of sample or program
+  4.  Geolocated at centroid of city or county polygon
+  5.  OpenCageData.com for documentation
 
 . log close
       name:  <unnamed>
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:   2 Feb 2023, 17:32:02
+ closed on:   3 Feb 2023, 17:04:00
 -------------------------------------------------------------------------------

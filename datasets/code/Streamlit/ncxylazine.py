@@ -129,7 +129,7 @@ with col2:
     value=xyl_counties
     )
     
-st.markdown(":label: Our samples do not represent the entrire drug supply. People may send us samples because they suspect xylazine or have unexpected reactions.")
+st.markdown(":label: Our samples do not represent the entire drug supply. People may send us samples because they suspect xylazine or have unexpected reactions.")
 
 st.markdown("---")
 
@@ -146,11 +146,11 @@ st.markdown("---")
 
 
 st.subheader(":hospital: [More info on xylazine](https://harmreduction.org/wp-content/uploads/2022/11/Xylazine-in-the-Drug-Supply-one-pager.pdf) in the street drug supply")
-st.markdown("Xylazine (sigh-la-scene) is a cut mixed in with other street drugs. It can cause horrific skin ulcers, beyond the site of injection. If treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
+st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. It can cause horrific skin ulcers, beyond the site of injection. If treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
 
 st.markdown("---")
-st.header("Where has xylzine been detected?")
-st.markdown("The map shows where we have detected xylazine in street drugs.")
+st.header("Where has xylazine been detected?")
+st.markdown("The map shows where we have detected xylazine in street drugs. We have more programs reporting")
 st.markdown(":label: Keep in mind we have more programs and samples from the center of the state. Xylazine is certainly present elsewhere.")
 
 # Render the map
@@ -164,7 +164,7 @@ st.table(mostrecent)
 st.markdown("---")
 
 st.header("What substances were also detected?")
-st.markdown("Xylazine was found mostly mixed with fentanyl and heroin. But cociane and xylazine were routinely found together. Less often, we found xylazine in trace amounts with methamphetamine and other drugs. Samples containing xylazine are most often reported to feel stronger.")
+st.markdown("Xylazine was found mostly mixed with fentanyl and heroin. But cocaine and xylazine were routinely found together. Less often, we found xylazine in trace amounts with methamphetamine and other drugs. Samples containing xylazine are most often reported to feel stronger.")
 
 col1, col2 = st.columns(2)
 
@@ -196,3 +196,4 @@ st.markdown("_fin._")
 
 
 #delete me#delete me
+#delete me#delete me#delete me
