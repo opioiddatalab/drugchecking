@@ -2,12 +2,16 @@
 *set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
 
 
+clear all
+frames reset
+
+// Set directory
+cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/"
+
+
 // Import results files
 
 cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/"
-
-clear all
-frames reset
 
 // Import City Locations for Programs
 import excel "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx", sheet("ProgramInfo") firstrow clear
@@ -618,6 +622,29 @@ la var lat_program "Lattitude county centroid of program location"
 la var lon_program "Longitude county centroid of program location"
 
 order program_county lat_program lon_program, b(lat)
+
+// Add County FIPS information
+
+** Fix missing and irregular county locations
+replace county="Kings County" if program=="NYC-KM" & county==""
+replace county="Suffolk County" if program=="Community Action for Social Justice" & county==""
+replace county="Rio Arriba County" if program=="The Mountain Center" & county==""
+replace county="San Francisco" if location=="San Francisco"
+replace county="Surry County" if location=="Pipers Gap"
+replace county="Randolph County" if program=="Community Hope Alliance" & county==""
+replace county=program_county if county==""
+
+gen temp = subinstr(county," County", "", .)
+order temp, a(county)
+gen state_county = upper(state + " | " + temp)
+drop temp
+merge m:1 state_county using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/fips.dta", nogen keep(1 3)
+drop stateabbr statename countyname
+la var statefips "2-digit FIPS for state"
+la var countyfips_3 "3-digit FIPS for county, without state"
+la var state_county "Combined state and county name"
+la var countyfips "5-digit FIPS for county"
+note countyfips: If not specific location provided, county is defaulted to program county
 
 // Fix date formats for easier import into Python
 format date_collect %tdDDMonCCYY

@@ -9,11 +9,11 @@ substance,samples,rank
 "lidocaine",24,8
 "despropionyl p-fluorofentanyl",22,9
 "N-phenylpropanamide",22,10
-"methamphetamine",20,11
-"dimethyl sulfone (methylsulfonylmethane MSM)",20,12
-"6-monoacetylmorphine (6-MAM)",17,13
-"non-specific sugars",17,14
-"acetylcodeine",17,15
+"dimethyl sulfone (methylsulfonylmethane MSM)",20,11
+"methamphetamine",20,12
+"acetylcodeine",17,13
+"6-monoacetylmorphine (6-MAM)",17,14
+"non-specific sugars",17,15
 "ethyl-4-ANPP",16,16
 "caffeine",15,17
 "tramadol",14,18
@@ -21,40 +21,40 @@ substance,samples,rank
 "p-fluoro phenethyl 4-ANPP",13,20
 "acetaminophen",11,21
 "procaine",7,22
-"phenethylbromide",6,23
-"diphenhydramine",6,24
+"diphenhydramine",6,23
+"phenethylbromide",6,24
 "methyl ecgonidine (MED)",5,25
 "1-phenyl-1-propanamine",5,26
 "1-phenethyl-4-propionyloxypiperidine",4,27
-"quinine",3,28
-"menthol",3,29
+"menthol",3,28
+"quinine",3,29
 "meconin",3,30
 "phenacetin",3,31
-"mannitol",2,32
-"levamisole",2,33
-"urea",2,34
-"melatonin",2,35
-"sucrose",2,36
-"tropacocaine",2,37
-"valeryl fentanyl",2,38
-"benzoylecgonine (BZ)",2,39
-"phenethyl chloride",2,40
-"hydrocotarnine",2,41
-"medetomidine",1,42
-"benzoic acid",1,43
+"melatonin",2,32
+"hydrocotarnine",2,33
+"valeryl fentanyl",2,34
+"phenethyl chloride",2,35
+"benzoylecgonine (BZ)",2,36
+"mannitol",2,37
+"tropacocaine",2,38
+"urea",2,39
+"levamisole",2,40
+"sucrose",2,41
+"delta-9-THC",1,42
+"non-specific organic acids",1,43
 "nicotine",1,44
-"ibuprofen",1,45
-"ecgonine methylester (EME)",1,46
-"lactose",1,47
-"methylparaben",1,48
-"norcocaine",1,49
-"ketamine",1,50
-"benzocaine",1,51
-"N-propionyl norfentanyl",1,52
-"gabapentin",1,53
-"papaverine",1,54
-"noscapine",1,55
-"acetyl fentanyl",1,56
-"non-specific organic acids",1,57
-"p-fluoroacetylfentanyl",1,58
-"delta-9-THC",1,59
+"p-fluoroacetylfentanyl",1,45
+"methylparaben",1,46
+"norcocaine",1,47
+"acetyl fentanyl",1,48
+"medetomidine",1,49
+"benzocaine",1,50
+"ecgonine methylester (EME)",1,51
+"gabapentin",1,52
+"papaverine",1,53
+"benzoic acid",1,54
+"N-propionyl norfentanyl",1,55
+"lactose",1,56
+"ketamine",1,57
+"noscapine",1,58
+"ibuprofen",1,59
