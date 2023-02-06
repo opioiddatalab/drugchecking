@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import pandas as pd
-import streamlit as st
 import numpy as np
+import plotly.express as px
+from urllib.request import urlopen
+import json
 
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
@@ -152,6 +154,53 @@ st.markdown("---")
 st.header("Where has xylazine been detected?")
 st.markdown("The map shows where we have detected xylazine in street drugs. We have more programs reporting")
 st.markdown(":label: Keep in mind we have more programs and samples from the center of the state. Xylazine is certainly present elsewhere.")
+
+# Chloropeth map
+## Load public NC data
+df = pd.read_csv("https://github.com/opioiddatalab/drugchecking/raw/main/datasets/nc/nc_analysis_dataset.csv")
+
+## Create new variable that calculates the total samples by county for denominator
+df["total_samples"] = df.groupby("county")["sampleid"].transform("nunique")
+
+## Create a new dataframe that aggregates the data by county
+## Create a new dataframe that aggregates the data by 'county' and 'fips'
+agg_df = df.groupby(["county", "countyfips"]).agg(
+    xylazine_count=("lab_xylazine_any", "sum"),
+    latest_date=("date_complete", "max"),
+    unique_samples=("sampleid", "nunique"),
+)
+
+## Reset the index of the aggregated dataframe
+agg_df = agg_df.reset_index()
+
+## Create percent of samples that are xylazine positive by dividing xylazine_countys by unique_samples
+agg_df["percent"] = agg_df["xylazine_count"] / agg_df["unique_samples"] *100
+
+## Add the percent symbol to the 'percent' column
+agg_df["percent_str"] = agg_df["percent"].astype(str) + "%"
+
+## Round the 'percent' column to one decimal place
+agg_df["percent_str"] = np.round(agg_df["percent"], 1)
+
+## Generate map
+with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+    counties = json.load(response)
+
+fig = px.choropleth_mapbox(agg_df, geojson=counties, locations='countyfips', color='percent',
+                           color_continuous_scale="reds",
+                           range_color=(0, 100),
+                           mapbox_style="carto-positron",
+                           zoom=5.5, center = {"lat": 35.3, "lon": -79.3},
+                           opacity=0.8,
+                           labels={'percent':'Xylazine Detected'}
+                          )
+
+fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine by County')
+
+fig.show()
+
+st.plotly_chart(fig, use_container_width=True)
+
 
 # Render the map
 st.map(dfxyl)                         

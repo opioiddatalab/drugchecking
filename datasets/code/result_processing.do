@@ -1,5 +1,5 @@
 // Set python environment
-*set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
+set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
 
 
 clear all
@@ -620,6 +620,8 @@ capture drop g_state g_county g_lat g_lon g_county
 la var program_county "County name of program location"
 la var lat_program "Lattitude county centroid of program location"
 la var lon_program "Longitude county centroid of program location"
+
+******************** Need to fix county program location to include lat/lon
 
 order program_county lat_program lon_program, b(lat)
 
