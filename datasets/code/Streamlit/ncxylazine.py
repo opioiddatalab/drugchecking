@@ -194,17 +194,15 @@ fig = px.choropleth_mapbox(agg_df, geojson=counties, locations='countyfips', col
                            mapbox_style="carto-positron",
                            zoom=5.5, center = {"lat": 35.3, "lon": -79.3},
                            opacity=0.8,
-                           labels={'percent':'Xylazine Detected'}
+                           labels={'percent':'% Samples with Xylazine'}
                           )
 
-fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine by County')
+fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine')
 
 st.plotly_chart(fig, use_container_width=True)
 
-
-# Render the map
-st.map(dfxyl)                         
-st.markdown("_Exact locations shifted to preserve anonymity. Don't bother zooming into street level._")
+                        
+st.markdown("We've detected xylazine in about half the places from where we received samples. We are working on better maps! Sorry this isn't perfect, but we will improve it soon.")
 
 st.subheader("Latest xylazine detection dates by location")
 
