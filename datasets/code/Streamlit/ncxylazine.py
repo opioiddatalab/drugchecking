@@ -198,8 +198,6 @@ fig = px.choropleth_mapbox(agg_df, geojson=counties, locations='countyfips', col
 
 fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine by County')
 
-fig.show()
-
 st.plotly_chart(fig, use_container_width=True)
 
 
