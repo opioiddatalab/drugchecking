@@ -6,6 +6,7 @@ import plotly.express as px
 from urllib.request import urlopen
 import json
 import plotly
+import streamlit as st
 
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
