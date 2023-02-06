@@ -5,5 +5,3 @@ numpy
 requests
 plotly.express
 plotly
-json
-urlopen
