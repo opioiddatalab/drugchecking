@@ -3,17 +3,17 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:   6 Feb 2023, 22:45:34
+ opened on:   7 Feb 2023, 19:32:11
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 6 Feb 2023 22:45
+            Last saved: 7 Feb 2023 19:32
 
                  Label: [none]
    Number of variables: 91
 Number of observations: 20
-                  Size: 21,560 bytes ignoring labels, etc.
+                  Size: 21,800 bytes ignoring labels, etc.
 
 _dta:
   1.  "Example dataset (N=20) from UNC lab drug checking services. Lab results,
@@ -471,7 +471,7 @@ lustre                    Lustre either shiny (1) or dull (-1). Cannot be both.
 sensations                                           Sensations circled on card
 -------------------------------------------------------------------------------
 
-                  Type: String (str48), but longest is str29
+                  Type: String (str60), but longest is str29
 
          Unique values: 8                         Missing "": 3/20
 
@@ -1544,5 +1544,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:   6 Feb 2023, 22:45:34
+ closed on:   7 Feb 2023, 19:32:11
 -------------------------------------------------------------------------------
