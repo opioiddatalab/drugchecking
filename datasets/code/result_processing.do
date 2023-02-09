@@ -1,5 +1,5 @@
 // Set python environment
-set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
+*set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
 
 
 clear all
@@ -678,8 +678,8 @@ save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geo_canonical.dta"
 // Save NC Public Dataset without program name
 use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", clear
 keep if state=="NC"
-sort date_complete
-drop program
+sort county date_complete
+drop program lat* lon*
 
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.dta", replace
 
@@ -697,6 +697,16 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 keep sampleid
 merge 1:m sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", nogen keep(1)
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.dta", replace
+
+*** SAS
+export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.v8xpt", replace
+
+*** Excel
+export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.xlsx", firstrow(variables) nolabel replace
+
+*** Delimited CSV (tab)
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.csv", quote replace
+
 
 // Save public demo datasets with name and location redacted
 

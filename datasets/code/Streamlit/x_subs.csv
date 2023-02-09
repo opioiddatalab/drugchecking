@@ -7,8 +7,8 @@ substance,samples,rank
 "heroin",33,6
 "cocaine",29,7
 "lidocaine",24,8
-"despropionyl p-fluorofentanyl",22,9
-"N-phenylpropanamide",22,10
+"N-phenylpropanamide",22,9
+"despropionyl p-fluorofentanyl",22,10
 "methamphetamine",21,11
 "dimethyl sulfone (methylsulfonylmethane MSM)",20,12
 "acetylcodeine",17,13
@@ -23,33 +23,33 @@ substance,samples,rank
 "methyl ecgonidine (MED)",5,22
 "1-phenyl-1-propanamine",5,23
 "1-phenethyl-4-propionyloxypiperidine",4,24
-"quinine",3,25
-"meconin",3,26
-"menthol",3,27
-"phenacetin",3,28
-"tropacocaine",2,29
-"melatonin",2,30
-"phenethyl chloride",2,31
+"meconin",3,25
+"menthol",3,26
+"phenacetin",3,27
+"quinine",3,28
+"benzoylecgonine (BZ)",2,29
+"phenethyl chloride",2,30
+"urea",2,31
 "valeryl fentanyl",2,32
-"levamisole",2,33
-"benzoylecgonine (BZ)",2,34
-"sucrose",2,35
-"urea",2,36
-"hydrocotarnine",2,37
-"mannitol",2,38
-"ketamine",1,39
-"benzocaine",1,40
-"N-propionyl norfentanyl",1,41
-"medetomidine",1,42
-"benzoic acid",1,43
-"acetyl fentanyl",1,44
+"sucrose",2,33
+"mannitol",2,34
+"levamisole",2,35
+"tropacocaine",2,36
+"melatonin",2,37
+"hydrocotarnine",2,38
+"lactose",1,39
+"norcocaine",1,40
+"medetomidine",1,41
+"gabapentin",1,42
+"acetyl fentanyl",1,43
+"benzoic acid",1,44
 "nicotine",1,45
-"noscapine",1,46
+"methylparaben",1,46
 "delta-9-THC",1,47
-"lactose",1,48
-"norcocaine",1,49
-"ecgonine methylester (EME)",1,50
-"methylparaben",1,51
-"papaverine",1,52
-"gabapentin",1,53
-"ibuprofen",1,54
+"benzocaine",1,48
+"ibuprofen",1,49
+"ketamine",1,50
+"papaverine",1,51
+"ecgonine methylester (EME)",1,52
+"noscapine",1,53
+"N-propionyl norfentanyl",1,54
