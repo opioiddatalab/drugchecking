@@ -1,5 +1,5 @@
 // Set python environment
-* set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
+set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
 
 
 clear all
@@ -475,6 +475,22 @@ do categorize "fentanyl_impurities"
 do categorize "pf_fent_impurities"
 do categorize "substituted_cathinones"
 
+frame create temp
+frame change temp
+import delimited "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/chemdictionary/chemdictionary.csv"
+keep substance pubchemcid cas unii	
+save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta", replace
+frame change lab
+merge m:1 substance using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta", nogen keep(3)
+order pubchemcid cas unii, a(substance)
+erase "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta"
+la var pubchemcid "PubChem ID from NIH"
+note pubchemcid: https://pubchem.ncbi.nlm.nih.gov/
+la var cas "CAS from American Chemical Society"
+note cas: https://commonchemistry.cas.org/
+la var unii "UNII Unique Ingredient Identifier from US FDA"
+note unii: https://precision.fda.gov/uniisearch
+sort sampleid
 
 // Save dataset for internal analysis 
 quietly compress
