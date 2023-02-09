@@ -14,7 +14,7 @@
 <br>
 All samples were collected anonymously. No information idenitfying individuals or programs is available.
 
-If you are ready to start durg checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
+If you are ready to start drug checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
 
 # File Inventory
 + Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
