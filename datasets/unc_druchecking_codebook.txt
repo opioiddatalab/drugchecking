@@ -3,12 +3,12 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:   9 Feb 2023, 15:29:30
+ opened on:   9 Feb 2023, 15:52:20
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 9 Feb 2023 15:29
+            Last saved: 9 Feb 2023 15:52
 
                  Label: [none]
    Number of variables: 91
@@ -1292,8 +1292,8 @@ lab_common_cuts_any                                   (max) lab_common_cuts_any
          Unique values: 2                         Missing .: 0/20
 
             Tabulation: Freq.  Value
-                           12  0
-                            8  1
+                           10  0
+                           10  1
 
 lab_common_cuts_any:
   1.  "If only GCMS was used, this may not detect all large molecule (e.g.,
@@ -1544,5 +1544,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:   9 Feb 2023, 15:29:31
+ closed on:   9 Feb 2023, 15:52:20
 -------------------------------------------------------------------------------

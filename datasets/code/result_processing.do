@@ -475,6 +475,13 @@ do categorize "fentanyl_impurities"
 do categorize "pf_fent_impurities"
 do categorize "substituted_cathinones"
 
+// Fix typos
+replace substance="ethyl-4-ANPP" if substance=="ethyl 4-ANPP"
+replace substance="p-fluoro 4-ANPP" if substance=="p-fluoro 4-anilinopiperidine"
+replace substance="p-fluoroacetyl fentanyl" if substance=="p-fluoroacetylfentanyl"
+replace substance="phenethyl bromide" if substance=="phenethylbromide"
+
+
 // Add UNII CAS and PubChemCID
 
 frame create temp
@@ -483,7 +490,7 @@ import delimited "https://raw.githubusercontent.com/opioiddatalab/drugchecking/m
 keep substance pubchemcid cas unii	
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta", replace
 frame change lab
-merge m:1 substance using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta", nogen keep(3)
+merge m:1 substance using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta", nogen keep(1 3)
 order pubchemcid cas unii, a(substance)
 erase "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta"
 la var pubchemcid "PubChem ID from NIH"
@@ -495,6 +502,7 @@ note unii: https://precision.fda.gov/uniisearch
 sort sampleid
 
 // Save dataset for internal analysis 
+drop if substance==""
 quietly compress
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", replace
 
@@ -587,12 +595,9 @@ merge 1:1 sampleid using merge, nogen
 
 erase merge.dta
 
-**# Bookmark #2
 // Geocode using GeoCage API
 ** Merge in canonical data to limit API calls
 merge 1:1 sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geo_canonical.dta", nogen keep(1 3)
-
-
 
 ** API call using stored key
 do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geocode_samples.do"
@@ -695,9 +700,8 @@ export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/dat
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.csv", quote replace
 
 ** Generate canonical list of NC samples to generate NC lab dataset
-**# Bookmark #1
 keep sampleid
-merge 1:m sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", nogen keep(1)
+merge 1:m sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", nogen keep(3)
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.dta", replace
 
 *** SAS
