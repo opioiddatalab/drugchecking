@@ -336,7 +336,7 @@ note lab_num_substances: "Priamry substances only. Does NOT include substances i
 ***  Uses regex for samples starting with ID numbers 800xxx. Excludes NC Survivors Union samples.
 gen confirmatory=0
 replace confirmatory=1 if regexm(sampleid,"^800")
-*****  Initial OutsideIn samples with 300xxx numbering
+*****  Initial OR samples with 300xxx numbering
 replace confirmatory=1 if regexm(sampleid,"300555|300561|300572|300577|300593|300715|300717|300748|300755|300760|300764|300788|300790|300796")
 la var confirmatory "Sample for GCMS confirmatory or complementary testing"
 
@@ -474,6 +474,8 @@ do categorize "cannabinoids"
 do categorize "fentanyl_impurities"
 do categorize "pf_fent_impurities"
 do categorize "substituted_cathinones"
+
+// Add UNII CAS and PubChemCID
 
 frame create temp
 frame change temp
