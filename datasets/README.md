@@ -1,27 +1,57 @@
 # UNC Drug Checking Lab Data
 
 
-*This documentation is in beta release. Code will undergo QC as we finalize.*<br>
+*February 2023: This documentation is in beta release. Expect changes.*<br>
 <br>
 
 > **Warning**<br>
-> By downloading or accessing these datasets you are affirming that you are NOT a member of a law enforcement agency.<br>
+> These data are intended for public health use to save lives.<br>
+> These data cannot be used for criminal prosecution because they are completely anonymous and do not conform to legal chain of custody requirements.<br>
 
-# Audience
-+ Documentation below is intended for data analysts and epidemiologists.
-+ Machine-oriented [API-style access](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md) to results for confirmatory/complementary testing is also available.
-
-<br>
+# Data Privacy Statement
 All samples were collected anonymously. No information idenitfying individuals or programs is available.
 
-If you are ready to start durg checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
+---
+
+![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/3pasteldataflow.png)
+
+Resources available in human readable format for the general public, and in machine readable format for technical audiences.
+
+# General Public
++ If you are ready to start durg checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
++ Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
++ [Browseable results](https://www.streetsafe.supply/results) (searchable)
++ [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example data table viewer
+<br>
+<br>
+![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/chemistry.png)
+
+# Chemisty Audience
++ [List of all substances detected](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/substances_detected.csv) with frequencies
++ [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
+
+![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/softwaredev.png)
+
+# Software Developers
++ Confirmatory/complementary testing results are automatically uploaded to FTIR records using [Street Check from Brandeis University(https://streetcheck.org)
++ Machine-oriented [CSV access](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md) to results for confirmatory/complementary testing
++ GitHub repo for [data products](https://github.com/opioiddatalab/drugchecking/tree/main/datasets)
++ [Processing code](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/result_processing.do) showing variable creation
++ [NLP code](https://github.com/opioiddatalab/drugchecking/blob/main/textexport/autotext.do) for converting sample results into human readable indivdual records for [website](https://streetsafe.supply)
++ [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample ID
+
+![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/epi.png)
+
+# Epidemiology Audience
++ Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
++ Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
++ List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
++ All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
++ North Carolina [xylazine report live report web app](https://ncxylazine.streamlit.app) with live updated data
 
 # File Inventory
-+ Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
-+ [Processing code](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/result_processing.do) showing variable creation
-+ [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) viewer
-+ `analysis_dataset` Example analysis dataset with processed and derived variables (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
-+ `lab_detail` Example lab detail dataset with standardized chemical names (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
++ `analysis_dataset` Example analysis dataset in WIDE format with processed and derived variables (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
++ `lab_detail` Example lab detail dataset in LONG format with standardized chemical names (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
 
 <br>
 
@@ -104,19 +134,6 @@ Major substances in graph:<br>
 + Peak 9.35 = heroin
 + Peak 9.71 = fentanyl
 
-# Human readable outputs
-+ [All results](https://www.streetsafe.supply/results) (searchable)
-+ List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
-+ All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
-+ [NLP code](https://github.com/opioiddatalab/drugchecking/blob/main/textexport/autotext.do) for converting sample results into human readable indivdual records for [website](https://streetsafe.supply)
-+ North Carolina [xylazine report webapp](https://ncxylazine.streamlit.app) with live updated data
+---
+*fin.*
 
-
-# Other Resources
-+ GitHub repo for [data products](https://github.com/opioiddatalab/drugchecking/tree/main/datasets)
-+ [API-style access](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md) to results for confirmatory/complementary testing
-+ [List of all substances detected](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/substances_detected.csv) with frequencies
-+ Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
-+ Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
-+ [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
-+ [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample ID
