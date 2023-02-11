@@ -11,10 +11,12 @@ For the sake of data tranparency, we expect attribution. We we do not require au
 
 # Tyranny of the Molecule
 Mary Figgatt and Nabarun Dasgupta [pointed out](https://academic.oup.com/aje/article/191/2/248/6370874?login=false), molecules alone cannot tell the complete story of the experience with any given sample. We do not believe in molecules explaining everything. That is why our datasets also include subjective information and overdose experiences. We expect all analyses with these data to honor this contributed wisdom.<br>
-> As programs expand, we offer 2 guiding principles. First, the primary purpose of these programs is to deliver timely results to people who use drugs to mitigate health risks. Second, innovation is needed to go beyond criminal justice paradigms in laboratory analysis for a more nuanced understanding of health concerns.
+> As [drug checking] programs expand, we offer 2 guiding principles. First, the primary purpose of these programs is to deliver timely results to people who use drugs to mitigate health risks. Second, innovation is needed to go beyond criminal justice paradigms in laboratory analysis for a more nuanced understanding of health concerns.
+<br>
+Also [check out our Canadian colleagues](https://harmreductionjournal.biomedcentral.com/articles/10.1186/s12954-022-00727-0) who have been doing drug vheck for a long time, on how we ensure equitable access to drug checking and data.
 
 # Grattitude
-Above all, we salute the front line harm reduction and public health workers who care for our communities. They are essential. Over years of shared truama, they are the ones who have built trust in the communities they serve. Without their cooperation, none of this knowledge would be possible. We expect them to be hailed in the Acknowledgements section of any manuscript or publication that results from the use of our data.<br>
+Above all, we salute the front line harm reduction and public health workers who care for our communities. They are essential. Over years of shared truama, they are the ones who have built trust in the communities they serve. Without their cooperation, none of this knowledge would be possible. We expect them to be hailed in the Acknowledgements section of any manuscript or publication that results from the use of our data.<br><br>
 Every chemical analysis was done by Erin Tracy, our lead chemist. We thank you for your service. Maryalice Nocera and Colin Miller keep the operation running, for which we are eternally grateful. Nabarun Dasgupta wrote the code, so mistakes can happen.<br>
 
 > **Warning**<br>
