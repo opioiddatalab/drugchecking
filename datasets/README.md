@@ -4,6 +4,12 @@
 *February 2023: This documentation is in beta release. Expect changes.*<br>
 <br>
 
+Our mission is to provide the best data to prevent the most harm. For too long, people have only been told what's in the drug supply when it is too late: Dead or arrested. We are changing that by making all of our data public, instantly. To make sense of complex chemical names, we deploy soohisticated naltural lamguage processing (NLP) and semi-automated chemical and statistical analysis to find patterns in steet drug data. We strive to make sample results readable to humans. But we make datasets with extensive pre-processing so you can get on with science. <br><br>
+We intend for our datasets to be used only in the service of preventing health harms. We reserve the right to hold accountable anyone who touches these data with other intents. <br><br>
+For the sake of data tranparency, we expect attribution. We we do not require auhtorship. (Though, collaboration is welcome.) We make all our code publicly available and expect you will do the same when using our data. We expect publications to be in open access journals, and plain lamguage summaries provided back to the communities from which the samples arose. These are our community standards. We hope you will respect them.<br><br>
+Above all, we salute the front line harm reduction and public health workers who care for our communities. They are essential. Over years of shared truama, they are the ones who have built trust in the communities they serve. Without their cooperation, none of this knowledge would be possible. We expect them to be hailed in the Acknowledgements section of any manuscript or publication that results from the use of our data.<br>
+
+
 > **Warning**<br>
 > These data are intended for public health use to save lives.<br>
 > These data cannot be used for criminal prosecution because they are completely anonymous and do not conform to legal chain of custody requirements.<br>
@@ -33,7 +39,7 @@ Resources available in human readable format for the general public, and in mach
 ![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/softwaredev.png)
 
 # Software Developers
-+ Confirmatory/complementary testing results are automatically uploaded to FTIR records using [Street Check from Brandeis University(https://streetcheck.org)
++ Confirmatory/complementary testing results are automatically uploaded to FTIR records using [Street Check from Brandeis University](https://streetcheck.org)
 + Machine-oriented [CSV access](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md) to results for confirmatory/complementary testing
 + GitHub repo for [data products](https://github.com/opioiddatalab/drugchecking/tree/main/datasets)
 + [Processing code](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/result_processing.do) showing variable creation
