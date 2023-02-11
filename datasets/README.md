@@ -4,11 +4,18 @@
 *February 2023: This documentation is in beta release. Expect changes.*<br>
 <br>
 
-Our mission is to provide the best data to prevent the most harm. For too long, people have only been told what's in the drug supply when it is too late: Dead or arrested. We are changing that by making all of our data public, instantly. To make sense of complex chemical names, we deploy soohisticated naltural lamguage processing (NLP) and semi-automated chemical and statistical analysis to find patterns in steet drug data. We strive to make sample results readable to humans. But we make datasets with extensive pre-processing so you can get on with science. <br><br>
+We are a public service of the University of North Carolina. Our mission is to provide the best data to prevent the most harm. For too long, people have only been told what's in the drug supply when it is too late: Dead or arrested. We are changing that by making all of our data public, [instantly](https://streetsafe.supply).<br><br>
+To make sense of complex chemical names, we deploy soohisticated naltural lamguage processing (NLP) and semi-automated chemical and statistical analysis to find patterns in steet drug data. We strive to make sample results readable to humans. But we also make datasets with extensive pre-processing so you can get on with science. <br><br>
 We intend for our datasets to be used only in the service of preventing health harms. We reserve the right to hold accountable anyone who touches these data with other intents. <br><br>
-For the sake of data tranparency, we expect attribution. We we do not require auhtorship. (Though, collaboration is welcome.) We make all our code publicly available and expect you will do the same when using our data. We expect publications to be in open access journals, and plain lamguage summaries provided back to the communities from which the samples arose. These are our community standards. We hope you will respect them.<br><br>
-Above all, we salute the front line harm reduction and public health workers who care for our communities. They are essential. Over years of shared truama, they are the ones who have built trust in the communities they serve. Without their cooperation, none of this knowledge would be possible. We expect them to be hailed in the Acknowledgements section of any manuscript or publication that results from the use of our data.<br>
+For the sake of data tranparency, we expect attribution. We we do not require auhtorship. (Though, collaboration is welcome.) We make all our code publicly available and expect you will do the same when using our data. We expect publications to be in open access journals, and plain lamguage summaries provided back to the communities from which the samples arose. These are our community standards. We hope you will respect them.<br>
 
+# Tyranny of the Molecule
+Mary Figgatt and Nabarun Dasgupta [pointed out](https://academic.oup.com/aje/article/191/2/248/6370874?login=false), molecules alone cannot tell the complete story of the experience with any given sample. We do not believe in molecules explaining everything. That is why our datasets also include subjective information and overdose experiences. We expect all analyses with these data to honor this contributed wisdom.<br>
+> As programs expand, we offer 2 guiding principles. First, the primary purpose of these programs is to deliver timely results to people who use drugs to mitigate health risks. Second, innovation is needed to go beyond criminal justice paradigms in laboratory analysis for a more nuanced understanding of health concerns.
+
+# Grattitude
+Above all, we salute the front line harm reduction and public health workers who care for our communities. They are essential. Over years of shared truama, they are the ones who have built trust in the communities they serve. Without their cooperation, none of this knowledge would be possible. We expect them to be hailed in the Acknowledgements section of any manuscript or publication that results from the use of our data.<br>
+Every chemical analysis was done by Erin Tracy, our lead chemist. We thank you for your service. Maryalice Nocera and Colin Miller keep the operation running, for which we are eternally grateful. Nabarun Dasgupta wrote the code, so mistakes can happen.<br>
 
 > **Warning**<br>
 > These data are intended for public health use to save lives.<br>
@@ -52,8 +59,9 @@ Resources available in human readable format for the general public, and in mach
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
 + Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
 + List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
-+ All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples
++ All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples in huaman readable format.
 + North Carolina [xylazine report live report web app](https://ncxylazine.streamlit.app) with live updated data
++ [Methods text](https://github.com/opioiddatalab/drugchecking/blob/main/docs/lab_methods.md) for grant proposals and papers.
 
 # File Inventory
 + `analysis_dataset` Example analysis dataset in WIDE format with processed and derived variables (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
