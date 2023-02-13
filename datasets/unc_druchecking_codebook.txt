@@ -3,17 +3,17 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:   9 Feb 2023, 16:25:53
+ opened on:  13 Feb 2023, 12:37:11
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 9 Feb 2023 16:25
+            Last saved: 13 Feb 2023 12:37
 
                  Label: [none]
-   Number of variables: 91
+   Number of variables: 93
 Number of observations: 20
-                  Size: 21,800 bytes ignoring labels, etc.
+                  Size: 21,880 bytes ignoring labels, etc.
 
 _dta:
   1.  "Example dataset (N=20) from UNC lab drug checking services. Lab results,
@@ -47,7 +47,7 @@ program                                                            Program name
 location                                                         City or County
 -------------------------------------------------------------------------------
 
-                  Type: String (str17), but longest is str12
+                  Type: String (str19), but longest is str12
 
          Unique values: 17                        Missing "": 0/20
 
@@ -1150,6 +1150,36 @@ lab_carfentanil_any:
   1.  "Exact match for carfentanil in primary or trace abundance."
 
 -------------------------------------------------------------------------------
+lab_ketamine_any                                       ketamine detected in lab
+-------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+
+                 Range: [0,0]                         Units: 1
+         Unique values: 1                         Missing .: 0/20
+
+            Tabulation: Freq.  Value
+                           20  0
+
+lab_ketamine_any:
+  1.  "Exact match for ketamine in primary or trace abundance."
+
+-------------------------------------------------------------------------------
+lab_ketamine                                           ketamine detected in lab
+-------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+
+                 Range: [0,0]                         Units: 1
+         Unique values: 1                         Missing .: 0/20
+
+            Tabulation: Freq.  Value
+                           20  0
+
+lab_ketamine:
+  1.  "Exact match for ketamine as a primary substance."
+
+-------------------------------------------------------------------------------
 lab_designer_benzos_any                    Any designer benzodizaepine detected
 -------------------------------------------------------------------------------
 
@@ -1544,5 +1574,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:   9 Feb 2023, 16:25:53
+ closed on:  13 Feb 2023, 12:37:12
 -------------------------------------------------------------------------------

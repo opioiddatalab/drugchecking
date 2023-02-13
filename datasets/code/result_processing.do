@@ -445,12 +445,22 @@ note lab_tramadol: "Exact match for tramadol as a primary substance."
 gen lab_carfentanil=0
 replace lab_carfentanil=1 if substance=="carfentanil" & abundance==""
 la var lab_carfentanil "carfentanil detected in lab"
-note lab_carfentanil: "Exact match for tramadol as a primary substance."
+note lab_carfentanil: "Exact match for carfentanil as a primary substance."
 
 gen lab_carfentanil_any=0
 replace lab_carfentanil_any=1 if substance=="carfentanil"
 la var lab_carfentanil_any "carfentanil detected in lab"
-note lab_carfentanil_any: "Exact match for tramadol in primary or trace abundance."
+note lab_carfentanil_any: "Exact match for carfentanil in primary or trace abundance."
+
+gen lab_ketamine_any=0
+replace lab_ketamine_any=1 if substance=="ketamine"
+la var lab_ketamine_any "ketamine detected in lab"
+note lab_ketamine_any: "Exact match for ketamine in primary or trace abundance."
+
+gen lab_ketamine=0
+replace lab_ketamine=1 if substance=="ketamine" & abundance==""
+la var lab_ketamine "ketamine detected in lab"
+note lab_ketamine: "Exact match for ketamine as a primary substance."
 
 
 // Impurities and drug categories
@@ -560,6 +570,10 @@ la var lab_carfentanil "carfentanil detected in lab"
 note lab_carfentanil: "Exact match for carfentanil as a primary substance."
 la var lab_carfentanil_any "carfentanil detected in lab"
 note lab_carfentanil_any: "Exact match for carfentanil in primary or trace abundance."
+la var lab_ketamine "ketamine detected in lab"
+note lab_ketamine: "Exact match for ketamine as a primary substance."
+la var lab_ketamine_any "ketamine detected in lab"
+note lab_ketamine_any: "Exact match for ketamine in primary or trace abundance."
 la var lab_cocaine_impurities_any "Any cocaine impurities detected"
 note lab_cocaine_impurities_any: "Known cocaine processing impurities, metabolites, and starting material detected in primary or trace abundance."
 la var lab_heroin_impurities_any "Any heroin impurities detected"
