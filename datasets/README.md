@@ -7,15 +7,15 @@
 We are a public service of the University of North Carolina. Our mission is to provide the best data to prevent the most harm. For too long, people have only been told what's in the drug supply when it is too late: Dead or arrested. We are changing that by making all of our data public, [instantly](https://streetsafe.supply).<br><br>
 To make sense of complex chemical names, we deploy soohisticated naltural lamguage processing (NLP) and semi-automated chemical and statistical analysis to find patterns in steet drug data. We strive to make sample results readable to humans. But we also make datasets with extensive pre-processing so you can get on with science. <br><br>
 We intend for our datasets to be used only in the service of preventing health harms. We reserve the right to hold accountable anyone who touches these data with other intents. <br><br>
-For the sake of data tranparency, we expect attribution. We we do not require auhtorship. (Though, collaboration is welcome.) We make all our code publicly available and expect you will do the same when using our data. We expect publications to be in open access journals, and plain lamguage summaries provided back to the communities from which the samples arose. These are our community standards. We hope you will respect them.<br>
+For the sake of data transparency, we expect attribution. We we do not require auhtorship. (Though, collaboration is welcome.) We make all our code publicly available and expect you will do the same when using our data. We expect publications to be in open access journals, and plain language summaries provided back to the communities from which the samples arose. These are our community standards. We hope you will respect them.<br>
 
 # Tyranny of the Molecule
 Mary Figgatt and Nabarun Dasgupta [pointed out](https://academic.oup.com/aje/article/191/2/248/6370874?login=false), molecules alone cannot tell the complete story of the experience with any given sample. We do not believe in molecules explaining everything. That is why our datasets also include subjective information and overdose experiences. We expect all analyses with these data to honor this contributed wisdom.<br>
-> As [drug checking] programs expand, we offer 2 guiding principles. First, the primary purpose of these programs is to deliver timely results to people who use drugs to mitigate health risks. Second, innovation is needed to go beyond criminal justice paradigms in laboratory analysis for a more nuanced understanding of health concerns.
-<br>
+> As [drug checking] programs expand, we offer 2 guiding principles. First, the primary purpose of these programs is to deliver timely results to people who use drugs to mitigate health risks. Second, innovation is needed to go beyond criminal justice paradigms in laboratory analysis for a more nuanced understanding of health concerns.<br>
+
 Also [check out our Canadian colleagues](https://harmreductionjournal.biomedcentral.com/articles/10.1186/s12954-022-00727-0) on how we ensure equitable access to drug checking and data.
 
-# Grattitude
+# Gratitude
 Above all, we salute the front line harm reduction and public health workers who care for our communities. They are essential. Over years of shared truama, they are the ones who have built trust in the communities they serve. Without their cooperation, none of this knowledge would be possible. We expect them to be hailed in the Acknowledgements section of any manuscript or publication that results from the use of our data.<br><br>
 Every chemical analysis was done by Erin Tracy, our lead chemist. We thank you for your service. Maryalice Nocera and Colin Miller keep the operation running, for which we are eternally grateful. Nabarun Dasgupta wrote the code, so mistakes can happen.<br>
 
@@ -82,11 +82,7 @@ Results files `analysis_dataset.*` and `lab_detail.*` are provided in:
 
 The `sampleid` variable links the datasets `analysis_dataset.*` and `lab_detail.*`.<br>
 
-<br>
-
-For a quick view of the data, see this [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example as a single file with 2 tabs.
-
-<br>
+For a quick view of the data, see this [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example as a single file with 2 tabs. <br>
 
 # Analysis Dataset
 The file `analysis_dataset.*` contains one row for each sample. It includes the characteristics that were reported on the card, and handy pre-processed variables to aid data analysis and visualization. The variable convention allows the analyst to quickly generate a time-series of how many samples contained fentanyl, for example in Stata:
