@@ -5,9 +5,9 @@
 <br>
 
 We are a public service of the University of North Carolina. Our mission is to provide the best data to prevent the most harm. For too long, people have only been told what's in the drug supply when it is too late: Dead or arrested. We are changing that by making all of our data public, [instantly](https://streetsafe.supply).<br><br>
-To make sense of complex chemical names, we deploy soohisticated naltural lamguage processing (NLP) and semi-automated chemical and statistical analysis to find patterns in steet drug data. We strive to make sample results readable to humans. But we also make datasets with extensive pre-processing so you can get on with science. <br><br>
+To make sense of complex chemical names, we deploy sophisticated natural language processing (NLP) and semi-automated chemical and statistical analysis to find patterns in street drug data. We strive to make sample results readable to humans. But we also make datasets with extensive pre-processing so you can get on with science. <br><br>
 We intend for our datasets to be used only in the service of preventing health harms. We reserve the right to hold accountable anyone who touches these data with other intents. <br><br>
-For the sake of data transparency, we expect attribution. We we do not require auhtorship. (Though, collaboration is welcome.) We make all our code publicly available and expect you will do the same when using our data. We expect publications to be in open access journals, and plain language summaries provided back to the communities from which the samples arose. These are our community standards. We hope you will respect them.<br>
+For the sake of data transparency, we expect attribution. We do not require authorship. (Though, collaboration is welcome.) We make all our code publicly available and expect you will do the same when using our data. We expect publications to be in open access journals, and plain language summaries provided back to the communities from which the samples arose. These are our community standards. We hope you will respect them.<br>
 
 # Tyranny of the Molecule
 Mary Figgatt and Nabarun Dasgupta [pointed out](https://academic.oup.com/aje/article/191/2/248/6370874?login=false), molecules alone cannot tell the complete story of the experience with any given sample. We do not believe in molecules explaining everything. That is why our datasets also include subjective information and overdose experiences. We expect all analyses with these data to honor this contributed wisdom.<br>
@@ -16,7 +16,7 @@ Mary Figgatt and Nabarun Dasgupta [pointed out](https://academic.oup.com/aje/art
 Also [check out our Canadian colleagues](https://harmreductionjournal.biomedcentral.com/articles/10.1186/s12954-022-00727-0) on how we ensure equitable access to drug checking and data.
 
 # Gratitude
-Above all, we salute the front line harm reduction and public health workers who care for our communities. They are essential. Over years of shared truama, they are the ones who have built trust in the communities they serve. Without their cooperation, none of this knowledge would be possible. We expect them to be hailed in the Acknowledgements section of any manuscript or publication that results from the use of our data.<br><br>
+Above all, we salute the front line harm reduction and public health workers who care for our communities. They are essential. Over years of shared trauma, they are the ones who have built trust in the communities they serve. Without their cooperation, none of this knowledge would be possible. We expect them to be hailed in the Acknowledgements section of any manuscript or publication that results from the use of our data.<br><br>
 Every chemical analysis was done by Erin Tracy, our lead chemist. We thank you for your service. Maryalice Nocera and Colin Miller keep the operation running, for which we are eternally grateful. Nabarun Dasgupta wrote the code, so mistakes can happen.<br>
 
 > **Warning**<br>
@@ -24,7 +24,7 @@ Every chemical analysis was done by Erin Tracy, our lead chemist. We thank you f
 > These data cannot be used for criminal prosecution because they are completely anonymous and do not conform to legal chain of custody requirements.<br>
 
 # Data Privacy Statement
-All samples were collected anonymously. No information idenitfying individuals or programs is available.
+All samples were collected anonymously. No information identifying individuals or programs is available.
 
 ---
 
@@ -33,9 +33,9 @@ All samples were collected anonymously. No information idenitfying individuals o
 Resources available in human readable format for the general public, and in machine readable format for technical audiences.
 
 # General Public
-+ If you are ready to start durg checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
++ If you are ready to start drug checking by mail, [request a startup kit](https://www.streetsafe.supply/contact).
 + Sample collection tutorial [video](https://vimeo.com/778263038/aae5f16d73)
-+ [Browseable results](https://www.streetsafe.supply/results) (searchable)
++ [Browsable results](https://www.streetsafe.supply/results) (searchable)
 + [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example data table viewer
 <br>
 <br>
@@ -52,7 +52,7 @@ Resources available in human readable format for the general public, and in mach
 + Machine-oriented [CSV access](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md) to results for confirmatory/complementary testing
 + GitHub repo for [data products](https://github.com/opioiddatalab/drugchecking/tree/main/datasets)
 + [Processing code](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/result_processing.do) showing variable creation
-+ [NLP code](https://github.com/opioiddatalab/drugchecking/blob/main/textexport/autotext.do) for converting sample results into human readable indivdual records for [website](https://streetsafe.supply)
++ [NLP code](https://github.com/opioiddatalab/drugchecking/blob/main/textexport/autotext.do) for converting sample results into human readable individual records for [website](https://streetsafe.supply)
 + [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample ID
 
 ![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/epi.png)
@@ -61,7 +61,7 @@ Resources available in human readable format for the general public, and in mach
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
 + Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
 + List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
-+ All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples in huaman readable format.
++ All [North Carolina](https://www.streetsafe.supply/results/location/nc-samples) samples in human readable format.
 + North Carolina [xylazine report live report web app](https://ncxylazine.streamlit.app) with live updated data
 + [Methods text](https://github.com/opioiddatalab/drugchecking/blob/main/docs/lab_methods.md) for grant proposals and papers.
 
