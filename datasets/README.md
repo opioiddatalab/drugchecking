@@ -41,7 +41,7 @@ Resources available in human readable format for the general public, and in mach
 <br>
 ![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/chemistry.png)
 
-# Chemisty Audience
+# Chemistry Audience
 + [List of all substances detected](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/substances_detected.csv) with frequencies
 + [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
 
@@ -109,7 +109,7 @@ You can import the example `analysis_dataset.csv` instantly into Google sheets b
 <br>
 
 # Lab Detail Dataset
-The `lab_detail.*` file contains one row for each substance detected for each sample. The derived variables use the same naming convention and allow for understanding how each substance is clasified. Additional variables can be constructed using searches on the `substance` variable. This file does not contain the information from the card provided during sample collection, which instead appears in `analysis_dataset.*` for the sake of data efficiency. This also allows you to see trace back and see how variable was contructed at an individual chemical level.<br><br>
+The `lab_detail.*` file contains one row for each substance detected for each sample. The derived variables use the same naming convention and allow for understanding how each substance is classified. Additional variables can be constructed using searches on the `substance` variable. This file does not contain the information from the card provided during sample collection, which instead appears in `analysis_dataset.*` for the sake of data efficiency. This also allows you to see trace back and see how variable was constructed at an individual chemical level.<br><br>
 
 | sampleid | substance | method | abundance |lab_fentanyl|lab_fentanyl_impurity|lab_xylazine|lab_xylazine_any|
 |-----:|---------------|--------|-----------|------------|-----------------------|------------|----------------|
