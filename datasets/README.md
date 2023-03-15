@@ -38,7 +38,6 @@ Resources available in human readable format for the general public, and in mach
 + [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example data table viewer
 <br>
 <br>
-![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/chemistry.png)
 
 # Chemistry Audience
 + [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
