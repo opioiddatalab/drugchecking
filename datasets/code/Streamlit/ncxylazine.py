@@ -210,15 +210,11 @@ st.table(mostrecent)
 
 st.markdown("---")
 
-st.header("What substances were also detected?")
-st.markdown("Xylazine was found mostly mixed with fentanyl and heroin. But cocaine and xylazine were routinely found together. Less often, we found xylazine in trace amounts with methamphetamine and other drugs. Samples containing xylazine are most often reported to feel stronger.")
+st.header("What were the sensations associated with xylazine?")
 
-col1, col2 = st.columns(2)
+col1 = st.columns(1)
 
 with col1:
-    st.dataframe(x_subs)
-
-with col2:
     st.altair_chart(sensations)
 
 st.markdown("---")
@@ -231,6 +227,7 @@ st.markdown("Data documentation available [here](https://opioiddatalab.github.io
 
 st.markdown("---")
 st.header("Why are we concerned about xylazine?")
+st.video('https://youtu.be/MVs7ZfILCjE')
 st.video('https://www.youtube.com/watch?v=orzgwi7sxFM')
 
 st.markdown("---")
