@@ -29,8 +29,6 @@ All samples were collected anonymously. No information identifying individuals o
 
 ---
 
-![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/3pasteldataflow.png)
-
 Resources available in human readable format for the general public, and in machine readable format for technical audiences.
 
 # General Public
@@ -45,8 +43,6 @@ Resources available in human readable format for the general public, and in mach
 # Chemistry Audience
 + [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
 
-![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/softwaredev.png)
-
 # Software Developers
 + Confirmatory/complementary testing results are automatically uploaded to FTIR records using [Street Check from Brandeis University](https://streetcheck.org)
 + Machine-oriented [CSV access](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/labservice/README.md) to results for confirmatory/complementary testing
@@ -54,8 +50,6 @@ Resources available in human readable format for the general public, and in mach
 + [Processing code](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/result_processing.do) showing variable creation
 + [NLP code](https://github.com/opioiddatalab/drugchecking/blob/main/textexport/autotext.do) for converting sample results into human readable individual records for [website](https://streetsafe.supply)
 + [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample ID
-
-![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/epi.png)
 
 # Epidemiology Audience
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
