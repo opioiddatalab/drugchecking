@@ -210,12 +210,9 @@ st.table(mostrecent)
 
 st.markdown("---")
 
-st.header("What were the sensations associated with xylazine?")
+st.header("What sensations are associated with xylazine?")
 
-col1 = st.columns(1)
-
-with col1:
-    st.altair_chart(sensations)
+st.altair_chart(sensations)
 
 st.markdown("---")
 
