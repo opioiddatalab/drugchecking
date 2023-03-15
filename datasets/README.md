@@ -22,7 +22,7 @@ Every chemical analysis was done by Erin Tracy, our lead chemist. We thank you f
 
 > **Warning**<br>
 > These data are intended for public health use to save lives.<br>
-> These data cannot be used for criminal prosecution because they are completely anonymous and do not conform to legal chain of custody requirements.<br>
+> These data cannot be used for criminal prosecution because they are completely anonymous and do not conform to legal chain of custody requirements. We explicitly prohibit the use of these data for drug scheduling purposes.<br>
 
 # Data Privacy Statement
 All samples were collected anonymously. No information identifying individuals or programs is available.
