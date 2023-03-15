@@ -1,12 +1,13 @@
 # UNC Drug Checking Lab - Datasets
 
 
-*February 2023: This documentation is in beta release. Expect changes.*<br>
+*March 2023: This documentation is in beta release. Expect changes.*<br>
 <br>
 
-We are a public service of the University of North Carolina. Our mission is to provide the best data to prevent the most harm. For too long, people have only been told what's in the drug supply when it is too late: Dead or arrested. We are changing that by making all of our data public, [instantly](https://streetsafe.supply).<br><br>
+We are a public service of the University of North Carolina. Our mission is to provide the best data to prevent the most harm. For too long, people have only been told what's in the drug supply when it is too late: Dead or arrested. We are changing that by making data public for harm reduction programs and the people they serve.
+<br><br>
 To make sense of complex chemical names, we deploy sophisticated natural language processing (NLP) and semi-automated chemical and statistical analysis to find patterns in street drug data. We strive to make sample results readable to humans. But we also make datasets with extensive pre-processing so you can get on with science. <br><br>
-We intend for our datasets to be used only in the service of preventing health harms. We reserve the right to hold accountable anyone who touches these data with other intents. <br><br>
+We intend for our datasets to be used only in the service of preventing health harms. We reserve the right to hold accountable anyone who touches these data with other intents, including scheduling. <br><br>
 For the sake of data transparency, we expect attribution. We do not require authorship. (Though, collaboration is welcome.) We make all our code publicly available and expect you will do the same when using our data. We expect publications to be in open access journals, and plain language summaries provided back to the communities from which the samples arose. These are our community standards. We hope you will respect them.<br>
 
 # Tyranny of the Molecule
@@ -42,7 +43,6 @@ Resources available in human readable format for the general public, and in mach
 ![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/chemistry.png)
 
 # Chemistry Audience
-+ [List of all substances detected](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/substances_detected.csv) with frequencies
 + [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
 
 ![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/softwaredev.png)
