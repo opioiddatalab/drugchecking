@@ -1,12 +1,13 @@
 # UNC Drug Checking Lab - Datasets
 
 
-*February 2023: This documentation is in beta release. Expect changes.*<br>
+*March 2023: This documentation is in beta release. Expect changes.*<br>
 <br>
 
-We are a public service of the University of North Carolina. Our mission is to provide the best data to prevent the most harm. For too long, people have only been told what's in the drug supply when it is too late: Dead or arrested. We are changing that by making all of our data public, [instantly](https://streetsafe.supply).<br><br>
+We are a public service of the University of North Carolina. Our mission is to provide the best data to prevent the most harm. For too long, people have only been told what's in the drug supply when it is too late: Dead or arrested. We are changing that by making data public for harm reduction programs and the people they serve.
+<br><br>
 To make sense of complex chemical names, we deploy sophisticated natural language processing (NLP) and semi-automated chemical and statistical analysis to find patterns in street drug data. We strive to make sample results readable to humans. But we also make datasets with extensive pre-processing so you can get on with science. <br><br>
-We intend for our datasets to be used only in the service of preventing health harms. We reserve the right to hold accountable anyone who touches these data with other intents. <br><br>
+We intend for our datasets to be used only in the service of preventing health harms. We reserve the right to hold accountable anyone who touches these data with other intents, including scheduling. <br><br>
 For the sake of data transparency, we expect attribution. We do not require authorship. (Though, collaboration is welcome.) We make all our code publicly available and expect you will do the same when using our data. We expect publications to be in open access journals, and plain language summaries provided back to the communities from which the samples arose. These are our community standards. We hope you will respect them.<br>
 
 # Tyranny of the Molecule
@@ -21,14 +22,12 @@ Every chemical analysis was done by Erin Tracy, our lead chemist. We thank you f
 
 > **Warning**<br>
 > These data are intended for public health use to save lives.<br>
-> These data cannot be used for criminal prosecution because they are completely anonymous and do not conform to legal chain of custody requirements.<br>
+> These data cannot be used for criminal prosecution because they are completely anonymous and do not conform to legal chain of custody requirements. We explicitly prohibit the use of these data for drug scheduling purposes.<br>
 
 # Data Privacy Statement
 All samples were collected anonymously. No information identifying individuals or programs is available.
 
 ---
-
-![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/3pasteldataflow.png)
 
 Resources available in human readable format for the general public, and in machine readable format for technical audiences.
 
@@ -39,13 +38,9 @@ Resources available in human readable format for the general public, and in mach
 + [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example data table viewer
 <br>
 <br>
-![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/chemistry.png)
 
 # Chemistry Audience
-+ [List of all substances detected](https://github.com/opioiddatalab/drugchecking/blob/main/chemdictionary/substances_detected.csv) with frequencies
 + [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
-
-![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/softwaredev.png)
 
 # Software Developers
 + Confirmatory/complementary testing results are automatically uploaded to FTIR records using [Street Check from Brandeis University](https://streetcheck.org)
@@ -54,8 +49,6 @@ Resources available in human readable format for the general public, and in mach
 + [Processing code](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/result_processing.do) showing variable creation
 + [NLP code](https://github.com/opioiddatalab/drugchecking/blob/main/textexport/autotext.do) for converting sample results into human readable individual records for [website](https://streetsafe.supply)
 + [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample ID
-
-![schematic](https://github.com/opioiddatalab/drugchecking/raw/main/docs/graphics/data%20flow/epi.png)
 
 # Epidemiology Audience
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
