@@ -3,17 +3,17 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:  15 Feb 2023, 17:13:04
+ opened on:  17 Mar 2023, 10:41:47
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 15 Feb 2023 17:13
+            Last saved: 17 Mar 2023 10:41
 
                  Label: [none]
    Number of variables: 93
 Number of observations: 20
-                  Size: 21,880 bytes ignoring labels, etc.
+                  Size: 22,480 bytes ignoring labels, etc.
 
 _dta:
   1.  "Example dataset (N=20) from UNC lab drug checking services. Lab results,
@@ -36,7 +36,7 @@ sampleid                                                            (unlabeled)
 program                                                            Program name
 -------------------------------------------------------------------------------
 
-                  Type: String (str41), but longest is str8
+                  Type: String (str44), but longest is str8
 
          Unique values: 1                         Missing "": 0/20
 
@@ -187,7 +187,7 @@ collection                        Collection method, consolidated for reporting
 expectedsubstance                           Verbatim expected substance on card
 -------------------------------------------------------------------------------
 
-                  Type: String (str51), but longest is str16
+                  Type: String (str68), but longest is str16
 
          Unique values: 8                         Missing "": 0/20
 
@@ -750,7 +750,7 @@ overdose_notes                         Verbatim description of overdose event.
                                        Not routinely completed.
 -------------------------------------------------------------------------------
 
-                  Type: String (str221), but longest is str63
+                  Type: String (str231), but longest is str63
 
          Unique values: 3                         Missing "": 17/20
 
@@ -1574,5 +1574,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:  15 Feb 2023, 17:13:04
+ closed on:  17 Mar 2023, 10:41:47
 -------------------------------------------------------------------------------

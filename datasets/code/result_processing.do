@@ -775,7 +775,7 @@ export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking
 	
 // Save custom datasets for each client in a separate GitHub repository
 
-** Western North Carolina (STEADY + Holler)
+** Western North Carolina 
 do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/export_wnc.do"
 
 
