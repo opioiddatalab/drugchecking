@@ -7,8 +7,8 @@ substance,samples,rank
 "heroin",32,6
 "cocaine",30,7
 "lidocaine",25,8
-"despropionyl p-fluorofentanyl",22,9
-"N-phenylpropanamide",22,10
+"N-phenylpropanamide",22,9
+"despropionyl p-fluorofentanyl",22,10
 "methamphetamine",21,11
 "dimethyl sulfone (methylsulfonylmethane MSM)",20,12
 "non-specific sugars",17,13
@@ -21,40 +21,40 @@ substance,samples,rank
 "tramadol",13,20
 "acetaminophen",11,21
 "procaine",7,22
-"diphenhydramine",6,23
-"phenethyl bromide",6,24
-"methyl ecgonidine (MED)",5,25
-"1-phenyl-1-propanamine",5,26
+"phenethyl bromide",6,23
+"diphenhydramine",6,24
+"1-phenyl-1-propanamine",5,25
+"methyl ecgonidine (MED)",5,26
 "1-phenethyl-4-propionyloxypiperidine",4,27
 "quinine",3,28
-"phenacetin",3,29
-"menthol",3,30
-"gabapentin",2,31
-"sucrose",2,32
-"hydrocotarnine",2,33
-"melatonin",2,34
-"phenethyl chloride",2,35
-"tropacocaine",2,36
-"benzoylecgonine (BZ)",2,37
-"levamisole",2,38
-"meconin",2,39
-"urea",2,40
+"menthol",3,29
+"phenacetin",3,30
+"levamisole",2,31
+"melatonin",2,32
+"sucrose",2,33
+"meconin",2,34
+"benzoylecgonine (BZ)",2,35
+"phenethyl chloride",2,36
+"hydrocotarnine",2,37
+"tropacocaine",2,38
+"gabapentin",2,39
+"mannitol",2,40
 "valeryl fentanyl",2,41
-"mannitol",2,42
-"lactose",1,43
-"delta-9-THC",1,44
-"benzocaine",1,45
-"non-specific organic acids",1,46
-"noscapine",1,47
-"p-fluoroacetyl fentanyl",1,48
-"acetyl fentanyl",1,49
-"ecgonine methylester (EME)",1,50
-"papaverine",1,51
-"ketamine",1,52
-"ibuprofen",1,53
-"N-propionyl norfentanyl",1,54
-"methylparaben",1,55
-"nicotine",1,56
-"norcocaine",1,57
-"benzoic acid",1,58
-"medetomidine",1,59
+"urea",2,42
+"non-specific organic acids",1,43
+"nicotine",1,44
+"lactose",1,45
+"papaverine",1,46
+"norcocaine",1,47
+"delta-9-THC",1,48
+"ecgonine methylester (EME)",1,49
+"ketamine",1,50
+"benzocaine",1,51
+"benzoic acid",1,52
+"acetyl fentanyl",1,53
+"p-fluoroacetyl fentanyl",1,54
+"ibuprofen",1,55
+"medetomidine",1,56
+"noscapine",1,57
+"methylparaben",1,58
+"N-propionyl norfentanyl",1,59
