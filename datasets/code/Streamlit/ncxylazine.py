@@ -483,12 +483,3 @@ st.markdown("We are grateful to our two funders: Foundation for Opioid Response 
 st.markdown("---")
 st.markdown("_fin._")
 
-
-#delete me#delete me
-#delete me#delete me#delete me#delete me#delete me
-<<<<<<< Updated upstream
-#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me
-=======
-#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me
->>>>>>> Stashed changes
-#delete me#delete me#delete me#delete me#delete me
