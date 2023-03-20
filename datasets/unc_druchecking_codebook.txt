@@ -3,12 +3,12 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:  20 Mar 2023, 13:51:02
+ opened on:  20 Mar 2023, 16:32:42
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 20 Mar 2023 13:51
+            Last saved: 20 Mar 2023 16:32
 
                  Label: [none]
    Number of variables: 93
@@ -790,8 +790,8 @@ confirmatory              Sample for GCMS confirmatory or complementary testing
          Unique values: 2                         Missing .: 0/20
 
             Tabulation: Freq.  Value
-                           17  0
-                            3  1
+                           16  0
+                            4  1
 
 -------------------------------------------------------------------------------
 date_complete                                       Date lab analysis completed
@@ -1574,5 +1574,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:  20 Mar 2023, 13:51:03
+ closed on:  20 Mar 2023, 16:32:42
 -------------------------------------------------------------------------------

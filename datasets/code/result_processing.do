@@ -338,7 +338,10 @@ gen confirmatory=0
 replace confirmatory=1 if regexm(sampleid,"^800")
 *****  Initial OR samples with 300xxx numbering
 replace confirmatory=1 if regexm(sampleid,"300555|300561|300572|300577|300593|300715|300717|300748|300755|300760|300764|300788|300790|300796")
-la var confirmatory "Sample for GCMS confirmatory or complementary testing"
+******** NYS state startup kits
+replace confirmatory=1 if regexm(sampleid,"300851|300839300848|300831|300821|300810|300878|300873|300887|300885|300672|300613|300644|300674|300736")
+
+la var confirmatory "Sample for GCMS confirmatory/complementary testing"
 
 ** Convert peaks to string to get around float numerical issue
 tostring peak, g(gcms_peak) force
