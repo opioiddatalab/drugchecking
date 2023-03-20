@@ -150,8 +150,7 @@ st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. I
 
 st.markdown("---")
 st.header("Where has xylazine been detected?")
-st.markdown("The map shows where we have detected xylazine in street drugs. We have more programs reporting")
-st.markdown(":label: Keep in mind we have more programs and samples from the center of the state. Xylazine is certainly present elsewhere.")
+st.markdown(":label: Keep in mind we have more samples from the center of the state. Xylazine is certainly present elsewhere.")
 
 # Chloropeth map
 ## Load public NC data
