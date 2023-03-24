@@ -3,7 +3,7 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice
 > /expected_stimulants/stimulant_fent_codebook.txt
   log type:  text
- opened on:  24 Mar 2023, 09:29:00
+ opened on:  24 Mar 2023, 09:44:00
 
 . codebook, n h
 
@@ -1422,8 +1422,8 @@ tracestim                                      If 1 then coke/meth ONLY in trace
          Unique values: 2                         Missing .: 0/478
 
             Tabulation: Freq.  Value
-                          423  0
-                           55  1
+                          347  0
+                          131  1
 
 ------------------------------------------------------------------------------------------
 category                                1 if primary meth, 2 if primary cocaine, 3 if both
@@ -1461,5 +1461,5 @@ program                                                        De-identified pro
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice
 > /expected_stimulants/stimulant_fent_codebook.txt
   log type:  text
- closed on:  24 Mar 2023, 09:29:00
+ closed on:  24 Mar 2023, 09:44:00
 ------------------------------------------------------------------------------------------
