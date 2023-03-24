@@ -3,7 +3,7 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice
 > /expected_stimulants/stimulant_fent_codebook.txt
   log type:  text
- opened on:  24 Mar 2023, 09:44:00
+ opened on:  24 Mar 2023, 14:51:10
 
 . codebook, n h
 
@@ -1447,19 +1447,19 @@ program                                                        De-identified pro
 
                   Type: Numeric (float)
 
-                 Range: [1,79]                        Units: 1
-         Unique values: 79                        Missing .: 0/478
+                 Range: [1,41]                        Units: 1
+         Unique values: 41                        Missing .: 2/478
 
-                  Mean: 15.4038
-             Std. dev.: 16.6189
+                  Mean:  19.479
+             Std. dev.: 11.1959
 
            Percentiles:     10%       25%       50%       75%       90%
-                              2         4        10        21        36
+                              5        10        17        29        37
 
 . log close
       name:  <unnamed>
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice
 > /expected_stimulants/stimulant_fent_codebook.txt
   log type:  text
- closed on:  24 Mar 2023, 09:44:00
+ closed on:  24 Mar 2023, 14:51:11
 ------------------------------------------------------------------------------------------
