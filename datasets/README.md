@@ -59,8 +59,16 @@ Resources available in human readable format for the general public, and in mach
 + [Methods text](https://github.com/opioiddatalab/drugchecking/blob/main/docs/lab_methods.md) for grant proposals and papers.
 
 # File Inventory
-+ `analysis_dataset` Example analysis dataset in WIDE format with processed and derived variables (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
-+ `lab_detail` Example lab detail dataset in LONG format with standardized chemical names (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
++ `analysis_dataset` Example analysis dataset in WIDE format with processed and derived variables (N=20)
+<br>[Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta)
+<br>[Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx)
+<br>[SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt)
+<br>[CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
++ `lab_detail` Example lab detail dataset in LONG format with standardized chemical names (N=20)
+<br>[Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta)
+<br>[Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx)
+<br>[SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt)
+<br>[CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
 
 <br>
 
@@ -120,7 +128,7 @@ You can import the example `lab_detail.csv` instantly into Google sheets by past
 
 # GCMS Chromatograms
 
-![chromatogram](https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830.PNG)
+![chromatogram](https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/olderspectra/300830.PNG)
 
 The chromatogram is one of the outputs we analyze, a summary of the constituents (note: the chromatogram above is similar to, but not exactly the same, as the structured data example). All chromatograms can be [found in this folder](https://github.com/opioiddatalab/drugchecking/tree/main/spectra) in PNG format. File naming convention is just the sample ID followed by `.PNG`. Syntax for direct call for spectra image files via URL:
 
