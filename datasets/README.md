@@ -72,25 +72,12 @@ Resources available in human readable format for the general public, and in mach
 
 <br>
 
-# File Formats
-Results files `analysis_dataset.*` and `lab_detail.*` are provided in:
-+ Stata (v14 or later)
-+ Excel (.xlsx)
-+ SAS (transport v8)
-+ CSV (comma-separated with quote enclosure for strings)
-
-<br>
-
 The `sampleid` variable links the datasets `analysis_dataset.*` and `lab_detail.*`.<br>
 
 For a quick view of the data, see this [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example as a single file with 2 tabs. <br>
 
 # Analysis Dataset
-The file `analysis_dataset.*` contains one row for each sample. It includes the characteristics that were reported on the card, and handy pre-processed variables to aid data analysis and visualization. The variable convention allows the analyst to quickly generate a time-series of how many samples contained fentanyl, for example in Stata:
-
-```
-table date if lab_fentanyl_any==1
-```
+The file `analysis_dataset.*` contains one row for each sample. It includes the characteristics that were reported on the card, and handy pre-processed variables to aid data analysis and visualization. The variable convention allows the analyst to quickly generate a time-series of how many samples contained fentanyl, for example.
 
 It also contains 1/0 derived flags to help easily answer many common analytic questions, such as whether the sample contains xylazine, or if any fentanyl processing impurities (like 4-ANPP) were detected. These derived variables are indicated with the naming convention `lab_` in the variable name. The presence of particular compounds is marked `_any` in the variable name to indicate that the substance was detected in primary or trace amounts. The lack of a `_any` in the variable name means that it was the detected as a primary substance. Therefore, this sample contains xylazine in trace abundance `lab_xylazine_any=1` but not as a primary constituent `lab_xylazine=0`.<br><br>
 
@@ -125,6 +112,12 @@ You can import the example `lab_detail.csv` instantly into Google sheets by past
 =importData("https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/lab_detail.csv")
 
 ```
+
+<br>
+
+## See full [technical data details](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md) for more info
+
+<br>
 
 # GCMS Chromatograms
 
