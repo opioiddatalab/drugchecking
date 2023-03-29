@@ -50,6 +50,7 @@ Resources available in human readable format for the general public, and in mach
 + [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample ID
 
 # Epidemiology Audience
++ [Full technical data details](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md]
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
 + Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
 + List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
