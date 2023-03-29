@@ -37,7 +37,6 @@ Resources available in human readable format for the general public, and in mach
 + [Browsable results](https://www.streetsafe.supply/results) (searchable)
 + [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example data table viewer
 <br>
-<br>
 
 # Chemistry Audience
 + [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
