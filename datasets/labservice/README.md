@@ -59,7 +59,7 @@ Data availability using these files started on January 1, 2023. Results are upda
 The chromatogram is one of the outputs we analyze, a summary of the constituents. All chromatograms can be [found in this folder](https://github.com/opioiddatalab/drugchecking/tree/main/spectra) in PNG format. File naming convention is just the sample ID followed by `.PNG`. Syntax for direct call for spectra image files via URL:
 
 ```
-https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830.PNG
+https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/olderspectra/300830.PNG
 ```
 
 + Peak 6.65 = caffeine
