@@ -37,7 +37,6 @@ Resources available in human readable format for the general public, and in mach
 + [Browsable results](https://www.streetsafe.supply/results) (searchable)
 + [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example data table viewer
 <br>
-<br>
 
 # Chemistry Audience
 + [Chemical Dictionary](https://github.com/opioiddatalab/drugchecking/tree/main/chemdictionary) with pronunciations and classifications
@@ -51,6 +50,7 @@ Resources available in human readable format for the general public, and in mach
 + [Canonical list](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/code/completed.csv) of all completed sample ID
 
 # Epidemiology Audience
++ [Full technical data details](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md]
 + Data collection card and sample collection instructions [PDF](https://cdr.lib.unc.edu/concern/multimeds/5d86p887m?locale=en)
 + Full documentation in [codebook](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/unc_druchecking_codebook.txt)
 + List of all samples [containing xylazine](https://www.streetsafe.supply/results/xylazine)
@@ -59,17 +59,16 @@ Resources available in human readable format for the general public, and in mach
 + [Methods text](https://github.com/opioiddatalab/drugchecking/blob/main/docs/lab_methods.md) for grant proposals and papers.
 
 # File Inventory
-+ `analysis_dataset` Example analysis dataset in WIDE format with processed and derived variables (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
-+ `lab_detail` Example lab detail dataset in LONG format with standardized chemical names (N=20) [Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta) [Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx) [SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt) [CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
-
-<br>
-
-# File Formats
-Results files `analysis_dataset.*` and `lab_detail.*` are provided in:
-+ Stata (v14 or later)
-+ Excel (.xlsx)
-+ SAS (transport v8)
-+ CSV (comma-separated with quote enclosure for strings)
++ `analysis_dataset` Example analysis dataset in WIDE format with processed and derived variables (N=20)
+<br>[Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.dta)
+<br>[Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.xlsx)
+<br>[SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.v8xpt)
+<br>[CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/analysis_dataset.csv)
++ `lab_detail` Example lab detail dataset in LONG format with standardized chemical names (N=20)
+<br>[Stata](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.dta)
+<br>[Excel](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.xlsx)
+<br>[SAS](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.v8xpt)
+<br>[CSV](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/lab_detail.csv)
 
 <br>
 
@@ -78,11 +77,7 @@ The `sampleid` variable links the datasets `analysis_dataset.*` and `lab_detail.
 For a quick view of the data, see this [Google Sheets](https://docs.google.com/spreadsheets/d/13tXdH9tdAcSNcyEA7Y6F8hdgu2tygL3ePUrxHSRY0OA/edit?usp=sharing) example as a single file with 2 tabs. <br>
 
 # Analysis Dataset
-The file `analysis_dataset.*` contains one row for each sample. It includes the characteristics that were reported on the card, and handy pre-processed variables to aid data analysis and visualization. The variable convention allows the analyst to quickly generate a time-series of how many samples contained fentanyl, for example in Stata:
-
-```
-table date if lab_fentanyl_any==1
-```
+The file `analysis_dataset.*` contains one row for each sample. It includes the characteristics that were reported on the card, and handy pre-processed variables to aid data analysis and visualization. The variable convention allows the analyst to quickly generate a time-series of how many samples contained fentanyl, for example.
 
 It also contains 1/0 derived flags to help easily answer many common analytic questions, such as whether the sample contains xylazine, or if any fentanyl processing impurities (like 4-ANPP) were detected. These derived variables are indicated with the naming convention `lab_` in the variable name. The presence of particular compounds is marked `_any` in the variable name to indicate that the substance was detected in primary or trace amounts. The lack of a `_any` in the variable name means that it was the detected as a primary substance. Therefore, this sample contains xylazine in trace abundance `lab_xylazine_any=1` but not as a primary constituent `lab_xylazine=0`.<br><br>
 
@@ -118,9 +113,15 @@ You can import the example `lab_detail.csv` instantly into Google sheets by past
 
 ```
 
+<br>
+
+## See full [technical data details](https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md) for more info
+
+<br>
+
 # GCMS Chromatograms
 
-![chromatogram](https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/300830.PNG)
+![chromatogram](https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/spectra/olderspectra/300830.PNG)
 
 The chromatogram is one of the outputs we analyze, a summary of the constituents (note: the chromatogram above is similar to, but not exactly the same, as the structured data example). All chromatograms can be [found in this folder](https://github.com/opioiddatalab/drugchecking/tree/main/spectra) in PNG format. File naming convention is just the sample ID followed by `.PNG`. Syntax for direct call for spectra image files via URL:
 
