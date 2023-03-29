@@ -10,10 +10,10 @@ For confirmatory/complementary testing customers, the dataset file names will be
 
 ## File Formats
 Results files `analysis_dataset.*` and `lab_detail.*` are provided in:
-+ Stata (v14 or later)
-+ Excel (.xlsx)
-+ SAS (transport v8)
-+ CSV (comma-separated with quote enclosure for strings)
++ Stata (v14 or later) - `*.dta`
++ Excel (XML) - `*.xlsx`
++ SAS (transport v8) - `*.v8xpt`
++ CSV (comma-separated with quote enclosure for strings) - `*.csv`
 
 <br>
 
