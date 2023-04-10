@@ -699,7 +699,6 @@ save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.d
 // Generate canonical list of geocoded locations
 keep sampleid county full_state lat lon
 duplicates drop sampleid, force
-drop if sampleid=="300524" & county=="New Hanover County"
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geo_canonical.dta", replace
 
 // Save NC Public Dataset without program name
