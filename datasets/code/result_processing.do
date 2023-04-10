@@ -288,6 +288,7 @@ la var plant "Sample from plant or leaf noted on card."
 
 gen crystals=.
 replace crystals=1 if regexm(texture, "crystal")
+replace crystals=1 if regexm(texture_notes, "shard") & crystals!=1
 la var crystals "Texture noted as crystals."
 
 gen lustre=.
@@ -697,6 +698,8 @@ save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.d
 
 // Generate canonical list of geocoded locations
 keep sampleid county full_state lat lon
+duplicates drop sampleid, force
+drop if sampleid=="300524" & county=="New Hanover County"
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geo_canonical.dta", replace
 
 // Save NC Public Dataset without program name
