@@ -276,7 +276,7 @@ la var pill "Composite flag (1) if indication that sample was from a pill"
 
 gen tar=.
 replace tar=1 if regexm(texture_notes,"tar")
-replace tar=1 if regexm(texture,"oil") & expect_opioid==1
+replace tar=1 if regexm(texture,"oil") & expect_opioid==1 & tar==.
 la var tar "Derived flag (1) if notes on card or conversations with donor indicate sample was black tar heroin. Also marked tar if texture is oil/wax and the expected subsance is an opioid."
 
 gen powder=.
@@ -293,7 +293,7 @@ la var crystals "Texture noted as crystals."
 
 gen lustre=.
 replace lustre=-1 if regexm(texture, "dull")
-replace lustre=1 if regexm(texture, "shiny")
+replace lustre=1 if regexm(texture, "shiny") & lustre==.
 la var lustre "Lustre either shiny (1) or dull (-1). Cannot be both."
 label define lustre_label -1 "dull" 1 "shiny"
 label values lustre lustre_label
