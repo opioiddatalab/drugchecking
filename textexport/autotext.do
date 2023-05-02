@@ -340,8 +340,8 @@ gen t_unknown = "This sample contains unknown substances(s). This means we could
 gen t_sugars = "Non-specific sugars won't show up on the graph. See note below under 'What we can and can't tell'. <br><br>" if regexm(lower(t_major), "sugars") | regexm(lower(t_trace), "sugars")
 
 ** Peaks caveat
-gen t_caveat = "Peaks that don't appear on the graph were detected using other advanced methods. If a peak appears on the graph but isn't listed above, then we reviewed it and determined it is inactive background noise. Contact us if you want details." + "<br><br>" if regexm(t_detail,"Major substances in graph")
-replace t_caveat="" if regexm(lower(t_major),"no substances of interest detected")
+*gen t_caveat = "Peaks that don't appear on the graph were detected using other advanced methods. If a peak appears on the graph but isn't listed above, then we reviewed it and determined it is inactive background noise. Contact us if you want details." + "<br><br>" if regexm(t_detail,"Major substances in graph")
+*replace t_caveat="" if regexm(lower(t_major),"no substances of interest detected")
 
 ** Pill caveat
 gen t_pill = "For pills and fake pills, you may see extra peaks on the left hand part of the chromatogram. These represent fillers and trace chemicals from the pill binder. These substances are better isolated using infrared light (FTIR), and GCMS only provides limited information. See note below under 'What we can and can't tell'. Contact us if you want details.<br><br>" if regexm(lower(t_detail), "pill|xanax|alprazolam|m30|fake|counterfeit")
@@ -388,7 +388,11 @@ replace t_sensations="" if t_sensations=="Sensations not reported"
 replace t_od="" if t_od=="Not sure if caused overdose."
 
 // Assemble for HTML
-gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_hint + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_pill + t_labnotes + t_recorddate
+gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_hint + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_pill + t_labnotes + t_recorddate
+
+// Remove t_caveat from the output to avoid confusion May 2, 2023
+//gen Description = "<p>" + t_location + "<br>" + t_expected + "<br><br>" + t_major + "<br>" + t_trace + t_tracetext + t_hint + t_fentanyl + t_xylazine + t_unknown + t_mix + t_fluoro + t_color + t_hr + t_detail + "<br>" + "Method(s): " + t_method + "<br>" + t_caveat + t_pill + t_labnotes + t_recorddate
+
 
 
 // File cleanup and save
