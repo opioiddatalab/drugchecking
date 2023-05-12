@@ -9,8 +9,8 @@ substance,samples,rank
 "lidocaine",31,8
 "despropionyl p-fluorofentanyl",26,9
 "dimethyl sulfone (methylsulfonylmethane MSM)",25,10
-"N-phenylpropanamide",24,11
-"methamphetamine",24,12
+"methamphetamine",24,11
+"N-phenylpropanamide",24,12
 "ethyl-4-ANPP",23,13
 "acetylcodeine",21,14
 "6-monoacetylmorphine (6-MAM)",20,15
@@ -20,46 +20,46 @@ substance,samples,rank
 "caffeine",18,19
 "non-specific sugars",17,20
 "acetaminophen",13,21
-"diphenhydramine",9,22
-"procaine",9,23
+"procaine",9,22
+"diphenhydramine",9,23
 "phenethyl bromide",8,24
-"1-phenethyl-4-propionyloxypiperidine",5,25
-"methyl ecgonidine (MED)",5,26
-"1-phenyl-1-propanamine",5,27
-"menthol",4,28
-"N-propionyl norfentanyl",4,29
+"1-phenyl-1-propanamine",5,25
+"1-phenethyl-4-propionyloxypiperidine",5,26
+"methyl ecgonidine (MED)",5,27
+"N-propionyl norfentanyl",4,28
+"menthol",4,29
 "quinine",3,30
 "phenacetin",3,31
-"valeryl fentanyl",2,32
-"acetyl fentanyl",2,33
-"sucrose",2,34
-"N-butyl-aniline",2,35
-"hydrocotarnine",2,36
-"urea",2,37
-"melatonin",2,38
-"ketamine",2,39
-"phenethyl chloride",2,40
-"meconin",2,41
-"gabapentin",2,42
-"1-propionyl-4-anilinopiperidine",2,43
-"benzoylecgonine (BZ)",2,44
-"bromazolam",2,45
-"metonitazene",2,46
-"tropacocaine",2,47
-"mannitol",2,48
-"levamisole",2,49
-"lactose",1,50
-"ecgonine methylester (EME)",1,51
-"noscapine",1,52
-"non-specific organic acids",1,53
+"mannitol",2,32
+"phenethyl chloride",2,33
+"tropacocaine",2,34
+"valeryl fentanyl",2,35
+"gabapentin",2,36
+"hydrocotarnine",2,37
+"urea",2,38
+"acetyl fentanyl",2,39
+"sucrose",2,40
+"N-butyl-aniline",2,41
+"1-propionyl-4-anilinopiperidine",2,42
+"bromazolam",2,43
+"meconin",2,44
+"metonitazene",2,45
+"levamisole",2,46
+"ketamine",2,47
+"melatonin",2,48
+"benzoylecgonine (BZ)",2,49
+"papaverine",1,50
+"nicotine",1,51
+"ecgonine methylester (EME)",1,52
+"ibuprofen",1,53
 "p-fluoroacetyl fentanyl",1,54
-"nicotine",1,55
-"delta-9-THC",1,56
-"ibuprofen",1,57
-"papaverine",1,58
+"noscapine",1,55
+"lactose",1,56
+"benzoic acid",1,57
+"medetomidine",1,58
 "methylparaben",1,59
-"4-Anilino-1-Boc-piperidine",1,60
-"medetomidine",1,61
-"benzoic acid",1,62
-"norcocaine",1,63
-"benzocaine",1,64
+"norcocaine",1,60
+"non-specific organic acids",1,61
+"benzocaine",1,62
+"delta-9-THC",1,63
+"4-Anilino-1-Boc-piperidine",1,64
