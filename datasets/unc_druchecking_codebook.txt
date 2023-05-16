@@ -3,17 +3,17 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:  15 May 2023, 16:43:22
+ opened on:  16 May 2023, 18:54:10
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 15 May 2023 16:43
+            Last saved: 16 May 2023 18:54
 
                  Label: [none]
    Number of variables: 93
 Number of observations: 20
-                  Size: 23,100 bytes ignoring labels, etc.
+                  Size: 23,220 bytes ignoring labels, etc.
 
 _dta:
   1.  "Example dataset (N=20) from UNC lab drug checking services. Lab results,
@@ -110,7 +110,7 @@ state:
 full_state                                                      Full state name
 -------------------------------------------------------------------------------
 
-                  Type: String (str14)
+                  Type: String (str20), but longest is str14
 
          Unique values: 8                         Missing "": 0/20
 
@@ -1574,5 +1574,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:  15 May 2023, 16:43:22
+ closed on:  16 May 2023, 18:54:10
 -------------------------------------------------------------------------------
