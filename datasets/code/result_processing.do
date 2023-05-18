@@ -267,6 +267,17 @@ note sen_seizure: "Check text match on overdose_notes and sensation_notes for dr
 order sen_*, a(sensations)
 
 
+** Consumed or not
+gen consumed = 1
+replace consumed=0 if sensations=="" & od!=1
+replace consumed=0 if regexm(lower(sensation_notes), "not used|did not use")
+order consumed, b(expectedsubstance)
+la var consumed "[d] 1=drug consumed before lab"
+note consumed: Derived 1/0 flag if substance consumed prior to lab
+note consumed: Generated as 1 if sensations field is blank and not involved in overdose
+
+
+
 ** Texture
 replace texture="" if texture=="not specified" | texture=="unknown"
 

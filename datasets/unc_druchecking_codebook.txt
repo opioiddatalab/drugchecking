@@ -3,17 +3,17 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:  16 May 2023, 18:54:10
+ opened on:  18 May 2023, 17:26:29
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 16 May 2023 18:54
+            Last saved: 18 May 2023 17:26
 
                  Label: [none]
-   Number of variables: 93
+   Number of variables: 94
 Number of observations: 20
-                  Size: 23,220 bytes ignoring labels, etc.
+                  Size: 23,300 bytes ignoring labels, etc.
 
 _dta:
   1.  "Example dataset (N=20) from UNC lab drug checking services. Lab results,
@@ -182,6 +182,23 @@ collection                        Collection method, consolidated for reporting
                             5  "unknown"
 
                Warning: Variable has embedded blanks.
+
+-------------------------------------------------------------------------------
+consumed                                         [d] 1=drug consumed before lab
+-------------------------------------------------------------------------------
+
+                  Type: Numeric (float)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/20
+
+            Tabulation: Freq.  Value
+                            3  0
+                           17  1
+
+consumed:
+  1.  Derived 1/0 flag if substance consumed prior to lab
+  2.  Generated as 1 if sensations field is blank and not involved in overdose
 
 -------------------------------------------------------------------------------
 expectedsubstance                           Verbatim expected substance on card
@@ -1574,5 +1591,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:  16 May 2023, 18:54:10
+ closed on:  18 May 2023, 17:26:29
 -------------------------------------------------------------------------------
