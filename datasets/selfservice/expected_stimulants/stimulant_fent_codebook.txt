@@ -1,65 +1,65 @@
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice
-> /expected_stimulants/stimulant_fent_codebook.txt
+       log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice/expected_stimulants/sti
+> mulant_fent_codebook.txt
   log type:  text
- opened on:  24 Mar 2023, 14:51:10
+ opened on:  19 May 2023, 09:17:11
 
 . codebook, n h
 
-               Dataset: */Mac/Documents/GitHub/dc_internal/analysis_dataset.dta
-            Last saved: 23 Mar 2023 17:01
+               Dataset: /Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta
+            Last saved: 18 May 2023 17:26
                         DATA HAVE CHANGED SINCE LAST SAVED
 
                  Label: [none]
-   Number of variables: 90
-Number of observations: 478
-                  Size: 499,988 bytes ignoring labels, etc.
+   Number of variables: 91
+Number of observations: 738
+                  Size: 798,516 bytes ignoring labels, etc.
 
-------------------------------------------------------------------------------------------
-sampleid                                                                         Sample ID
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sampleid                                                                                                 Sample ID
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str16)
 
-         Unique values: 478                       Missing "": 0/478
+         Unique values: 738                       Missing "": 0/738
 
-              Examples: "300417"
-                        "300681"
-                        "400127"
-                        "800181"
+              Examples: "300499"
+                        "300996"
+                        "400659"
+                        "800626"
 
-------------------------------------------------------------------------------------------
-location                                                                    City or County
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+location                                                                                            City or County
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str19)
 
-         Unique values: 101                       Missing "": 2/478
+         Unique values: 126                       Missing "": 3/738
 
-              Examples: "Durham"
-                        "Henderson"
-                        "Nashville"
-                        "San Francisco"
+              Examples: "Gastonia"
+                        "Kennewick"
+                        "Pittsburgh"
+                        "Seattle"
 
                Warning: Variable has embedded blanks.
 
 location:
-  1.  "Write-in on card, minimally standardized. Could be neighborhood, city, or county.
-      Not required. Filled in with program mailing address city if unspecified."
+  1.  "Write-in on card, minimally standardized. Could be neighborhood, city, or county. Not required. Filled in
+      with program mailing address city if unspecified."
 
-------------------------------------------------------------------------------------------
-county                                                       County where sample collected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+county                                                                               County where sample collected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str21)
 
-         Unique values: 62                        Missing "": 1/478
+         Unique values: 83                        Missing "": 5/738
 
-              Examples: "Grand Traverse County"
+              Examples: "Franklin County"
                         "King County"
-                        "Madison County"
-                        "Robeson County"
+                        "Maricopa County"
+                        "San Francisco"
 
                Warning: Variable has embedded blanks.
 
@@ -70,277 +70,295 @@ county:
   4.  Does not represent precise physical location of sample or program
   5.  OpenCageData.com for documentation
 
-------------------------------------------------------------------------------------------
-state                                                               State sample collected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+state                                                                                       State sample collected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str13), but longest is str2
 
-         Unique values: 16                        Missing "": 0/478
+         Unique values: 24                        Missing "": 0/738
 
               Examples: "NC"
                         "NC"
-                        "NC"
-                        "OH"
+                        "NY"
+                        "TX"
 
 state:
   1.  "Minimum required geographic identifier."
 
-------------------------------------------------------------------------------------------
-full_state                                                                 Full state name
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+full_state                                                                                         Full state name
+------------------------------------------------------------------------------------------------------------------
 
-                  Type: String (str14)
+                  Type: String (str20), but longest is str14
 
-         Unique values: 16                        Missing "": 0/478
+         Unique values: 24                        Missing "": 0/738
 
               Examples: "New York"
                         "North Carolina"
                         "North Carolina"
-                        "Ohio"
+                        "Texas"
 
                Warning: Variable has embedded blanks.
 
 full_state:
   1.  Useful for maps and tables and viz
 
-------------------------------------------------------------------------------------------
-date_collect                                                         Date sample collected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+date_collect                                                                                 Date sample collected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric daily date (float)
 
-                 Range: [22405,23076]                 Units: 1
-       Or equivalently: [05may2021,07mar2023]         Units: days
-         Unique values: 215                       Missing .: 13/478
+                 Range: [22405,23138]                 Units: 1
+       Or equivalently: [05may2021,08may2023]         Units: days
+         Unique values: 275                       Missing .: 15/738
 
-                  Mean: 22907.3 = 19sep2022(+ 8 hours)
-             Std. dev.: 147.204
+                  Mean: 22976.2 = 27nov2022(+ 4 hours)
+             Std. dev.: 150.512
            Percentiles:       10%        25%        50%        75%        90%
-                            22675      22849      22951      23016      23049
-                        30jan2022  23jul2022  02nov2022  06jan2023  08feb2023
+                            22785      22916      23023      23090      23114
+                        20may2022  28sep2022  13jan2023  21mar2023  14apr2023
 
-------------------------------------------------------------------------------------------
-sampletype                                                    Verbatim sample type on card
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sampletype                                                                            Verbatim sample type on card
+------------------------------------------------------------------------------------------------------------------
 
-                  Type: String (str15), but longest is str13
+                  Type: String (str15)
 
-         Unique values: 7                         Missing "": 0/478
+         Unique values: 8                         Missing "": 1/738
 
             Tabulation: Freq.  Value
-                           65  "cotton"
-                           13  "pill"
-                          221  "spatula"
-                            2  "spatula; swab"
-                          117  "swab"
-                            2  "syringe"
-                           58  "unknown"
+                            1  ""
+                           79  "cotton"
+                           20  "pill"
+                          399  "spatula"
+                            1  "spatula; cotton"
+                            3  "spatula; swab"
+                          156  "swab"
+                            4  "syringe"
+                           75  "unknown"
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-collection                                   Collection method, consolidated for reporting
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+collection                                                           Collection method, consolidated for reporting
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str16)
 
-         Unique values: 7                         Missing "": 0/478
+         Unique values: 7                         Missing "": 1/738
 
             Tabulation: Freq.  Value
-                           65  "cotton"
-                            2  "multiple methods"
-                           13  "pill"
-                          221  "spatula"
-                          117  "swab"
-                            2  "syringe"
-                           58  "unknown"
+                            1  ""
+                           79  "cotton"
+                            4  "multiple methods"
+                           20  "pill"
+                          399  "spatula"
+                          156  "swab"
+                            4  "syringe"
+                           75  "unknown"
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-expectedsubstance                                      Verbatim expected substance on card
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+consumed                                                                            [d] 1=drug consumed before lab
+------------------------------------------------------------------------------------------------------------------
+
+                  Type: Numeric (float)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/738
+
+            Tabulation: Freq.  Value
+                          296  0
+                          442  1
+
+consumed:
+  1.  Derived 1/0 flag if substance consumed prior to lab
+  2.  Generated as 1 if sensations field is blank and not involved in overdose
+
+------------------------------------------------------------------------------------------------------------------
+expectedsubstance                                                              Verbatim expected substance on card
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str68)
 
-         Unique values: 45                        Missing "": 0/478
+         Unique values: 52                        Missing "": 0/738
 
-              Examples: "crack"
+              Examples: "fentanyl"
                         "heroin"
-                        "heroin; fentanyl"
+                        "methamphetamine"
                         "methamphetamine"
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-expect_opioid   1 if expected heroin or fentanyl circled on card, or specific opioid named
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+expect_opioid                           1 if expected heroin or fentanyl circled on card, or specific opioid named
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          268  0
-                          210  1
+                          458  0
+                          280  1
 
 expect_opioid:
   1.  "Named opioid could include Percocet, Vicodin, Roxicodone, etc."
 
-------------------------------------------------------------------------------------------
-expect_fentanyl                                     1 if expected fentanyl circled on card
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+expect_fentanyl                                                             1 if expected fentanyl circled on card
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          334  0
-                          144  1
+                          536  0
+                          202  1
 
-------------------------------------------------------------------------------------------
-expect_xylazine     1 if expected xylazine circled on card or mentioned in sensation notes
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+expect_xylazine                             1 if expected xylazine circled on card or mentioned in sensation notes
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          458  0
-                           20  1
+                          709  0
+                           29  1
 
 expect_xylazine:
   1.  "Added in version 3 of card"
 
-------------------------------------------------------------------------------------------
-expect_stimulant             1 if expected cocaine, crack, methamphetamine circled on card
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+expect_stimulant                                     1 if expected cocaine, crack, methamphetamine circled on card
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          252  0
-                          226  1
+                          340  0
+                          398  1
 
-------------------------------------------------------------------------------------------
-expect_benzo      1 if expected benzodiazepine circled on card or specific substance named
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+expect_benzo                              1 if expected benzodiazepine circled on card or specific substance named
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          466  0
-                           12  1
+                          723  0
+                           15  1
 
-------------------------------------------------------------------------------------------
-expect_meth      1 if expected methamphetamine circled on card or specific substance named
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+expect_meth                              1 if expected methamphetamine circled on card or specific substance named
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          326  0
-                          152  1
+                          451  0
+                          287  1
 
-------------------------------------------------------------------------------------------
-expect_cocaine                         1 if expected cocaine or crack circled on card or
-                                       specific substance named
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+expect_cocaine                          1 if expected cocaine or crack circled on card or specific substance named
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          403  0
-                           75  1
+                          625  0
+                          113  1
 
-------------------------------------------------------------------------------------------
-expect_cannabis                         1 if expected CBD, Delta-8 or weed circled on card
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+expect_cannabis                                                 1 if expected CBD, Delta-8 or weed circled on card
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,0]                         Units: 1
-         Unique values: 1                         Missing .: 0/478
+         Unique values: 1                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          478  0
+                          738  0
 
-------------------------------------------------------------------------------------------
-expect_hall                                                     1 if expected hallucinogen
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+expect_hall                                                                             1 if expected hallucinogen
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          461  0
-                           17  1
+                          717  0
+                           21  1
 
 expect_hall:
   1.  "lsd|mda|molly|mdma|mushroom|dmt|ketamine|ecstacy|psilocybin"
 
-------------------------------------------------------------------------------------------
-color                                                                Color circled on card
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+color                                                                                        Color circled on card
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str50), but longest is str24
 
-         Unique values: 48                        Missing "": 50/478
+         Unique values: 60                        Missing "": 79/738
 
               Examples: "clear"
-                        "gray"
-                        "white"
+                        "colorless"
+                        "unknown"
                         "white"
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-bright_color                                      Bright color of original sample reported
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+bright_color                                                              Bright color of original sample reported
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          413  0
-                           65  1
+                          636  0
+                          102  1
 
 bright_color:
-  1.  "Recoded variable that excludes white, gray, tan, beige, black, brown, and similar
-      variations."
+  1.  "Recoded variable that excludes white, gray, tan, beige, black, brown, and similar variations."
 
-------------------------------------------------------------------------------------------
-texture                                                            Texture circled on card
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+texture                                                                                    Texture circled on card
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str33), but longest is str31
 
-         Unique values: 48                        Missing "": 55/478
+         Unique values: 61                        Missing "": 67/738
 
               Examples: "crystals"
-                        "crystals; shiny; flaky"
+                        "crystals; powder"
                         "powder"
                         "powder; chunky"
 
@@ -349,275 +367,267 @@ texture                                                            Texture circl
 texture:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-tar       Derived flag (1) if notes on card or conversations with donor indicate sample wa
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+tar                               Derived flag (1) if notes on card or conversations with donor indicate sample wa
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 472/478
+         Unique values: 1                         Missing .: 729/738
 
             Tabulation: Freq.  Value
-                            6  1
-                          472  .
+                            9  1
+                          729  .
 
-------------------------------------------------------------------------------------------
-pill                          Composite flag (1) if indication that sample was from a pill
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+pill                                                  Composite flag (1) if indication that sample was from a pill
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 458/478
+         Unique values: 1                         Missing .: 702/738
 
             Tabulation: Freq.  Value
-                           20  1
-                          458  .
+                           36  1
+                          702  .
 
-------------------------------------------------------------------------------------------
-powder                                                                         (unlabeled)
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+powder                                                                                                 (unlabeled)
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 208/478
+         Unique values: 1                         Missing .: 357/738
 
             Tabulation: Freq.  Value
-                          270  1
-                          208  .
+                          381  1
+                          357  .
 
-------------------------------------------------------------------------------------------
-plant                                             Sample from plant or leaf noted on card.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+plant                                                                     Sample from plant or leaf noted on card.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [.,.]                         Units: .
-         Unique values: 0                         Missing .: 478/478
+         Unique values: 0                         Missing .: 738/738
 
             Tabulation: Freq.  Value
-                          478  .
+                          738  .
 
-------------------------------------------------------------------------------------------
-crystals                                                        Texture noted as crystals.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+crystals                                                                                Texture noted as crystals.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 348/478
+         Unique values: 1                         Missing .: 475/738
 
             Tabulation: Freq.  Value
-                          130  1
-                          348  .
+                          263  1
+                          475  .
 
-------------------------------------------------------------------------------------------
-lustre                               Lustre either shiny (1) or dull (-1). Cannot be both.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lustre                                                       Lustre either shiny (1) or dull (-1). Cannot be both.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
                  Label: lustre_label
 
                  Range: [-1,1]                        Units: 1
-         Unique values: 2                         Missing .: 410/478
+         Unique values: 2                         Missing .: 649/738
 
             Tabulation: Freq.   Numeric  Label
-                           34        -1  dull
-                           34         1  shiny
-                          410         .  
+                           45        -1  dull
+                           44         1  shiny
+                          649         .  
 
-------------------------------------------------------------------------------------------
-sensations                                                      Sensations circled on card
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sensations                                                                              Sensations circled on card
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str60)
 
-         Unique values: 70                        Missing "": 164/478
+         Unique values: 73                        Missing "": 304/738
 
               Examples: ""
-                        "more up"
+                        ""
                         "normal"
-                        "typical"
+                        "stronger; more down"
 
                Warning: Variable has embedded blanks.
 
 sensations:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-sen_strength                    Derived 3-level flag where -1 weaker, 0 normal, 1 stronger
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_strength                                            Derived 3-level flag where -1 weaker, 0 normal, 1 stronger
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
                  Label: sennormal
 
                  Range: [-1,1]                        Units: 1
-         Unique values: 3                         Missing .: 247/478
+         Unique values: 3                         Missing .: 423/738
 
             Tabulation: Freq.   Numeric  Label
-                           35        -1  weaker
-                          123         0  normal
-                           73         1  stronger
-                          247         .  
+                           52        -1  weaker
+                          163         0  normal
+                          100         1  stronger
+                          423         .  
 
-------------------------------------------------------------------------------------------
-sen_weird                              Derived flag (1) if sensation was noted as 'weird'
-                                       or 'unpleasant' or notes indi
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_weird                         Derived flag (1) if sensation was noted as 'weird' or 'unpleasant' or notes indi
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 402/478
+         Unique values: 1                         Missing .: 632/738
 
             Tabulation: Freq.  Value
-                           76  1
-                          402  .
+                          106  1
+                          632  .
 
 sen_weird:
   1.  "Check sensations and sensation_notes to verify. See code for search strings."
 
-------------------------------------------------------------------------------------------
-sen_hall                               Derived flag (1) if sensation included
-                                       hallucinations. Check sensations and sens
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_hall                          Derived flag (1) if sensation included hallucinations. Check sensations and sens
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 469/478
+         Unique values: 1                         Missing .: 727/738
 
             Tabulation: Freq.  Value
-                            9  1
-                          469  .
+                           11  1
+                          727  .
 
 sen_hall:
   1.  "Check sensations and sensation_notes to verify. See code for search strings."
 
-------------------------------------------------------------------------------------------
-sen_up                           Derived flag (1) if sensation was described as 'more up'.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_up                                                   Derived flag (1) if sensation was described as 'more up'.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 456/478
+         Unique values: 1                         Missing .: 709/738
 
             Tabulation: Freq.  Value
-                           22  1
-                          456  .
+                           29  1
+                          709  .
 
 sen_up:
   1.  "Check sensations and sensation_notes to verify. See code for search strings."
 
-------------------------------------------------------------------------------------------
-sen_down                               Derived flag (1) if sensation was described as
-                                       'more down' or notes indicating d
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_down                          Derived flag (1) if sensation was described as 'more down' or notes indicating d
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 424/478
+         Unique values: 1                         Missing .: 670/738
 
             Tabulation: Freq.  Value
-                           54  1
-                          424  .
+                           68  1
+                          670  .
 
 sen_down:
-  1.  "Check sensations and sensation_notes and overdose_notes to verify. See code for
-      search strings."
+  1.  "Check sensations and sensation_notes and overdose_notes to verify. See code for search strings."
 
-------------------------------------------------------------------------------------------
-sen_nice                              Derived flag (1) if sensation was circled as 'nice'.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_nice                                                      Derived flag (1) if sensation was circled as 'nice'.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 440/478
+         Unique values: 1                         Missing .: 686/738
 
             Tabulation: Freq.  Value
-                           38  1
-                          440  .
+                           52  1
+                          686  .
 
 sen_nice:
   1.  "Check sensations and sensation_notes to verify. See code for search strings."
 
-------------------------------------------------------------------------------------------
-sen_long                               Derived flag (1) if sensation was described as
-                                       'long'. Check sensations and sens
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_long                          Derived flag (1) if sensation was described as 'long'. Check sensations and sens
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 455/478
+         Unique values: 1                         Missing .: 712/738
 
             Tabulation: Freq.  Value
-                           23  1
-                          455  .
+                           26  1
+                          712  .
 
-------------------------------------------------------------------------------------------
-sen_burn                               Derived flag (1) if burning sensation was
-                                       described. Check sensations and sensat
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_burn                          Derived flag (1) if burning sensation was described. Check sensations and sensat
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 471/478
+         Unique values: 1                         Missing .: 730/738
 
             Tabulation: Freq.  Value
-                            7  1
-                          471  .
+                            8  1
+                          730  .
 
 sen_burn:
   1.  "Contains negation rule for 'heart burn'"
 
-------------------------------------------------------------------------------------------
-sen_skin          Derived flag (1) if skin involvement noted in free text, like abscesses.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_skin                                  Derived flag (1) if skin involvement noted in free text, like abscesses.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 473/478
+         Unique values: 1                         Missing .: 732/738
 
             Tabulation: Freq.  Value
-                            5  1
-                          473  .
+                            6  1
+                          732  .
 
 sen_skin:
-  1.  "Check sensations and sensation_notes, overdose_notes to verify. See code for search
-      strings."
+  1.  "Check sensations and sensation_notes, overdose_notes to verify. See code for search strings."
 
-------------------------------------------------------------------------------------------
-sen_seizure                            Derived flag if seizures were noted on sensations,
-                                       or overdose/sensation notes.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sen_seizure                        Derived flag if seizures were noted on sensations, or overdose/sensation notes.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 477/478
+         Unique values: 1                         Missing .: 737/738
 
             Tabulation: Freq.  Value
                             1  1
-                          477  .
+                          737  .
 
 sen_seizure:
   1.  "Check text match on overdose_notes and sensation_notes for drug 'seizure'."
 
-------------------------------------------------------------------------------------------
-texture_notes                                                    Texture verbatim write-in
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+texture_notes                                                                            Texture verbatim write-in
+------------------------------------------------------------------------------------------------------------------
 
-                  Type: String (str104), but longest is str51
+                  Type: String (str104), but longest is str73
 
-         Unique values: 42                        Missing "": 431/478
+         Unique values: 71                        Missing "": 657/738
 
               Examples: ""
                         ""
@@ -629,69 +639,69 @@ texture_notes                                                    Texture verbati
 texture_notes:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-sensation_notes                                               Sensations verbatim write-in
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+sensation_notes                                                                       Sensations verbatim write-in
+------------------------------------------------------------------------------------------------------------------
 
-                  Type: String (str141), but longest is str88
+                  Type: String (str167), but longest is str89
 
-         Unique values: 105                       Missing "": 363/478
+         Unique values: 151                       Missing "": 571/738
 
               Examples: ""
                         ""
                         ""
-                        "better"
+                        "amnesia 6-8 hours"
 
                Warning: Variable has leading, embedded, and trailing blanks.
 
 sensation_notes:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-overdose                                                           Invovlement in overdose
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+overdose                                                                                   Invovlement in overdose
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str29), but longest is str20
 
-         Unique values: 3                         Missing "": 0/478
+         Unique values: 3                         Missing "": 0/738
 
             Tabulation: Freq.  Value
-                           31  "involved in OD"
-                          282  "not overdose related"
-                          165  "unknown"
+                           42  "involved in OD"
+                          466  "not overdose related"
+                          230  "unknown"
 
                Warning: Variable has embedded blanks.
 
 overdose:
   1.  "Added in card version 3"
 
-------------------------------------------------------------------------------------------
-od                                              Recoded overdose involvement for reporting
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+od                                                                      Recoded overdose involvement for reporting
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
                  Label: odlabel
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 164/478
+         Unique values: 2                         Missing .: 229/738
 
             Tabulation: Freq.   Numeric  Label
-                          282         0  not involved
-                           32         1  Overdose reported
-                          164         .  
+                          466         0  not involved
+                           43         1  Overdose reported
+                          229         .  
 
 od:
-  1.  "1 if OD related, 0 if explicitly stated sample was not involved in an overdose. Set
-      to missing if OD involvement was not reported. Could be fatal or non-fatal overdose.
-      Question was added to card in Version 2."
+  1.  "1 if OD related, 0 if explicitly stated sample was not involved in an overdose. Set to missing if OD
+      involvement was not reported. Could be fatal or non-fatal overdose. Question was added to card in Version
+      2."
 
-------------------------------------------------------------------------------------------
-overdose_notes            Verbatim description of overdose event. Not routinely completed.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+overdose_notes                                    Verbatim description of overdose event. Not routinely completed.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str231), but longest is str69
 
-         Unique values: 26                        Missing "": 452/478
+         Unique values: 37                        Missing "": 701/738
 
               Examples: ""
                         ""
@@ -700,766 +710,761 @@ overdose_notes            Verbatim description of overdose event. Not routinely 
 
                Warning: Variable has embedded blanks.
 
-------------------------------------------------------------------------------------------
-fatal_od               Derived flag (1) if fatal overdose was mentioned in overdose_notes.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+fatal_od                                       Derived flag (1) if fatal overdose was mentioned in overdose_notes.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [1,1]                         Units: 1
-         Unique values: 1                         Missing .: 475/478
+         Unique values: 1                         Missing .: 732/738
 
             Tabulation: Freq.  Value
-                            3  1
-                          475  .
+                            6  1
+                          732  .
 
 fatal_od:
   1.  "Not considered a complete case enumeration because not uniformly reported."
 
-------------------------------------------------------------------------------------------
-confirmatory                         Sample for GCMS confirmatory or complementary testing
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+confirmatory                                                 Sample for GCMS confirmatory or complementary testing
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          400  0
-                           78  1
+                          517  0
+                          221  1
 
-------------------------------------------------------------------------------------------
-date_complete                                                  Date lab analysis completed
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+date_complete                                                                          Date lab analysis completed
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric daily date (int)
 
-                 Range: [22671,23092]                 Units: 1
-       Or equivalently: [26jan2022,23mar2023]         Units: days
-         Unique values: 93                        Missing .: 0/478
+                 Range: [22671,23146]                 Units: 1
+       Or equivalently: [26jan2022,16may2023]         Units: days
+         Unique values: 117                       Missing .: 0/738
 
-                  Mean: 22937.3 = 19oct2022(+ 8 hours)
-             Std. dev.: 124.434
+                  Mean: 23001.6 = 22dec2022(+ 14 hours)
+             Std. dev.: 133.093
            Percentiles:       10%        25%        50%        75%        90%
-                            22712      22862    22968.5      23036      23090
-                        08mar2022  05aug2022  19nov2022  26jan2023  21mar2023
+                            22798      22929      23040      23110      23134
+                        02jun2022  11oct2022  30jan2023  10apr2023  04may2023
 
-------------------------------------------------------------------------------------------
-primary                                                   Primary drug(s) confirmed in lab
-------------------------------------------------------------------------------------------
-
-                  Type: Numeric (byte)
-
-                 Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
-
-            Tabulation: Freq.  Value
-                            2  0
-                          476  1
-
-------------------------------------------------------------------------------------------
-trace                                                      Trace substance detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+primary                                                                           Primary drug(s) confirmed in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          197  0
-                          281  1
+                            3  0
+                          735  1
+
+------------------------------------------------------------------------------------------------------------------
+trace                                                                              Trace substance detected in lab
+------------------------------------------------------------------------------------------------------------------
+
+                  Type: Numeric (byte)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/738
+
+            Tabulation: Freq.  Value
+                          355  0
+                          383  1
 
 trace:
   1.  "Includes trace and 'indication of' designations"
 
-------------------------------------------------------------------------------------------
-lab_null                            Derived flag (1) if no compounds of interest detected.
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_null                                                    Derived flag (1) if no compounds of interest detected.
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [.,.]                         Units: .
-         Unique values: 0                         Missing .: 478/478
+         Unique values: 0                         Missing .: 738/738
 
             Tabulation: Freq.  Value
-                          478  .
+                          738  .
 
 lab_null:
-  1.  "For non-derivitized GCMS, this means no small psychoactive or biological molecules
-      detected."
+  1.  "For non-derivitized GCMS, this means no small psychoactive or biological molecules detected."
 
-------------------------------------------------------------------------------------------
-lab_num_substances_any                                 Total number of substances detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_num_substances_any                                                         Total number of substances detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [1,20]                        Units: 1
-         Unique values: 19                        Missing .: 0/478
+         Unique values: 19                        Missing .: 0/738
 
-                  Mean: 4.33891
-             Std. dev.: 3.71272
+                  Mean: 3.84146
+             Std. dev.: 3.50585
 
            Percentiles:     10%       25%       50%       75%       90%
-                              1         1         3         6        10
+                              1         1         2         6         9
 
 lab_num_substances_any:
   1.  "Includes substances in primary and trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_num_substances                             Total number of PRIMARY substances detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_num_substances                                                     Total number of PRIMARY substances detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,15]                        Units: 1
-         Unique values: 15                        Missing .: 0/478
+         Unique values: 15                        Missing .: 0/738
 
-                  Mean:  2.5251
-             Std. dev.: 2.37351
+                  Mean: 2.26694
+             Std. dev.:  2.1315
 
            Percentiles:     10%       25%       50%       75%       90%
-                              1         1         1         3         6
+                              1         1         1         3         5
 
 lab_num_substances:
   1.  "Priamry substances only. Does NOT include substances in trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_fentanyl                                                      fentanyl detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_fentanyl                                                                              fentanyl detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          311  0
-                          167  1
+                          509  0
+                          229  1
 
 lab_fentanyl:
   1.  "Exact match for fentanyl as a primary substance, does not include analogues."
 
-------------------------------------------------------------------------------------------
-lab_fentanyl_any                                        fentanyl detected in any abundance
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_fentanyl_any                                                                fentanyl detected in any abundance
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          279  0
-                          199  1
+                          472  0
+                          266  1
 
 lab_fentanyl_any:
-  1.  "Exact match for fentanyl as a primary or trace substance, does not include
-      analogues."
+  1.  "Exact match for fentanyl as a primary or trace substance, does not include analogues."
 
-------------------------------------------------------------------------------------------
-lab_xylazine                                                      xylazine detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_xylazine                                                                              xylazine detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          432  0
-                           46  1
+                          681  0
+                           57  1
 
 lab_xylazine:
-  1.  "Exact match for xylazine as a primary substance, does not include other alpha-2
-      agonists."
+  1.  "Exact match for xylazine as a primary substance, does not include other alpha-2 agonists."
 
-------------------------------------------------------------------------------------------
-lab_xylazine_any                                        xylazine detected in any abundance
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_xylazine_any                                                                xylazine detected in any abundance
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          403  0
-                           75  1
+                          642  0
+                           96  1
 
 lab_xylazine_any:
-  1.  "Exact match for xylazine as a primary or trace substance, does not include other
-      alpha-2 agonists."
+  1.  "Exact match for xylazine as a primary or trace substance, does not include other alpha-2 agonists."
 
-------------------------------------------------------------------------------------------
-lab_xylazine_trace                                                       xylazine detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_xylazine_trace                                                                               xylazine detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          449  0
-                           29  1
+                          699  0
+                           39  1
 
 lab_xylazine_trace:
   1.  "Exact match for xylazine in trace abundance only."
 
-------------------------------------------------------------------------------------------
-lab_meth                                         meth detected in lab in primary abundance
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_meth                                                                 meth detected in lab in primary abundance
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          264  0
-                          214  1
+                          367  0
+                          371  1
 
 lab_meth:
   1.  "Exact match for methamphetamine as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_meth_any                              methamphetamine detected in lab in any abundance
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_meth_any                                                      methamphetamine detected in lab in any abundance
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          209  0
-                          269  1
+                          292  0
+                          446  1
 
 lab_meth_any:
   1.  "Exact match for methamphetamine in primary or trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_cocaine                                                        cocaine detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_cocaine                                                                                cocaine detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          341  0
-                          137  1
+                          543  0
+                          195  1
 
-------------------------------------------------------------------------------------------
-lab_cocaine_any                                   cocaine detected in lab in any abundance
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_cocaine_any                                                           cocaine detected in lab in any abundance
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          234  0
-                          244  1
+                          401  0
+                          337  1
 
-------------------------------------------------------------------------------------------
-lab_caffeine                                                      caffeine detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_caffeine                                                                              caffeine detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          449  0
-                           29  1
+                          700  0
+                           38  1
 
 lab_caffeine:
   1.  "Exact match for caffeine as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_gabapentin                                                  gabapentin detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_gabapentin                                                                          gabapentin detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          474  0
+                          734  0
                             4  1
 
 lab_gabapentin:
   1.  "Exact match for gabapentin as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_levamisole_any                                              levamisole detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_levamisole_any                                                                      levamisole detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          462  0
-                           16  1
+                          719  0
+                           19  1
 
 lab_levamisole_any:
   1.  "Exact match for levamisole in primary or trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_mdma                                                          3,4-MDMA detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_mdma                                                                                  3,4-MDMA detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          473  0
-                            5  1
+                          732  0
+                            6  1
 
 lab_mdma:
   1.  "Exact match for 3,4-MDMA as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_tramadol                                                      tramadol detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_tramadol                                                                              tramadol detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          459  0
-                           19  1
+                          714  0
+                           24  1
 
 lab_tramadol:
   1.  "Exact match for tramadol as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_carfentanil                                                carfentanil detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_carfentanil                                                                        carfentanil detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,0]                         Units: 1
-         Unique values: 1                         Missing .: 0/478
+         Unique values: 1                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          478  0
+                          738  0
 
 lab_carfentanil:
   1.  "Exact match for carfentanil as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_carfentanil_any                                            carfentanil detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_carfentanil_any                                                                    carfentanil detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,0]                         Units: 1
-         Unique values: 1                         Missing .: 0/478
+         Unique values: 1                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          478  0
+                          738  0
 
 lab_carfentanil_any:
   1.  "Exact match for carfentanil in primary or trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_ketamine_any                                                  ketamine detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_ketamine_any                                                                          ketamine detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          467  0
-                           11  1
+                          724  0
+                           14  1
 
 lab_ketamine_any:
   1.  "Exact match for ketamine in primary or trace abundance."
 
-------------------------------------------------------------------------------------------
-lab_ketamine                                                      ketamine detected in lab
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_ketamine                                                                              ketamine detected in lab
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          472  0
-                            6  1
+                          731  0
+                            7  1
 
 lab_ketamine:
   1.  "Exact match for ketamine as a primary substance."
 
-------------------------------------------------------------------------------------------
-lab_designer_benzos_any                               Any designer benzodizaepine detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_designer_benzos_any                                                       Any designer benzodizaepine detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          470  0
-                            8  1
+                          726  0
+                           12  1
 
 lab_designer_benzos_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_benzos_any                                                 Any benzodiazepine detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_benzos_any                                                                         Any benzodiazepine detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          476  0
+                          736  0
                             2  1
 
 lab_benzos_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_nitazenes_any                                                    Any nitazene detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_nitazenes_any                                                                            Any nitazene detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          477  0
+                          737  0
                             1  1
 
 lab_nitazenes_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_opiates_opioids_any                                               Any opioids detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_opiates_opioids_any                                                                       Any opioids detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          270  0
-                          208  1
+                          459  0
+                          279  1
 
 lab_opiates_opioids_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_synthetic_cannabinoids_any                         Any synthetic cannabinoids detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_synthetic_cannabinoids_any                                                 Any synthetic cannabinoids detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          477  0
+                          737  0
                             1  1
 
 lab_synthetic_cannabinoids_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_meth_impurities_any                                     Any methamphetamine impurities
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_meth_impurities_any                                                             Any methamphetamine impurities
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,0]                         Units: 1
-         Unique values: 1                         Missing .: 0/478
+         Unique values: 1                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          478  0
+                          738  0
 
 lab_meth_impurities_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_mdma_impurities_any                                                Any MDMA impurities
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_mdma_impurities_any                                                                        Any MDMA impurities
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,0]                         Units: 1
-         Unique values: 1                         Missing .: 0/478
+         Unique values: 1                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          478  0
+                          738  0
 
 lab_mdma_impurities_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_cocaine_impurities_any                                 Any cocaine impurities detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_cocaine_impurities_any                                                         Any cocaine impurities detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          424  0
-                           54  1
+                          664  0
+                           74  1
 
 lab_cocaine_impurities_any:
-  1.  "Known cocaine processing impurities, metabolites, and starting material detected in
-      primary or trace abundance."
+  1.  "Known cocaine processing impurities, metabolites, and starting material detected in primary or trace
+      abundance."
   2.  "Detected in primary or trace abundance."
   3.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_common_cuts_any                                              (max) lab_common_cuts_any
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_common_cuts_any                                                                      (max) lab_common_cuts_any
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          337  0
-                          141  1
+                          566  0
+                          172  1
 
 lab_common_cuts_any:
-  1.  "If only GCMS was used, this may not detect all large molecule (e.g., sugars) cuts.
-      Derivitized GCMS and FTIR are more able to identify these molecules. Therefore this
-      field should be more accurately interpreted as common small molecule cuts that are
-      likely to be psychoactive or have key physiological roles."
+  1.  "If only GCMS was used, this may not detect all large molecule (e.g., sugars) cuts. Derivitized GCMS and
+      FTIR are more able to identify these molecules. Therefore this field should be more accurately interpreted
+      as common small molecule cuts that are likely to be psychoactive or have key physiological roles."
   2.  "Detected in primary or trace abundance."
   3.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_heroin_impurities_any                                   Any heroin impurities detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_heroin_impurities_any                                                           Any heroin impurities detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          433  0
-                           45  1
+                          684  0
+                           54  1
 
 lab_heroin_impurities_any:
-  1.  "Known heroin processing impurities, metabolites, and starting material detected in
-      primary or trace abundance."
+  1.  "Known heroin processing impurities, metabolites, and starting material detected in primary or trace
+      abundance."
   2.  "Detected in primary or trace abundance."
   3.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_cannabinoids_any                        Any natural or synthetic cannabinoids detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_cannabinoids_any                                                Any natural or synthetic cannabinoids detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          473  0
-                            5  1
+                          731  0
+                            7  1
 
 lab_cannabinoids_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_fentanyl_impurities_any                     Any fentanyl synthesis impurities detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_fentanyl_impurities_any                                             Any fentanyl synthesis impurities detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          302  0
-                          176  1
+                          499  0
+                          239  1
 
 lab_fentanyl_impurities_any:
-  1.  "Known heroin processing impurities, metabolites, and starting material detected in
-      primary or trace abundance."
+  1.  "Known heroin processing impurities, metabolites, and starting material detected in primary or trace
+      abundance."
   2.  "Detected in primary or trace abundance."
   3.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_pf_fent_impurities_any                           p-fluorofentanyl synthesis impurities
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_pf_fent_impurities_any                                                   p-fluorofentanyl synthesis impurities
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          445  0
-                           33  1
+                          695  0
+                           43  1
 
 lab_pf_fent_impurities_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-lab_substituted_cathinones_any                          Any substituted cathinone detected
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+lab_substituted_cathinones_any                                                  Any substituted cathinone detected
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (byte)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          473  0
-                            5  1
+                          730  0
+                            8  1
 
 lab_substituted_cathinones_any:
   1.  "Detected in primary or trace abundance."
   2.  "Specific substance classifications: go.unc.edu/chemdict"
 
-------------------------------------------------------------------------------------------
-state_county                                                Combined state and county name
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+state_county                                                                        Combined state and county name
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str38), but longest is str19
 
-         Unique values: 67                        Missing "": 0/478
+         Unique values: 93                        Missing "": 0/738
 
-              Examples: "NC | DURHAM"
-                        "NC | GUILFORD"
-                        "NC | ROBESON"
-                        "OH | FRANKLIN"
+              Examples: "NC | BUNCOMBE"
+                        "NC | MACON"
+                        "NY | KINGS"
+                        "TX | BEXAR"
 
                Warning: Variable has embedded and trailing blanks.
 
-------------------------------------------------------------------------------------------
-statefips                                                           2-digit FIPS for state
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+statefips                                                                                   2-digit FIPS for state
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str2)
 
-         Unique values: 16                        Missing "": 1/478
+         Unique values: 22                        Missing "": 7/738
 
               Examples: "36"
                         "37"
                         "37"
-                        "39"
+                        "48"
 
-------------------------------------------------------------------------------------------
-countyfips_3                                        3-digit FIPS for county, without state
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+countyfips_3                                                                3-digit FIPS for county, without state
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str3)
 
-         Unique values: 52                        Missing "": 1/478
+         Unique values: 58                        Missing "": 7/738
 
-              Examples: "037"
-                        "067"
+              Examples: "033"
+                        "061"
                         "081"
-                        "119"
+                        "113"
 
-------------------------------------------------------------------------------------------
-countyfips                                                         5-digit FIPS for county
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+countyfips                                                                                 5-digit FIPS for county
+------------------------------------------------------------------------------------------------------------------
 
                   Type: String (str5)
 
-         Unique values: 66                        Missing "": 1/478
+         Unique values: 88                        Missing "": 7/738
 
               Examples: "36047"
                         "37081"
-                        "37113"
-                        "39049"
+                        "37151"
+                        "48029"
 
 countyfips:
   1.  If not specific location provided, county is defaulted to program county
 
-------------------------------------------------------------------------------------------
-tracestim                                      If 1 then coke/meth ONLY in trace abundance
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+tracestim                                                              If 1 then coke/meth ONLY in trace abundance
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
                  Range: [0,1]                         Units: 1
-         Unique values: 2                         Missing .: 0/478
+         Unique values: 2                         Missing .: 0/738
 
             Tabulation: Freq.  Value
-                          347  0
-                          131  1
+                          560  0
+                          178  1
 
-------------------------------------------------------------------------------------------
-category                                1 if primary meth, 2 if primary cocaine, 3 if both
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+category                                                        1 if primary meth, 2 if primary cocaine, 3 if both
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
                  Label: cat
 
                  Range: [1,3]                         Units: 1
-         Unique values: 3                         Missing .: 131/478
+         Unique values: 3                         Missing .: 178/738
 
             Tabulation: Freq.   Numeric  Label
-                          210         1  Methamphetamine
-                          133         2  Cocaine
-                            4         3  Both
-                          131         .  
+                          365         1  Methamphetamine
+                          189         2  Cocaine
+                            6         3  Both
+                          178         .  
 
-------------------------------------------------------------------------------------------
-program                                                        De-identified program index
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+program                                                                                De-identified program index
+------------------------------------------------------------------------------------------------------------------
 
                   Type: Numeric (float)
 
-                 Range: [1,41]                        Units: 1
-         Unique values: 41                        Missing .: 2/478
+                 Range: [1,62]                        Units: 1
+         Unique values: 62                        Missing .: 2/738
 
-                  Mean:  19.479
-             Std. dev.: 11.1959
+                  Mean:  29.284
+             Std. dev.: 17.4549
 
            Percentiles:     10%       25%       50%       75%       90%
-                              5        10        17        29        37
+                              4        15        27      41.5        54
 
 . log close
       name:  <unnamed>
-       log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice
-> /expected_stimulants/stimulant_fent_codebook.txt
+       log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice/expected_stimulants/sti
+> mulant_fent_codebook.txt
   log type:  text
- closed on:  24 Mar 2023, 14:51:11
-------------------------------------------------------------------------------------------
+ closed on:  19 May 2023, 09:17:11
+------------------------------------------------------------------------------------------------------------------

@@ -59,7 +59,9 @@ tab lab_fentanyl if regexm(expectedsubstance, "crack")
 frame change default
 
 // EXPORT
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice/expected_stimulants/stimfent.csv", quote replace
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice/expected_stimulants/stimfent_MAY.csv", quote replace
+
+save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice/expected_stimulants/stimfent_MAY.dta", replace
 
 // Generate codebook on public data
 
@@ -81,7 +83,7 @@ collapse (sum) samples, by(substance)
 drop samples
 erase "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/temp.dta"
 
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice/expected_stimulants/lab_detail.csv", quote replace
+export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice/expected_stimulants/lab_detail_MAY.csv", quote replace
 
 frame change default
 
@@ -92,7 +94,7 @@ keep if tracestim==0
 tab lab_fentanyl if category==1
 tab lab_fentanyl crystal if category==1, m
 
-
+/*
 // Number of non-crack cocaine sampels testing + for fentanyl
 tab lab_fentanyl if category==2 & regexm(expectedsubstance, "crack")==0
 
