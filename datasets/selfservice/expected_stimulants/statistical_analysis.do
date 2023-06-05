@@ -1,5 +1,8 @@
 
-import delimited "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice/expected_stimulants/stimfent_MAY.csv", clear
+*import delimited "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/selfservice/expected_stimulants/stimfent_MAY.csv", clear
+
+use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", clear
+
 
 // Selection Criteria
 keep if lab_meth==1 | lab_cocaine==1
@@ -15,6 +18,10 @@ gen weird=0
 // Crystals
 gen crystal10 = 0
 	replace crystal10=1 if crystals==1
+	
+// Variable formats
+rename countyfips temp
+encode temp, g(countyfips)
 
 // Modeling
 glm lab_fentanyl, l(identity) 
@@ -126,7 +133,6 @@ xtgee lab_fentanyl confirmatory consumed weird swab if lab_meth!=1 & lab_cocaine
 
 //// Powder cocaine
 xtgee lab_fentanyl expect_fentanyl confirmatory consumed weird swab if lab_meth==1 & lab_cocaine!=1 & crystals!=1, corr(exch) f(gaussian) link(identity) vce(r) nolog noconstant
-
 
 matrix b=e(b)
 xtgee lab_fentanyl confirmatory consumed weird swab if lab_meth!=1 & lab_cocaine==1 & crystals!=1, corr(exch) f(nb) link(identity) vce(r) from(b, skip)
