@@ -1,53 +1,53 @@
 substance,any,primary,trace
-"fentanyl",917,838,78
-"4-ANPP",817,616,201
-"methamphetamine",507,428,79
-"cocaine",399,240,159
-"phenethyl 4-ANPP",371,116,255
-"heroin",312,236,76
-"xylazine",291,196,95
-"ethyl-4-ANPP",234,46,188
-"p-fluorofentanyl",211,108,103
-"acetylcodeine",198,105,93
-"caffeine",188,113,75
-"6-monoacetylmorphine (6-MAM)",173,73,100
-"acetaminophen",160,126,34
+"fentanyl",931,849,81
+"4-ANPP",827,623,204
+"methamphetamine",523,443,80
+"cocaine",406,244,162
+"phenethyl 4-ANPP",374,117,257
+"heroin",319,241,78
+"xylazine",296,199,97
+"ethyl-4-ANPP",235,46,189
+"p-fluorofentanyl",214,110,104
+"acetylcodeine",202,108,94
+"caffeine",192,113,79
+"6-monoacetylmorphine (6-MAM)",177,76,101
+"acetaminophen",163,128,35
 "lidocaine",124,63,61
-"despropionyl p-fluorofentanyl",115,90,25
+"despropionyl p-fluorofentanyl",117,92,25
 "methyl ecgonidine (MED)",115,17,98
 "N-phenylpropanamide",113,32,81
 "quinine",104,50,54
 "diphenhydramine",95,64,31
-"procaine",74,58,16
-"p-fluoro phenethyl 4-ANPP",73,21,52
+"procaine",76,60,16
+"p-fluoro phenethyl 4-ANPP",75,22,53
 "tramadol",71,29,42
 "non-specific sugars",70,69,1
-"tropacocaine",68,5,62
+"tropacocaine",69,5,63
+"dimethyl sulfone (methylsulfonylmethane MSM)",66,32,34
 "ketamine",65,50,15
-"dimethyl sulfone (methylsulfonylmethane MSM)",64,30,34
 "1-phenethyl-4-propionyloxypiperidine",59,10,49
 "1,3-Diacetin",56,40,16
-"3,4-MDMA",47,40,6
-"papaverine",43,5,38
+"3,4-MDMA",48,41,6
+"papaverine",46,5,41
 "bromazolam",42,35,6
-"phenethyl bromide",36,4,32
+"noramidopyrine",37,24,13
 "N-propionyl norfentanyl",36,4,32
-"noramidopyrine",35,22,13
+"phenethyl bromide",36,4,32
+"phenacetin",33,14,19
 "norcocaine",33,1,32
-"phenacetin",32,13,19
 "meconin",27,5,22
 "acetyl fentanyl",26,7,19
 "benzoylecgonine (BZ)",24,6,17
 "N-butyl-aniline",23,13,10
 "ecgonine methylester (EME)",22,1,21
-"1-phenyl-1-propanamine",22,18,4
+"N,N-dimethylpentylone",22,21,1
 "no compounds of interest detected",22,22,0
 "urea",22,16,6
+"1-phenyl-1-propanamine",22,18,4
 "inositol",21,5,16
-"N,N-dimethylpentylone",20,19,1
+"delta-9-THC",21,14,7
 "levamisole",20,9,11
-"delta-9-THC",20,13,7
-"noscapine",19,7,12
+"noscapine",20,7,13
 "non-specific organic acids",17,17,0
 "gabapentin",16,11,5
 "1-[(2-chlorophenyl)(methylimino)methyl]cyclopentanol",16,4,12
@@ -57,104 +57,105 @@ substance,any,primary,trace
 "clonazolam",13,10,1
 "alprazolam",12,11,1
 "1-propionyl-4-anilinopiperidine",11,1,10
+"amphetamine",11,6,5
 "MDA",11,9,2
 "menthol",10,5,5
-"amphetamine",9,4,5
 "1-phenethyl-4-hydroxypiperidine",9,0,9
-"N,N-dimethyltryptamine (DMT)",8,7,1
 "nicotine",8,2,6
+"N,N-dimethyltryptamine (DMT)",8,7,1
 "N,N-Dimethylamphetamine (DMA)",7,5,2
 "codeine",7,2,5
 "3-monoacetylmorphine (3-MAM)",7,2,5
-"etizolam",6,6,0
+"ecgonidine (ED)",6,1,4
+"lysergic acid diethylamide (LSD)",6,5,0
 "8-aminoclonazolam",6,2,4
+"mannitol",6,3,3
+"etizolam",6,6,0
 "4-Anilino-1-Boc-piperidine",6,1,5
 "metonitazene",6,3,3
-"ecgonidine (ED)",6,1,4
-"melatonin",6,0,6
-"lysergic acid diethylamide (LSD)",6,5,0
 "niacinamide",6,1,5
-"mannitol",6,3,3
+"melatonin",6,0,6
 "2-methyl-1,2,3,4-tetrahydro-b-carboline",6,4,2
-"benzoic acid",5,2,3
-"buprenorphine",5,4,1
 "sucrose",5,3,2
+"buprenorphine",5,4,1
+"benzoic acid",5,2,3
 "norfentanyl",5,0,5
-"4-fluoro-alpha-PHP",4,4,0
 "delta-8-THC",4,4,0
 "flualprazolam",4,4,0
-"methadone",3,2,1
-"lactose",3,2,1
-"oxycodone",3,2,1
-"acetanilide",3,0,3
-"2C-B",3,3,0
-"ibuprofen",3,2,1
+"4-fluoro-alpha-PHP",4,4,0
 "cannabinol",3,2,1
-"non-specific sugar",3,3,0
-"4-anilinopiperidine",3,1,2
 "clonazepam",3,3,0
+"oxycodone",3,2,1
+"methadone",3,2,1
+"non-specific sugar",3,3,0
 "buspirone",3,2,1
-"cinnamoylcocaine",2,0,2
-"erythritol",2,0,2
-"doxylamine",2,2,0
-"vitamin E acetate",2,2,0
-"eutylone",2,1,1
-"promethazine",2,2,0
-"ADB-BUTINACA",2,1,1
-"hydrocodone",2,1,1
-"N-methyltryptamine",2,1,1
-"aspirin",2,2,0
-"fluorexetamine",2,1,1
+"2C-B",3,3,0
+"4-anilinopiperidine",3,1,2
+"ibuprofen",3,2,1
+"acetanilide",3,0,3
+"lactose",3,2,1
 "quetiapine",2,0,2
-"valeryl fentanyl",2,0,2
-"p-fluoroacetyl fentanyl",2,2,0
 "salicylic acid",2,1,1
-"venlafaxine",2,2,0
-"tetracaine",2,0,2
-"adrafinil",2,2,0
-"tadalafil",2,2,0
+"eutylone",2,1,1
+"erythritol",2,0,2
+"valeryl fentanyl",2,0,2
 "medetomidine",2,2,0
-"Psilocybin / Psilocin",1,1,0
-"ortho-chlorofentanyl",1,0,1
-"benzocaine",1,0,1
-"non-specific phthalate",1,1,0
-"dextromethorphan",1,0,1
-"N-benzyl para-fluoro norfentanyl",1,0,1
-"naproxen",1,1,0
-"benzyl benzoate",1,1,0
-"non-specific organic acid",1,1,0
-"3-Methoxy-PCP",1,1,0
-"3,4-methylenedioxy-N-benzylcathinone (BMDP)",1,1,0
-"methylparaben",1,0,1
-"methocarbamol",1,0,1
-"meclonazepam",1,1,0
-"non-specific hydrocarbon",1,1,0
-"oxybutynin",1,1,0
-"ephedrine/pseudoephedrine",1,0,1
-"tiletamine",1,0,1
-"2C-H",1,1,0
-"N-(acetyl)-thebaol",1,1,0
-"lysergic acid amide (LSA)",1,0,1
+"aspirin",2,2,0
+"tetracaine",2,0,2
+"tadalafil",2,2,0
+"p-fluoroacetyl fentanyl",2,2,0
+"adrafinil",2,2,0
+"ADB-BUTINACA",2,1,1
+"promethazine",2,2,0
+"N-methyltryptamine",2,1,1
+"vitamin E acetate",2,2,0
+"cinnamoylcocaine",2,0,2
+"venlafaxine",2,2,0
+"doxylamine",2,2,0
+"fluorexetamine",2,1,1
+"hydrocodone",2,1,1
 "mescaline",1,1,0
-"bipiperidinyl 4-ANPP",1,0,1
-"pentobarbital",1,1,0
-"levetiracetam",1,1,0
-"despropionyl ortho-chlorofentanyl",1,1,0
-"guaifenesin",1,1,0
 "ergosterol",1,1,0
-"N-piperidinyl etonitazene",1,1,0
+"non-specific phthalate",1,1,0
 "glycerin",1,1,0
-"denatonium",1,1,0
-"p-fluoro 4-ANPP",1,0,1
-"naloxone",1,1,0
-"3,4-Methylenedioxy-α-Cyclohexylaminopropiophenone",1,1,0
-"testosterone cypionate",1,1,0
-"carisoprodol",1,1,0
 "sildenafil",1,1,0
-"trazodone",1,1,0
-"methandrostenolone",1,1,0
-"N-formylmethamphetamine",1,0,1
+"3,4-methylenedioxy-N-benzylcathinone (BMDP)",1,1,0
 "N-methyl-cyclohexanamine",1,1,0
+"levetiracetam",1,1,0
+"benzyl benzoate",1,1,0
+"bipiperidinyl 4-ANPP",1,0,1
+"ortho-chlorofentanyl",1,0,1
 "tianeptine",1,1,0
+"N-benzyl para-fluoro norfentanyl",1,0,1
+"oxybutynin",1,1,0
+"despropionyl ortho-chlorofentanyl",1,1,0
 "flubromazolam",1,0,1
+"methandrostenolone",1,1,0
+"testosterone cypionate",1,1,0
+"N-piperidinyl etonitazene",1,1,0
+"N-formylmethamphetamine",1,0,1
+"lysergic acid amide (LSA)",1,0,1
+"trazodone",1,1,0
+"naloxone",1,1,0
+"p-fluoro 4-ANPP",1,0,1
+"4-Methylmethcathinone",1,1,0
+"denatonium",1,1,0
+"pentobarbital",1,1,0
+"methocarbamol",1,0,1
+"ephedrine/pseudoephedrine",1,0,1
+"non-specific hydrocarbon",1,1,0
+"carisoprodol",1,1,0
+"dextromethorphan",1,0,1
+"benzocaine",1,0,1
+"3-Methoxy-PCP",1,1,0
+"meclonazepam",1,1,0
+"2C-H",1,1,0
+"3,4-Methylenedioxy-α-Cyclohexylaminopropiophenone",1,1,0
 "temazepam",1,1,0
+"guaifenesin",1,1,0
+"tiletamine",1,0,1
+"methylparaben",1,0,1
+"Psilocybin / Psilocin",1,1,0
+"naproxen",1,1,0
+"non-specific organic acid",1,1,0
+"N-(acetyl)-thebaol",1,1,0
