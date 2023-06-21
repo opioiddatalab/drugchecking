@@ -20,47 +20,47 @@ substance,samples,rank
 "caffeine",18,19
 "non-specific sugars",17,20
 "acetaminophen",13,21
-"diphenhydramine",9,22
-"procaine",9,23
+"procaine",9,22
+"diphenhydramine",9,23
 "phenethyl bromide",8,24
 "1-phenyl-1-propanamine",5,25
 "1-phenethyl-4-propionyloxypiperidine",5,26
 "methyl ecgonidine (MED)",5,27
-"menthol",4,28
+"bromazolam",4,28
 "N-propionyl norfentanyl",4,29
-"bromazolam",4,30
-"quinine",3,31
-"phenacetin",3,32
-"gabapentin",3,33
-"ketamine",2,34
+"menthol",4,30
+"gabapentin",3,31
+"quinine",3,32
+"phenacetin",3,33
+"phenethyl chloride",2,34
 "mannitol",2,35
-"benzoylecgonine (BZ)",2,36
-"N-butyl-aniline",2,37
-"levamisole",2,38
-"melatonin",2,39
-"1-propionyl-4-anilinopiperidine",2,40
-"metonitazene",2,41
-"acetyl fentanyl",2,42
-"valeryl fentanyl",2,43
-"meconin",2,44
-"hydrocotarnine",2,45
-"sucrose",2,46
-"N,N-dimethylpentylone",2,47
-"urea",2,48
-"phenethyl chloride",2,49
+"urea",2,36
+"meconin",2,37
+"acetyl fentanyl",2,38
+"sucrose",2,39
+"benzoylecgonine (BZ)",2,40
+"hydrocotarnine",2,41
+"levamisole",2,42
+"N,N-dimethylpentylone",2,43
+"metonitazene",2,44
+"1-propionyl-4-anilinopiperidine",2,45
+"ketamine",2,46
+"melatonin",2,47
+"valeryl fentanyl",2,48
+"N-butyl-aniline",2,49
 "tropacocaine",2,50
-"noscapine",1,51
-"4-Anilino-1-Boc-piperidine",1,52
-"benzoic acid",1,53
-"benzocaine",1,54
-"papaverine",1,55
-"norcocaine",1,56
-"delta-9-THC",1,57
-"medetomidine",1,58
-"methylparaben",1,59
-"ecgonine methylester (EME)",1,60
-"p-fluoroacetyl fentanyl",1,61
-"lactose",1,62
-"nicotine",1,63
-"non-specific organic acids",1,64
-"ibuprofen",1,65
+"4-Anilino-1-Boc-piperidine",1,51
+"ibuprofen",1,52
+"methylparaben",1,53
+"ecgonine methylester (EME)",1,54
+"medetomidine",1,55
+"lactose",1,56
+"papaverine",1,57
+"delta-9-THC",1,58
+"nicotine",1,59
+"benzoic acid",1,60
+"non-specific organic acids",1,61
+"norcocaine",1,62
+"p-fluoroacetyl fentanyl",1,63
+"noscapine",1,64
+"benzocaine",1,65
