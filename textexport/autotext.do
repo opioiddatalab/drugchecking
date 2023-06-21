@@ -45,7 +45,7 @@ do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/sqapi_last50.do"
 
 
 * Import lab data
-import excel "LabResults.xlsx", sheet("LAB data") firstrow case(lower) clear
+import excel "LabResults.xlsx", sheet("LAB data") firstrow case(lower) allstring clear
 drop f g
 drop if sampleid == ""
 drop if lab_status== "pending"
@@ -275,11 +275,10 @@ drop hint
 * Scientific info
 frame change lab
 drop date* method common uncommon
-*drop if peak==""
-drop if peak==.
+drop if peak==""
 drop if abundance=="trace"
 drop abundance lab_status
-tostring peak, replace
+*tostring peak, replace
 replace peak=subinstr(peak,"9999999999999","",.)
 replace peak=subinstr(peak,"0000000000001","",.)
 gen text = "Peak " + peak + " = " + substance
