@@ -59,7 +59,6 @@ latest = latest.strftime('%A %B %d, %Y')
 
 # Latest xylazine reports by county
 latestreport = dfxyl.groupby(by=["county"])
-latestreport["date_complete"] = latestreport["date_complete"].strftime('%B %d, %Y')
 mostrecent = latestreport['date_complete'].copy()
 mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
 
