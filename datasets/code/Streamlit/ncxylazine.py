@@ -59,9 +59,9 @@ latest = latest.strftime('%A %B %d, %Y')
 
 # Latest xylazine reports by county
 latestreport = dfxyl.groupby(by=["county"])
-# transform latestreport into a list of tuples
-latestreport = list(latestreport)   
-mostrecent = latestreport
+# transform latestreport into a dataframe
+latestreportDF = latestreport.size().reset_index(name='county_count')
+mostrecent = lrdc
 mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
 
 # Sensations Graph
