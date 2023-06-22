@@ -60,7 +60,7 @@ latest = latest.strftime('%A %B %d, %Y')
 # Latest xylazine reports by county
 latestreport = dfxyl.groupby(by=["county"])
 # transform latestreport into a dataframe
-latestreportDF = latestreport.size().reset_index(name='county_count')
+latestreportDF = latestreport.size().reset_index(name='Most_Recent')
 mostrecent = latestreportDF
 mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
 
