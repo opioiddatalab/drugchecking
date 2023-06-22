@@ -50,7 +50,7 @@ xyl_count = len(dfxyl.index)
 counties_sampled = df['county'].nunique() 
 
 # Count number of counties samples
-xyl_counties = dfxyl['county'].nunique(1) 
+xyl_counties = dfxyl['county'].nunique() 
 
 # Latest date xylazine was detected
 latest = dfxyl['date_complete'].max()
@@ -58,7 +58,7 @@ latest = latest.strftime('%A %B %d, %Y')
 
 
 # Latest xylazine reports by county
-latestreport = dfxyl.groupby(by=["county"]).max()
+latestreport = dfxyl.groupby(by=["county"])
 latestreport["date_complete"] = latestreport["date_complete"].dt.strftime('%B %d, %Y')
 mostrecent = latestreport[['date_complete']].copy()
 mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
