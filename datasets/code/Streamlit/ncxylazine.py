@@ -5,7 +5,7 @@ import numpy as np
 import plotly.express as px
 from urllib.request import urlopen
 import json
-import plotly
+# import plotly
 import streamlit as st
 
 def get_data():
@@ -58,10 +58,14 @@ latest = latest.strftime('%A %B %d, %Y')
 
 
 # Latest xylazine reports by county
-latestreport = dfxyl.groupby(by=["county"])
-latestreportDF = latestreport.size().reset_index(name='Total Sample Counts')
-mostrecent = latestreportDF
-mostrecent.rename(columns={'date_complete': 'Count'}, inplace=True)
+def add_most_recent(grp):
+    grp['date_complete'] = grp['date_complete'].max()
+    return grp
+# remove all columns except date_complete and county
+dfxyl = dfxyl[['county', 'date_complete']]
+# only keep the first instance of each county
+dfxyl = dfxyl.groupby(by=["county"]).apply(add_most_recent)
+mostrecent = dfxyl.drop_duplicates(subset=['county'])    
 
 # Sensations Graph
 import altair as alt
@@ -91,7 +95,7 @@ sensations = alt.Chart(url).mark_bar(size=40).encode(
 # Streamlit
 st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from UNC Drug Analysis Lab")
-st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 19 North Carolina harm reduction programs. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
+st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 30+ North Carolina harm reduction programs, hospitals, clinics, and health departments. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
 st.markdown("---")
 st.markdown("There is a new cut in street drugs and it causes terrible skin problems. But we didn't have a way to track it in North Carolina. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
 
@@ -201,7 +205,20 @@ st.markdown("We've detected xylazine in about half the places from where we rece
 
 st.subheader("Latest xylazine detection dates by location")
 
-st.table(mostrecent)
+st.dataframe(
+    mostrecent,
+    column_config={
+        'county': "County",
+        'date_complete': st.column_config.DateColumn(
+            "Sample Date",
+            format="MM/DD/YYYY",
+            disabled=True
+        ),
+        'sampleid': None
+    },
+    hide_index=True,
+    use_container_width=True
+)
 
 st.markdown("---")
 
