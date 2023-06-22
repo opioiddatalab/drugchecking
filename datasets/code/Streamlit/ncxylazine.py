@@ -59,8 +59,11 @@ latest = latest.strftime('%A %B %d, %Y')
 
 # Latest xylazine reports by county
 latestreport = dfxyl.groupby(by=["county"])
-mostrecent = latestreport['date_complete'].copy()
-mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
+for name, group in latestreport:
+    print(name)
+    print(group)
+mostrecent = latestreport['date_complete']
+# mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
 
 # Sensations Graph
 import altair as alt
