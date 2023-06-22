@@ -207,10 +207,11 @@ st.subheader("Latest xylazine detection dates by location")
 
 st.dataframe(
     mostrecent,
+    height=700,
     column_config={
         'county': "County",
         'date_complete': st.column_config.DateColumn(
-            "Sample Date",
+            "Most Recent Sample Date",
             format="MM/DD/YYYY",
             disabled=True
         ),
