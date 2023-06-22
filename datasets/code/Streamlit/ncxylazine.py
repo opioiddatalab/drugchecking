@@ -50,7 +50,7 @@ xyl_count = len(dfxyl.index)
 counties_sampled = df['county'].nunique() 
 
 # Count number of counties samples
-xyl_counties = dfxyl['county'].nunique() 
+xyl_counties = dfxyl['county'].nunique(1) 
 
 # Latest date xylazine was detected
 latest = dfxyl['date_complete'].max()
