@@ -60,7 +60,7 @@ latest = latest.strftime('%A %B %d, %Y')
 # Latest xylazine reports by county
 latestreport = dfxyl.groupby(by=["county"])
 # for each row in the group, find the latest date
-mostrecent = latestreport.apply(lambda x: x.sort_values(["date_complete"], ascending = False)).reset_index(drop=True)
+mostrecent = latestreport.apply(lambda x: x.sort_values(["date_complete"], ascending = False)).reset_index()
 mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
 
 # Sensations Graph
