@@ -60,8 +60,8 @@ latest = latest.strftime('%A %B %d, %Y')
 # Latest xylazine reports by county
 latestreport = dfxyl.groupby(by=["county"])
 # iterate over each group and determine the most recent date
-latestreport = latestreport.apply(lambda x: x.sort_values(["date_complete"], ascending = False)).reset_index(drop=True) 
-latestreportDF = latestreport.size().reset_index(name='Most Recent Sample')
+latestreport["date_complete"] = latestreport["date_complete"].apply(lambda x: x.sort_values(["date_complete"], ascending = False)).reset_index(drop=True) 
+latestreportDF = latestreport.reset_index(name='Most Recent Sample')
 mostrecent = latestreportDF
 mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
 
