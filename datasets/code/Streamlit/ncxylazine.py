@@ -61,7 +61,7 @@ latest = latest.strftime('%A %B %d, %Y')
 latestreport = dfxyl.groupby(by=["county"])
 # transform latestreport into a dataframe
 latestreportDF = latestreport.size().reset_index(name='county_count')
-mostrecent = lrdc
+mostrecent = latestreportDF
 mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
 
 # Sensations Graph
