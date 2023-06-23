@@ -58,13 +58,17 @@ latest = latest.strftime('%A %B %d, %Y')
 
 
 # Latest xylazine reports by county
-def add_most_recent(grp):
+def update_entries(grp):
+    # update date_complete to most recent date
     grp['date_complete'] = grp['date_complete'].max()
+    # if length of county is less than 1, then replace with "County not specified"
+    if len(grp['county']) < 1: 
+        grp['county'] = "County not specified"
     return grp
 # remove all columns except date_complete and county
 dfxyl = dfxyl[['county', 'date_complete']]
 # only keep the first instance of each county
-dfxyl = dfxyl.groupby(by=["county"]).apply(add_most_recent)
+dfxyl = dfxyl.groupby(by=["county"]).apply(update_entries)
 mostrecent = dfxyl.drop_duplicates(subset=['county'])    
 
 # Sensations Graph
@@ -187,13 +191,18 @@ agg_df["percent_str"] = np.round(agg_df["percent"], 1)
 with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
     counties = json.load(response)
 
-fig = px.choropleth_mapbox(agg_df, geojson=counties, locations='countyfips', color='percent',
+fig = px.choropleth_mapbox(agg_df, 
+                           geojson=counties,
+                           locations='countyfips',
+                           color='percent',
                            color_continuous_scale="reds",
                            range_color=(0, 100),
                            mapbox_style="carto-positron",
-                           zoom=5.5, center = {"lat": 35.3, "lon": -79.2},
+                           zoom=5.5,
+                           center = {"lat": 35.3, "lon": -79.2},
                            opacity=0.8,
-                           labels={'percent':'% Samples with Xylazine'}
+                           hover_data={'county':True, 'latest_date':True, 'percent': False, 'percent_str':True, 'unique_samples':False, 'xylazine_count':False, 'countyfips':False},
+                           labels={'percent_str':'% Samples with Xylazine', 'county':'County', 'latest_date':'Most Recent Sample Date'},
                           )
 
 fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine')
