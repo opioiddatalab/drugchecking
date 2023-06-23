@@ -187,7 +187,7 @@ fig = px.choropleth_mapbox(agg_df, geojson=counties, locations='countyfips', col
                            color_continuous_scale="reds",
                            range_color=(0, 100),
                            mapbox_style="carto-positron",
-                           zoom=5.5, center = {"lat": 35.3, "lon": -79.3},
+                           zoom=5.5, center = {"lat": 35.3, "lon": -79.2},
                            opacity=0.8,
                            labels={'percent':'% Samples with Xylazine'}
                           )
@@ -236,4 +236,4 @@ st.markdown("We are grateful to our two funders: Foundation for Opioid Response 
 
 st.markdown("---")
 st.markdown("_fin._")
-#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me
+#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me#delete me
