@@ -23,7 +23,7 @@ x_strength = pd.DataFrame(x_strength)
 x_strength.set_index('order', inplace=True)
 
 # Import public NC sample data and cache for Streamlit
-@st.cache(suppress_st_warning=True)
+@st.cache_data()
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_analysis_dataset.csv"
     return pd.read_csv(url)
@@ -209,7 +209,10 @@ st.dataframe(
     mostrecent,
     height=700,
     column_config={
-        'county': "County",
+        'county': st.column_config.TextColumn(
+            "County",
+            disabled=True
+        ),
         'date_complete': st.column_config.DateColumn(
             "Most Recent Sample Date",
             format="MM/DD/YYYY",
@@ -229,7 +232,10 @@ st.markdown("Xylazine was found mostly mixed with fentanyl and heroin. But cocai
 col1, col2 = st.columns(2)
 
 with col1:
-    st.dataframe(x_subs)
+    st.dataframe(
+        x_subs,
+        use_container_width=True
+        )
 
 with col2:
     st.altair_chart(sensations)
