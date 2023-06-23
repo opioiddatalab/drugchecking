@@ -5,7 +5,7 @@ import numpy as np
 import plotly.express as px
 from urllib.request import urlopen
 import json
-import plotly
+# import plotly
 import streamlit as st
 
 def get_data():
@@ -23,7 +23,7 @@ x_strength = pd.DataFrame(x_strength)
 x_strength.set_index('order', inplace=True)
 
 # Import public NC sample data and cache for Streamlit
-@st.cache(suppress_st_warning=True)
+@st.cache_data()
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_analysis_dataset.csv"
     return pd.read_csv(url)
@@ -58,10 +58,18 @@ latest = latest.strftime('%A %B %d, %Y')
 
 
 # Latest xylazine reports by county
-latestreport = dfxyl.groupby(by=["county"]).max()
-latestreport["date_complete"] = latestreport["date_complete"].dt.strftime('%B %d, %Y')
-mostrecent = latestreport[['date_complete']].copy()
-mostrecent.rename(columns={'date_complete': 'Most_Recent'}, inplace=True)
+def update_entries(grp):
+    # update date_complete to most recent date
+    grp['date_complete'] = grp['date_complete'].max()
+    # if length of county is less than 1, then replace with "County not specified"
+    if len(grp['county']) < 1: 
+        grp['county'] = "County not specified"
+    return grp
+# remove all columns except date_complete and county
+dfxyl = dfxyl[['county', 'date_complete']]
+# only keep the first instance of each county
+dfxyl = dfxyl.groupby(by=["county"]).apply(update_entries)
+mostrecent = dfxyl.drop_duplicates(subset=['county'])    
 
 # Sensations Graph
 import altair as alt
@@ -91,7 +99,7 @@ sensations = alt.Chart(url).mark_bar(size=40).encode(
 # Streamlit
 st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from UNC Drug Analysis Lab")
-st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 19 North Carolina harm reduction programs. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
+st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 30+ North Carolina harm reduction programs, hospitals, clinics, and health departments. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
 st.markdown("---")
 st.markdown("There is a new cut in street drugs and it causes terrible skin problems. But we didn't have a way to track it in North Carolina. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
 
@@ -183,13 +191,18 @@ agg_df["percent_str"] = np.round(agg_df["percent"], 1)
 with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
     counties = json.load(response)
 
-fig = px.choropleth_mapbox(agg_df, geojson=counties, locations='countyfips', color='percent',
+fig = px.choropleth_mapbox(agg_df, 
+                           geojson=counties,
+                           locations='countyfips',
+                           color='percent',
                            color_continuous_scale="reds",
                            range_color=(0, 100),
                            mapbox_style="carto-positron",
-                           zoom=5.5, center = {"lat": 35.3, "lon": -79.2},
+                           zoom=5.5,
+                           center = {"lat": 35.3, "lon": -79.2},
                            opacity=0.8,
-                           labels={'percent':'% Samples with Xylazine'}
+                           hover_data={'county':True, 'latest_date':True, 'percent': False, 'percent_str':True, 'unique_samples':False, 'xylazine_count':False, 'countyfips':False},
+                           labels={'percent_str':'% Samples with Xylazine', 'county':'County', 'latest_date':'Most Recent Sample Date'},
                           )
 
 fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine')
@@ -201,7 +214,24 @@ st.markdown("We've detected xylazine in about half the places from where we rece
 
 st.subheader("Latest xylazine detection dates by location")
 
-st.table(mostrecent)
+st.dataframe(
+    mostrecent,
+    height=700,
+    column_config={
+        'county': st.column_config.TextColumn(
+            "County",
+            disabled=True
+        ),
+        'date_complete': st.column_config.DateColumn(
+            "Most Recent Sample Date",
+            format="MM/DD/YYYY",
+            disabled=True
+        ),
+        'sampleid': None
+    },
+    hide_index=True,
+    use_container_width=True
+)
 
 st.markdown("---")
 
@@ -211,7 +241,10 @@ st.markdown("Xylazine was found mostly mixed with fentanyl and heroin. But cocai
 col1, col2 = st.columns(2)
 
 with col1:
-    st.dataframe(x_subs)
+    st.dataframe(
+        x_subs,
+        use_container_width=True
+        )
 
 with col2:
     st.altair_chart(sensations)

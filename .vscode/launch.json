@@ -1,0 +1,15 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "debug streamlit",
+            "type": "python",
+            "request": "launch",
+            "program": "datasets/code/Streamlit/ncxylazine.py",
+            "args": [
+                "run",
+                "run.py"
+            ]
+        }
+    ]
+    }
