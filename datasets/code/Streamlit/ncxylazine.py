@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from load_css import local_css
+local_css("datasets/code/Streamlit/style.css")
 
 import pandas as pd
 import numpy as np

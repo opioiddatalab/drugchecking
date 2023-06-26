@@ -1,0 +1,13 @@
+[server]
+
+port = 3001
+
+[client]
+showErrorDetails = false
+
+
+[theme] 
+backgroundColor = "#1A2D4C"
+primaryColor = "turquoise"
+secondaryBackgroundColor = "#E39B33"
+font = "brandongrotesque,sans-serif"
