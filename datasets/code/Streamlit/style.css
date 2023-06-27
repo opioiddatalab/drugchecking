@@ -3,6 +3,41 @@
 html, body, [class*="css"] {
     font-family: 'Josefin Sans', sans-serif; 
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     color: #1a1919;
+
+}
+
+h1 div span[class*="css"] {
+    font-size: 2em;
+    font-weight: 700;
+    width: 80%; 
+    /* text-align: center; */
+}
+
+h3 div span[class*="css"] {
+    line-height: 1.2;
+    font-size: 1.33em;
+    font-weight: 600;
+}
+
+div[class*="css"] a {
+    color: #e39b33;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+label[data-testid="stMetricLabel"] div[data-testid="stMarkdownContainer"] p {
+    font-size: .95em;
+    font-weight: 600;
+}
+
+div[data-testid="stMetricValue"] div[class*="css"] {
+    font-size: 1.75em;
+    font-weight: 200;
+}
+
+div[data-testid="stMarkdownContainer"] hr {
+    border-top: 2px solid #e39b33;
+
 }
