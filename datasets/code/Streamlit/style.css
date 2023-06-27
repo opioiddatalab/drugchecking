@@ -8,11 +8,21 @@ html, body, [class*="css"] {
 
 }
 
+div[class*="appview-container"] section div[class*="block-container"][class*="css"] {
+    padding-top: 1rem;
+}
+
 h1 div span[class*="css"] {
     font-size: 2em;
     font-weight: 700;
     width: 80%; 
     /* text-align: center; */
+}
+
+h2 div span[class*="css"] {
+    line-height: 1.5;
+    font-size: 1.33em;
+    font-weight: 600;
 }
 
 h3 div span[class*="css"] {
@@ -29,7 +39,7 @@ div[class*="css"] a {
 
 label[data-testid="stMetricLabel"] div[data-testid="stMarkdownContainer"] p {
     font-size: .95em;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 div[data-testid="stMetricValue"] div[class*="css"] {
@@ -41,3 +51,4 @@ div[data-testid="stMarkdownContainer"] hr {
     border-top: 2px solid #e39b33;
 
 }
+

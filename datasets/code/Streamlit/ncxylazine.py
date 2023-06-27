@@ -216,8 +216,12 @@ st.markdown("We've detected xylazine in about half the places from where we rece
 
 st.subheader("Latest xylazine detection dates by location")
 
+def cooling_highlight(val):
+    color = 'white' if val else 'white'
+    return f'background-color: {color}'
+
 st.dataframe(
-    mostrecent,
+    mostrecent.style.applymap(cooling_highlight, subset=['county', 'date_complete']),
     height=700,
     column_config={
         'county': st.column_config.TextColumn(
