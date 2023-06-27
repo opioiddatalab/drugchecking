@@ -1,10 +1,2 @@
-[server]
-
-port = 3002
-
-[client]
-showErrorDetails = false
-
 [theme]
-
 secondaryBackgroundColor = "#e39b33"
