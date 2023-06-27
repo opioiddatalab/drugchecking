@@ -1,13 +1,10 @@
 [server]
 
-port = 3001
+port = 3002
 
 [client]
 showErrorDetails = false
 
+[theme]
 
-[theme] 
-backgroundColor = "#1A2D4C"
-primaryColor = "turquoise"
-secondaryBackgroundColor = "#E39B33"
-font = "brandongrotesque,sans-serif"
+secondaryBackgroundColor = "#e39b33"
