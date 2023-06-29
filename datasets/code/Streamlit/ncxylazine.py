@@ -221,7 +221,7 @@ def cooling_highlight(val):
     return f'background-color: {color}'
 
 st.dataframe(
-    mostrecent.style.applymap(cooling_highlight, subset=['county', 'date_complete']),
+    mostrecent,
     height=700,
     column_config={
         'county': st.column_config.TextColumn(
@@ -230,8 +230,7 @@ st.dataframe(
         ),
         'date_complete': st.column_config.DateColumn(
             "Most Recent Sample Date",
-            format="MM/DD/YYYY",
-            disabled=True
+            format="dddd MMMM DD, YYYY",
         ),
         'sampleid': None
     },
