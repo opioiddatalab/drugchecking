@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from load_css import local_css
+local_css("datasets/code/Streamlit/style.css")
 
 import pandas as pd
 import numpy as np
@@ -214,6 +216,10 @@ st.markdown("We've detected xylazine in about half the places from where we rece
 
 st.subheader("Latest xylazine detection dates by location")
 
+def cooling_highlight(val):
+    color = 'white' if val else 'white'
+    return f'background-color: {color}'
+
 st.dataframe(
     mostrecent,
     height=700,
@@ -224,8 +230,7 @@ st.dataframe(
         ),
         'date_complete': st.column_config.DateColumn(
             "Most Recent Sample Date",
-            format="MM/DD/YYYY",
-            disabled=True
+            format="dddd MMMM DD, YYYY",
         ),
         'sampleid': None
     },
