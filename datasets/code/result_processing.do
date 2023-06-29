@@ -854,4 +854,4 @@ frames reset
 
 // Tigger Streamlit to refresh by adding line to python script(s) that the app(s) build on
 
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/st_triggers.do"
+*do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/st_triggers.do"
