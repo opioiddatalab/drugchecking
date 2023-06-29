@@ -2,3 +2,5 @@
 textexport/autotext.do
 textexport/textexport.xls
 textexport/autotext_smalllaptop.do
+__pycache__/
+*.pyc

@@ -150,7 +150,7 @@ st.write(
 
     
 # Latest late of xylazine detection
-st.write("Xylazine last detected on:")
+st.header("Xylazine last detected on:")
 st.subheader(latest)
 st.markdown("---")
 
