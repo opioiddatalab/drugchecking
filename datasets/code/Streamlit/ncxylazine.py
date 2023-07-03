@@ -156,7 +156,7 @@ st.markdown("---")
 
 
 st.subheader(":hospital: [More info on xylazine](https://harmreduction.org/wp-content/uploads/2022/11/Xylazine-in-the-Drug-Supply-one-pager.pdf) in the street drug supply")
-st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. It can cause horrific skin ulcers, beyond the site of injection. If treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
+st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. It can cause bad skin ulcers beyond the site of injection. Treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
 
 st.markdown("---")
 st.header("Where has xylazine been detected?")
@@ -257,7 +257,7 @@ with col2:
 st.markdown("---")
 
 st.markdown("## Where did these drug samples come from?")
-st.markdown("A public service of the University of North Carolina. Data from North Carolina harm reduction programs. Full details at our [website](https://streetsafe.supply) and program profile in [_The New York Times_](https://www.nytimes.com/2022/12/24/us/politics/fentanyl-drug-testing.html))")
+st.markdown("A public service of the University of North Carolina. Data from North Carolina harm reduction programs. Full details at our [website](https://streetsafe.supply), at [UNC.edu](https://www.unc.edu/discover/drug-checking-project-cuts-overdoses/), and profiled in [_The New York Times_](https://www.nytimes.com/2022/12/24/us/politics/fentanyl-drug-testing.html))")
 st.video('https://youtu.be/cWbOeo6pm8A')
 
 st.markdown("Data documentation available [here](https://opioiddatalab.github.io/drugchecking/datasets/).")
@@ -270,7 +270,7 @@ st.video('https://youtu.be/MVs7ZfILCjE')
 st.markdown("---")
 
 st.subheader("Funding")
-st.markdown("We are grateful to our two funders: Foundation for Opioid Response Efforts ([FORE](https://forefdn.org)) and the [UNC Collaboratory via the NC General Assembly](https://collaboratory.unc.edu/news/2022/12/09/north-carolina-collaboratory-launches-research-projects-to-support-local-opioid-abatement-and-recovery-efforts/) using opioid litigation settlement funds.")
+st.markdown("We are grateful to our two funders: Foundation for Opioid Response Efforts ([FORE](https://forefdn.org)) and the [NC Collaboratory via the NC General Assembly](https://collaboratory.unc.edu/news/2022/12/09/north-carolina-collaboratory-launches-research-projects-to-support-local-opioid-abatement-and-recovery-efforts/) using opioid litigation settlement funds.")
 
 st.markdown("---")
 st.markdown("_fin._")
