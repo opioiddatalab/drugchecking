@@ -3,20 +3,12 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
-<<<<<<< Updated upstream
- opened on:   5 Jul 2023, 18:26:45
-=======
- opened on:   6 Jul 2023, 17:20:32
->>>>>>> Stashed changes
+ opened on:   6 Jul 2023, 17:27:52
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-<<<<<<< Updated upstream
-            Last saved: 5 Jul 2023 18:26
-=======
-            Last saved: 6 Jul 2023 17:20
->>>>>>> Stashed changes
+            Last saved: 6 Jul 2023 17:27
 
                  Label: [none]
    Number of variables: 94
@@ -1599,9 +1591,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
-<<<<<<< Updated upstream
- closed on:   5 Jul 2023, 18:26:45
-=======
- closed on:   6 Jul 2023, 17:20:32
->>>>>>> Stashed changes
+ closed on:   6 Jul 2023, 17:27:52
 -------------------------------------------------------------------------------
