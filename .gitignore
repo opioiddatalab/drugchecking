@@ -2,5 +2,7 @@
 textexport/autotext.do
 textexport/textexport.xls
 textexport/autotext_smalllaptop.do
-__pycache__/
+**/__pycache__/
 *.pyc
+
+.DS_Store
