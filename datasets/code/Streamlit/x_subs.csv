@@ -1,4 +1,5 @@
 substance,samples,rank
+<<<<<<< Updated upstream
 "xylazine",166,1
 "fentanyl",161,2
 "4-ANPP",151,3
@@ -7,13 +8,29 @@ substance,samples,rank
 "heroin",45,6
 "cocaine",40,7
 "despropionyl p-fluorofentanyl",33,8
+=======
+"xylazine",170,1
+"fentanyl",165,2
+"4-ANPP",155,3
+"phenethyl 4-ANPP",81,4
+"p-fluorofentanyl",63,5
+"heroin",46,6
+"cocaine",43,7
+"despropionyl p-fluorofentanyl",34,8
+>>>>>>> Stashed changes
 "lidocaine",32,9
 "methamphetamine",28,10
 "dimethyl sulfone (methylsulfonylmethane MSM)",27,11
 "ethyl-4-ANPP",26,12
+<<<<<<< Updated upstream
 "N-phenylpropanamide",24,13
 "1,3-Diacetin",22,14
 "p-fluoro phenethyl 4-ANPP",22,15
+=======
+"N-phenylpropanamide",25,13
+"1,3-Diacetin",24,14
+"p-fluoro phenethyl 4-ANPP",23,15
+>>>>>>> Stashed changes
 "acetylcodeine",22,16
 "6-monoacetylmorphine (6-MAM)",21,17
 "tramadol",19,18
@@ -22,6 +39,7 @@ substance,samples,rank
 "acetaminophen",14,21
 "procaine",10,22
 "diphenhydramine",10,23
+<<<<<<< Updated upstream
 "phenethyl bromide",8,24
 "1-phenyl-1-propanamine",5,25
 "1-phenethyl-4-propionyloxypiperidine",5,26
@@ -67,3 +85,50 @@ substance,samples,rank
 "methylparaben",1,66
 "niacinamide",1,67
 "lactose",1,68
+=======
+"phenethyl bromide",9,24
+"menthol",5,25
+"1-phenethyl-4-propionyloxypiperidine",5,26
+"N-propionyl norfentanyl",5,27
+"bromazolam",5,28
+"1-phenyl-1-propanamine",5,29
+"methyl ecgonidine (MED)",5,30
+"N-butyl-aniline",4,31
+"acetyl fentanyl",3,32
+"phenacetin",3,33
+"quinine",3,34
+"mannitol",3,35
+"gabapentin",3,36
+"metonitazene",3,37
+"benzocaine",2,38
+"1-propionyl-4-anilinopiperidine",2,39
+"levamisole",2,40
+"sucrose",2,41
+"ketamine",2,42
+"urea",2,43
+"melatonin",2,44
+"tropacocaine",2,45
+"benzoylecgonine (BZ)",2,46
+"N,N-dimethylpentylone",2,47
+"valeryl fentanyl",2,48
+"meconin",2,49
+"hydrocotarnine",2,50
+"phenethyl chloride",2,51
+"medetomidine",1,52
+"benzoic acid",1,53
+"papaverine",1,54
+"norcocaine",1,55
+"ibuprofen",1,56
+"non-specific organic acids",1,57
+"niacinamide",1,58
+"lactose",1,59
+"p-fluoroacetyl fentanyl",1,60
+"4-Anilino-1-Boc-piperidine",1,61
+"methylparaben",1,62
+"non-specific phthalate",1,63
+"flualprazolam",1,64
+"noscapine",1,65
+"ecgonine methylester (EME)",1,66
+"delta-9-THC",1,67
+"nicotine",1,68
+>>>>>>> Stashed changes
