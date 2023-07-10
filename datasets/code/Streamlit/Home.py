@@ -18,7 +18,9 @@ st.write("# UNC Street Drug Analysis Lab")
 st.markdown(
     """
     We are a public service of the University of North Carolina at Chapel Hill.
-    **👈 Select a dashboard from the sidebar** to see our latest data!
+    """
+    """
+    ⬅️ 👀 Select a dashboard from the sidebar to see our latest data!
     ### Want to learn more?
     - Check out [streetsafe.supply](https://www.streetsafe.supply/)
     - Jump to our [documentation](https://github.com/opioiddatalab/drugchecking/tree/main/datasets#readme)
