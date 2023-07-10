@@ -1,0 +1,12 @@
+{
+  "name": "drugchecking",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "turbo": "^1.10.7"
+  }
+}

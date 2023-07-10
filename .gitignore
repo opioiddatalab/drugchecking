@@ -6,3 +6,6 @@ textexport/autotext_smalllaptop.do
 *.pyc
 
 .DS_Store
+.turbo
+node_modules
+dist
