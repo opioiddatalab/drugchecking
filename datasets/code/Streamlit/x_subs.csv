@@ -16,54 +16,54 @@ substance,samples,rank
 "p-fluoro phenethyl 4-ANPP",23,15
 "acetylcodeine",22,16
 "6-monoacetylmorphine (6-MAM)",21,17
-"caffeine",19,18
-"tramadol",19,19
+"tramadol",19,18
+"caffeine",19,19
 "non-specific sugars",17,20
 "acetaminophen",14,21
 "diphenhydramine",11,22
 "procaine",10,23
 "phenethyl bromide",9,24
-"methyl ecgonidine (MED)",5,25
-"N-propionyl norfentanyl",5,26
-"bromazolam",5,27
-"menthol",5,28
-"1-phenethyl-4-propionyloxypiperidine",5,29
+"bromazolam",5,25
+"1-phenethyl-4-propionyloxypiperidine",5,26
+"methyl ecgonidine (MED)",5,27
+"N-propionyl norfentanyl",5,28
+"menthol",5,29
 "1-phenyl-1-propanamine",5,30
-"quinine",4,31
+"N-butyl-aniline",4,31
 "gabapentin",4,32
-"N-butyl-aniline",4,33
-"phenacetin",3,34
-"acetyl fentanyl",3,35
-"metonitazene",3,36
+"quinine",4,33
+"acetyl fentanyl",3,34
+"metonitazene",3,35
+"phenacetin",3,36
 "mannitol",3,37
-"1-propionyl-4-anilinopiperidine",2,38
-"valeryl fentanyl",2,39
+"benzoylecgonine (BZ)",2,38
+"sucrose",2,39
 "tropacocaine",2,40
-"hydrocotarnine",2,41
-"ketamine",2,42
-"benzoylecgonine (BZ)",2,43
-"levamisole",2,44
-"N,N-dimethylpentylone",2,45
-"sucrose",2,46
-"benzocaine",2,47
-"melatonin",2,48
-"meconin",2,49
-"phenethyl chloride",2,50
-"urea",2,51
-"noscapine",1,52
-"ecgonine methylester (EME)",1,53
-"methylparaben",1,54
-"flualprazolam",1,55
-"benzoic acid",1,56
-"lactose",1,57
+"urea",2,41
+"melatonin",2,42
+"valeryl fentanyl",2,43
+"meconin",2,44
+"phenethyl chloride",2,45
+"ketamine",2,46
+"N,N-dimethylpentylone",2,47
+"benzocaine",2,48
+"hydrocotarnine",2,49
+"levamisole",2,50
+"1-propionyl-4-anilinopiperidine",2,51
+"benzoic acid",1,52
+"niacinamide",1,53
+"flualprazolam",1,54
+"lactose",1,55
+"papaverine",1,56
+"delta-9-THC",1,57
 "non-specific phthalate",1,58
-"delta-9-THC",1,59
-"ibuprofen",1,60
+"p-fluoroacetyl fentanyl",1,59
+"nicotine",1,60
 "norcocaine",1,61
-"nicotine",1,62
-"p-fluoroacetyl fentanyl",1,63
-"non-specific organic acids",1,64
+"ibuprofen",1,62
+"noscapine",1,63
+"ecgonine methylester (EME)",1,64
 "4-Anilino-1-Boc-piperidine",1,65
 "medetomidine",1,66
-"papaverine",1,67
-"niacinamide",1,68
+"non-specific organic acids",1,67
+"methylparaben",1,68
