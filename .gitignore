@@ -8,5 +8,4 @@ textexport/autotext_smalllaptop.do
 .DS_Store
 node_modules
 .env
-# ignore the entire venv folder
 venv/
