@@ -1,0 +1,40 @@
+#!/bin/bash
+# post-commit
+
+# Get the current branch name
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Only run the script for the main or development branches
+if [ "$current_branch" != "main" ] && [ "$current_branch" != "development" ]; then
+    echo "This commit is not on the main or development branch. Not running the hook script."
+    exit 0
+fi
+
+# Get the latest commit hash and message
+commit_hash=$(git rev-parse HEAD)
+commit_message=$(git log -1 --pretty=%B)
+
+# Set a special commit message for automatic commits
+auto_commit_message="Automatic post-commit hook for streamlit"
+
+# Check if the commit was made by the post-commit hook
+if [ "$commit_message" == "$auto_commit_message" ]; then
+    echo "This is an automatic commit. Not running the hook script."
+    exit 0
+fi
+
+# Get a list of all files changed in the last commit
+changed_files=$(git diff-tree --no-commit-id --name-only -r $commit_hash)
+
+# Check if ncxylazine.py is in the changed files
+if echo "$changed_files" | grep -q "ncxylazine.py"; then
+    echo "ncxylazine.py was modified. Skipping the script execution."
+else
+    echo "ncxylazine.py was not modified. Executing the script..."
+    # Execute the bash script and pass the commit hash as an argument
+    ./.git/hooks/append_commit_hash.sh $commit_hash ./datasets/code/Streamlit/ncxylazine.py
+
+    # Add the modified file to the staging area and commit it
+    git add .
+    git commit -m "$auto_commit_message"
+fi
