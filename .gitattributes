@@ -1,0 +1,2 @@
+datasets/selfservice/WA/* filter=git-crypt-wa_key diff=git-crypt-wa_key
+datasets/selfservice/NYS/* filter=git-crypt-nys_key diff=git-crypt-nys_key
