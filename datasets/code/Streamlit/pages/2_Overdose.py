@@ -40,16 +40,22 @@ with tab2:
 
 outerCol1, outerCol2 = st.columns(2)
 with outerCol1:
-        st.header("Opioid Overdose Resources")
-        st.write("here's a bullted list of resources")
-        st.markdown("- Obtaining Naloxone - ordering naloxone in NC, Remedy Alliance FTP, NEXT Distro")
-        st.markdown("- OD Reversal Training - signs, work in nlx doses in era of xyl concept")
-        st.markdown("- Types of OD - opioids (in stims), stimulant OD (acute vs multi day), benzos (esp potent \"dark web\" variety)")
+        st.header("How to Get Naloxone in NC")
+        st.write("Naloxone is available under the statewide standing order through participating pharmacies. It is up to each individual pharmacy to decide whether to dispense naloxone under the statewide standing order or under a separate standing order. You can contact your local pharmacy to determine whether it is currently dispensing naloxone under a standing order.")
+        st.write("If you are not able to obtain naloxone through a standing order at a pharmacy, you have other options to obtain naloxone. You may seek a prescription for naloxone from a health care provider. You may also get naloxone at some local health departments or syringe exchange programs. See links below to find a syringe exchange program in your area or a participating local health department.")
+       
+
 
 with outerCol2:
-        st.header("Stimulant Overdose Resources")
-        st.write("here's a bullted list of resources")
+        st.markdown("<br/><br/>", unsafe_allow_html=True)
+        st.markdown("- [NC Syringe Exchange Programs](https://www.ncdhhs.gov/divisions/public-health/north-carolina-safer-syringe-initiative/syringe-services-program-north-carolina)")
+        st.markdown("- [Naloxone Saves - NC Pharmacy Locations](https://naloxonesaves.org/2019/02/13/n-c-pharmacies-that-offer-naloxone-under-a-standing-order/)")
+        st.markdown("- [Syringe services programs that offer naloxone](https://naloxonesaves.org/naloxone-available-through-syringe-exchange-programs/)")
+        st.markdown("- [NC health departments that offer naloxone](https://naloxonesaves.org/where-can-i-get-naloxone/north-carolina-health-departments-that-offer-naloxone/)")
+        st.markdown("- [North Carolina pharmacies that offer naloxone](https://naloxonesaves.org/north-carolina-pharmacies-that-offer-naloxone/)")
+        st.markdown("- Talk to your medical care provider about getting naloxone")
 
+st.markdown("---")
 body = "this is a container for the data"
 
 with st.container():
