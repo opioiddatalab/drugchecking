@@ -266,11 +266,13 @@ with st.container():
     st.header("Skin Wounds and Xylazine")
     tab1, tab2 = st.tabs(["Xylazine Info (English)", "Xylazine Info (Español)"])
     with tab1:
+        st.markdown("[Download PDF](https://www.addictiontraining.org/documents/resources/343_Xylazine_Handout_Large_size.pdf)")
         eng1 = Image.open('datasets/code/Streamlit/images/xylazine_eng_1.png')
         eng2 = Image.open('datasets/code/Streamlit/images/xylazine_eng_2.png')
         st.image(eng1) 
         st.image(eng2) 
     with tab2:
+        st.markdown("[Descargar PDF](https://www.addictiontraining.org/documents/resources/342_Xylazine_Wounds_Handout_-_Spanish_Version_pocket_size.pdf)")
         esp1 = Image.open('datasets/code/Streamlit/images/xylazine_esp_1.png')
         esp2 = Image.open('datasets/code/Streamlit/images/xylazine_esp_2.png')
         st.image(esp1) 
@@ -291,7 +293,7 @@ st.markdown("---")
 st.subheader("Funding")
 st.markdown("We are grateful to our funders:")
 st.markdown("[Injury and Violence Prevention Branch](https://injuryfreenc.dph.ncdhhs.gov/) of the NC Department of Health and Human Services, via funding from the Centers for Disease Control and Prevention (2023, data visualizations)")
-st.markdown("North Carolina General Assembly via the [NC Collaboratory](https://collaboratory.unc.edu/) , using Opioid Settlement Funds (2023-24, operations)")
+st.markdown("North Carolina General Assembly via the [NC Collaboratory](https://collaboratory.unc.edu/), using Opioid Settlement Funds (2023-24, operations)")
 st.markdown("[Foundation for Opioid Response Efforts](https://forefdn.org) (2022-23, startup)")
 
 st.markdown("---")
