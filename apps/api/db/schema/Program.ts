@@ -34,6 +34,9 @@ const programSchema = new mongoose.Schema({
       }, 
       geo: {
         type: Geolocation,
+      }, 
+      website: {
+        type: String,
       }
   },
   type: {
