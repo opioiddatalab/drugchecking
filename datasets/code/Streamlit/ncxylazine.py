@@ -7,8 +7,8 @@ import numpy as np
 import plotly.express as px
 from urllib.request import urlopen
 import json
-# import plotly
 import streamlit as st
+from PIL import Image
 
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
@@ -256,6 +256,32 @@ with col2:
 
 st.markdown("---")
 
+
+st.header("Why are we concerned about xylazine?")
+st.video('https://www.youtube.com/watch?v=orzgwi7sxFM')
+
+st.markdown("---")
+
+with st.container(): 
+    st.header("Skin Wounds and Xylazine")
+    tab1, tab2 = st.tabs(["Xylazine Info (English)", "Xylazine Info (Español)"])
+    with tab1:
+        st.markdown("[Download PDF](https://www.addictiontraining.org/documents/resources/343_Xylazine_Handout_Large_size.pdf)")
+        eng1 = Image.open('datasets/code/Streamlit/images/xylazine_eng_1.png')
+        eng2 = Image.open('datasets/code/Streamlit/images/xylazine_eng_2.png')
+        st.image(eng1) 
+        st.image(eng2) 
+    with tab2:
+        st.markdown("[Descargar PDF](https://www.addictiontraining.org/documents/resources/342_Xylazine_Wounds_Handout_-_Spanish_Version_pocket_size.pdf)")
+        esp1 = Image.open('datasets/code/Streamlit/images/xylazine_esp_1.png')
+        esp2 = Image.open('datasets/code/Streamlit/images/xylazine_esp_2.png')
+        st.image(esp1) 
+        st.image(esp2) 
+    st.subheader("Practical Guidance for Responding to Xylazine")
+    st.video('https://youtu.be/MVs7ZfILCjE')
+
+st.markdown("---")
+
 st.markdown("## Where did these drug samples come from?")
 st.markdown("A public service of the University of North Carolina. Data from North Carolina harm reduction programs. Full details at our [website](https://streetsafe.supply), at [UNC.edu](https://www.unc.edu/discover/drug-checking-project-cuts-overdoses/), and profiled in [_The New York Times_](https://www.nytimes.com/2022/12/24/us/politics/fentanyl-drug-testing.html))")
 st.video('https://youtu.be/cWbOeo6pm8A')
@@ -263,15 +289,12 @@ st.video('https://youtu.be/cWbOeo6pm8A')
 st.markdown("Data documentation available [here](https://opioiddatalab.github.io/drugchecking/datasets/).")
 
 st.markdown("---")
-st.header("Why are we concerned about xylazine?")
-st.video('https://www.youtube.com/watch?v=orzgwi7sxFM')
-st.header("What can we do to handle xylazine skin wounds?")
-st.video('https://youtu.be/MVs7ZfILCjE')
-st.markdown("---")
 
 st.subheader("Funding")
-st.markdown("We are grateful to our two funders: Foundation for Opioid Response Efforts ([FORE](https://forefdn.org)) and the [NC Collaboratory via the NC General Assembly](https://collaboratory.unc.edu/news/2022/12/09/north-carolina-collaboratory-launches-research-projects-to-support-local-opioid-abatement-and-recovery-efforts/) using opioid litigation settlement funds.")
+st.markdown("We are grateful to our funders:")
+st.markdown("[Injury and Violence Prevention Branch](https://injuryfreenc.dph.ncdhhs.gov/) of the NC Department of Health and Human Services, via funding from the Centers for Disease Control and Prevention (2023, data visualizations)")
+st.markdown("North Carolina General Assembly via the [NC Collaboratory](https://collaboratory.unc.edu/), using Opioid Settlement Funds (2023-24, operations)")
+st.markdown("[Foundation for Opioid Response Efforts](https://forefdn.org) (2022-23, startup)")
 
 st.markdown("---")
-st.markdown("_fin._")
 # deleted code\n# commit 90661c07dd69631efb2b960bd6f846c91c3d5191
