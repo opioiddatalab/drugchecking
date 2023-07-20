@@ -12,8 +12,8 @@ substance,samples,rank
 "dimethyl sulfone (methylsulfonylmethane MSM)",28,11
 "ethyl-4-ANPP",28,12
 "N-phenylpropanamide",26,13
-"1,3-Diacetin",24,14
-"p-fluoro phenethyl 4-ANPP",24,15
+"p-fluoro phenethyl 4-ANPP",24,14
+"1,3-Diacetin",24,15
 "acetylcodeine",22,16
 "6-monoacetylmorphine (6-MAM)",21,17
 "tramadol",20,18
@@ -24,48 +24,48 @@ substance,samples,rank
 "procaine",10,23
 "phenethyl bromide",9,24
 "1-phenethyl-4-propionyloxypiperidine",6,25
-"N-propionyl norfentanyl",5,26
-"menthol",5,27
-"methyl ecgonidine (MED)",5,28
-"bromazolam",5,29
-"1-phenyl-1-propanamine",5,30
-"N-butyl-aniline",5,31
+"methyl ecgonidine (MED)",5,26
+"bromazolam",5,27
+"N-butyl-aniline",5,28
+"menthol",5,29
+"N-propionyl norfentanyl",5,30
+"1-phenyl-1-propanamine",5,31
 "gabapentin",4,32
 "quinine",4,33
-"phenacetin",3,34
-"metonitazene",3,35
-"acetyl fentanyl",3,36
-"mannitol",3,37
-"sucrose",2,38
+"acetyl fentanyl",3,34
+"phenacetin",3,35
+"mannitol",3,36
+"metonitazene",3,37
+"levamisole",2,38
 "1-propionyl-4-anilinopiperidine",2,39
-"valeryl fentanyl",2,40
-"benzoylecgonine (BZ)",2,41
-"N,N-dimethylpentylone",2,42
-"ketamine",2,43
-"melatonin",2,44
-"levamisole",2,45
-"urea",2,46
-"benzocaine",2,47
-"tropacocaine",2,48
-"hydrocotarnine",2,49
+"tropacocaine",2,40
+"N,N-dimethylpentylone",2,41
+"urea",2,42
+"hydrocotarnine",2,43
+"benzoylecgonine (BZ)",2,44
+"melatonin",2,45
+"ketamine",2,46
+"valeryl fentanyl",2,47
+"benzocaine",2,48
+"meconin",2,49
 "phenethyl chloride",2,50
-"meconin",2,51
-"methylparaben",1,52
-"lactose",1,53
-"erythritol",1,54
-"4-Anilino-1-Boc-piperidine",1,55
-"noscapine",1,56
-"niacinamide",1,57
-"benzoic acid",1,58
-"ecgonine methylester (EME)",1,59
-"nicotine",1,60
-"medetomidine",1,61
-"non-specific organic acids",1,62
-"ibuprofen",1,63
-"non-specific phthalate",1,64
-"papaverine",1,65
-"delta-9-THC",1,66
-"inositol",1,67
-"p-fluoroacetyl fentanyl",1,68
-"norcocaine",1,69
-"flualprazolam",1,70
+"sucrose",2,51
+"p-fluoroacetyl fentanyl",1,52
+"methylparaben",1,53
+"norcocaine",1,54
+"flualprazolam",1,55
+"ecgonine methylester (EME)",1,56
+"benzoic acid",1,57
+"delta-9-THC",1,58
+"medetomidine",1,59
+"papaverine",1,60
+"ibuprofen",1,61
+"noscapine",1,62
+"nicotine",1,63
+"niacinamide",1,64
+"inositol",1,65
+"4-Anilino-1-Boc-piperidine",1,66
+"non-specific phthalate",1,67
+"erythritol",1,68
+"non-specific organic acids",1,69
+"lactose",1,70
