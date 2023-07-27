@@ -15,7 +15,7 @@ import streamlit_analytics
 st.markdown(
     """
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B10YREJ18E"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
