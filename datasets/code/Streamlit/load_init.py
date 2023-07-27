@@ -10,12 +10,13 @@ def button_as_page_link(url):
 
 def create_sidebar():
     pages = {
-      "streetsafe.supply": "https://www.streetsafe.supply",
+      "Home": "https://nc-drugchecking-dashboards.streamlit.app/",
       "NC Xylazine": "https://ncxylazine.streamlit.app/",
       "NC Overdoses": "https://nc-overdoses.streamlit.app/",
       "NC Stimulants": "https://nc-stimulants.streamlit.app/",
       "NC Drug Market": "https://nc-drug-market.streamlit.app/",
       "NC Psychedelics & Others": "https://ncpsychedelics.streamlit.app/",
+      "streetsafe.supply": "https://www.streetsafe.supply",
     }
     with st.sidebar:
     # map over the pages dict and return a button for each page
