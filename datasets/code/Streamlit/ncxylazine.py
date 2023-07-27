@@ -12,17 +12,6 @@ import json
 from PIL import Image
 import streamlit_analytics
 
-st.markdown(
-    """
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B10YREJ18E"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-B10YREJ18E');
-        </script>
-    """, unsafe_allow_html=True)
 
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"

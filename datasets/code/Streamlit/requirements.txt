@@ -6,3 +6,8 @@ requests
 plotly.express
 plotly
 streamlit_analytics
+pathlib
+BeautifulSoup
+logging
+shutil
+bs4
