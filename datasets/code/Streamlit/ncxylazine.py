@@ -9,6 +9,7 @@ from urllib.request import urlopen
 import json
 import streamlit as st
 from PIL import Image
+import streamlit_analytics
 
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
@@ -97,7 +98,7 @@ sensations = alt.Chart(url).mark_bar(size=40).encode(
 
 
 
-
+streamlit_analytics.start_tracking()
 # Streamlit
 st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from UNC Drug Analysis Lab")
@@ -297,6 +298,7 @@ st.markdown("North Carolina General Assembly via the [NC Collaboratory](https://
 st.markdown("[Foundation for Opioid Response Efforts](https://forefdn.org) (2022-23, startup)")
 
 st.markdown("---")
+streamlit_analytics.track(unsafe_password="streetsafe")
 # deleted code\n# commit 90661c07dd69631efb2b960bd6f846c91c3d5191
 # commit f7ff9cd6021d4680380a483db4957decd15fa39f
 # commit 28ac30685a5a32c6b71b935056308df6a587ce43

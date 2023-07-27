@@ -5,3 +5,4 @@ numpy
 requests
 plotly.express
 plotly
+streamlit-analytics
