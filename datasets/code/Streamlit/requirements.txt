@@ -7,6 +7,6 @@ plotly.express
 plotly
 streamlit_analytics
 pathlib
-bs4
+beautifulsoup4==4.12.2
 logging
 shutil
