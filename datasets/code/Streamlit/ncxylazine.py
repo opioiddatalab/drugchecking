@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from load_css import local_css
+from load_init import local_css
 local_css("datasets/code/Streamlit/style.css")
 import streamlit as st
 import streamlit_analytics
@@ -11,6 +11,30 @@ from urllib.request import urlopen
 import json
 from PIL import Image
 
+
+st.markdown(
+    """
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-J6G2QFEL1Q');
+        </script>
+    """, unsafe_allow_html=True)
+
+st.markdown(
+    """
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-J6G2QFEL1Q');
+        </script>
+    """, unsafe_allow_html=True)
 
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"

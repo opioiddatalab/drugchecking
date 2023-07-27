@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 html, body, [class*="css"] {
-    font-family: 'Josefin Sans', sans-serif; 
+    font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
     font-weight: 400;
     color: #1a1919;
@@ -15,7 +15,7 @@ div[class*="appview-container"] section div[class*="block-container"][class*="cs
 h1 div span[class*="css"] {
     font-size: 2em;
     font-weight: 700;
-    width: 80%; 
+    width: 80%;
     /* text-align: center; */
 }
 
@@ -52,3 +52,13 @@ div[data-testid="stMarkdownContainer"] hr {
 
 }
 
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] {
+    /* border: 2px solid black; */
+    /* padding: 20px; */
+    text-align: center;
+    grid-template-columns: auto;
+}
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] label{
+    text-align: center;
+    grid-template-columns: auto;
+}
