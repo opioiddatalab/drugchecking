@@ -10,7 +10,6 @@ import plotly.express as px
 from urllib.request import urlopen
 import json
 from PIL import Image
-import streamlit_analytics
 
 
 def get_data():
