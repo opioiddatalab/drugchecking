@@ -1,5 +1,3 @@
-beautifulsoup4
-bs4
 altair
 pandas
 streamlit
@@ -9,6 +7,5 @@ plotly.express
 plotly
 streamlit_analytics
 pathlib
-beautifulsoup4==4.12.2
 logging
 shutil
