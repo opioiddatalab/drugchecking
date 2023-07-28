@@ -294,7 +294,6 @@ st.markdown("Data documentation available [here](https://opioiddatalab.github.io
 st.markdown("---")
 
 st.subheader("Funding")
-st.markdown("We are grateful to our funders:")
 st.markdown("[Injury and Violence Prevention Branch](https://injuryfreenc.dph.ncdhhs.gov/) of the NC Department of Health and Human Services, via funding from the Centers for Disease Control and Prevention (2023, data visualizations)")
 st.markdown("North Carolina General Assembly via the [NC Collaboratory](https://collaboratory.unc.edu/), using Opioid Settlement Funds (2023-24, operations)")
 st.markdown("[Foundation for Opioid Response Efforts](https://forefdn.org) (2022-23, startup)")

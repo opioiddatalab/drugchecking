@@ -6,6 +6,3 @@ requests
 plotly.express
 plotly
 streamlit_analytics
-pathlib
-logging
-shutil
