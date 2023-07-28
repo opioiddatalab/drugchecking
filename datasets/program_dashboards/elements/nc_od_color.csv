@@ -1,44 +1,82 @@
-color,county,date_collect
-blue,Cumberland,23Jan2023
-blue,Forsyth,13Sep2022
-blue,Macon,08Sep2022
-blue,Randolph,27Aug2022
-blue,Surry,01Jul2023
-brown,Franklin,05May2023
-brown,Randolph,23Sep2022
-cloudy,Surry,09Jun2023
-light brown,Guilford,04Oct2021
-light brown,Wake,14Jun2023
-pink,Guilford,25Jul2022
-pink,Robeson,17Oct2022
-pink; purple,Guilford,19Aug2022
-pink; red,Surry,02Nov2022
-purple,Buncombe,13Apr2023
-purple,Cumberland,28Jan2023
-purple,Davidson,22Jun2022
-purple,Guilford,05Aug2022
-purple,Randolph,26Jun2023
-purple,Wake,04Apr2023
-purple; pink,Cumberland,15Jun2022
-tan,Randolph,02Nov2022
-tan,Surry,23Apr2023
-white,Buncombe,29Apr2023
-white,Carteret,05May2023
-white,Davidson,16Jul2022
-white,Durham,05Jun2023
-white,Forsyth,10May2022
-white,Franklin,23Jun2023
-white,Guilford,26Sep2022
-white,Henderson,20Jun2022
-white,Macon,14Sep2022
-white,New Hanover,01Feb2023
-white,Randolph,17Nov2022
-white,Surry,26Mar2023
-white,Wake,14Dec2022
-white; gray,Guilford,24Aug2022
-white; light green,Catawba,29Nov2022
-white; off-white,New Hanover,19Jul2022
-white; tan,Henderson,13Apr2023
-white; tan,Wake,29Mar2023
-yellow,Durham,25Jul2022
-yellow,Surry,06Jun2023
+sampleid,color,county,date_collect,texture
+400399,white,Buncombe,01Feb2023,powder; soft
+400368,white,Buncombe,14Feb2023,powder
+400993,white,Buncombe,29Apr2023,powder
+400652,purple,Buncombe,13Apr2023,powder; chunky
+400699,white,Carteret,05May2023,crystals
+300306,white; light green,Catawba,29Nov2022,powder; chunky
+300358,purple; pink,Cumberland,15Jun2022,crystals; pill; fake pill; chunky
+300837,blue,Cumberland,23Jan2023,powder
+300308,purple,Cumberland,15Jun2022,crystals; powder; chunky
+300918,purple,Cumberland,28Jan2023,powder
+300394,purple,Cumberland,15Jun2022,crystals; pill; fake pill; powder
+300342,white,Davidson,16Jul2022,powder; chunky
+300251,purple,Davidson,22Jun2022,powder; dull
+300374,,Durham,28Jun2022,chunky
+NC01470,yellow,Durham,25Jul2022,
+300729,white,Durham,05Jun2023,powder
+300723,white,Durham,29Mar2023,powder
+300274,white,Forsyth,10May2022,powder; shiny
+300200,blue,Forsyth,13Sep2022,powder
+400590,white,Franklin,05May2023,powder
+500241,white,Franklin,23Jun2023,oil/wax
+400641,brown,Franklin,05May2023,powder; flaky
+400651,white,Franklin,04May2023,powder
+300373,pink; purple,Guilford,19Aug2022,
+300364,white; gray,Guilford,24Aug2022,powder
+300379,white,Guilford,02Aug2022,
+300321,purple,Guilford,02Aug2022,powder; flaky
+200479,light brown,Guilford,04Oct2021,powder; chunky
+300399,white,Guilford,26Sep2022,powder
+300295,pink,Guilford,25Jul2022,powder
+300329,purple,Guilford,05Aug2022,powder
+300346,white,Guilford,21Sep2022,powder
+300355,white,Henderson,20Jun2022,
+400670,white; tan,Henderson,13Apr2023,powder; flaky; dull
+300325,,Henderson,28Jun2022,
+300448,blue,Macon,08Sep2022,powder; chunky
+300524,white,Macon,14Sep2022,powder
+300381,white,Mecklenburg,28Feb2023,pill
+300424,white; off-white,New Hanover,19Jul2022,powder; dull
+300603,,New Hanover,07Nov2022,powder
+300696,white,New Hanover,01Feb2023,powder
+300457,white,New Hanover,29Jul2022,powder; dull
+300606,white,Randolph,23Sep2022,powder
+300574,purple,Randolph,18Aug2022,powder; chunky
+300558,purple,Randolph,17Aug2022,crystals; powder; rock
+300778,,Randolph,17Oct2022,powder; chunky
+300518,white,Randolph,07Aug2022,powder
+300735,white,Randolph,17Nov2022,powder
+300721,white,Randolph,14Oct2022,powder
+300713,white,Randolph,14Oct2022,powder
+300504,purple,Randolph,27Aug2022,powder; chunky
+300453,white,Randolph,04Aug2022,powder
+300522,blue,Randolph,27Aug2022,powder; chunky
+300489,purple,Randolph,05Jul2022,powder
+300712,white,Randolph,13Oct2022,powder; chunky
+300528,brown,Randolph,18Aug2022,powder
+400215,purple,Randolph,26Jun2023,powder; flaky
+300789,tan,Randolph,02Nov2022,
+300635,brown,Randolph,23Sep2022,powder
+300699,brown,Randolph,23Sep2022,powder
+300462,,Randolph,05Jul2022,powder
+400199,,Randolph,10Apr2023,powder; flaky
+300683,white,Randolph,30Sep2022,powder; chunky
+300649,white,Randolph,14Oct2022,powder
+300943,white,Robeson,13Feb2023,powder
+300645,pink,Robeson,17Oct2022,powder; chunky
+400417,blue,Surry,15Apr2023,powder; chunky
+400904,blue,Surry,01Jul2023,powder; chunky
+300827,white,Surry,16Dec2022,powder
+300835,,Surry,29Apr2023,powder
+400482,white,Surry,26Mar2023,powder
+400723,yellow,Surry,06Jun2023,gummy; waxy
+400817,yellow,Surry,29Apr2023,powder
+400731,cloudy,Surry,09Jun2023,
+300847,tan,Surry,02Nov2022,powder; chunky
+300866,pink; red,Surry,02Nov2022,powder; chunky; flaky
+400408,tan,Surry,23Apr2023,powder
+400596,white; tan,Wake,29Mar2023,powder; chunky; dull
+500661,light brown,Wake,14Jun2023,powder; chunky
+400584,purple,Wake,04Apr2023,powder; flaky; dull
+400182,white,Wake,14Dec2022,powder; flaky
