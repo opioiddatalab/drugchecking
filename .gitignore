@@ -6,3 +6,4 @@ textexport/autotext_smalllaptop.do
 *.pyc
 
 .DS_Store
+venv
