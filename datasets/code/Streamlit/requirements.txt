@@ -7,4 +7,4 @@ plotly.express
 plotly
 streamlit_analytics
 WordCloud
-pyplot
+matplotlib
