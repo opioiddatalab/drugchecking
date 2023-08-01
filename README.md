@@ -1,4 +1,4 @@
 # drugchecking
 
 
-Analytical chemistry and epidemiology of street drugs.
+Analytical chemistry and epidemiology of street drugs
