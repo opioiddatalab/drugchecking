@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 
 
 st.set_page_config(
@@ -21,6 +22,18 @@ st.markdown(
     """
     """
     ⬅️ 👀 Select a dashboard from the sidebar to see our latest data!
+    """)
+with st.container():
+    st.header("Kits from the UNC Street Drug Analysis Lab")
+    tab1, tab2 = st.tabs(["Kit Info (English)", "Kit Info (Español)"])
+    with tab1:
+        eng1 = Image.open('datasets/code/Streamlit/images/kit_info_eng.png')
+        st.image(eng1)
+    with tab2:
+        eng1 = Image.open('datasets/code/Streamlit/images/kit_info_eng.png')
+        st.image(eng1)
+st.markdown("---")
+st.markdown("""
     ### Want to learn more?
     - Check out [streetsafe.supply](https://www.streetsafe.supply/)
     - Jump to our [documentation](https://github.com/opioiddatalab/drugchecking/tree/main/datasets#readme)
