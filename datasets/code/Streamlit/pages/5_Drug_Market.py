@@ -118,15 +118,13 @@ st.dataframe(
 )
 st.markdown("---")
 st.markdown("## What substances are in the NC drug Supply?")
-# use streamlit to display the df and allow whole width
-st.dataframe(nc_market_substances, use_container_width=True)
+# st.dataframe(nc_market_substances, use_container_width=True)
 nc_market_substances_top_10 = nc_market_substances.nlargest(10, 'total')
-# remove the pubchemcid col
 nc_market_substances_top_10 = nc_market_substances_top_10.drop('pubchemcid', axis=1)
-nc_market_substances_top_10 = nc_market_substances_top_10.drop('latest_detected', axis=1)
-fig, ax = plt.subplots()
-sns.heatmap(nc_market_substances_top_10.corr(), annot=True,fmt=".2f",mask=np.triu(np.ones_like(nc_market_substances_top_10.corr(),dtype=bool)))
-st.write(fig)
+nc_market_substances_top_10 = nc_market_substances_top_10.drop('primary', axis=1)
+nc_market_substances_top_10 = nc_market_substances_top_10.drop('trace', axis=1)
+nc_market_substances_top_10 = nc_market_substances_top_10.drop('total', axis=1)
+st.dataframe(nc_market_substances_top_10, use_container_width=True)
 
 
 st.markdown("---")
