@@ -46,30 +46,30 @@ with elements("dashboard"):
   if st.session_state['first_PERSIST'] == False:
     layout = [
           # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-          dashboard.Item("first_item", 0, 0, 3.5, 2.15),
-          dashboard.Item("second_item", 4, 0, 3.5, 2.15),
-          dashboard.Item("third_item", 8, 0, 3.5, 2.15),
+          dashboard.Item("first_item", 0, 0, 2.75, 2.15),
+          dashboard.Item("second_item", 3, 0, 2.75, 2.15),
+          dashboard.Item("third_item", 6, 0, 2.75, 2.15),
     ]
   if st.session_state['second_PERSIST'] == False:
     layout = [
           # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-          dashboard.Item("first_item", 0, 0, 3.5, 2.15),
-          dashboard.Item("second_item", 4, 0, 3.5, 6.5),
-          dashboard.Item("third_item", 8, 0, 3.5, 2.15),
+          dashboard.Item("first_item", 0, 0, 2.75, 2.15),
+          dashboard.Item("second_item", 3, 0, 2.75, 2.15),
+          dashboard.Item("third_item", 6, 0, 2.75, 2.15),
     ]
   if st.session_state['third_PERSIST'] == False:
     layout = [
           # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-          dashboard.Item("first_item", 0, 0, 3.5, 2.15),
-          dashboard.Item("second_item", 4, 0, 3.5, 2.15),
-          dashboard.Item("third_item", 8, 0, 3.5, 6.5),
+          dashboard.Item("first_item", 0, 0, 2.75, 2.15),
+          dashboard.Item("second_item", 3, 0, 2.75, 2.15),
+          dashboard.Item("third_item", 6, 0, 2.75, 2.15),
     ]
   else:
     layout = [
           # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-          dashboard.Item("first_item", 0, 0, 3.5, 6.5),
-          dashboard.Item("second_item", 4, 0, 3.5, 6.5),
-          dashboard.Item("third_item", 8, 0, 3.5, 6.5),
+          dashboard.Item("first_item", 0, 0, 2.75, 2.15),
+          dashboard.Item("second_item", 3, 0, 2.75, 2.15),
+          dashboard.Item("third_item", 6, 0, 2.75, 2.15),
     ]
 
   with dashboard.Grid(layout):
