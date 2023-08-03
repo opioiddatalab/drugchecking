@@ -1,12 +1,14 @@
 import streamlit as st
 from PIL import Image
 
+if 'sidebar_state_PERSIST' not in st.session_state:
+    st.session_state.sidebar_state_PERSIST = 'auto'
 
 st.set_page_config(
     page_title="Street Drug Data Dashboards",
     # make the page_icon the lab_coat emoji
     page_icon="🥽",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state=st.session_state.sidebar_state_PERSIST,
     menu_items={
         'Get Help': "https://www.streetsafe.supply/contact"
     }
