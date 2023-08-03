@@ -5,320 +5,141 @@ from streamlit_elements import elements, mui, html, dashboard
 import streamlit as st
 from persist import persist, load_widget_state
 import webbrowser
-
-def main():
-    if "alpha_PERSIST" not in st.session_state:
-        # Initialize session state.
-        st.session_state.update({
-            # Default page.
-            "checkbox": False,
-        })
-    else:
-        st.session_state.update({
-            # Default page.
-            "checkbox": True,
-        })
-
-if __name__ == "__main__":
-    load_widget_state()
-    main()
-
-if 'first_PERSIST' not in st.session_state:
-   st.session_state['first_PERSIST'] = False
-if 'second_PERSIST' not in st.session_state:
-   st.session_state['second_PERSIST'] = False
-if 'third_PERSIST' not in st.session_state:
-   st.session_state['third_PERSIST'] = False
+import pandas as pd
+import random
 
 
-def form_callback():
-    st.session_state.first_PERSIST = not st.session_state.first_PERSIST
-def form_callback2():
-    st.session_state.second_PERSIST = not st.session_state.second_PERSIST
-def form_callback3():
-    st.session_state.third_PERSIST = not st.session_state.third_PERSIST
-def safeSupplyResults():
-  js = 'https://www.streetsafe.supply/results/p/801908'
-  webbrowser.open(js)
+def get_nc_ds_substances():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_substances_list.csv"
+    return pd.read_csv(url)
+nc_psychedelics_et_al = get_nc_ds_substances()
+nc_psychedelics_et_al = pd.DataFrame(nc_psychedelics_et_al)
+# map over the latest_detected col and convert to human readable date
+nc_psychedelics_et_al['latest_detected'] = pd.to_datetime(nc_psychedelics_et_al['latest_detected']).dt.strftime('%b %d, %Y')
+# def generate_random_number(x):
+#     return random.uniform(0.09, 0.991)
+# columns_to_map = ['West', 'Triad', 'Triangle', 'Charlotte', 'ENC', 'Fayetteville']
+# for column in columns_to_map:
+#   nc_psychedelics_et_al[column] = 0
+# nc_psychedelics_et_al[columns_to_map] = nc_psychedelics_et_al[columns_to_map].applymap(generate_random_number)
+
+# set the index to the substance col
+nc_psychedelics_et_al.set_index('substance', inplace=True)
+# sort the df by the latest_detected col
+nc_psychedelics_et_al.sort_values(by=['latest_detected'], inplace=True, ascending=False)
+# convert the latest_detected col to a human readable date
+nc_psychedelics_et_al['latest_detected'] = pd.to_datetime(nc_psychedelics_et_al['latest_detected']).dt.strftime('%B %d, %Y')
+nc_psychedelics_et_al_list =[
+  "metonitazene",
+  "isotonitazene",
+  "protonitazene",
+  "N-noramidopyrine Etodesnitazene",
+  "N-Pyrrolidino Isotonitazene",
+  "N-Pyrrolidino Etonitazene",
+  "N-Piperidinyl Etonitazene",
+  "ketamine",
+  "phencyclidine (PCP)",
+  "3-methoxy-PCP",
+  "2C-B",
+  "2C-H",
+  "mescaline",
+  "psilocin",
+  "N,N-dimethyltryptamine (DMT)",
+  "5/6-MeO-DMT",
+  "metonitazene",
+  "N-piperidinyl etonitazene",
+  "isotonitazene",
+  "2-Fluoro-2-oxo PCE",
+  "3,4-methylenedioxy-N-benzylcathinone (BMDP)",
+  "eutylone",
+  "N,N-dimethylpentylone",
+  "N-ethylpentylone",
+  "4-Methylmethcathinone",
+  "α-Ethylaminopentiophenone",
+  "α-Pyrrolidinoisohexanophenone",
+  "methylone",
+  "3,4-Methylenedioxy-α-Cyclohexylaminopropiophenone",
+  "4-fluoro-alpha-PHP",
+  "MDMA",
+  "MDA",
+  "5/6-APB",
+  "LSD",
+  "Synthetic cannabinoids",
+  "MDMB-4en-PINACA",
+  "ADB-INACA",
+  "ADB-4en-PINACA",
+  "ADB-BUTINACA",
+]
+# map of the nc_psychedelics_et_al df and remove any rows where the substance is not in the nc_psychedelics_et_all_list
+nc_psychedelics_et_al = nc_psychedelics_et_al[nc_psychedelics_et_al.index.isin(nc_psychedelics_et_al_list)]
+nc_psychedelics_et_al_count = len(nc_psychedelics_et_al.index)
+
+nc_psychedelics_et_al = nc_psychedelics_et_al.drop('pubchemcid', axis=1)
+nc_psychedelics_et_al = nc_psychedelics_et_al.drop('primary', axis=1)
+nc_psychedelics_et_al = nc_psychedelics_et_al.drop('trace', axis=1)
 
 
-with elements("dashboard"):
-  if st.session_state['first_PERSIST'] == False:
-    layout = [
-          # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-          dashboard.Item("first_item", 0, 0, 2.75, 2.15),
-          dashboard.Item("second_item", 3, 0, 2.75, 6.15),
-          dashboard.Item("third_item", 6, 0, 2.75, 6.15),
-    ]
-  if st.session_state['second_PERSIST'] == False:
-    layout = [
-          # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-          dashboard.Item("first_item", 0, 0, 2.75, 6.15),
-          dashboard.Item("second_item", 3, 0, 2.75, 2.15),
-          dashboard.Item("third_item", 6, 0, 2.75, 6.15),
-    ]
-  if st.session_state['third_PERSIST'] == False:
-    layout = [
-          # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-          dashboard.Item("first_item", 0, 0, 2.75, 6.15),
-          dashboard.Item("second_item", 3, 0, 2.75, 6.15),
-          dashboard.Item("third_item", 6, 0, 2.75, 2.15),
-    ]
-  else:
-    layout = [
-          # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-          dashboard.Item("first_item", 0, 0, 2.75, 6.15),
-          dashboard.Item("second_item", 3, 0, 2.75, 6.15),
-          dashboard.Item("third_item", 6, 0, 2.75, 6.15),
-    ]
+def get_nc_county_count():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_countycount.csv"
+    return pd.read_csv(url)
+nc_countycount = get_nc_county_count()
+nc_countycount_int = nc_countycount.iloc[0]['nc_countycount']
 
-  with dashboard.Grid(layout):
-    with mui.Paper(key="first_item"):
-      with elements("nested_children3"):
-            with elements("properties"):
-              with elements("style_mui_sx"):
-                with mui.Paper(elevation=12, variant="outlined", sx={
-                    "padding": "0 1rem 0",
-                    "background-color": "#e39b33",
-                    "text-align": "center",
-                  }):
-                    html.h5("Sample ID: 456789")
-                    with mui.Paper(elevation=12, variant="outlined", sx={
-                                  "padding": ".1rem .5rem",
-                                  "text-align": "left",
-                                  "font-size": ".95rem",
-                                  "background-color": "white"
-                                }):
-                        with mui.Grid(container=True):
-                              with mui.Grid(item=True, xs=5, sx={"text-align": "left"}):
-                                html.p("Durham County, NC")
-                                html.p("Medicaid Region #6")
-                              with mui.Grid(item=True, xs=7, sx={"text-align": "right"}):
-                                html.p("Aug 1, 2023")
-                        html.hr()
-                        html.h5("Expected Substances")
-                        html.p("heroin")
-                        html.p("fentanyl")
-                        with mui.FormControlLabel(label="Show/Hide Lab Data", control=mui.Checkbox(key=persist('first'), onChange=form_callback)):
-                          html.hr()
-                        html.hr()
-                        if st.session_state['first_PERSIST'] == True:
-                            st.container()
-                            # with mui.Container():
-                              # with mui.Grid(container=True"):
-                                # with mui.Grid(item=True, xs=3):
-                            mui.Typography("Lab Results")
-                                # with mui.Grid(item=True, xs=9):
-                                #   mui.icon.Science()
-                            with mui.Grid(container=True):
-                                with mui.Grid(item=True, xs=6):
-                                  # mui.icon.VerticalAlignTopRounded()
-                                  html.p("Primary")
-                                  mui.Chip(label="fentanyl", variant="filled")
-                                with mui.Grid(item=True, xs=6):
-                                  # mui.icon.VerticalAlignBottomRounded()
-                                  html.p("Trace")
-                                  mui.Chip(label="quinine", variant="outlined")
-                                  mui.Chip(label="4-ANPP", variant="outlined")
-                                  mui.Chip(label="lidocaine", variant="outlined")
-                                  mui.Chip(label="ethyl-4-ANPP", variant="outlined")
-                                  mui.Chip(label="phenethyl 4-ANPP", variant="outlined")
-                            html.h5("Description")
-                            html.p("Click a tagged substance to learn more: ")
-                            with mui.Paper(elevation=24, variant="outlined", sx={
-                                "padding": ".1rem",
-                                "text-align": "left",
-                                "font-size": ".95rem",
-                                "background-color": "lightgray",
-                                "margin": "0 auto",
-                                "width": "100%"
-                              }):
-                                html.p("Fentanyl common potent opioid")
-                            html.hr()
-                            with mui.Paper(elevation=24, variant="outlined", sx={
-                                  "padding": ".25rem",
-                                  "margin": "0 .25rem",
-                                  "font-size": ".95rem",
-                                  "background-color": "lightblue"
-                                }):
-                              html.h5("Physical Descriptions:")
-                              html.ul([html.li("White"), html.li("Green"), html.li("Crystals; Powder")])
-                            mui.icon.Share()
-                            html.h5("Share this sample's result")
-                            html.hr()
-                            # with mui.Grid(container=True, spacing=4):
-                              # with mui.Grid(item=True, xs=6):
-                            # add space between buttons in the ButtonGroup
-                            with mui.ButtonGroup(fullWidth=True, sx={"width": "100%"}):
-                                mui.Button("Hide Lab Data", variant="contained", color="info", size="small", sx={"width": "50%", "margin": "10px"}, onClick=form_callback)
-                              # with mui.Grid(item=True, xs=6):
-                                mui.Button("View More Info", variant="contained", color="info", size="small", sx={"width": "50%",  "margin": "10px", "backgroundColor": "#1E2C4A"}, onClick=safeSupplyResults)
-                                mui.Collapse(in_=True)
-                        else:
-                          st.echo('')
-    with mui.Paper(key="second_item"):
-      with elements("nested_children3"):
-            with elements("properties"):
-              with elements("style_mui_sx"):
-                with mui.Paper(elevation=12, variant="outlined", sx={
-                    "padding": "0 1rem 0",
-                    "background-color": "#e39b33",
-                    "text-align": "center",
-                  }):
-                    html.h5("Sample ID: 456789")
-                    with mui.Paper(elevation=12, variant="outlined", sx={
-                                  "padding": ".1rem .5rem",
-                                  "text-align": "left",
-                                  "font-size": ".95rem",
-                                  "background-color": "white"
-                                }):
-                        with mui.Grid(container=True):
-                              with mui.Grid(item=True, xs=5, sx={"text-align": "left"}):
-                                html.p("Durham County, NC")
-                                html.p("Medicaid Region #6")
-                              with mui.Grid(item=True, xs=7, sx={"text-align": "right"}):
-                                html.p("Aug 1, 2023")
-                        html.hr()
-                        html.h5("Expected Substances")
-                        html.p("heroin")
-                        html.p("fentanyl")
-                        with mui.FormControlLabel(label="Show/Hide Lab Data", control=mui.Checkbox(key=persist('second'), onChange=form_callback2)):
-                          html.hr()
-                        html.hr()
-                        if st.session_state['second_PERSIST'] == True:
-                            st.container()
-                            # with mui.Container():
-                              # with mui.Grid(container=True"):
-                                # with mui.Grid(item=True, xs=3):
-                            mui.Typography("Lab Results")
-                                # with mui.Grid(item=True, xs=9):
-                                #   mui.icon.Science()
-                            with mui.Grid(container=True):
-                                with mui.Grid(item=True, xs=6):
-                                  # mui.icon.VerticalAlignTopRounded()
-                                  html.p("Primary")
-                                  mui.Chip(label="fentanyl", variant="filled")
-                                with mui.Grid(item=True, xs=6):
-                                  # mui.icon.VerticalAlignBottomRounded()
-                                  html.p("Trace")
-                                  mui.Chip(label="quinine", variant="outlined")
-                                  mui.Chip(label="4-ANPP", variant="outlined")
-                                  mui.Chip(label="lidocaine", variant="outlined")
-                                  mui.Chip(label="ethyl-4-ANPP", variant="outlined")
-                                  mui.Chip(label="phenethyl 4-ANPP", variant="outlined")
-                            html.h5("Description")
-                            html.p("Click a tagged substance to learn more: ")
-                            with mui.Paper(elevation=24, variant="outlined", sx={
-                                "padding": ".1rem",
-                                "text-align": "left",
-                                "font-size": ".95rem",
-                                "background-color": "lightgray",
-                                "margin": "0 auto",
-                                "width": "100%"
-                              }):
-                                html.p("Fentanyl common potent opioid")
-                            html.hr()
-                            with mui.Paper(elevation=24, variant="outlined", sx={
-                                  "padding": ".25rem",
-                                  "margin": "0 .25rem",
-                                  "font-size": ".95rem",
-                                  "background-color": "lightblue"
-                                }):
-                              html.h5("Physical Descriptions:")
-                              html.ul([html.li("White"), html.li("Green"), html.li("Crystals; Powder")])
-                            mui.icon.Share()
-                            html.h5("Share this sample's result")
-                            html.hr()
-                            # with mui.Grid(container=True, spacing=4):
-                              # with mui.Grid(item=True, xs=6):
-                            # add space between buttons in the ButtonGroup
-                            with mui.ButtonGroup(fullWidth=True, sx={"width": "100%"}):
-                                mui.Button("Hide Lab Data", variant="contained", color="info", size="small", sx={"width": "50%", "margin": "10px"}, onClick=form_callback)
-                              # with mui.Grid(item=True, xs=6):
-                                mui.Button("View More Info", variant="contained", color="info", size="small", sx={"width": "50%",  "margin": "10px", "backgroundColor": "#1E2C4A"}, onClick=safeSupplyResults)
-                                mui.Collapse(in_=True)
-                        else:
-                          st.echo('')
-    with mui.Paper(key="third_item"):
-      with elements("nested_children3"):
-            with elements("properties"):
-              with elements("style_mui_sx"):
-                with mui.Paper(elevation=12, variant="outlined", sx={
-                    "padding": "0 1rem 0",
-                    "background-color": "#e39b33",
-                    "text-align": "center",
-                  }):
-                    html.h5("Sample ID: 456789")
-                    with mui.Paper(elevation=12, variant="outlined", sx={
-                                  "padding": ".1rem .5rem",
-                                  "text-align": "left",
-                                  "font-size": ".95rem",
-                                  "background-color": "white"
-                                }):
-                        with mui.Grid(container=True):
-                              with mui.Grid(item=True, xs=5, sx={"text-align": "left"}):
-                                html.p("Durham County, NC")
-                                html.p("Medicaid Region #6")
-                              with mui.Grid(item=True, xs=7, sx={"text-align": "right"}):
-                                html.p("Aug 1, 2023")
-                        html.hr()
-                        html.h5("Expected Substances")
-                        html.p("heroin")
-                        html.p("fentanyl")
-                        with mui.FormControlLabel(label="Show/Hide Lab Data", control=mui.Checkbox(key=persist('third'), onChange=form_callback3)):
-                          html.hr()
-                        html.hr()
-                        if st.session_state['third_PERSIST'] == True:
-                            st.container()
-                            # with mui.Container():
-                              # with mui.Grid(container=True"):
-                                # with mui.Grid(item=True, xs=3):
-                            mui.Typography("Lab Results")
-                                # with mui.Grid(item=True, xs=9):
-                                #   mui.icon.Science()
-                            with mui.Grid(container=True):
-                                with mui.Grid(item=True, xs=6):
-                                  # mui.icon.VerticalAlignTopRounded()
-                                  html.p("Primary")
-                                  mui.Chip(label="fentanyl", variant="filled")
-                                with mui.Grid(item=True, xs=6):
-                                  # mui.icon.VerticalAlignBottomRounded()
-                                  html.p("Trace")
-                                  mui.Chip(label="quinine", variant="outlined")
-                                  mui.Chip(label="4-ANPP", variant="outlined")
-                                  mui.Chip(label="lidocaine", variant="outlined")
-                                  mui.Chip(label="ethyl-4-ANPP", variant="outlined")
-                                  mui.Chip(label="phenethyl 4-ANPP", variant="outlined")
-                            html.h5("Description")
-                            html.p("Click a tagged substance to learn more: ")
-                            with mui.Paper(elevation=24, variant="outlined", sx={
-                                "padding": ".1rem",
-                                "text-align": "left",
-                                "font-size": ".95rem",
-                                "background-color": "lightgray",
-                                "margin": "0 auto",
-                                "width": "100%"
-                              }):
-                                html.p("Fentanyl common potent opioid")
-                            html.hr()
-                            with mui.Paper(elevation=24, variant="outlined", sx={
-                                  "padding": ".25rem",
-                                  "margin": "0 .25rem",
-                                  "font-size": ".95rem",
-                                  "background-color": "lightblue"
-                                }):
-                              html.h5("Physical Descriptions:")
-                              html.ul([html.li("White"), html.li("Green"), html.li("Crystals; Powder")])
-                            mui.icon.Share()
-                            html.h5("Share this sample's result")
-                            html.hr()
-                            # with mui.Grid(container=True, spacing=4):
-                              # with mui.Grid(item=True, xs=6):
-                            # add space between buttons in the ButtonGroup
-                            with mui.ButtonGroup(fullWidth=True, sx={"width": "100%"}):
-                                mui.Button("Hide Lab Data", variant="contained", color="info", size="small", sx={"width": "50%", "margin": "10px"}, onClick=form_callback)
-                              # with mui.Grid(item=True, xs=6):
-                                mui.Button("View More Info", variant="contained", color="info", size="small", sx={"width": "50%",  "margin": "10px", "backgroundColor": "#1E2C4A"}, onClick=safeSupplyResults)
-                                mui.Collapse(in_=True)
-                        else:
-                          st.echo('')
+def get_nc_program_count():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_prorgams.csv"
+    return pd.read_csv(url)
+nc_program_count = get_nc_program_count()
+nc_program_count_int = nc_program_count.iloc[0]['nc_programs']
+
+
+def get_nc_sample_count():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_samples.csv"
+    return pd.read_csv(url)
+nc_sample_count = get_nc_sample_count()
+nc_sample_count_int = nc_sample_count.iloc[0]['nc_samples']
+
+
+st.title("Psychedelics and Other Drugs in NC")
+st.write("We are watching a number of different kinds of psychedelics and other drugs in North Carolina right now....")
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    st.metric(label="Samples", value=nc_sample_count_int)
+with col2:
+    st.metric(label="Programs & Clinics", value=nc_program_count_int)
+with col3:
+    st.metric(label="Counties", value=nc_countycount_int)
+with col4:
+    st.metric(label="+Psychedelics or similar subs", value=nc_psychedelics_et_al_count)
+# display the dataframe and center it on the screen
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.write(' ')
+with col2:
+    st.dataframe(
+      nc_psychedelics_et_al,
+      height=350,
+      column_config={
+          'latest_detected': st.column_config.TextColumn(
+              "Latest Detected",
+              disabled=True
+          ),
+          'total': st.column_config.NumberColumn(
+              "Total",
+              disabled=True,
+          ),
+          'substance': st.column_config.TextColumn(
+              "Substance",
+              disabled=True
+          ),
+      })
+with col3:
+    st.write(' ')
+
+st.markdown("---")
+st.markdown("### Drugs commonly sold as MDMA")
+st.markdown("*(dimethylpentylone, MDA + other methylated amphetamines besides MDMA)*")
+#  LSD (do we have enough?)
+# Ketamime
+# Synthetic cannabinoids
+# Substituted cathinones
+
