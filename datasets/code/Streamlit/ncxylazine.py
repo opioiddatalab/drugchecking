@@ -50,10 +50,10 @@ rows_count = len(df.index)
 xyl_count = len(dfxyl.index)
 
 # Count total number of counties with any samples
-counties_sampled = df['county'].nunique() 
+counties_sampled = df['county'].nunique()
 
 # Count number of counties samples
-xyl_counties = dfxyl['county'].nunique() 
+xyl_counties = dfxyl['county'].nunique()
 
 # Latest date xylazine was detected
 latest = dfxyl['date_complete'].max()
@@ -65,14 +65,14 @@ def update_entries(grp):
     # update date_complete to most recent date
     grp['date_complete'] = grp['date_complete'].max()
     # if length of county is less than 1, then replace with "County not specified"
-    if len(grp['county']) < 1: 
+    if len(grp['county']) < 1:
         grp['county'] = "County not specified"
     return grp
 # remove all columns except date_complete and county
 dfxyl = dfxyl[['county', 'date_complete']]
 # only keep the first instance of each county
 dfxyl = dfxyl.groupby(by=["county"]).apply(update_entries)
-mostrecent = dfxyl.drop_duplicates(subset=['county'])    
+mostrecent = dfxyl.drop_duplicates(subset=['county'])
 
 # Sensations Graph
 import altair as alt
@@ -133,13 +133,13 @@ with col1:
     label="Samples with xylazine",
     value=xyl_count
     )
-    
+
 with col2:
     st.metric(
     label="Counties with xylazine",
     value=xyl_counties
     )
-    
+
 st.markdown(":label: Our samples do not represent the entire drug supply. People may send us samples because they suspect xylazine or have unexpected reactions.")
 
 st.markdown("---")
@@ -149,7 +149,7 @@ st.write(
     value=latest
     )
 
-    
+
 # Latest late of xylazine detection
 st.header("Xylazine last detected on:")
 st.subheader(latest)
@@ -194,7 +194,7 @@ agg_df["percent_str"] = np.round(agg_df["percent"], 1)
 with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
     counties = json.load(response)
 
-fig = px.choropleth_mapbox(agg_df, 
+fig = px.choropleth_mapbox(agg_df,
                            geojson=counties,
                            locations='countyfips',
                            color='percent',
@@ -212,7 +212,7 @@ fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine')
 
 st.plotly_chart(fig, use_container_width=True)
 
-                        
+
 st.markdown("We've detected xylazine in about half the places from where we received samples. We are working on better maps! Sorry this isn't perfect, but we will improve it soon.")
 
 st.subheader("Latest xylazine detection dates by location")
@@ -263,21 +263,21 @@ st.video('https://www.youtube.com/watch?v=orzgwi7sxFM')
 
 st.markdown("---")
 
-with st.container(): 
+with st.container():
     st.header("Skin Wounds and Xylazine")
     tab1, tab2 = st.tabs(["Xylazine Info (English)", "Xylazine Info (Español)"])
     with tab1:
         st.markdown("[Download PDF](https://www.addictiontraining.org/documents/resources/343_Xylazine_Handout_Large_size.pdf)")
         eng1 = Image.open('datasets/code/Streamlit/images/xylazine_eng_1.png')
         eng2 = Image.open('datasets/code/Streamlit/images/xylazine_eng_2.png')
-        st.image(eng1) 
-        st.image(eng2) 
+        st.image(eng1)
+        st.image(eng2)
     with tab2:
         st.markdown("[Descargar PDF](https://www.addictiontraining.org/documents/resources/342_Xylazine_Wounds_Handout_-_Spanish_Version_pocket_size.pdf)")
         esp1 = Image.open('datasets/code/Streamlit/images/xylazine_esp_1.png')
         esp2 = Image.open('datasets/code/Streamlit/images/xylazine_esp_2.png')
-        st.image(esp1) 
-        st.image(esp2) 
+        st.image(esp1)
+        st.image(esp2)
     st.subheader("Practical Guidance for Responding to Xylazine")
     st.video('https://youtu.be/MVs7ZfILCjE')
 
@@ -310,5 +310,5 @@ streamlit_analytics.stop_tracking(unsafe_password="streetsafe")
 # commit 739e3453227b8998225d27042e20f409fbf109d3
 # commit a778b0a0ee8e03f7540a8ef4d35ba64e29867394
 # commit 52f19c11ae5a2c6046c909b784e3dfacf26d7624
-\n# commit f5821c2b743f7e74c988b6a30435019a9342928a
+# commit f5821c2b743f7e74c988b6a30435019a9342928a
 # commit 8c27d62cf3b5096be298874cb3749977ea8cf008
