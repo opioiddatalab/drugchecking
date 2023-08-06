@@ -2,9 +2,10 @@ from load_init import local_css, create_sidebar
 from streamlit_elements import elements, mui, html, dashboard
 import streamlit as st
 st.set_page_config(
-    page_title="Street Drug Data Dashboards",
+    page_title="NC Psychedelics & Others",
     # make the page_icon the lab_coat emoji
     page_icon="🥽",
+    initial_sidebar_state="expanded",
 )
 local_css("datasets/code/Streamlit/pages/psychedelics.css")
 local_css("datasets/code/Streamlit/style.css")

@@ -1,6 +1,12 @@
 from load_css import local_css
-local_css("datasets/code/Streamlit/style.css")
 import streamlit as st
+st.set_page_config(
+    page_title="NC Drug Market",
+    # make the page_icon the lab_coat emoji
+    page_icon="🥽",
+    initial_sidebar_state="expanded",
+)
+local_css("datasets/code/Streamlit/style.css")
 import pandas as pd
 import json
 import random
