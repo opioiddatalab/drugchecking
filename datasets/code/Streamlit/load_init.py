@@ -10,11 +10,11 @@ def button_as_page_link(url):
 
 def create_sidebar():
     pages = {
-      "Home": "https://nc-drugchecking-dashboards.streamlit.app/",
+      "Home": "https://ncdrugchecking.streamlit.app/",
       "NC Xylazine": "https://ncxylazine.streamlit.app/",
-      "NC Overdoses": "https://nc-overdoses.streamlit.app/",
-      "NC Stimulants": "https://nc-stimulants.streamlit.app/",
-      "NC Drug Market": "https://nc-drug-market.streamlit.app/",
+      "NC Overdoses": "https://ncoverdoses.streamlit.app/",
+      "NC Stimulants": "https://ncstimulants.streamlit.app/",
+      "NC Drug Market": "https://ncdrugmarket.streamlit.app/",
       "NC Psychedelics & Others": "https://ncpsychedelics.streamlit.app/",
       "Get Help": "https://www.streetsafe.supply/contact",
     }
