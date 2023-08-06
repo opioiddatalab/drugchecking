@@ -16,7 +16,7 @@ def create_sidebar():
       "NC Stimulants": "https://nc-stimulants.streamlit.app/",
       "NC Drug Market": "https://nc-drug-market.streamlit.app/",
       "NC Psychedelics & Others": "https://ncpsychedelics.streamlit.app/",
-      "streetsafe.supply": "https://www.streetsafe.supply",
+      "Get Help": "https://www.streetsafe.supply/contact",
     }
     with st.sidebar:
     # map over the pages dict and return a button for each page

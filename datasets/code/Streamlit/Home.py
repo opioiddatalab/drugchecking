@@ -8,10 +8,6 @@ st.set_page_config(
     page_title="Street Drug Data Dashboards",
     # make the page_icon the lab_coat emoji
     page_icon="🥽",
-    initial_sidebar_state=st.session_state.sidebar_state_PERSIST,
-    menu_items={
-        'Get Help': "https://www.streetsafe.supply/contact"
-    }
 )
 from load_css import local_css
 local_css("datasets/code/Streamlit/style.css")
