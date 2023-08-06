@@ -22,4 +22,7 @@ def create_sidebar():
     # map over the pages dict and return a button for each page
     # the button should have the page name as the label and the url as the param for the button_as_page_link function in the on_click param
      for page in pages:
-        st.button(page, on_click=button_as_page_link, args=[pages[page]])
+        # create a markdown string that is an anchor tag with the url as the href value and the page name as the text
+        # the anchor tag should open in a new tab
+        html= "<a class='click-button' class='btn-simple' href="+pages[page]+" target='_blank'>"+page+"</a>"
+        st.markdown(html, unsafe_allow_html=True)

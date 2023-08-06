@@ -74,3 +74,13 @@ div[data-testid="stHorizontalBlock"] div[data-testid="column"] label{
   /* make sure underline is black */
   text-decoration-color: black !important;
 }
+
+a.click-button {
+  color: black;
+  text-decoration: none;
+}
+p > a.click-button:hover, a.click-button:visited {
+  color: black;
+  text-decoration: line;
+  text-decoration-color: black;
+}
