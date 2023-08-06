@@ -9,11 +9,12 @@ st.set_page_config(
     # make the page_icon the lab_coat emoji
     page_icon="🥽",
     initial_sidebar_state="expanded",
-
 )
-from load_init import local_css
+from load_init import local_css, create_sidebar
 local_css("datasets/code/Streamlit/style.css")
 
+
+create_sidebar()
 st.write("# UNC Street Drug Analysis Lab")
 
 st.markdown(

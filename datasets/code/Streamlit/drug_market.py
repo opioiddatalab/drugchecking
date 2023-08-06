@@ -1,4 +1,4 @@
-from load_css import local_css
+from load_init import local_css, create_sidebar
 import streamlit as st
 st.set_page_config(
     page_title="NC Drug Market",
@@ -79,8 +79,8 @@ nc_mr = nc_most_recent.iloc[0]
 # convert this into a human readable date
 nc_mr['date_complete'] = pd.to_datetime(nc_mr['date_complete']).strftime('%B %d, %Y')
 
-# print the json to the screen
-# Streamlit
+#streamlit
+create_sidebar()
 st.title("North Carolina Drug Market")
 st.subheader("Real-time results from UNC Drug Analysis Lab")
 

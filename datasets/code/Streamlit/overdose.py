@@ -1,4 +1,4 @@
-from load_init import local_css
+from load_init import local_css, create_sidebar
 import streamlit as st
 st.set_page_config(
     page_title="NC Overdoses",
@@ -21,7 +21,7 @@ def get_nc_od_color():
 nc_od_color = get_nc_od_color()
 nc_od_color_df = pd.DataFrame(nc_od_color)
 nc_od_color_df['date_collect'] = pd.to_datetime(nc_od_color_df['date_collect'])
-
+create_sidebar()
 # create a title for the app
 st.title('Overdoses in NC')
 st.markdown("---")

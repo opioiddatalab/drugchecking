@@ -62,3 +62,15 @@ div[data-testid="stHorizontalBlock"] div[data-testid="column"] label{
     text-align: center;
     grid-template-columns: auto;
 }
+.stButton>button {
+  border: none !important;
+  /* give it a transparent background-color */
+  background-color: transparent !important;
+  /* on hover, add underline to text */
+}
+
+.stButton>button:hover {
+  text-decoration: underline !important;
+  /* make sure underline is black */
+  text-decoration-color: black !important;
+}
