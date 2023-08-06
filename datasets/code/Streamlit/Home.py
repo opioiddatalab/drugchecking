@@ -9,7 +9,7 @@ st.set_page_config(
     # make the page_icon the lab_coat emoji
     page_icon="🥽",
 )
-from load_css import local_css
+from load_init import local_css
 local_css("datasets/code/Streamlit/style.css")
 
 st.write("# UNC Street Drug Analysis Lab")
