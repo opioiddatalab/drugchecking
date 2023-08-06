@@ -1,15 +1,52 @@
 # -*- coding: utf-8 -*-
-from load_css import local_css
+from load_init import local_css
 local_css("datasets/code/Streamlit/style.css")
+import streamlit as st
+import streamlit_analytics
 
 import pandas as pd
 import numpy as np
 import plotly.express as px
 from urllib.request import urlopen
 import json
-import streamlit as st
 from PIL import Image
-import streamlit_analytics
+
+
+st.markdown(
+    """
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-J6G2QFEL1Q');
+        </script>
+    """, unsafe_allow_html=True)
+
+st.markdown(
+    """
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-J6G2QFEL1Q');
+        </script>
+    """, unsafe_allow_html=True)
+
+st.markdown(
+    """
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-J6G2QFEL1Q');
+        </script>
+    """, unsafe_allow_html=True)
 
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
@@ -98,10 +135,11 @@ sensations = alt.Chart(url).mark_bar(size=40).encode(
 
 
 
-streamlit_analytics.start_tracking()
 # Streamlit
+streamlit_analytics.start_tracking()
 st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from UNC Drug Analysis Lab")
+
 st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 30+ North Carolina harm reduction programs, hospitals, clinics, and health departments. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
 st.markdown("---")
 st.markdown("There is a new cut in street drugs and it causes terrible skin problems. But we didn't have a way to track it in North Carolina. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
@@ -292,14 +330,14 @@ st.markdown("Data documentation available [here](https://opioiddatalab.github.io
 st.markdown("---")
 
 st.subheader("Funding")
-st.markdown("We are grateful to our funders:")
 st.markdown("[Injury and Violence Prevention Branch](https://injuryfreenc.dph.ncdhhs.gov/) of the NC Department of Health and Human Services, via funding from the Centers for Disease Control and Prevention (2023, data visualizations)")
 st.markdown("North Carolina General Assembly via the [NC Collaboratory](https://collaboratory.unc.edu/), using Opioid Settlement Funds (2023-24, operations)")
 st.markdown("[Foundation for Opioid Response Efforts](https://forefdn.org) (2022-23, startup)")
 
 st.markdown("---")
 streamlit_analytics.stop_tracking(unsafe_password="streetsafe")
-# deleted code\n# commit 90661c07dd69631efb2b960bd6f846c91c3d5191
+# deleted code
+# commit 90661c07dd69631efb2b960bd6f846c91c3d5191
 # commit f7ff9cd6021d4680380a483db4957decd15fa39f
 # commit 28ac30685a5a32c6b71b935056308df6a587ce43
 # commit 6ee39e2c3fea3788af2f53516ad78ace23a5b835
