@@ -6,3 +6,7 @@ textexport/autotext_smalllaptop.do
 *.pyc
 
 .DS_Store
+node_modules
+.env
+# ignore the entire venv folder
+venv/

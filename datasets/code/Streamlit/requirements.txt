@@ -6,3 +6,8 @@ requests
 plotly.express
 plotly
 streamlit_analytics
+seaborn
+matplotlib
+streamlit_aggrid
+streamlit-elements
+persist

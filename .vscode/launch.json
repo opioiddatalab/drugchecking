@@ -5,11 +5,11 @@
             "name": "debug streamlit",
             "type": "python",
             "request": "launch",
-            "program": "datasets/code/Streamlit/ncxylazine.py",
+            "program": "./venv/bin/streamlit",
             "args": [
                 "run",
-                "run.py"
+                "${workspaceFolder}/datasets/code/Streamlit/ncxylazine.py"
             ]
         }
     ]
-    }
+}
