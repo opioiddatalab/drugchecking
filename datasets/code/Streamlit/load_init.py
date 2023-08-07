@@ -231,6 +231,8 @@ county_groups = {
     "Northampton County": 6,
     "Hertford County": 6,
 }
+# remove any duplicates from county_groups dict
+county_groups = {k: v for k, v in county_groups.items() if v is not None}
 
 def add_county_group(county):
   return county_groups.get(county, None)

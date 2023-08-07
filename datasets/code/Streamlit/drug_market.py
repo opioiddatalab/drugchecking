@@ -101,27 +101,28 @@ with col3:
 with col4:
     st.metric(label="Substances Detected", value=104)
 
-st.markdown("## Locations")
-st.dataframe(
-    nc_market_locs_df,
-    height=300,
-    column_config={
-        'county': st.column_config.TextColumn(
-            "County",
-            disabled=True
-        ),
-        'samples': st.column_config.NumberColumn(
-            "Samples",
-            disabled=True
-        ),
-        'latest_date': st.column_config.DateColumn(
-            "Most Recent Sample Date",
-            format="dddd MMMM DD, YYYY",
-        ),
-    },
-    hide_index=True,
-    use_container_width=True
-)
+with st.expander("View Locations data table"):
+  with st.container():
+    st.dataframe(
+        nc_market_locs_df,
+        height=300,
+        column_config={
+            'county': st.column_config.TextColumn(
+                "County",
+                disabled=True
+            ),
+            'samples': st.column_config.NumberColumn(
+                "Samples",
+                disabled=True
+            ),
+            'latest_date': st.column_config.DateColumn(
+                "Most Recent Sample Date",
+                format="dddd MMMM DD, YYYY",
+            ),
+        },
+        hide_index=True,
+        use_container_width=True
+    )
 st.markdown("---")
 st.markdown("## What substances are in the NC drug Supply?")
 # st.dataframe(nc_market_substances, use_container_width=True)
@@ -157,6 +158,31 @@ def get_substance_county_df(nc_df):
   df = df.drop('sampleid', axis=1)
   return df
 
+
+with st.container():
+    st.markdown("### Heatmap colorings + header on bottom coming soon")
+    df_1 = get_substance_county_df(nc_market_substances_top_15)
+    # create a new df that has the nc_market_substances_top_15
+    df_2 = pd.DataFrame(nc_market_substances_top_15)
+    # drop all cols except the substance col
+    df_2 = df_2.drop('latest_detected', axis=1)
+    # get the count for how many times a substance is found in a county_group
+    df_2['county_group_1'] = ''
+    df_2['county_group_2'] = ''
+    df_2['county_group_3'] = ''
+    df_2['county_group_4'] = ''
+    df_2['county_group_5'] = ''
+    df_2['county_group_6'] = ''
+    # map over each row in df_2 and get the substance name, then get the county_group and count how many times that substance is found in that county_group
+    for index, row in df_2.iterrows():
+        df_2.at[index, 'county_group_1'] = county_substance_count(index, 1, df_1)
+        df_2.at[index, 'county_group_2'] = county_substance_count(index, 2, df_1)
+        df_2.at[index, 'county_group_3'] = county_substance_count(index, 3, df_1)
+        df_2.at[index, 'county_group_4'] = county_substance_count(index, 4, df_1)
+        df_2.at[index, 'county_group_5'] = county_substance_count(index, 5, df_1)
+        df_2.at[index, 'county_group_6'] = county_substance_count(index, 6, df_1)
+
+    st.dataframe(df_2)
 with st.expander("View raw data table", ):
   with st.container():
     df_1 = get_substance_county_df(nc_market_substances_top_15)
@@ -182,7 +208,7 @@ with st.expander("View raw data table", ):
 
     st.dataframe(df_2)
 
-    csv = convert_df(nc_market_substances_top_15)
+    csv = convert_df(df_2)
     st.download_button(
       "Download csv",
       csv,
@@ -190,7 +216,8 @@ with st.expander("View raw data table", ):
       "text/csv",
       key='download-csv'
     )
-
+    # drop the total col
+    df_2 = df_2.drop('total', axis=1)
 st.markdown("---")
 st.markdown("## How pure is the NC drug supply?")
 st.markdown("**the number of substances detected is a measurement of how contaminated the drug supply is*")
