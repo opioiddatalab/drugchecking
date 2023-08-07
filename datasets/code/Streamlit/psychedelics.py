@@ -1,4 +1,4 @@
-from load_init import local_css, create_sidebar
+from load_init import local_css, create_sidebar, convert_df
 from streamlit_elements import elements, mui, html, dashboard
 import streamlit as st
 st.set_page_config(
@@ -460,8 +460,6 @@ with st.container():
             enable_enterprise_modules=False
             )
 
-        def convert_df(df):
-          return df.to_csv(index=False).encode('utf-8')
 
 
         csv = convert_df(df)

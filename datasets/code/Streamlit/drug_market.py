@@ -1,4 +1,4 @@
-from load_init import local_css, create_sidebar
+from load_init import local_css, create_sidebar, convert_df
 import streamlit as st
 st.set_page_config(
     page_title="NC Drug Market",
@@ -66,6 +66,13 @@ nc_market_substances['latest_detected'] = pd.to_datetime(nc_market_substances['l
 
 
 
+def get_nc_analysis_ds():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_analysis_dataset.csv"
+    return pd.read_csv(url)
+def get_nc_lab_detail_ds():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_lab_detail.csv"
+    return pd.read_csv(url)
+
 def get_nc_ds_purity():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_purity.csv"
     return pd.read_csv(url)
@@ -125,13 +132,50 @@ st.dataframe(
 st.markdown("---")
 st.markdown("## What substances are in the NC drug Supply?")
 # st.dataframe(nc_market_substances, use_container_width=True)
-nc_market_substances_top_10 = nc_market_substances.nlargest(10, 'total')
-nc_market_substances_top_10 = nc_market_substances_top_10.drop('pubchemcid', axis=1)
-nc_market_substances_top_10 = nc_market_substances_top_10.drop('primary', axis=1)
-nc_market_substances_top_10 = nc_market_substances_top_10.drop('trace', axis=1)
-nc_market_substances_top_10 = nc_market_substances_top_10.drop('total', axis=1)
-st.dataframe(nc_market_substances_top_10, use_container_width=True)
+nc_market_substances_top_15 = nc_market_substances.nlargest(15, 'total')
+nc_market_substances_top_15 = nc_market_substances_top_15.drop('pubchemcid', axis=1)
+nc_market_substances_top_15 = nc_market_substances_top_15.drop('primary', axis=1)
+nc_market_substances_top_15 = nc_market_substances_top_15.drop('trace', axis=1)
+# create a new df that merges in the
+with st.expander("Show tabular data (exportable)"):
+  st.dataframe(nc_market_substances_top_15, use_container_width=True)
+  csv = convert_df(nc_market_substances_top_15)
+  st.download_button(
+    "Download csv",
+    csv,
+    "file.csv",
+    "text/csv",
+    key='download-csv'
+  )
+nc_analysis = get_nc_analysis_ds()
+nc_lab_detail = get_nc_lab_detail_ds()
 
+# fn to return all the substances from nc_market_substances_top_15 in a list format
+def get_substances_list():
+    return nc_market_substances_top_15.index.tolist()
+
+# create a new dataframe with the following columns: county group, substance, latest_detected, and percentage samples testing positive
+def get_substance_county_df():
+    # create a new df with the following columns: county group, substance, latest_detected, and percentage samples testing positive
+    nc_substance_county_df = pd.DataFrame(columns=['county_group', 'substance', 'latest_detected', '% samples_testing_positive'])
+    # loop over each substance in the list of substances
+    for substance in get_substances_list():
+        # loop over each row in the nc_analysis df
+        for index, row in nc_analysis.iterrows():
+            # if the substance in the list matches the substance in the nc_analysis df
+            if substance == row['substance']:
+                # loop over each row in the nc_lab_detail df
+                for index, row in nc_lab_detail.iterrows():
+                    # if the substance in the list matches the substance in the nc_lab_detail df
+                    if substance == row['substance']:
+                        # create a new row in the nc_substance_county_df df with the following values
+                        nc_substance_county_df = nc_substance_county_df.append({
+                            'county_group': row['county_group'],
+                            'substance': row['substance'],
+                            'latest_detected': row['latest_detected'],
+                            'percentage_samples_testing_positive': row['percentage_samples_testing_positive']
+                        }, ignore_index=True)
+    return nc_substance_county_df
 
 st.markdown("---")
 st.markdown("## How pure is the NC drug supply?")
