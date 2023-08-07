@@ -1,4 +1,4 @@
-from load_init import local_css, create_sidebar, convert_df
+from load_init import local_css, create_sidebar, convert_df, add_county_group
 import streamlit as st
 st.set_page_config(
     page_title="NC Drug Market",
@@ -13,7 +13,7 @@ import random
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
-
+import re
 def get_nc_most_recent():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_most_recent.csv"
     return pd.read_csv(url)
@@ -46,13 +46,6 @@ nc_market_substances['pubchemcid'] = nc_market_substances['pubchemcid'].apply(la
 # make it categorical, otherwise the commas get inserted and it treats them as floats
 nc_market_substances['pubchemcid'] = nc_market_substances['pubchemcid'].astype({'pubchemcid': 'category'})
 # add 6 columns to nc_market_substances named 'West', 'Triad', 'Trangle', 'Charlotte', 'ENC', 'Faeyettville' and randomly assign each cell in the row a value between 1 and 100
-def generate_random_number(x):
-    return random.uniform(0.09, 0.991)
-columns_to_map = ['West', 'Triad', 'Triangle', 'Charlotte', 'ENC', 'Fayetteville']
-for column in columns_to_map:
-  nc_market_substances[column] = 0
-nc_market_substances[columns_to_map] = nc_market_substances[columns_to_map].applymap(generate_random_number)
-
 # set the index to the substance col
 nc_market_substances.set_index('substance', inplace=True)
 # sort the df by the latest_detected col
@@ -136,67 +129,88 @@ nc_market_substances_top_15 = nc_market_substances.nlargest(15, 'total')
 nc_market_substances_top_15 = nc_market_substances_top_15.drop('pubchemcid', axis=1)
 nc_market_substances_top_15 = nc_market_substances_top_15.drop('primary', axis=1)
 nc_market_substances_top_15 = nc_market_substances_top_15.drop('trace', axis=1)
-# create a new df that merges in the
-with st.expander("Show tabular data (exportable)"):
-  st.dataframe(nc_market_substances_top_15, use_container_width=True)
-  csv = convert_df(nc_market_substances_top_15)
-  st.download_button(
-    "Download csv",
-    csv,
-    "file.csv",
-    "text/csv",
-    key='download-csv'
-  )
 nc_analysis = get_nc_analysis_ds()
 nc_lab_detail = get_nc_lab_detail_ds()
 
-# fn to return all the substances from nc_market_substances_top_15 in a list format
 def get_substances_list():
     return nc_market_substances_top_15.index.tolist()
+def county_substance_count(substance, cg, df):
+  # get a count of how many times a substance is found in a county_group in the df
+  val = df[(df['substance'] == substance) & (df['county_group'] == cg)].shape[0]
+  return str(val)
 
-# create a new dataframe with the following columns: county group, substance, latest_detected, and percentage samples testing positive
-def get_substance_county_df():
-    # create a new df with the following columns: county group, substance, latest_detected, and percentage samples testing positive
-    nc_substance_county_df = pd.DataFrame(columns=['county_group', 'substance', 'latest_detected', '% samples_testing_positive'])
-    # loop over each substance in the list of substances
-    for substance in get_substances_list():
-        # loop over each row in the nc_analysis df
-        for index, row in nc_analysis.iterrows():
-            # if the substance in the list matches the substance in the nc_analysis df
-            if substance == row['substance']:
-                # loop over each row in the nc_lab_detail df
-                for index, row in nc_lab_detail.iterrows():
-                    # if the substance in the list matches the substance in the nc_lab_detail df
-                    if substance == row['substance']:
-                        # create a new row in the nc_substance_county_df df with the following values
-                        nc_substance_county_df = nc_substance_county_df.append({
-                            'county_group': row['county_group'],
-                            'substance': row['substance'],
-                            'latest_detected': row['latest_detected'],
-                            'percentage_samples_testing_positive': row['percentage_samples_testing_positive']
-                        }, ignore_index=True)
-    return nc_substance_county_df
+def get_substance_county_df(nc_df):
+  # merge the nc_lab_detail and nc_analysis dfs on the sampleid col
+  df = pd.merge(nc_lab_detail, nc_analysis, on='sampleid')
+  df = df[['sampleid',  'substance', 'county', 'date_collect']]
+  df = df[df['substance'].isin(get_substances_list())]
+  df['county_group'] = ''
+  df['county_group'] = df['county'].apply(lambda x: add_county_group(x))
+  df = df[df['county'].str.len() >= 2]
+  df['sub_counter'] = ''
+# find out how many times a row's substance occurs in the df for each county_group
+  df['sub_counter'] = df.groupby(['substance', 'county_group'])['substance'].transform('count')
+# sort the df by the sub_counter col
+  df.sort_values(by=['sub_counter'], inplace=True, ascending=False)
+  # I want to know how often a substnace is found in a given county
+  # remove the sample id col
+  df = df.drop('sampleid', axis=1)
+  return df
+
+with st.expander("View raw data table", ):
+  with st.container():
+    df_1 = get_substance_county_df(nc_market_substances_top_15)
+    # create a new df that has the nc_market_substances_top_15
+    df_2 = pd.DataFrame(nc_market_substances_top_15)
+    # drop all cols except the substance col
+    df_2 = df_2.drop('latest_detected', axis=1)
+    # get the count for how many times a substance is found in a county_group
+    df_2['county_group_1'] = ''
+    df_2['county_group_2'] = ''
+    df_2['county_group_3'] = ''
+    df_2['county_group_4'] = ''
+    df_2['county_group_5'] = ''
+    df_2['county_group_6'] = ''
+    # map over each row in df_2 and get the substance name, then get the county_group and count how many times that substance is found in that county_group
+    for index, row in df_2.iterrows():
+        df_2.at[index, 'county_group_1'] = county_substance_count(index, 1, df_1)
+        df_2.at[index, 'county_group_2'] = county_substance_count(index, 2, df_1)
+        df_2.at[index, 'county_group_3'] = county_substance_count(index, 3, df_1)
+        df_2.at[index, 'county_group_4'] = county_substance_count(index, 4, df_1)
+        df_2.at[index, 'county_group_5'] = county_substance_count(index, 5, df_1)
+        df_2.at[index, 'county_group_6'] = county_substance_count(index, 6, df_1)
+
+    st.dataframe(df_2)
+
+    csv = convert_df(nc_market_substances_top_15)
+    st.download_button(
+      "Download csv",
+      csv,
+      "file.csv",
+      "text/csv",
+      key='download-csv'
+    )
 
 st.markdown("---")
 st.markdown("## How pure is the NC drug supply?")
 st.markdown("**the number of substances detected is a measurement of how contaminated the drug supply is*")
-# @NAB - do you want this listed in a table? or just the substances printed onto screen in columns?
-st.dataframe(
-    nc_ds_purity_df,
-    height=300,
-    column_config={
-        'drug': st.column_config.TextColumn(
-            "Drug",
-            disabled=True
-        ),
-        'average': st.column_config.NumberColumn(
-            "Average",
-            disabled=True
-        ),
-    },
-    hide_index=True,
-    use_container_width=True
-)
+with st.container():
+    st.dataframe(
+      nc_ds_purity_df,
+      height=200,
+      column_config={
+          'drug': st.column_config.TextColumn(
+              "Drug",
+              disabled=True
+          ),
+          'average': st.column_config.NumberColumn(
+              "Average",
+              disabled=True
+          ),
+      },
+      hide_index=True,
+      use_container_width=True
+  )
 
 
 html_str = f"""
