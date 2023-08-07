@@ -1,5 +1,6 @@
 from load_init import local_css, create_sidebar, convert_df
 import streamlit as st
+from PIL import Image
 
 st.set_page_config(
     page_title="NC Stimulants",
@@ -404,7 +405,45 @@ st.markdown("* [Overamping prevention](https://harmreduction.org/issues/overdose
 st.markdown("* [Recognizing stimulant overdose](https://harmreduction.org/issues/overdose-prevention/overview/stimulant-overamping-basics/recognizing-stimulant-overamping/)")
 st.markdown("* [Responding to stimulant overdose](https://harmreduction.org/issues/overdose-prevention/overview/stimulant-overamping-basics/responding-to-stimulant-overamping/)")
 
+st.markdown("---")
+st.markdown("## How do stimulants affect the body?")
+tab1, tab2, tab3 = st.tabs(["Stimulants + Body Temperature", "Overdoses: Stimulants vs Opioids", "Responding to Overdoses"])
+st.markdown(
+    """
+    <style>
+        div[data-testid="column"]
+        {
+            text-align: left !important;
+        }
+        div[data-testid="column"] img {
+          margin-left: 50px;
+        }
+    </style>
+    """,unsafe_allow_html=True
+)
+with tab1:
+  col1, col2 = st.columns(2)
+  with col1:
+    st.write("Outdoor temperatures above 88F are associated with a lot more stimulant overdoses. Drink water, don't use as much, stay in cool places, and drink more water.")
+    st.write("Stimulants can increase the body’s temperature and reduce the body’s ability to dissipate that excess heat. Central nervous system stimulants promote the release of dopamine, serotonin, and norepinephrine and block the re-uptake of dopamine.Increased levels of these neurotransmitters in the central nervous system can produce effects like increased energy, alertness, feelings of euphoria.")
+  with col2:
+    water_img = Image.open('datasets/code/Streamlit/images/water.png')
+    st.image(water_img, width=300)
+with tab2:
+  st.write("Stimulants and opioids both work on the body by speeding up or slowing down some of the body’s natural processes. These two classes of drugs induce different effects in people, because they interact with different bodily processes.")
+  st.write("To a bystander, a stimulant overdose may look very different from an opioid overdose. Stimulant overdose is commonly characterized by dangerous overheating, and often the individual experiencing the overdose remains conscious. Opioid overdose is typically characterized by severe difficulty breathing or not breathing at all; the person is nonresponsive and unconscious. Both types of overdose can result in physical harms, neurological harms, or death.")
+  st.markdown("**How are the effect of opioids different from the effects of stimulants?**")
+  st.write("Opioids also interact with the central nervous system and other parts of the body, and they do so in very different ways from stimulants. Specifically, opioids interact with neurotransmitter receptors that regulate analgesia (pain relief), sedation, and respiratory depression. Opioids can promote these processes, which is why they are effective at treating pain, making people feel sleepy, or, if they overdose, dangerously slowing down or stopping breathing all together.")
 
+with tab3:
+  st.write("Given the variable nature of stimulant overdose, it is important to seek medical help to assess the safety of the individual. In most states, Good Samaritan laws provide some immunity, which varies by jurisdiction, for those who provide assistance to people who are in danger, including as a result of illicit drug use.")
+  st.markdown("### When responding to a stimulant overdose, any person may be able to:")
+  st.markdown("* Call 911")
+  st.markdown("* Administer naloxone if opioids could be involved")
+  st.markdown("* Monitor the person carefully and stay with the individual until help arrives")
+  st.markdown("* De-escalate the situation, by creating a safe place for observation and monitoring of the person in crisis and reducing external stimulation—like excessive noises and touching–to promote calm and recovery. Help the individual avoid becoming overheated. Some ways this can be done is by providing water, a sports drink, or a cool washcloth.")
+  st.write("Stimulant overdose can also produce varied and concerning mental health symptoms like extreme panic, paranoia, anxiety, hallucinations, or psychosis, which can be upsetting or frightening to the individual who consumed the stimulant and to bystanders.")
+  st.write("When responding to an opioid overdose, helping the individual breathe is key—through the administration of naloxone and rescue breathing.")
 
 # THIS IS CODE FOR THE CARDS, HOLDING OFF ON THIS FOR NOW:
 
