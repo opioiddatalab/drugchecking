@@ -365,6 +365,16 @@ stimulant_substance_list = [
   "crack"
 ]
 col1, col2, col3, col4 = st.columns(4)
+st.markdown(
+    """
+    <style>
+        div[data-testid="metric-container"] div[data-testid="stMetricValue"]
+        {
+            text-align: center !important;
+        }
+    </style>
+    """,unsafe_allow_html=True
+)
 with col1:
     st.metric(label="Powder meth", value="coming soon")
     st.write('Crystal meth: substance=="methamphetamine" & texture!=(regexm, "crystal")')

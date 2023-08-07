@@ -149,6 +149,16 @@ nc_sample_count_int = nc_sample_count.iloc[0]['nc_samples']
 
 st.write("We are watching a number of different kinds of psychedelics and other drugs in North Carolina right now....")
 col1, col2, col3, col4 = st.columns(4)
+st.markdown(
+    """
+    <style>
+        div[data-testid="metric-container"] div[data-testid="stMetricValue"]
+        {
+            text-align: center !important;
+        }
+    </style>
+    """,unsafe_allow_html=True
+)
 with col1:
     st.metric(label="Samples", value=nc_sample_count_int)
 with col2:
