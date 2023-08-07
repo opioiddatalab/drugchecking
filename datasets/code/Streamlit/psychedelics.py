@@ -243,7 +243,7 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['LSD','MDMA', 'Synthetic Cannabino
 with tab1:
     # filter the df to remove any entries that are not included in the lsd_list
     filtered_df = df[df['substance'].isin(lsd_list)]
-    st.markdown("### D  rugs commonly sold as LSD")
+    st.markdown("### Drugs commonly sold as LSD")
     st.markdown("*2-3 sentence description.")
     generate_container_with_rows(filtered_df)
 with tab2:
