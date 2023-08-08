@@ -35,13 +35,6 @@ nc_psychedelics_et_al['latest_detected'] = pd.to_datetime(nc_psychedelics_et_al[
 
 nc_psychedelics_et_al = pd.DataFrame(nc_psychedelics_et_al)
 
-# def generate_random_number(x):
-#     return random.uniform(0.09, 0.991)
-# columns_to_map = ['West', 'Triad', 'Triangle', 'Charlotte', 'ENC', 'Fayetteville']
-# for column in columns_to_map:
-#   nc_psychedelics_et_al[column] = 0
-# nc_psychedelics_et_al[columns_to_map] = nc_psychedelics_et_al[columns_to_map].applymap(generate_random_number)
-
 # set the index to the substance col
 nc_psychedelics_et_al_cpy = nc_psychedelics_et_al
 nc_psychedelics_et_al.set_index('substance', inplace=True)

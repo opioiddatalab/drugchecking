@@ -1,6 +1,7 @@
 import streamlit as st
 import webbrowser
 import re
+import pandas as pd
 
 def local_css(file_name):
     with open(file_name) as f:
@@ -236,11 +237,16 @@ county_groups = {k: v for k, v in county_groups.items() if v is not None}
 
 def add_county_group(county):
   return county_groups.get(county, None)
-  # map over the county_group dict and return the key if the county is in the value
-  # for key, value in county_group.items():
-  #   # instead of looking for exact match, use the county as a regex pattern to test each value for a match
-  #   for v_ in value:
-  #     pattern = re.compile(v_)
-  #   # test the value against the regular expression pattern
-  #     if pattern.match(county):
-  #       return key
+
+def get_nc_analysis_ds():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_analysis_dataset.csv"
+    return pd.read_csv(url)
+def get_nc_lab_detail_ds():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_lab_detail.csv"
+    return pd.read_csv(url)
+def get_nc_merged_df(substance_list):
+  nc_lab_detail = get_nc_lab_detail_ds()
+  nc_analysis = get_nc_analysis_ds()
+  df = pd.merge(nc_lab_detail, nc_analysis, on='sampleid')
+  df = df[['sampleid',  'substance', 'county', 'date_collect', 'expectedsubstance', 'lab_meth_any_x', 'lab_cocaine_any_x', 'crystals', 'lab_fentanyl_y' ]]
+  return df[df['substance'].isin(substance_list)]
