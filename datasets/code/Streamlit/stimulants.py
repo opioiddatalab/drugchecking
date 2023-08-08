@@ -195,7 +195,7 @@ with st.container():
   crack_adulterants['latest'] = pd.to_datetime(crack_adulterants['latest']).dt.strftime('%B %d, %Y')
   powder_meth_adulterants['latest'] = pd.to_datetime(powder_meth_adulterants['latest']).dt.strftime('%B %d, %Y')
 
-tab1, tab2, tab3, tab4 = st.tabs(["Powder coke", "Crack", "Powder Meth", "Crystal meth"])
+tab1, tab2, tab3, tab4 = st.tabs(["Powder cocaine", "Crack", "Powder meth", "Crystal meth"])
 st.markdown(
     """<style>
         .dataframe {text-align: left !important}
