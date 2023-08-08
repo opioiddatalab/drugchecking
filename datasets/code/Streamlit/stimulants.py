@@ -84,6 +84,18 @@ def get_nc_sample_count():
     return pd.read_csv(url)
 nc_sample_count = get_nc_sample_count()
 nc_sample_count_int = nc_sample_count.iloc[0]['nc_samples']
+def get_crystal_found_with():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/crystal_lab.csv"
+    return pd.read_csv(url)
+def get_coke_found_with():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/coke_lab.csv"
+    return pd.read_csv(url)
+def get_crack_found_with():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/crack_lab.csv"
+    return pd.read_csv(url)
+def get_powder_meth_found_with():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/powdermeth_lab.csv"
+    return pd.read_csv(url)
 
 
 create_sidebar()
@@ -157,11 +169,115 @@ with st.container():
   with col4:
      crystal_meth_count = len(nc_main_dataset_crystal_meth.index)
      st.metric(label="Crystal Meth", value=crystal_meth_count)
-  # BELOW THOSE 4 CATGORIES
-  # ADULTERANTS IN THE STIMULANTS SUPPLY
-  # TABLE VIEW OF THE SUBSTANCES WITH ADDITIONAL COL OF EACH OF THOSE SUBTANCES AND THEIR CORRRESPONDING SUBS + COUNTS
-  #  EX "POWDER COKE" | SUB 1 (COUNT)
-  #                   | SUB 2 (COUNT)
+
+  crystal_adulterants = get_crystal_found_with()
+  crystal_adulterants['init_substance'] = 'Crystal'
+  crystal_adulterants = crystal_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+  crystal_adulterants = crystal_adulterants.drop('pubchemcid', axis=1)
+
+  coke_adulterants = get_coke_found_with()
+  coke_adulterants['init_substance'] = 'Cocaine'
+  coke_adulterants = coke_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+  coke_adulterants = coke_adulterants.drop('pubchemcid', axis=1)
+
+  crack_adulterants = get_crack_found_with()
+  crack_adulterants['init_substance'] = 'Crack'
+  crack_adulterants = crack_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+  crack_adulterants = crack_adulterants.drop('pubchemcid', axis=1)
+
+  powder_meth_adulterants = get_powder_meth_found_with()
+  powder_meth_adulterants['init_substance'] = 'Powder Meth'
+  powder_meth_adulterants = powder_meth_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+  powder_meth_adulterants = powder_meth_adulterants.drop('pubchemcid', axis=1)
+  # make the latest col a human readable date
+  crystal_adulterants['latest'] = pd.to_datetime(crystal_adulterants['latest']).dt.strftime('%B %d, %Y')
+  coke_adulterants['latest'] = pd.to_datetime(coke_adulterants['latest']).dt.strftime('%B %d, %Y')
+  crack_adulterants['latest'] = pd.to_datetime(crack_adulterants['latest']).dt.strftime('%B %d, %Y')
+  powder_meth_adulterants['latest'] = pd.to_datetime(powder_meth_adulterants['latest']).dt.strftime('%B %d, %Y')
+
+tab1, tab2, tab3, tab4 = st.tabs(["Powder coke", "Crack", "Powder Meth", "Crystal meth"])
+st.markdown(
+    """<style>
+        .dataframe {text-align: left !important}
+    </style>
+    """, unsafe_allow_html=True)
+with tab1:
+    st.dataframe(
+      coke_adulterants,
+      hide_index=True,
+      column_config={
+          'substance': st.column_config.TextColumn(
+             "Adulterants",
+             width='medium'
+          ),
+          'samples': st.column_config.NumberColumn(
+             "Count",
+              width='medium'
+          ),
+          'latest': st.column_config.DateColumn(
+            "Most Recent Sample Date",
+            format="dddd MMMM DD, YYYY",
+        ),
+        }
+    )
+with tab2:
+    st.dataframe(
+      crack_adulterants,
+      hide_index=True,
+      column_config={
+          'substance': st.column_config.TextColumn(
+             "Adulterants",
+             width='medium'
+          ),
+          'samples': st.column_config.NumberColumn(
+             "Count",
+              width='medium'
+          ),
+          'latest': st.column_config.DateColumn(
+            "Most Recent Sample Date",
+            format="dddd MMMM DD, YYYY",
+        ),
+        }
+    )
+with tab3:
+    st.dataframe(
+      powder_meth_adulterants,
+      hide_index=True,
+            column_config={
+          'substance': st.column_config.TextColumn(
+             "Adulterants",
+             width='medium'
+          ),
+
+          'samples': st.column_config.NumberColumn(
+             "Count",
+             width='medium'
+          ),
+          'latest': st.column_config.DateColumn(
+            "Most Recent Sample Date",
+            format="dddd MMMM DD, YYYY",
+        ),
+        }
+    )
+with tab4:
+    st.dataframe(
+      crystal_adulterants,
+      hide_index=True,
+            column_config={
+          'substance': st.column_config.TextColumn(
+             "Adulterants",
+             width='medium'
+          ),
+          'samples': st.column_config.NumberColumn(
+             "Count",
+             width='medium'
+          ),
+          'latest': st.column_config.DateColumn(
+            "Most Recent Sample Date",
+            format="dddd MMMM DD, YYYY",
+        ),
+        }
+    )
 st.markdown("---")
 
 with st.container():
