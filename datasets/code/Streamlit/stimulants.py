@@ -1,4 +1,4 @@
-from load_init import local_css, create_sidebar, convert_df, get_nc_merged_df
+from load_init import local_css, create_sidebar, convert_df, get_nc_merged_df, get_nc_intro_metrics, generate_drug_supply_table
 import streamlit as st
 from PIL import Image
 
@@ -6,7 +6,7 @@ st.set_page_config(
     page_title="NC Stimulants",
     # make the page_icon the lab_coat emoji
     page_icon="🥽",
-    initial_sidebar_state="expanded",
+    # initial_sidebar_state="expanded",
 )
 
 local_css("datasets/code/Streamlit/style.css")
@@ -104,53 +104,30 @@ html_str = f"""
 <p>Currently in North Carolina, the primary stimulants found in street drugs are methamphetamine and cocaine. These can be in crystal (crystal meth or crack) or in powder form. Methamphetamine and amphetamine can <a href="https://ncpsychedelics.streamlit.app/" _target="blank">also be found in</a> in MDMA (aka Ecstasy, molly). Stimulants may also show up pre-mixed with fentanyl in "speedballs."'</p>
 """
 st.markdown(html_str, unsafe_allow_html=True)
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    st.metric(label="All Samples", value=nc_sample_count_int)
-with col2:
-    st.metric(label="Programs & Clinics", value=nc_program_count_int)
-with col3:
-    st.metric(label="Counties", value=nc_countycount_int)
-with col4:
-    #  count the number of unique sampleids in the nc_main_dataset
-    nc_main_dataset_sampleid_count = len(nc_main_dataset['sampleid'])
-    label_="Stimulant Samples"
-    st.metric(label=label_, value=nc_main_dataset_sampleid_count)
-for s_ in nc_stimulants_list:
-  latest = nc_stimulants.loc[s_]['latest_detected']
-  text = "<div style='display: flex; flex-direction: row; align-items: center; justify-content: space-between;'><h4>Most recent detection of "+s_+": </h4><h4>"+latest+"</h4></div>"
-  st.markdown(text, unsafe_allow_html=True)
+get_nc_intro_metrics({
+  "All Samples": nc_sample_count_int,
+  "Programs & Clinics": nc_program_count_int,
+  "Counties": nc_countycount_int,
+  "Stimulant Samples": len(nc_main_dataset['sampleid'])
+}, len(nc_main_dataset['sampleid']), nc_stimulants_list, nc_stimulants)
+# col1, col2, col3, col4 = st.columns(4)
+# with col1:
+#     st.metric(label="All Samples", value=nc_sample_count_int)
+# with col2:
+#     st.metric(label="Programs & Clinics", value=nc_program_count_int)
+# with col3:
+#     st.metric(label="Counties", value=nc_countycount_int)
+# with col4:
+#     #  count the number of unique sampleids in the nc_main_dataset
+#     nc_main_dataset_sampleid_count = len(nc_main_dataset['sampleid'])
+#     label_="Stimulant Samples"
+#     st.metric(label=label_, value=nc_main_dataset_sampleid_count)
+# for s_ in nc_stimulants_list:
+#   latest = nc_stimulants.loc[s_]['latest_detected']
+#   text = "<div style='display: flex; flex-direction: row; align-items: center; justify-content: space-between;'><h4>Most recent detection of "+s_+": </h4><h4>"+latest+"</h4></div>"
+#   st.markdown(text, unsafe_allow_html=True)
 
 st.markdown("---")
-
-def generate_container_with_rows(items):
-    with st.container():
-      col1, col2, col3 = st.columns(3)
-      list_length = len(items)
-      list_length_divided_by_three = math.ceil(list_length / 3)
-      first_column_items = items[:list_length_divided_by_three]
-      second_column_items = items[list_length_divided_by_three:list_length_divided_by_three * 2]
-      third_column_items = items[list_length_divided_by_three * 2:]
-      #  fill each col with corresponding list
-      if list_length == 0:
-        st.write("No items found")
-      else :
-        with col1:
-          for index, row in first_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-        with col2:
-          for index, row in second_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-        with col3:
-          for index, row in third_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-    return st.container()
 
 nc_stimulants_categories = ['Powder meth', 'Crystal meth', 'Powder coke', 'Crack']
 # UPDATES:
@@ -169,6 +146,8 @@ with st.container():
   with col4:
      crystal_meth_count = len(nc_main_dataset_crystal_meth.index)
      st.metric(label="Crystal Meth", value=crystal_meth_count)
+  st.subheader("What else is in coke and meth?")
+  st.write("This is the list of chemicals and drugs we have found in cocaine and methamphetamine samples in North Carolina.")
 
   crystal_adulterants = get_crystal_found_with()
   crystal_adulterants['init_substance'] = 'Crystal'
@@ -278,137 +257,75 @@ with tab4:
         ),
         }
     )
+
 st.markdown("---")
-
-with st.container():
-    st.subheader("Does this represent the entire NC Drug Supply?")
-    st.write("We have analyzed a limited number of these drugs. People may send us samples because the drugs caused unexpected effects. Our data don't represent the entire drug supply in North Carolina.")
-    st.expander("View raw data table", )
-
-    merged_df = get_nc_merged_df(nc_stimulants_list)
-
-    merged_df = merged_df.sort_values(by=['sampleid'], ascending=False)
-    merged_df['sampleid'] = merged_df['sampleid'].astype('category')
-    merged_df['date_collect'] = pd.to_datetime(merged_df['date_collect'], format='mixed')
-    gb = GridOptionsBuilder.from_dataframe(merged_df)
-
-    #customize gridOptions
-    gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, editable=False)
-    gb.configure_column("date_collect", type=["dateColumnFilter","customDateTimeFormat"], pivot=True)
-    fit_columns_on_grid_load = True
-    gb.configure_pagination(paginationAutoPageSize=False, paginationPageSize=15)
-    gb.configure_grid_options(domLayout='single')
-    gb.configure_grid_options(
-        enableCellTextSelection=True,
-        ensureDomOrder=True,
-    )
-    # sort the df by the date_collect col with most recent first
-    merged_df = merged_df.sort_values(by=['date_collect'], ascending=False)
-    gridOptions = gb.build()
-    LinkCellRenderer = JsCode('''
-      class LinkCellRenderer {
-          init(params) {
-              this.params = params;
-              this.eGui = document.createElement('div');
-              this.eGui.innerHTML = `
-              <span>
-                  <a id='click-button'
-                      class='btn-simple'
-                      href='https://www.streetsafe.supply/results/p/${this.params.getValue()}'
-                      target='_blank'
-                      style='color: ${this.params.color};}'>${this.params.getValue()}</a>
-              </span>
-            `;
-
-              this.eButton = this.eGui.querySelector('#click-button');
-
-              this.btnClickedHandler = this.btnClickedHandler.bind(this);
-              this.eButton.addEventListener('click', this.btnClickedHandler);
-
-          }
-
-          getGui() {
-              return this.eGui;
-          }
-
-          refresh() {
-              return true;
-          }
-
-          destroy() {
-              if (this.eButton) {
-                  this.eGui.removeEventListener('click', this.btnClickedHandler);
-              }
-          }
-
-          btnClickedHandler(event) {
-
-                      this.refreshTable('clicked');
-              }
-
-          refreshTable(value) {
-              this.params.setValue(value);
-          }
-      };
-    ''')
-  # ADD IN COUNTY COLUMN + EXPECTED SUBSTANCE (VERBATIM FROM COL) COL + TEXTURE/COLOR COLS + COUNTY REGION COL
-  # LINK TO COUUNTY REGION MAP
-
-    gridOptions['columnDefs'] = [
-        {
-        "field": "sampleid",
-        "headerName": "Sample IDS",
-        "cellRenderer": LinkCellRenderer,
-        "cellRendererParams": {
-          "color": "blue",
-          "data": "sampleid",
-        },
-        "maxWidth": 120,
-      },
-      {
-        "field": "substance",
-        "headerName": "Substance",
-        "maxWidth": 120,
-      },
-      {
-         "field": "county",
-         "headerName": "County",
-      },
-      {
-        "field": "date_collect",
-        "headerName": "Sample Collection Date",
-        "type": ["dateColumnFilter","customDateTimeFormat"],
-        "custom_format_string":"yyyy-MM-dd",
-        "pivot": True,
-        "maxWidth": 200,
-      },
-    ]
-    with st.container():
-        custom_css = {
-          ".ag-root-wrapper": {
-            "max-width": "650px !important",
-            "margin": "0 auto",
-            },
-        }
-        grid_response = AgGrid(
-            merged_df,
-            custom_css=custom_css,
-            gridOptions=gridOptions,
-            allow_unsafe_jscode=True,
-            enable_enterprise_modules=False
-            )
-
-
-
-        csv = convert_df(merged_df)
-
-        st.download_button(
-          "Download csv",
-          csv,
-          "file.csv",
-          "text/csv",
-          key='download-csv'
-        )
+st.subheader("Stimulants, Cuts, and Adulterants in NC")
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+   "Most concerning",
+   "Sweeteners",
+   "Mimic-cuts",
+   "Cuts that 'take the edge off'",
+   "Cocaine Cuts",
+   "Cuts related to fentanyl",
+   "Common Heroin Cuts",
+])
+with tab1:
+    st.write("The substances we are most concerned about in stimulants in NC are:")
+    st.markdown("* levamisole - an anti-fungal that causing bruising and lesions")
+    st.markdown("* fentanyl - potent opioid showing up unexpectedly")
+    st.markdown("* xylazine - sedative that causes skin wounds")
+    st.markdown("* bromazolam - potent benzo")
+    st.markdown("* eutylone - stimulant with mild psychedelic properties")
+with tab2:
+    st.write("One type of cut in stimulants are powdered sweeteners that bulk up the product for sale:")
+    st.markdown("* lactose - type of sugar")
+    st.markdown("* erythritol - sweetener")
+    st.markdown("* inositol - sweetner")
+    st.markdown("* mannitol - sweetner")
+with tab3:
+    st.write("Another type of cut in stimulants are things that are intended to mimic high quality product, such as numbing agents and things that make the taste bitter. Acetminophen and phenacetin can be both bulking and bittering agent.")
+    st.markdown("* lidocaine - numbing agent")
+    st.markdown("* procaine (Novacain) - numbing agent")
+    st.markdown("* caffeine - gives energy")
+    st.markdown("* phenacetin - pain reliever and bitter")
+    st.markdown("* acetaminophen - pain reliever and bitter")
+    st.markdown("* quinine - bitter")
+with tab4:
+    st.write("Many cuts are directly mixed in with cocaine and powder methamphetamine in NC. If put there intentionally these could be to \"take the edge off\" -- or sometimes they are ridealong cuts that come in with fentanyl.")
+    st.write("Downers like:")
+    st.markdown("* tramadol")
+    st.markdown("* ketamine")
+    st.markdown("* delta-9-THC")
+    st.markdown("* melatonin")
+with tab5:
+  st.write("Common substances occurring in cocaine come from natural organic raw materials, byproducts of drug making, or are reactions when cocaine comes into contact with humidity:")
+  st.markdown("* methyl ecgonidine (MED)")
+  st.markdown("* tropacocaine")
+  st.markdown("* benzoylecgonine (BZ)")
+  st.markdown("* ecgonine methylester (EME)")
+  st.markdown("* norcocaine")
+  st.markdown("* ecgonidine (ED)")
+  st.markdown("* benzoic acid")
+  st.markdown("* noscapine")
+  st.markdown("* cinnamoylcocaine")
+with tab6:
+  st.write("Common substances occurring in fentanyl come from leftover starting material, fentanyl analogues, and byproducts from drug making process:")
+  st.markdown("* 4-ANPP")
+  st.markdown("* phenethyl 4-ANPP")
+  st.markdown("* p-fluorofentanyl")
+  st.markdown("* despropionyl p-fluorofentanyl")
+  st.markdown("* ethyl-4-ANPP")
+  st.markdown("* p-fluoro phenethyl 4-ANPP")
+  st.markdown("* acetyl fentanyl")
+  st.markdown("* N-phenylpropanamide")
+with tab7:
+  st.write("Common substances found in heroin come from organic material from poppies and byproducts of the drug making process:")
+  st.markdown("* heroin = diacetyl morphine")
+  st.markdown("* 6-monoacetylmorphine (6-MAM)")
+  st.markdown("* acetylcodeine")
+  st.markdown("* hydrocotarnine")
+  st.markdown("* meconin")
+generate_drug_supply_table(nc_stimulants_list)
 
 st.markdown("---")
 st.subheader("Fentanyl in stimulants")
