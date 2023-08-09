@@ -42,10 +42,10 @@ nc_stimulants_list =[
 ]
 nc_main_dataset = get_nc_merged_df(nc_stimulants_list)
 
-nc_main_dataset_crack = nc_main_dataset[nc_main_dataset['expectedsubstance'].str.contains("crack") & nc_main_dataset['lab_cocaine_any_x'] == 1]
-nc_main_dataset_powder_coke = nc_main_dataset[nc_main_dataset['expectedsubstance'].str.contains("crack") & nc_main_dataset['lab_cocaine_any_x'] == 1]
-nc_main_dataset_crystal_meth = nc_main_dataset[(nc_main_dataset['lab_meth_any_x'] == 1) & (nc_main_dataset['crystals'] == 1)]
-nc_main_dataset_powder_meth = nc_main_dataset[(nc_main_dataset['lab_meth_any_x'] == 1) & (nc_main_dataset['crystals'] != 1)]
+nc_main_dataset_crack = nc_main_dataset[nc_main_dataset['expectedsubstance'].str.contains("crack") & nc_main_dataset['lab_cocaine_any_y'] == 1]
+nc_main_dataset_powder_coke = nc_main_dataset[nc_main_dataset['expectedsubstance'].str.contains("crack") & nc_main_dataset['lab_cocaine_any_y'] == 1]
+nc_main_dataset_crystal_meth = nc_main_dataset[(nc_main_dataset['lab_meth_any_y'] == 1) & (nc_main_dataset['crystals'] == 1)]
+nc_main_dataset_powder_meth = nc_main_dataset[(nc_main_dataset['lab_meth_any_y'] == 1) & (nc_main_dataset['crystals'] != 1)]
 # count how many samples are in nc_main_dataset_powder_meth
 
 
@@ -131,48 +131,50 @@ st.markdown("---")
 
 nc_stimulants_categories = ['Powder meth', 'Crystal meth', 'Powder coke', 'Crack']
 # UPDATES:
+
+crystal_adulterants = get_crystal_found_with()
+crystal_adulterants['init_substance'] = 'Crystal'
+crystal_adulterants = crystal_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+crystal_adulterants = crystal_adulterants.drop('pubchemcid', axis=1)
+
+coke_adulterants = get_coke_found_with()
+coke_adulterants['init_substance'] = 'Cocaine'
+coke_adulterants = coke_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+coke_adulterants = coke_adulterants.drop('pubchemcid', axis=1)
+
+crack_adulterants = get_crack_found_with()
+crack_adulterants['init_substance'] = 'Crack'
+crack_adulterants = crack_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+crack_adulterants = crack_adulterants.drop('pubchemcid', axis=1)
+
+powder_meth_adulterants = get_powder_meth_found_with()
+powder_meth_adulterants['init_substance'] = 'Powder Meth'
+powder_meth_adulterants = powder_meth_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+powder_meth_adulterants = powder_meth_adulterants.drop('pubchemcid', axis=1)
+# make the latest col a human readable date
+crystal_adulterants['latest'] = pd.to_datetime(crystal_adulterants['latest']).dt.strftime('%B %d, %Y')
+coke_adulterants['latest'] = pd.to_datetime(coke_adulterants['latest']).dt.strftime('%B %d, %Y')
+crack_adulterants['latest'] = pd.to_datetime(crack_adulterants['latest']).dt.strftime('%B %d, %Y')
+powder_meth_adulterants['latest'] = pd.to_datetime(powder_meth_adulterants['latest']).dt.strftime('%B %d, %Y')
+
 st.subheader("View substances by category")
 with st.container():
   col1, col2, col3, col4 = st.columns(4)
   with col1:
-    powder_coke_count = len(nc_main_dataset_powder_coke.index)
+    # calculate the number of substances in the nc_main_dataset_powder_coke 'substance' col
+    powder_coke_count = len(coke_adulterants['substance'])
     st.metric(label="Powder coke", value=powder_coke_count)
   with col2:
-     crack_count = len(nc_main_dataset_crack.index)
+     crack_count = len(crack_adulterants.index)
      st.metric(label="Crack", value=crack_count)
   with col3:
-     powder_meth_count = len(nc_main_dataset_powder_meth.index)
+     powder_meth_count = len(powder_meth_adulterants.index)
      st.metric(label="Powder Meth", value=powder_meth_count)
   with col4:
-     crystal_meth_count = len(nc_main_dataset_crystal_meth.index)
+     crystal_meth_count = len(crystal_adulterants.index)
      st.metric(label="Crystal Meth", value=crystal_meth_count)
   st.subheader("What else is in coke and meth?")
   st.write("This is the list of chemicals and drugs we have found in cocaine and methamphetamine samples in North Carolina.")
-
-  crystal_adulterants = get_crystal_found_with()
-  crystal_adulterants['init_substance'] = 'Crystal'
-  crystal_adulterants = crystal_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
-  crystal_adulterants = crystal_adulterants.drop('pubchemcid', axis=1)
-
-  coke_adulterants = get_coke_found_with()
-  coke_adulterants['init_substance'] = 'Cocaine'
-  coke_adulterants = coke_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
-  coke_adulterants = coke_adulterants.drop('pubchemcid', axis=1)
-
-  crack_adulterants = get_crack_found_with()
-  crack_adulterants['init_substance'] = 'Crack'
-  crack_adulterants = crack_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
-  crack_adulterants = crack_adulterants.drop('pubchemcid', axis=1)
-
-  powder_meth_adulterants = get_powder_meth_found_with()
-  powder_meth_adulterants['init_substance'] = 'Powder Meth'
-  powder_meth_adulterants = powder_meth_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
-  powder_meth_adulterants = powder_meth_adulterants.drop('pubchemcid', axis=1)
-  # make the latest col a human readable date
-  crystal_adulterants['latest'] = pd.to_datetime(crystal_adulterants['latest']).dt.strftime('%B %d, %Y')
-  coke_adulterants['latest'] = pd.to_datetime(coke_adulterants['latest']).dt.strftime('%B %d, %Y')
-  crack_adulterants['latest'] = pd.to_datetime(crack_adulterants['latest']).dt.strftime('%B %d, %Y')
-  powder_meth_adulterants['latest'] = pd.to_datetime(powder_meth_adulterants['latest']).dt.strftime('%B %d, %Y')
 
 tab1, tab2, tab3, tab4 = st.tabs(["Powder cocaine", "Crack", "Powder meth", "Crystal meth"])
 st.markdown(
@@ -265,9 +267,9 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
    "Sweeteners",
    "Mimic-cuts",
    "Cuts that 'take the edge off'",
-   "Cocaine Cuts",
-   "Cuts related to fentanyl",
-   "Common Heroin Cuts",
+   "In cocaine",
+   "In fentanyl",
+   "In heroin",
 ])
 with tab1:
     st.write("The substances we are most concerned about in stimulants in NC are:")
@@ -325,12 +327,14 @@ with tab7:
   st.markdown("* acetylcodeine")
   st.markdown("* hydrocotarnine")
   st.markdown("* meconin")
+
+st.markdown("---")
 generate_drug_supply_table(nc_stimulants_list)
 
 st.markdown("---")
 st.subheader("Fentanyl in stimulants")
-st.markdown("There is concern that fentanyl is showing up in stimulants. [Our recent study](https://cdr.lib.unc.edu/concern/articles/zg64tx33c?locale=en) found that fentanyl mostly shows up in powder forms of methamphetamine and cocaine, and in crystal meth and or crack rarely.")
-st.markdown("This doesn't mean that crack is impervious to fentanyl, [as in this NC case](https://www.justice.gov/usao-ednc/pr/drug-dealer-who-sold-fentanyl-laced-crack-sentenced-more-16-years-after-four-people). Also, keep in mind that people may send us samples because they caused unexpected effects, so these percents may be higher than in the normal drug supply.")
+st.markdown("**This doesn't mean that crack is impervious to fentanyl**, [as in this NC case](https://www.justice.gov/usao-ednc/pr/drug-dealer-who-sold-fentanyl-laced-crack-sentenced-more-16-years-after-four-people). Also, keep in mind that people may send us samples because they caused unexpected effects, so these percents may be higher than in the normal drug supply.")
+st.markdown("There is concern that fentanyl is showing up in stimulants. [Our recent study](https://cdr.lib.unc.edu/concern/articles/zg64tx33c?locale=en) found that fentanyl mostly shows up in powder forms of methamphetamine and cocaine, and in crystal meth and or crack rarely. Nationally, we found that 12-15% of powder methamphetamine and powder cocaine samples sent to us also contained fentanyl, after adjusting for selection bias. Keep in mind that people may send us samples because they caused unexpected effects, so these NC percents may be higher than in the normal drug supply. (Note to programs: Please consider sending \"typical\" samples so we can get a sense of what's out there.)")
 st.markdown("### Percentage of stimulant samples testing positive for fentanyl:")
 stimulant_substance_list = [
    "powder meth",
@@ -354,10 +358,10 @@ nc_stimulants_with_fent = nc_stimulants_with_fent.sort_values(by=['date_collect'
 nc_stimulants_with_fent = nc_stimulants_with_fent.drop_duplicates(subset=['sampleid'])
 
 total_stimulant_fent_samples = len(nc_stimulants_with_fent.index)
-nc_main_dataset_crack_w_fent = len(nc_stimulants_with_fent[nc_stimulants_with_fent['expectedsubstance'].str.contains("crack") & nc_stimulants_with_fent['lab_cocaine_any_x'] == 1].index)
-nc_main_dataset_powder_coke_w_fent = len(nc_stimulants_with_fent[nc_stimulants_with_fent['expectedsubstance'].str.contains("crack") & nc_stimulants_with_fent['lab_cocaine_any_x'] == 1].index)
-nc_main_dataset_crystal_meth_w_fent = len(nc_stimulants_with_fent[(nc_stimulants_with_fent['lab_meth_any_x'] == 1) & (nc_stimulants_with_fent['crystals'] == 1)].index)
-nc_main_dataset_powder_meth_w_fent = len(nc_stimulants_with_fent[(nc_stimulants_with_fent['lab_meth_any_x'] == 1) & (nc_stimulants_with_fent['crystals'] != 1)].index)
+nc_main_dataset_crack_w_fent = len(nc_stimulants_with_fent[nc_stimulants_with_fent['expectedsubstance'].str.contains("crack") & nc_stimulants_with_fent['lab_cocaine_any_y'] == 1].index)
+nc_main_dataset_powder_coke_w_fent = len(nc_stimulants_with_fent[nc_stimulants_with_fent['expectedsubstance'].str.contains("crack") & nc_stimulants_with_fent['lab_cocaine_any_y'] == 1].index)
+nc_main_dataset_crystal_meth_w_fent = len(nc_stimulants_with_fent[(nc_stimulants_with_fent['lab_meth_any_y'] == 1) & (nc_stimulants_with_fent['crystals'] == 1)].index)
+nc_main_dataset_powder_meth_w_fent = len(nc_stimulants_with_fent[(nc_stimulants_with_fent['lab_meth_any_y'] == 1) & (nc_stimulants_with_fent['crystals'] != 1)].index)
 
 with col1:
     total_powder_meth = len(nc_main_dataset_powder_meth.index)
@@ -374,8 +378,8 @@ with col4:
 
 # remove the expectedsubstance, lab_meth_any_x, lab_cocaine_any_x, crystals, lab_fentanyl_y cols
 nc_stimulants_with_fent = nc_stimulants_with_fent.drop('expectedsubstance', axis=1)
-nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_meth_any_x', axis=1)
-nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_cocaine_any_x', axis=1)
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_meth_any_y', axis=1)
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_cocaine_any_y', axis=1)
 nc_stimulants_with_fent = nc_stimulants_with_fent.drop('crystals', axis=1)
 nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_fentanyl_y', axis=1)
 with st.expander("View full data table", ):
@@ -409,7 +413,6 @@ with st.expander("View full data table", ):
       use_container_width=True,
     )
 
-st.markdown("This doesn't mean that crack is impervious to fentanyl, [as in this case](https://www.justice.gov/usao-ednc/pr/drug-dealer-who-sold-fentanyl-laced-crack-sentenced-more-16-years-after-four-people). Also, keep in mind that people may send us samples because they caused unexpected effects, so these percents may be higher than in the normal drug supply.")
 st.markdown("---")
 st.markdown("## Resources for overamping and stimulant OD prevention:")
 st.markdown("* [What is overamping?](https://harmreduction.org/issues/overdose-prevention/overview/stimulant-overamping-basics/what-is-overamping/)")

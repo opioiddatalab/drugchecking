@@ -250,7 +250,7 @@ def get_nc_merged_df(substance_list):
   nc_lab_detail = get_nc_lab_detail_ds()
   nc_analysis = get_nc_analysis_ds()
   df = pd.merge(nc_lab_detail, nc_analysis, on='sampleid')
-  df = df[['sampleid',  'substance', 'county', 'date_collect', 'expectedsubstance', 'lab_meth_any_x', 'lab_cocaine_any_x', 'crystals', 'lab_fentanyl_y' ]]
+  df = df[['sampleid',  'substance', 'county', 'date_collect', 'expectedsubstance', 'lab_meth_any_y', 'lab_cocaine_any_y', 'crystals', 'lab_fentanyl_y' ]]
   return df[df['substance'].isin(substance_list)]
 
 def get_nc_intro_metrics(metrics, count, sub_list, df_2):
@@ -348,7 +348,7 @@ def generate_adulterant_df(items):
                   )
 def generate_drug_supply_table(df):
    with st.container():
-    st.subheader("Does this represent the entire NC Drug Supply?")
+    st.subheader("Does this represent the entire NC drug supply?")
     st.write("We have analyzed a limited number of these drugs. People may send us samples because the drugs caused unexpected effects. Our data don't represent the entire drug supply in North Carolina.")
     st.expander("View raw data table", )
 
