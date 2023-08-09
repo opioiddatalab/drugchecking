@@ -19,10 +19,9 @@ import math
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 
 
-def get_hnc_lab_detail():
-    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_lab_detail.csv"
+def get_nc_analysis():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_analysis_dataset.csv"
     return pd.read_csv(url)
-lab_detail = get_hnc_lab_detail()
 def get_nc_ds_substances():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_substances_list.csv"
     return pd.read_csv(url)
@@ -353,35 +352,43 @@ st.markdown(
     </style>
     """,unsafe_allow_html=True
 )
-nc_stimulants_with_fent = nc_main_dataset[nc_main_dataset['lab_fentanyl_y'] == 1]
-nc_stimulants_with_fent = nc_stimulants_with_fent.sort_values(by=['date_collect'], ascending=False)
-nc_stimulants_with_fent = nc_stimulants_with_fent.drop_duplicates(subset=['sampleid'])
 
+nc_analysis_data = get_nc_analysis()
+nc_stimulants_with_fent = nc_analysis_data[nc_analysis_data['lab_fentanyl'] == 1]
+nc_stimulants_with_fent = nc_stimulants_with_fent.sort_values(by=['date_collect'], ascending=False)
 total_stimulant_fent_samples = len(nc_stimulants_with_fent.index)
-nc_main_dataset_crack_w_fent = len(nc_stimulants_with_fent[nc_stimulants_with_fent['expectedsubstance'].str.contains("crack") & nc_stimulants_with_fent['lab_cocaine_any_y'] == 1].index)
-nc_main_dataset_powder_coke_w_fent = len(nc_stimulants_with_fent[nc_stimulants_with_fent['expectedsubstance'].str.contains("crack") & nc_stimulants_with_fent['lab_cocaine_any_y'] == 1].index)
-nc_main_dataset_crystal_meth_w_fent = len(nc_stimulants_with_fent[(nc_stimulants_with_fent['lab_meth_any_y'] == 1) & (nc_stimulants_with_fent['crystals'] == 1)].index)
-nc_main_dataset_powder_meth_w_fent = len(nc_stimulants_with_fent[(nc_stimulants_with_fent['lab_meth_any_y'] == 1) & (nc_stimulants_with_fent['crystals'] != 1)].index)
+
+nc_main_dataset_crack = nc_analysis_data[(nc_analysis_data['lab_cocaine'] == 1) & (nc_analysis_data['expectedsubstance'].str.contains("crack"))]
+nc_main_dataset_crack_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_analysis_data['lab_cocaine'] == 1) & (nc_analysis_data['expectedsubstance'].str.contains("crack"))]
+
+nc_main_dataset_powder_coke = nc_analysis_data[(nc_analysis_data['lab_cocaine'] == 1) & (~nc_analysis_data['expectedsubstance'].str.contains("crack", case=False))]
+nc_main_dataset_powder_coke_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_stimulants_with_fent['lab_cocaine'] == 1) & (~nc_analysis_data['expectedsubstance'].str.contains("crack", case=False))]
+
+nc_main_dataset_crystal_meth = nc_analysis_data[(nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals']==1)]
+nc_main_dataset_crystal_meth_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals']==1)]
+
+nc_main_dataset_powder_meth = nc_analysis_data[(nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals'] != 1)]
+nc_main_dataset_powder_meth_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals']!=1)]
 
 with col1:
     total_powder_meth = len(nc_main_dataset_powder_meth.index)
-    st.metric(label="Powder meth", value=str(math.ceil((nc_main_dataset_powder_meth_w_fent/total_stimulant_fent_samples)*100))+"%")
+    st.metric(label="Powder meth", value=str(math.ceil((len(nc_main_dataset_powder_meth_w_fent.index)/total_powder_meth)*100))+"%")
 with col2:
     total_crystal_meth = len(nc_main_dataset_crystal_meth.index)
-    st.metric(label="Crystal Meth", value=str(math.ceil((nc_main_dataset_crystal_meth_w_fent/total_stimulant_fent_samples)*100))+"%")
+    st.metric(label="Crystal Meth", value=str(math.ceil((len(nc_main_dataset_crystal_meth_w_fent.index)/total_crystal_meth)*100))+"%")
 with col3:
     total_powder_coke = len(nc_main_dataset_powder_coke.index)
-    st.metric(label="Powder coke", value=str(math.ceil((nc_main_dataset_powder_coke_w_fent/total_stimulant_fent_samples)*100))+"%")
+    st.metric(label="Powder coke", value=str(math.ceil((len(nc_main_dataset_powder_coke_w_fent.index)/total_powder_coke)*100))+"%")
 with col4:
     total_crack_samples = len(nc_main_dataset_crack.index)
-    st.metric(label="Crack", value=str(math.ceil((nc_main_dataset_crack_w_fent/total_stimulant_fent_samples)*100))+"%")
+    st.metric(label="Crack", value=str(math.ceil((len(nc_main_dataset_crack_w_fent.index)/total_crack_samples)*100))+"%")
 
 # remove the expectedsubstance, lab_meth_any_x, lab_cocaine_any_x, crystals, lab_fentanyl_y cols
 nc_stimulants_with_fent = nc_stimulants_with_fent.drop('expectedsubstance', axis=1)
-nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_meth_any_y', axis=1)
-nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_cocaine_any_y', axis=1)
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_meth_any', axis=1)
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_cocaine_any', axis=1)
 nc_stimulants_with_fent = nc_stimulants_with_fent.drop('crystals', axis=1)
-nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_fentanyl_y', axis=1)
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_fentanyl', axis=1)
 with st.expander("View full data table", ):
   st.dataframe(
     nc_stimulants_with_fent,
