@@ -10,7 +10,7 @@ import plotly.express as px
 from urllib.request import urlopen
 import json
 from PIL import Image
-
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 
 st.markdown(
     """
