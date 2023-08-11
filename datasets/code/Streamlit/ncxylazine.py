@@ -12,42 +12,6 @@ import json
 from PIL import Image
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 
-st.markdown(
-    """
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-J6G2QFEL1Q');
-        </script>
-    """, unsafe_allow_html=True)
-
-st.markdown(
-    """
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-J6G2QFEL1Q');
-        </script>
-    """, unsafe_allow_html=True)
-
-st.markdown(
-    """
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-J6G2QFEL1Q');
-        </script>
-    """, unsafe_allow_html=True)
-
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
     return pd.read_csv(url)
@@ -142,7 +106,7 @@ st.subheader("Real-time results from UNC Drug Analysis Lab")
 
 st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 30+ North Carolina harm reduction programs, hospitals, clinics, and health departments. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
 st.markdown("---")
-st.markdown("There is a new cut in street drugs and it causes terrible skin problems. But we didn't have a way to track it in North Carolina. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
+st.markdown("There is a new cut in street drugs (primarily fentanyl, heroin, and other opioids) and it causes terrible skin problems. But we didn't have a way to track it in North Carolina. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
 
 st.markdown("---")
 
@@ -195,7 +159,7 @@ st.markdown("---")
 
 
 st.subheader(":hospital: [More info on xylazine](https://harmreduction.org/wp-content/uploads/2022/11/Xylazine-in-the-Drug-Supply-one-pager.pdf) in the street drug supply")
-st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. It can cause bad skin ulcers beyond the site of injection. Treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
+st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. It can cause bad skin ulcers beyond the site of injection. Treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
 
 st.markdown("---")
 st.header("Where has xylazine been detected?")
@@ -246,7 +210,7 @@ fig = px.choropleth_mapbox(agg_df,
                            labels={'percent_str':'% Samples with Xylazine', 'county':'County', 'latest_date':'Most Recent Sample Date'},
                           )
 
-fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine')
+fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine in NC')
 
 st.plotly_chart(fig, use_container_width=True)
 
