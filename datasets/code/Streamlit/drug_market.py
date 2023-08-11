@@ -1,4 +1,4 @@
-from load_init import local_css, create_sidebar, convert_df, add_county_group
+from load_init import local_css, create_sidebar, convert_df, add_county_group, get_nc_merged_df
 import streamlit as st
 st.set_page_config(
     page_title="NC Drug Market",
@@ -141,10 +141,7 @@ def county_substance_count(substance, cg, df):
   return str(val)
 
 def get_substance_county_df(nc_df):
-  # merge the nc_lab_detail and nc_analysis dfs on the sampleid col
-  df = pd.merge(nc_lab_detail, nc_analysis, on='sampleid')
-  df = df[['sampleid',  'substance', 'county', 'date_collect']]
-  df = df[df['substance'].isin(get_substances_list())]
+  df = get_nc_merged_df(get_substances_list())
   df['county_group'] = ''
   df['county_group'] = df['county'].apply(lambda x: add_county_group(x))
   df = df[df['county'].str.len() >= 2]

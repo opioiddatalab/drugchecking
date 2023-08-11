@@ -1,4 +1,4 @@
-from load_init import local_css, create_sidebar, convert_df
+from load_init import local_css, create_sidebar, convert_df, get_nc_merged_df, get_nc_intro_metrics, generate_drug_supply_table
 import streamlit as st
 from PIL import Image
 
@@ -6,7 +6,7 @@ st.set_page_config(
     page_title="NC Stimulants",
     # make the page_icon the lab_coat emoji
     page_icon="🥽",
-    initial_sidebar_state="expanded",
+    # initial_sidebar_state="expanded",
 )
 
 local_css("datasets/code/Streamlit/style.css")
@@ -19,10 +19,9 @@ import math
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 
 
-def get_hnc_lab_detail():
-    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/selfservice/hnc/lab_detail.csv"
+def get_nc_analysis():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_analysis_dataset.csv"
     return pd.read_csv(url)
-lab_detail = get_hnc_lab_detail()
 def get_nc_ds_substances():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_substances_list.csv"
     return pd.read_csv(url)
@@ -36,18 +35,26 @@ nc_stimulants_j = get_nc_ds_substances_json()
 nc_stimulants['latest_detected'] = pd.to_datetime(nc_stimulants['latest_detected'], format='%d%b%Y').dt.strftime('%B %d, %Y')
 
 nc_stimulants = pd.DataFrame(nc_stimulants)
+nc_stimulants_list =[
+  "methamphetamine",
+  "cocaine",
+]
+nc_main_dataset = get_nc_merged_df(nc_stimulants_list)
 
-# set the index to the substance col
+nc_main_dataset_crack = nc_main_dataset[nc_main_dataset['expectedsubstance'].str.contains("crack") & nc_main_dataset['lab_cocaine_any_y'] == 1]
+nc_main_dataset_powder_coke = nc_main_dataset[nc_main_dataset['expectedsubstance'].str.contains("crack") & nc_main_dataset['lab_cocaine_any_y'] == 1]
+nc_main_dataset_crystal_meth = nc_main_dataset[(nc_main_dataset['lab_meth_any_y'] == 1) & (nc_main_dataset['crystals'] == 1)]
+nc_main_dataset_powder_meth = nc_main_dataset[(nc_main_dataset['lab_meth_any_y'] == 1) & (nc_main_dataset['crystals'] != 1)]
+# count how many samples are in nc_main_dataset_powder_meth
+
+
+
 
 nc_stimulants.set_index('substance', inplace=True)
 # sort the df by the latest_detected col
 nc_stimulants.sort_values(by=['latest_detected'], inplace=True, ascending=False)
-# convert the latest_detected col to a human readable date
 nc_stimulants['latest_detected'] = pd.to_datetime(nc_stimulants['latest_detected']).dt.strftime('%B %d, %Y')
-nc_stimulants_list =[
-  "methamphetamine",
-  "cocaine"
-]
+
 # map of the nc_psychedelics_et_al df and remove any rows where the substance is not in the nc_psychedelics_et_all_list
 nc_stimulants = nc_stimulants[nc_stimulants.index.isin(nc_stimulants_list)]
 nc_stimulants_cpy = nc_stimulants
@@ -76,6 +83,18 @@ def get_nc_sample_count():
     return pd.read_csv(url)
 nc_sample_count = get_nc_sample_count()
 nc_sample_count_int = nc_sample_count.iloc[0]['nc_samples']
+def get_crystal_found_with():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/crystal_lab.csv"
+    return pd.read_csv(url)
+def get_coke_found_with():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/coke_lab.csv"
+    return pd.read_csv(url)
+def get_crack_found_with():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/crack_lab.csv"
+    return pd.read_csv(url)
+def get_powder_meth_found_with():
+    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/powdermeth_lab.csv"
+    return pd.read_csv(url)
 
 
 create_sidebar()
@@ -84,280 +103,238 @@ html_str = f"""
 <p>Currently in North Carolina, the primary stimulants found in street drugs are methamphetamine and cocaine. These can be in crystal (crystal meth or crack) or in powder form. Methamphetamine and amphetamine can <a href="https://ncpsychedelics.streamlit.app/" _target="blank">also be found in</a> in MDMA (aka Ecstasy, molly). Stimulants may also show up pre-mixed with fentanyl in "speedballs."'</p>
 """
 st.markdown(html_str, unsafe_allow_html=True)
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    st.metric(label="Samples", value=nc_sample_count_int)
-with col2:
-    st.metric(label="Programs & Clinics", value=nc_program_count_int)
-with col3:
-    st.metric(label="Counties", value=nc_countycount_int)
-with col4:
-    label_="Stimulants Count"
-    st.metric(label=label_, value=nc_stimulants_count)
-with st.expander("View raw data table", ):
-  st.dataframe(
-        nc_stimulants,
-        height=350,
-        column_config={
-            'latest_detected': st.column_config.TextColumn(
-                "Latest Detected",
-                disabled=True
-            ),
-            'total': st.column_config.NumberColumn(
-                "Total",
-                disabled=True,
-            ),
-            'substance': st.column_config.TextColumn(
-                "Substance",
-                disabled=True
-            ),
-        })
+get_nc_intro_metrics({
+  "All Samples": nc_sample_count_int,
+  "Programs & Clinics": nc_program_count_int,
+  "Counties": nc_countycount_int,
+  "Stimulant Samples": len(nc_main_dataset['sampleid'])
+}, len(nc_main_dataset['sampleid']), nc_stimulants_list, nc_stimulants)
+# col1, col2, col3, col4 = st.columns(4)
+# with col1:
+#     st.metric(label="All Samples", value=nc_sample_count_int)
+# with col2:
+#     st.metric(label="Programs & Clinics", value=nc_program_count_int)
+# with col3:
+#     st.metric(label="Counties", value=nc_countycount_int)
+# with col4:
+#     #  count the number of unique sampleids in the nc_main_dataset
+#     nc_main_dataset_sampleid_count = len(nc_main_dataset['sampleid'])
+#     label_="Stimulant Samples"
+#     st.metric(label=label_, value=nc_main_dataset_sampleid_count)
+# for s_ in nc_stimulants_list:
+#   latest = nc_stimulants.loc[s_]['latest_detected']
+#   text = "<div style='display: flex; flex-direction: row; align-items: center; justify-content: space-between;'><h4>Most recent detection of "+s_+": </h4><h4>"+latest+"</h4></div>"
+#   st.markdown(text, unsafe_allow_html=True)
 
 st.markdown("---")
-# write a function that accepts a dataframe as its first param and a list as its second param. the function should map over the df and only return rows where the value in the 'substance' col matches one of the values in the list
 
-def generate_container_with_rows(items):
-    with st.container():
-      col1, col2, col3 = st.columns(3)
-      list_length = len(items)
-      list_length_divided_by_three = math.ceil(list_length / 3)
-      first_column_items = items[:list_length_divided_by_three]
-      second_column_items = items[list_length_divided_by_three:list_length_divided_by_three * 2]
-      third_column_items = items[list_length_divided_by_three * 2:]
-      #  fill each col with corresponding list
-      if list_length == 0:
-        st.write("No items found")
-      else :
-        with col1:
-          for index, row in first_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-        with col2:
-          for index, row in second_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-        with col3:
-          for index, row in third_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-    return st.container()
+nc_stimulants_categories = ['Powder meth', 'Crystal meth', 'Powder coke', 'Crack']
+# UPDATES:
 
-def build_dict_from_json(json_obj):
-    # convert the json obj to a df
-    df = pd.read_json(json_obj)
-    # set the index to the substance col
-    df.set_index('substance', inplace=False)
-    # sort the df by the latest_detected col
-    return df.to_dict('records')
+crystal_adulterants = get_crystal_found_with()
+crystal_adulterants['init_substance'] = 'Crystal'
+crystal_adulterants = crystal_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+crystal_adulterants = crystal_adulterants.drop('pubchemcid', axis=1)
 
-df = build_dict_from_json(nc_stimulants_j)
-# add an index int col to the df
-df = pd.DataFrame(df)
-df['index'] = df.index
-# set the index to the index col
-df.set_index('index', inplace=True)
+coke_adulterants = get_coke_found_with()
+coke_adulterants['init_substance'] = 'Cocaine'
+coke_adulterants = coke_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+coke_adulterants = coke_adulterants.drop('pubchemcid', axis=1)
+
+crack_adulterants = get_crack_found_with()
+crack_adulterants['init_substance'] = 'Crack'
+crack_adulterants = crack_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+crack_adulterants = crack_adulterants.drop('pubchemcid', axis=1)
+
+powder_meth_adulterants = get_powder_meth_found_with()
+powder_meth_adulterants['init_substance'] = 'Powder Meth'
+powder_meth_adulterants = powder_meth_adulterants.set_index('init_substance', append=True).swaplevel(0,1)
+powder_meth_adulterants = powder_meth_adulterants.drop('pubchemcid', axis=1)
+# make the latest col a human readable date
+crystal_adulterants['latest'] = pd.to_datetime(crystal_adulterants['latest']).dt.strftime('%B %d, %Y')
+coke_adulterants['latest'] = pd.to_datetime(coke_adulterants['latest']).dt.strftime('%B %d, %Y')
+crack_adulterants['latest'] = pd.to_datetime(crack_adulterants['latest']).dt.strftime('%B %d, %Y')
+powder_meth_adulterants['latest'] = pd.to_datetime(powder_meth_adulterants['latest']).dt.strftime('%B %d, %Y')
+
 st.subheader("View substances by category")
 with st.container():
-    # filter the df to remove any entries that are not included in the lsd_list
-    filtered_df = df[df['substance'].isin(nc_stimulants_list)]
-    st.markdown("### Common Stimulants in Drug Supply")
-    st.markdown("*2-3 sentence description.")
-    generate_container_with_rows(filtered_df)
-st.markdown("---")
+  col1, col2, col3, col4 = st.columns(4)
+  with col1:
+    # calculate the number of substances in the nc_main_dataset_powder_coke 'substance' col
+    powder_coke_count = len(coke_adulterants['substance'])
+    st.metric(label="Powder coke", value=powder_coke_count)
+  with col2:
+     crack_count = len(crack_adulterants.index)
+     st.metric(label="Crack", value=crack_count)
+  with col3:
+     powder_meth_count = len(powder_meth_adulterants.index)
+     st.metric(label="Powder Meth", value=powder_meth_count)
+  with col4:
+     crystal_meth_count = len(crystal_adulterants.index)
+     st.metric(label="Crystal Meth", value=crystal_meth_count)
+  st.subheader("What else is in coke and meth?")
+  st.write("This is the list of chemicals and drugs we have found in cocaine and methamphetamine samples in North Carolina.")
 
-with st.container():
-    st.subheader("Does this represent the entire NC Drug Supply?")
-    st.write("We have analyzed a limited number of these drugs. People may send us samples because the drugs caused unexpected effects. Our data don't represent the entire drug supply in North Carolina.")
-    st.expander("View raw data table", )
-
-    lab_detail = lab_detail.drop(columns=[col for col in lab_detail.columns if col not in ['substance', 'sampleid', 'date_complete']])
-    nc_stimulants_cpy = nc_stimulants_cpy.drop(columns=['latest_detected'])
-    merged_df = pd.merge(nc_stimulants_cpy, lab_detail, on='substance')
-
-    merged_df = merged_df.sort_values(by=['sampleid'], ascending=False)
-    merged_df['sampleid'] = merged_df['sampleid'].astype('category')
-    merged_df['date_complete'] = pd.to_datetime(merged_df['date_complete'])
-
-    gb = GridOptionsBuilder.from_dataframe(merged_df)
-
-    #customize gridOptions
-    gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, editable=False)
-    gb.configure_column("date_complete", type=["dateColumnFilter","customDateTimeFormat"], pivot=True)
-    fit_columns_on_grid_load = True
-    gb.configure_pagination(paginationAutoPageSize=False, paginationPageSize=15)
-    gb.configure_grid_options(domLayout='single')
-    gb.configure_grid_options(
-        enableCellTextSelection=True,
-        ensureDomOrder=True,
-    )
-    gridOptions = gb.build()
-    # generate js code to use cell content as link to pubchem site
-    LinkCellRenderer_pubchem = JsCode('''
-      class LinkCellRenderer {
-          init(params) {
-              this.params = params;
-              this.eGui = document.createElement('div');
-              this.eGui.innerHTML = `
-              <span>
-                  <a id='click-button'
-                      class='btn-simple'
-                      href='https://pubchem.ncbi.nlm.nih.gov/compound/${this.params.getValue()}'
-                      target='_blank'
-                      style='color: ${this.params.color};}'>${this.params.getValue()}</a>
-              </span>
-            `;
-
-              this.eButton = this.eGui.querySelector('#click-button');
-
-              this.btnClickedHandler = this.btnClickedHandler.bind(this);
-              this.eButton.addEventListener('click', this.btnClickedHandler);
-
-          }
-
-          getGui() {
-              return this.eGui;
-          }
-
-          refresh() {
-              return true;
-          }
-
-          destroy() {
-              if (this.eButton) {
-                  this.eGui.removeEventListener('click', this.btnClickedHandler);
-              }
-          }
-
-          btnClickedHandler(event) {
-
-                      this.refreshTable('clicked');
-              }
-
-          refreshTable(value) {
-              this.params.setValue(value);
-          }
-      };
-    ''')
-    # generate js code to use cell content as link to streetsafe.supply result page
-    LinkCellRenderer = JsCode('''
-      class LinkCellRenderer {
-          init(params) {
-              this.params = params;
-              this.eGui = document.createElement('div');
-              this.eGui.innerHTML = `
-              <span>
-                  <a id='click-button'
-                      class='btn-simple'
-                      href='https://www.streetsafe.supply/results/p/${this.params.getValue()}'
-                      target='_blank'
-                      style='color: ${this.params.color};}'>${this.params.getValue()}</a>
-              </span>
-            `;
-
-              this.eButton = this.eGui.querySelector('#click-button');
-
-              this.btnClickedHandler = this.btnClickedHandler.bind(this);
-              this.eButton.addEventListener('click', this.btnClickedHandler);
-
-          }
-
-          getGui() {
-              return this.eGui;
-          }
-
-          refresh() {
-              return true;
-          }
-
-          destroy() {
-              if (this.eButton) {
-                  this.eGui.removeEventListener('click', this.btnClickedHandler);
-              }
-          }
-
-          btnClickedHandler(event) {
-
-                      this.refreshTable('clicked');
-              }
-
-          refreshTable(value) {
-              this.params.setValue(value);
-          }
-      };
-    ''')
-
-    gridOptions['columnDefs'] = [
-        {
-        "field": "sampleid",
-        "headerName": "Sample Ids",
-        "cellRenderer": LinkCellRenderer,
-        "cellRendererParams": {
-          "color": "blue",
-          "data": "sampleid",
-        },
-        "maxWidth": 120,
-      },
-      {
-        "field": "substance",
-        "headerName": "Substance",
-        "maxWidth": 120,
-      },
-      {
-        "field": "pubchemcid",
-        "headerName": "PubChem CID",
-        "cellRenderer":LinkCellRenderer_pubchem,
-        "cellRendererParams": {
-          "color": "green",
-          "data": "pubchemcid"
-        },
-        "maxWidth": 120,
-      },
-      {
-        "field": "total",
-        "headerName": "total",
-        "maxWidth": 120,
-      },
-      {
-        "field": "date_complete",
-        "headerName": "Sample Collection Date",
-        "type": ["dateColumnFilter","customDateTimeFormat"],
-        "custom_format_string":"yyyy-MM-dd",
-        "pivot": True,
-        "maxWidth": 200,
-      },
-    ]
-    with st.container():
-        custom_css = {
-          ".ag-root-wrapper": {
-            "max-width": "650px !important",
-            "margin": "0 auto",
-            },
+tab1, tab2, tab3, tab4 = st.tabs(["Powder cocaine", "Crack", "Powder meth", "Crystal meth"])
+st.markdown(
+    """<style>
+        .dataframe {text-align: left !important}
+    </style>
+    """, unsafe_allow_html=True)
+with tab1:
+    st.dataframe(
+      coke_adulterants,
+      hide_index=True,
+      column_config={
+          'substance': st.column_config.TextColumn(
+             "Adulterants",
+             width='medium'
+          ),
+          'samples': st.column_config.NumberColumn(
+             "Count",
+              width='medium'
+          ),
+          'latest': st.column_config.DateColumn(
+            "Most Recent Sample Date",
+            format="dddd MMMM DD, YYYY",
+        ),
         }
-        grid_response = AgGrid(
-            merged_df,
-            custom_css=custom_css,
-            gridOptions=gridOptions,
-            allow_unsafe_jscode=True,
-            enable_enterprise_modules=False
-            )
+    )
+with tab2:
+    st.dataframe(
+      crack_adulterants,
+      hide_index=True,
+      column_config={
+          'substance': st.column_config.TextColumn(
+             "Adulterants",
+             width='medium'
+          ),
+          'samples': st.column_config.NumberColumn(
+             "Count",
+              width='medium'
+          ),
+          'latest': st.column_config.DateColumn(
+            "Most Recent Sample Date",
+            format="dddd MMMM DD, YYYY",
+        ),
+        }
+    )
+with tab3:
+    st.dataframe(
+      powder_meth_adulterants,
+      hide_index=True,
+            column_config={
+          'substance': st.column_config.TextColumn(
+             "Adulterants",
+             width='medium'
+          ),
 
+          'samples': st.column_config.NumberColumn(
+             "Count",
+             width='medium'
+          ),
+          'latest': st.column_config.DateColumn(
+            "Most Recent Sample Date",
+            format="dddd MMMM DD, YYYY",
+        ),
+        }
+    )
+with tab4:
+    st.dataframe(
+      crystal_adulterants,
+      hide_index=True,
+            column_config={
+          'substance': st.column_config.TextColumn(
+             "Adulterants",
+             width='medium'
+          ),
+          'samples': st.column_config.NumberColumn(
+             "Count",
+             width='medium'
+          ),
+          'latest': st.column_config.DateColumn(
+            "Most Recent Sample Date",
+            format="dddd MMMM DD, YYYY",
+        ),
+        }
+    )
 
-
-        csv = convert_df(df)
-
-        st.download_button(
-          "Download csv",
-          csv,
-          "file.csv",
-          "text/csv",
-          key='download-csv'
-        )
 st.markdown("---")
-st.markdown("## Fentanyl in Stimulants in NC")
-st.write("There is concern that fentanyl is showing up in stimulants. We find fentanyl in crystal meth or crack rarely. However, fentanyl occurs more frequently in powder forms of cocaine and methamphetamine.")
+st.subheader("Stimulants, Cuts, and Adulterants in NC")
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+   "Most concerning",
+   "Sweeteners",
+   "Mimic-cuts",
+   "Cuts that 'take the edge off'",
+   "In cocaine",
+   "In fentanyl",
+   "In heroin",
+])
+with tab1:
+    st.write("The substances we are most concerned about in stimulants in NC are:")
+    st.markdown("* levamisole - an anti-fungal that causing bruising and lesions")
+    st.markdown("* fentanyl - potent opioid showing up unexpectedly")
+    st.markdown("* xylazine - sedative that causes skin wounds")
+    st.markdown("* bromazolam - potent benzo")
+    st.markdown("* eutylone - stimulant with mild psychedelic properties")
+with tab2:
+    st.write("One type of cut in stimulants are powdered sweeteners that bulk up the product for sale:")
+    st.markdown("* lactose - type of sugar")
+    st.markdown("* erythritol - sweetener")
+    st.markdown("* inositol - sweetner")
+    st.markdown("* mannitol - sweetner")
+with tab3:
+    st.write("Another type of cut in stimulants are things that are intended to mimic high quality product, such as numbing agents and things that make the taste bitter. Acetminophen and phenacetin can be both bulking and bittering agent.")
+    st.markdown("* lidocaine - numbing agent")
+    st.markdown("* procaine (Novacain) - numbing agent")
+    st.markdown("* caffeine - gives energy")
+    st.markdown("* phenacetin - pain reliever and bitter")
+    st.markdown("* acetaminophen - pain reliever and bitter")
+    st.markdown("* quinine - bitter")
+with tab4:
+    st.write("Many cuts are directly mixed in with cocaine and powder methamphetamine in NC. If put there intentionally these could be to \"take the edge off\" -- or sometimes they are ridealong cuts that come in with fentanyl.")
+    st.write("Downers like:")
+    st.markdown("* tramadol")
+    st.markdown("* ketamine")
+    st.markdown("* delta-9-THC")
+    st.markdown("* melatonin")
+with tab5:
+  st.write("Common substances occurring in cocaine come from natural organic raw materials, byproducts of drug making, or are reactions when cocaine comes into contact with humidity:")
+  st.markdown("* methyl ecgonidine (MED)")
+  st.markdown("* tropacocaine")
+  st.markdown("* benzoylecgonine (BZ)")
+  st.markdown("* ecgonine methylester (EME)")
+  st.markdown("* norcocaine")
+  st.markdown("* ecgonidine (ED)")
+  st.markdown("* benzoic acid")
+  st.markdown("* noscapine")
+  st.markdown("* cinnamoylcocaine")
+with tab6:
+  st.write("Common substances occurring in fentanyl come from leftover starting material, fentanyl analogues, and byproducts from drug making process:")
+  st.markdown("* 4-ANPP")
+  st.markdown("* phenethyl 4-ANPP")
+  st.markdown("* p-fluorofentanyl")
+  st.markdown("* despropionyl p-fluorofentanyl")
+  st.markdown("* ethyl-4-ANPP")
+  st.markdown("* p-fluoro phenethyl 4-ANPP")
+  st.markdown("* acetyl fentanyl")
+  st.markdown("* N-phenylpropanamide")
+with tab7:
+  st.write("Common substances found in heroin come from organic material from poppies and byproducts of the drug making process:")
+  st.markdown("* heroin = diacetyl morphine")
+  st.markdown("* 6-monoacetylmorphine (6-MAM)")
+  st.markdown("* acetylcodeine")
+  st.markdown("* hydrocotarnine")
+  st.markdown("* meconin")
+
+st.markdown("---")
+generate_drug_supply_table(nc_stimulants_list)
+
+st.markdown("---")
+st.subheader("Fentanyl in stimulants")
+st.markdown("**This doesn't mean that crack is impervious to fentanyl**, [as in this NC case](https://www.justice.gov/usao-ednc/pr/drug-dealer-who-sold-fentanyl-laced-crack-sentenced-more-16-years-after-four-people). Also, keep in mind that people may send us samples because they caused unexpected effects, so these percents may be higher than in the normal drug supply.")
+st.markdown("There is concern that fentanyl is showing up in stimulants. [Our recent study](https://cdr.lib.unc.edu/concern/articles/zg64tx33c?locale=en) found that fentanyl mostly shows up in powder forms of methamphetamine and cocaine, and in crystal meth and or crack rarely. Nationally, we found that 12-15% of powder methamphetamine and powder cocaine samples sent to us also contained fentanyl, after adjusting for selection bias. Keep in mind that people may send us samples because they caused unexpected effects, so these NC percents may be higher than in the normal drug supply. (Note to programs: Please consider sending \"typical\" samples so we can get a sense of what's out there.)")
+st.markdown("### Percentage of stimulant samples testing positive for fentanyl:")
 stimulant_substance_list = [
    "powder meth",
   "crystal meth",
@@ -375,39 +352,74 @@ st.markdown(
     </style>
     """,unsafe_allow_html=True
 )
+
+nc_analysis_data = get_nc_analysis()
+nc_stimulants_with_fent = nc_analysis_data[nc_analysis_data['lab_fentanyl'] == 1]
+nc_stimulants_with_fent = nc_stimulants_with_fent.sort_values(by=['date_collect'], ascending=False)
+total_stimulant_fent_samples = len(nc_stimulants_with_fent.index)
+
+nc_main_dataset_crack = nc_analysis_data[(nc_analysis_data['lab_cocaine'] == 1) & (nc_analysis_data['expectedsubstance'].str.contains("crack"))]
+nc_main_dataset_crack_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_analysis_data['lab_cocaine'] == 1) & (nc_analysis_data['expectedsubstance'].str.contains("crack"))]
+
+nc_main_dataset_powder_coke = nc_analysis_data[(nc_analysis_data['lab_cocaine'] == 1) & (~nc_analysis_data['expectedsubstance'].str.contains("crack", case=False))]
+nc_main_dataset_powder_coke_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_stimulants_with_fent['lab_cocaine'] == 1) & (~nc_analysis_data['expectedsubstance'].str.contains("crack", case=False))]
+
+nc_main_dataset_crystal_meth = nc_analysis_data[(nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals']==1)]
+nc_main_dataset_crystal_meth_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals']==1)]
+
+nc_main_dataset_powder_meth = nc_analysis_data[(nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals'] != 1)]
+nc_main_dataset_powder_meth_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals']!=1)]
+
 with col1:
-    st.metric(label="Powder meth", value="coming soon")
-    st.write('Crystal meth: substance=="methamphetamine" & texture!=(regexm, "crystal")')
-
+    total_powder_meth = len(nc_main_dataset_powder_meth.index)
+    st.metric(label="Powder meth", value=str(math.ceil((len(nc_main_dataset_powder_meth_w_fent.index)/total_powder_meth)*100))+"%")
 with col2:
-    st.metric(label="Crystal Meth", value="coming soon")
-    st.write('Crystal meth: substance=="methamphetamine" & texture==(regexm, "crystal")')
+    total_crystal_meth = len(nc_main_dataset_crystal_meth.index)
+    st.metric(label="Crystal Meth", value=str(math.ceil((len(nc_main_dataset_crystal_meth_w_fent.index)/total_crystal_meth)*100))+"%")
 with col3:
-    st.metric(label="Powder coke", value="coming soon")
-    st.write('Powder cocaine: substance=="cocaine" & expectedsubstance!="crack"')
+    total_powder_coke = len(nc_main_dataset_powder_coke.index)
+    st.metric(label="Powder coke", value=str(math.ceil((len(nc_main_dataset_powder_coke_w_fent.index)/total_powder_coke)*100))+"%")
 with col4:
-    st.metric(label="Crack", value="coming soon")
-    st.write('Crack: expectedsubstance=="crack')
-with st.expander("View raw data table", ):
-  st.dataframe(
-        nc_stimulants,
-        height=350,
-        column_config={
-            'latest_detected': st.column_config.TextColumn(
-                "Latest Detected",
-                disabled=True
-            ),
-            'total': st.column_config.NumberColumn(
-                "Total",
-                disabled=True,
-            ),
-            'substance': st.column_config.TextColumn(
-                "Substance",
-                disabled=True
-            ),
-        })
+    total_crack_samples = len(nc_main_dataset_crack.index)
+    st.metric(label="Crack", value=str(math.ceil((len(nc_main_dataset_crack_w_fent.index)/total_crack_samples)*100))+"%")
 
-st.markdown("This doesn't mean that crack is impervious to fentanyl, [as in this case](https://www.justice.gov/usao-ednc/pr/drug-dealer-who-sold-fentanyl-laced-crack-sentenced-more-16-years-after-four-people). Also, keep in mind that people may send us samples because they caused unexpected effects, so these percents may be higher than in the normal drug supply.")
+# remove the expectedsubstance, lab_meth_any_x, lab_cocaine_any_x, crystals, lab_fentanyl_y cols
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('expectedsubstance', axis=1)
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_meth_any', axis=1)
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_cocaine_any', axis=1)
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('crystals', axis=1)
+nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_fentanyl', axis=1)
+with st.expander("View full data table", ):
+  st.dataframe(
+    nc_stimulants_with_fent,
+    height=500,
+    column_config={
+          'sampleid': st.column_config.TextColumn(
+              "Sample ID",
+              disabled=True
+          ),
+          'substance': st.column_config.TextColumn(
+              "Substance",
+              disabled=True
+          ),
+          'county': st.column_config.TextColumn(
+              "County",
+              disabled=True
+          ),
+          'countygroup': st.column_config.TextColumn(
+              "County Group",
+              disabled=True
+          ),
+          'date_collect': st.column_config.DateColumn(
+              "Sample Date",
+              format="dddd MMMM DD, YYYY",
+          )
+
+      },
+      hide_index=True,
+      use_container_width=True,
+    )
+
 st.markdown("---")
 st.markdown("## Resources for overamping and stimulant OD prevention:")
 st.markdown("* [What is overamping?](https://harmreduction.org/issues/overdose-prevention/overview/stimulant-overamping-basics/what-is-overamping/)")

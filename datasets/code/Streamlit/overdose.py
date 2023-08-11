@@ -147,7 +147,7 @@ def get_nc_sample_count():
 nc_sample_count = get_nc_sample_count()
 nc_sample_count_int = nc_sample_count.iloc[0]['nc_samples']
 
-st.write("We are watching a number of different kinds of psychedelics and other drugs in North Carolina right now....")
+st.write("We monitor a number of different drugs and new psychoactive substances (NPS) in North Carolina right now....")
 col1, col2, col3, col4 = st.columns(4)
 st.markdown(
     """
@@ -227,7 +227,7 @@ with tab2:
                       <li style='text-align: left'>Talk to your medical care provider about getting naloxone"</li>
                     </ul>
                     """, unsafe_allow_html=True)
-  text2 = "<div style='text-align: left'>If you are not able to obtain naloxone through a standing order at a pharmacy, you have other options to obtain naloxone. You may seek a prescription for naloxone from a health care provider. You may also get naloxone at some local health departments or syringe exchange programs. See links below to find a syringe exchange program in your area or a participating local health department.</div>"
+  text2 = "<div style='text-align: left'>If you are not able to obtain naloxone through a standing order at a pharmacy, you have other options to obtain naloxone. You may seek a prescription for naloxone from a health care provider. You may also get naloxone at some local health departments or syringe exchange programs. Use the above links to find a syringe exchange program in your area or a participating local health department.</div>"
   st.markdown(text2, unsafe_allow_html=True)
 
 

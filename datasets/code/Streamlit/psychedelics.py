@@ -1,11 +1,11 @@
-from load_init import local_css, create_sidebar, convert_df
+from load_init import local_css, create_sidebar, convert_df, get_nc_intro_metrics, get_nc_merged_df, get_nc_county_count, get_nc_program_count, get_nc_sample_count, generate_container_with_rows, generate_adulterant_df, generate_drug_supply_table
 from streamlit_elements import elements, mui, html, dashboard
 import streamlit as st
 st.set_page_config(
     page_title="NC Psychedelics & Others",
     # make the page_icon the lab_coat emoji
     page_icon="🥽",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 local_css("datasets/code/Streamlit/pages/psychedelics.css")
 local_css("datasets/code/Streamlit/style.css")
@@ -35,20 +35,7 @@ nc_psychedelics_et_al['latest_detected'] = pd.to_datetime(nc_psychedelics_et_al[
 
 nc_psychedelics_et_al = pd.DataFrame(nc_psychedelics_et_al)
 
-# def generate_random_number(x):
-#     return random.uniform(0.09, 0.991)
-# columns_to_map = ['West', 'Triad', 'Triangle', 'Charlotte', 'ENC', 'Fayetteville']
-# for column in columns_to_map:
-#   nc_psychedelics_et_al[column] = 0
-# nc_psychedelics_et_al[columns_to_map] = nc_psychedelics_et_al[columns_to_map].applymap(generate_random_number)
-
-# set the index to the substance col
-nc_psychedelics_et_al_cpy = nc_psychedelics_et_al
 nc_psychedelics_et_al.set_index('substance', inplace=True)
-# sort the df by the latest_detected col
-nc_psychedelics_et_al.sort_values(by=['latest_detected'], inplace=True, ascending=False)
-# convert the latest_detected col to a human readable date
-nc_psychedelics_et_al['latest_detected'] = pd.to_datetime(nc_psychedelics_et_al['latest_detected']).dt.strftime('%B %d, %Y')
 nc_psychedelics_et_al_list =[
   "metonitazene",
   "isotonitazene",
@@ -90,98 +77,27 @@ nc_psychedelics_et_al_list =[
   "ADB-4en-PINACA",
   "ADB-BUTINACA",
 ]
-# map of the nc_psychedelics_et_al df and remove any rows where the substance is not in the nc_psychedelics_et_all_list
 
 nc_psychedelics_et_al = nc_psychedelics_et_al[nc_psychedelics_et_al.index.isin(nc_psychedelics_et_al_list)]
 nc_psychedelics_et_al_count = len(nc_psychedelics_et_al.index)
 
-nc_psychedelics_et_al = nc_psychedelics_et_al.drop('pubchemcid', axis=1)
-nc_psychedelics_et_al = nc_psychedelics_et_al.drop('primary', axis=1)
-nc_psychedelics_et_al = nc_psychedelics_et_al.drop('trace', axis=1)
 
 
-def get_nc_county_count():
-    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_countycount.csv"
-    return pd.read_csv(url)
-nc_countycount = get_nc_county_count()
-nc_countycount_int = nc_countycount.iloc[0]['nc_countycount']
-
-def get_nc_program_count():
-    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_prorgams.csv"
-    return pd.read_csv(url)
-nc_program_count = get_nc_program_count()
-nc_program_count_int = nc_program_count.iloc[0]['nc_programs']
-
-
-def get_nc_sample_count():
-    url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_samples.csv"
-    return pd.read_csv(url)
-nc_sample_count = get_nc_sample_count()
-nc_sample_count_int = nc_sample_count.iloc[0]['nc_samples']
-
-
+nc_main_dataset = get_nc_merged_df(nc_psychedelics_et_al_list)
+nc_main_cpy = nc_main_dataset.copy()
 create_sidebar()
 st.markdown("# Psychedelics and Other Drugs in NC")
 st.write("We are watching a number of different kinds of psychedelics and other drugs in North Carolina right now....")
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    st.metric(label="Samples", value=nc_sample_count_int)
-with col2:
-    st.metric(label="Programs & Clinics", value=nc_program_count_int)
-with col3:
-    st.metric(label="Counties", value=nc_countycount_int)
-with col4:
-    label_="Psychedelics & Others"
-    st.metric(label=label_, value=nc_psychedelics_et_al_count)
-with st.expander("View raw data table", ):
-  st.dataframe(
-        nc_psychedelics_et_al,
-        height=350,
-        column_config={
-            'latest_detected': st.column_config.TextColumn(
-                "Latest Detected",
-                disabled=True
-            ),
-            'total': st.column_config.NumberColumn(
-                "Total",
-                disabled=True,
-            ),
-            'substance': st.column_config.TextColumn(
-                "Substance",
-                disabled=True
-            ),
-        })
-st.markdown("---")
-# write a function that accepts a dataframe as its first param and a list as its second param. the function should map over the df and only return rows where the value in the 'substance' col matches one of the values in the list
+get_nc_intro_metrics({
+  "All Samples": get_nc_sample_count(),
+  "Programs & Clinics": get_nc_program_count(),
+  "Counties": get_nc_county_count(),
+  "Psychedelics & Others": nc_psychedelics_et_al_count
+}, len(nc_main_dataset['sampleid']), nc_psychedelics_et_al_list, nc_psychedelics_et_al)
 
-def generate_container_with_rows(items):
-    with st.container():
-      col1, col2, col3 = st.columns(3)
-      list_length = len(items)
-      list_length_divided_by_three = math.ceil(list_length / 3)
-      first_column_items = items[:list_length_divided_by_three]
-      second_column_items = items[list_length_divided_by_three:list_length_divided_by_three * 2]
-      third_column_items = items[list_length_divided_by_three * 2:]
-      #  fill each col with corresponding list
-      if list_length == 0:
-        st.write("No items found")
-      else :
-        with col1:
-          for index, row in first_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-        with col2:
-          for index, row in second_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-        with col3:
-          for index, row in third_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-    return st.container()
+
+
+st.markdown("---")
 
 lsd_list = ['lysergic acid diethylamide (LSD)']
 mdma_list = [
@@ -239,238 +155,71 @@ df['index'] = df.index
 # set the index to the index col
 df.set_index('index', inplace=True)
 st.subheader("View substances by category")
+#  metrics for counts by category
+with st.container():
+  col1, col2, col3 = st.columns(3)
+  with col1:
+    lsd_count = df[df['substance'].isin(lsd_list)]
+    total_count = lsd_count['total'].sum()
+    st.metric(label="LSD", value=total_count)
+  with col2:
+     mdma_count = df[df['substance'].isin(mdma_list)]
+     total_count = mdma_count['total'].sum()
+     st.metric(label="MDMA", value=total_count)
+  with col3:
+     syncan_count = df[df['substance'].isin(syncan_list)]
+     total_count = syncan_count['total'].sum()
+     st.metric(label="Synthetic Cannabinoids", value=total_count)
+  col1, col2, col3 = st.columns(3)
+  with col1:
+     subcath_count = df[df['substance'].isin(subcath_list)]
+     total_count = subcath_count['total'].sum()
+     st.metric(label="Substituted Cathiones", value=total_count)
+  with col2:
+     nitaz_count = df[df['substance'].isin(nitaz_list)]
+     total_count = nitaz_count['total'].sum()
+     st.metric(label="Nitazines", value=total_count)
+  with col3:
+    #  calculate the total of all the values from the 'total' column
+    other_count = df[df['substance'].isin(other_list)]
+    total_count = other_count['total'].sum()
+    st.metric(label="Other", value=total_count)
+st.subheader("What else is found in these samples?")
+st.write("This is the list of chemicals and drugs we have found in samples from North Carolina.")
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['LSD','MDMA', 'Synthetic Cannabinoids', 'Substituted Cathinones', 'Nitazines', 'Other'])
-with tab1:
-    # filter the df to remove any entries that are not included in the lsd_list
-    filtered_df = df[df['substance'].isin(lsd_list)]
-    st.markdown("### Drugs commonly sold as LSD")
-    st.markdown("*2-3 sentence description.")
-    generate_container_with_rows(filtered_df)
-with tab2:
-    filtered_df = df[df['substance'].isin(mdma_list)]
-    st.markdown("### Drugs commonly sold as MDMA")
-    st.markdown("*(dimethylpentylone, MDA + other methylated amphetamines besides MDMA)*")
-    generate_container_with_rows(filtered_df)
-with tab3:
-    filtered_df = df[df['substance'].isin(syncan_list)]
-    st.markdown("### Substances found with Synthetic Cannabinoids")
-    st.markdown('These are commonly sold as "K2" or "spice" in North Carolina.')
-    generate_container_with_rows(filtered_df)
-with tab4:
-    filtered_df = df[df['substance'].isin(subcath_list)]
-    st.markdown("### Substances known as Substituted Cathinones")
-    st.markdown("2-3 sentence description.")
-    generate_container_with_rows(filtered_df)
-with tab5:
-    filtered_df = df[df['substance'].isin(nitaz_list)]
-    st.markdown("### Emergening Nitazines")
-    st.markdown("2-3 sentence description.")
-    generate_container_with_rows(filtered_df)
-with tab6:
-    filtered_df = df[df['substance'].isin(other_list)]
-    st.markdown("### Other Emerging Drugs/Substances"   )
-    st.markdown("2-3 sentence description.")
-    generate_container_with_rows(filtered_df)
+with st.container():
+  with tab1:
+      # filter the df to remove any entries that are not included in the lsd_list
+      filtered_df = df[df['substance'].isin(lsd_list)]
+      st.write("Drugs commonly sold as LSD")
+      generate_adulterant_df(filtered_df)
+  with tab2:
+      filtered_df = df[df['substance'].isin(mdma_list)]
+      st.write("Drugs commonly sold as MDMA")
+      generate_adulterant_df(filtered_df)
+  with tab3:
+      filtered_df = df[df['substance'].isin(syncan_list)]
+      st.write("Substances found with Synthetic Cannabinoids")
+      generate_adulterant_df(filtered_df)
+  with tab4:
+      filtered_df = df[df['substance'].isin(subcath_list)]
+      st.write("Substances known as Substituted Cathinones")
+      generate_adulterant_df(filtered_df)
+  with tab5:
+      filtered_df = df[df['substance'].isin(nitaz_list)]
+      st.write("### Emerging Nitazines")
+      generate_adulterant_df(filtered_df)
+  with tab6:
+      filtered_df = df[df['substance'].isin(other_list)]
+      st.write("### Other Emerging Drugs/Substances"   )
+      generate_adulterant_df(filtered_df)
 
-#  LSD (do we have enough?)
-# Ketamime
-# Synthetic cannabinoids
-# Substituted cathinones
+st.write("We are working on a simple chemical dictionary to help make sense of these. Stay tuned!")
+
 st.markdown("---")
 
-with st.container():
-    st.subheader("Does this represent the entire NC Drug Supply?")
-    st.write("We have analyzed a limited number of these drugs. People may send us samples because the drugs caused unexpected effects. Our data don't represent the entire drug supply in North Carolina.")
-    st.expander("View raw data table", )
-    # drop all columns except sample_id and substance from the df
-    lab_detail = lab_detail.drop(columns=[col for col in lab_detail.columns if col not in ['substance', 'sampleid', 'date_complete']])
-    nc_psychedelics_et_al_cpy = nc_psychedelics_et_al_cpy.drop(columns=['latest_detected'])
-    merged_df = pd.merge(nc_psychedelics_et_al_cpy, lab_detail, on='substance')
-    # sort the merged_df by sampleid greatest to least then set the col type to Category
-    merged_df = merged_df.sort_values(by=['sampleid'], ascending=False)
-    merged_df['sampleid'] = merged_df['sampleid'].astype('category')
-    merged_df['date_complete'] = pd.to_datetime(merged_df['date_complete'])
+generate_drug_supply_table(nc_psychedelics_et_al_list)
 
-    # st.dataframe(
-    #     merged_df,
-    #     height=350,
-    # )
-
-    # Infer basic colDefs from dataframe types
-    gb = GridOptionsBuilder.from_dataframe(merged_df)
-
-    #customize gridOptions
-    gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, editable=False)
-    gb.configure_column("date_complete", type=["dateColumnFilter","customDateTimeFormat"], pivot=True)
-    fit_columns_on_grid_load = True
-    gb.configure_pagination(paginationAutoPageSize=False, paginationPageSize=15)
-    gb.configure_grid_options(domLayout='single')
-    gb.configure_grid_options(
-        enableCellTextSelection=True,
-        ensureDomOrder=True,
-    )
-    gridOptions = gb.build()
-    # generate js code to use cell content as link to pubchem site
-    LinkCellRenderer_pubchem = JsCode('''
-      class LinkCellRenderer {
-          init(params) {
-              this.params = params;
-              this.eGui = document.createElement('div');
-              this.eGui.innerHTML = `
-              <span>
-                  <a id='click-button'
-                      class='btn-simple'
-                      href='https://pubchem.ncbi.nlm.nih.gov/compound/${this.params.getValue()}'
-                      target='_blank'
-                      style='color: ${this.params.color};}'>${this.params.getValue()}</a>
-              </span>
-            `;
-
-              this.eButton = this.eGui.querySelector('#click-button');
-
-              this.btnClickedHandler = this.btnClickedHandler.bind(this);
-              this.eButton.addEventListener('click', this.btnClickedHandler);
-
-          }
-
-          getGui() {
-              return this.eGui;
-          }
-
-          refresh() {
-              return true;
-          }
-
-          destroy() {
-              if (this.eButton) {
-                  this.eGui.removeEventListener('click', this.btnClickedHandler);
-              }
-          }
-
-          btnClickedHandler(event) {
-
-                      this.refreshTable('clicked');
-              }
-
-          refreshTable(value) {
-              this.params.setValue(value);
-          }
-      };
-    ''')
-    # generate js code to use cell content as link to streetsafe.supply result page
-    LinkCellRenderer = JsCode('''
-      class LinkCellRenderer {
-          init(params) {
-              this.params = params;
-              this.eGui = document.createElement('div');
-              this.eGui.innerHTML = `
-              <span>
-                  <a id='click-button'
-                      class='btn-simple'
-                      href='https://www.streetsafe.supply/results/p/${this.params.getValue()}'
-                      target='_blank'
-                      style='color: ${this.params.color};}'>${this.params.getValue()}</a>
-              </span>
-            `;
-
-              this.eButton = this.eGui.querySelector('#click-button');
-
-              this.btnClickedHandler = this.btnClickedHandler.bind(this);
-              this.eButton.addEventListener('click', this.btnClickedHandler);
-
-          }
-
-          getGui() {
-              return this.eGui;
-          }
-
-          refresh() {
-              return true;
-          }
-
-          destroy() {
-              if (this.eButton) {
-                  this.eGui.removeEventListener('click', this.btnClickedHandler);
-              }
-          }
-
-          btnClickedHandler(event) {
-
-                      this.refreshTable('clicked');
-              }
-
-          refreshTable(value) {
-              this.params.setValue(value);
-          }
-      };
-    ''')
-
-    gridOptions['columnDefs'] = [
-        {
-        "field": "sampleid",
-        "headerName": "Sample Ids",
-        "cellRenderer": LinkCellRenderer,
-        "cellRendererParams": {
-          "color": "blue",
-          "data": "sampleid",
-        },
-        "maxWidth": 120,
-      },
-      {
-        "field": "substance",
-        "headerName": "Substance",
-        "maxWidth": 120,
-      },
-      {
-        "field": "pubchemcid",
-        "headerName": "PubChem CID",
-        "cellRenderer":LinkCellRenderer_pubchem,
-        "cellRendererParams": {
-          "color": "green",
-          "data": "pubchemcid"
-        },
-        "maxWidth": 120,
-      },
-      {
-        "field": "total",
-        "headerName": "total",
-        "maxWidth": 120,
-      },
-      {
-        "field": "date_complete",
-        "headerName": "Sample Collection Date",
-        "type": ["dateColumnFilter","customDateTimeFormat"],
-        "custom_format_string":"yyyy-MM-dd",
-        "pivot": True,
-        "maxWidth": 200,
-      },
-    ]
-    with st.container():
-        custom_css = {
-          ".ag-root-wrapper": {
-            "max-width": "650px !important",
-            "margin": "0 auto",
-            },
-        }
-        grid_response = AgGrid(
-            merged_df,
-            custom_css=custom_css,
-            gridOptions=gridOptions,
-            allow_unsafe_jscode=True,
-            enable_enterprise_modules=False
-            )
-
-
-
-        csv = convert_df(df)
-
-        st.download_button(
-          "Download csv",
-          csv,
-          "file.csv",
-          "text/csv",
-          key='download-csv'
-        )
 st.markdown("---")
 st.markdown("## Resources for party drug users")
 tab1, tab2 = st.tabs(['DanceSafe info' ,'DanceSafe kits?'])

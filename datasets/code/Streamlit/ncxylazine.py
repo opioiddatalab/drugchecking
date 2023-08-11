@@ -10,43 +10,7 @@ import plotly.express as px
 from urllib.request import urlopen
 import json
 from PIL import Image
-
-
-st.markdown(
-    """
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-J6G2QFEL1Q');
-        </script>
-    """, unsafe_allow_html=True)
-
-st.markdown(
-    """
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-J6G2QFEL1Q');
-        </script>
-    """, unsafe_allow_html=True)
-
-st.markdown(
-    """
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6G2QFEL1Q"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-J6G2QFEL1Q');
-        </script>
-    """, unsafe_allow_html=True)
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
@@ -142,7 +106,7 @@ st.subheader("Real-time results from UNC Drug Analysis Lab")
 
 st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 30+ North Carolina harm reduction programs, hospitals, clinics, and health departments. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
 st.markdown("---")
-st.markdown("There is a new cut in street drugs and it causes terrible skin problems. But we didn't have a way to track it in North Carolina. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
+st.markdown("There is a new cut in street drugs (primarily fentanyl, heroin, and other opioids) and it causes terrible skin problems. But we didn't have a way to track it in North Carolina. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
 
 st.markdown("---")
 
@@ -195,7 +159,7 @@ st.markdown("---")
 
 
 st.subheader(":hospital: [More info on xylazine](https://harmreduction.org/wp-content/uploads/2022/11/Xylazine-in-the-Drug-Supply-one-pager.pdf) in the street drug supply")
-st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. It can cause bad skin ulcers beyond the site of injection. Treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
+st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. It can cause bad skin ulcers beyond the site of injection. Treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
 
 st.markdown("---")
 st.header("Where has xylazine been detected?")
@@ -246,7 +210,7 @@ fig = px.choropleth_mapbox(agg_df,
                            labels={'percent_str':'% Samples with Xylazine', 'county':'County', 'latest_date':'Most Recent Sample Date'},
                           )
 
-fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine')
+fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine in NC')
 
 st.plotly_chart(fig, use_container_width=True)
 
@@ -360,4 +324,11 @@ streamlit_analytics.stop_tracking(unsafe_password="streetsafe")
 # commit 93c7b26baa88ed0fc51880c2c63c245fa061158d
 # commit f177cc2f2b7ef169fdc75322ed9c5084e04b6552
 # commit d2b7d64515f138a7545e7ac136fd35232b5ab4f6
-# commit 212cc4e3b8fac4fd581551cd0b3bab6998eb6ff0
+# commit 0777db9e8e8b5d84602f05aa8b2bd451fa22d4cd
+# commit 65a27034be2a1191cad86e1f014e7d34a3693f71
+# commit 8018931e815a42f3fa5e3d00a4c200247ab49b5d
+# commit d6151cffb4deba2ba5c8e6741ba8a89e53928807
+# commit 2f8ac5f381268a2c8f6488d915788de1619aa43f
+# commit 122d9345958f35caabddecf85c33558ee74f34e7
+# commit 834c3794451cada1f9bbfbb6b2ebaeac3dde3c4b
+# commit 1b6cb47695a9829626b858176074980599e41a2c
