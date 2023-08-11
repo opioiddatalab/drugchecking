@@ -249,7 +249,7 @@ def get_nc_lab_detail_ds():
 def get_nc_merged_df(substance_list):
   nc_lab_detail = get_nc_lab_detail_ds()
   nc_analysis = get_nc_analysis_ds()
-  df = pd.merge(nc_lab_detail, nc_analysis, on='sampleid', how='outer')
+  df = pd.merge(nc_lab_detail, nc_analysis, on='sampleid')
   df = df[['sampleid',  'substance', 'county', 'date_collect', 'expectedsubstance', 'lab_meth_any_y', 'lab_cocaine_any_y', 'crystals', 'lab_fentanyl_y' ]]
   return df[df['substance'].isin(substance_list)]
 
