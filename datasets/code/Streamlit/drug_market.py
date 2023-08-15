@@ -1,4 +1,4 @@
-from load_init import local_css, create_sidebar, convert_df, add_county_group, get_nc_merged_df
+from load_init import local_css, create_sidebar, convert_df, add_county_group, get_nc_merged_df, display_funding, button_as_page_link, generate_filtering_tips, generate_new_drugs_table
 import streamlit as st
 st.set_page_config(
     page_title="NC Drug Market",
@@ -14,6 +14,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import re
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
+
 def get_nc_most_recent():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_most_recent.csv"
     return pd.read_csv(url)
@@ -103,6 +105,8 @@ with col4:
 
 with st.expander("View Locations data table"):
   with st.container():
+    # sort the nc_market_locs_df by the samples col
+    nc_market_locs_df.sort_values(by=['samples'], inplace=True, ascending=False)
     st.dataframe(
         nc_market_locs_df,
         height=300,
@@ -125,7 +129,13 @@ with st.expander("View Locations data table"):
     )
 st.markdown("---")
 st.markdown("## What substances are in the NC drug Supply?")
-# st.dataframe(nc_market_substances, use_container_width=True)
+st.markdown("""
+            <div style='display: flex; flex-direction: row; align-items: center; justify-content: space-between'>
+              <p>Need to find a Medicaid Region number?</p>
+              <p><a href="https://www.ncdhhs.gov/medicaid/managed-care-regions-and-rollout/download" target="_blank">NC Medicaid Regions Map</a></p>
+            </div>
+            """, unsafe_allow_html=True)
+
 nc_market_substances_top_15 = nc_market_substances.nlargest(15, 'total')
 nc_market_substances_top_15 = nc_market_substances_top_15.drop('pubchemcid', axis=1)
 nc_market_substances_top_15 = nc_market_substances_top_15.drop('primary', axis=1)
@@ -156,91 +166,197 @@ def get_substance_county_df(nc_df):
   return df
 
 
-with st.container():
-    st.markdown("### Heatmap colorings + header on bottom coming soon")
-    df_1 = get_substance_county_df(nc_market_substances_top_15)
-    # create a new df that has the nc_market_substances_top_15
-    df_2 = pd.DataFrame(nc_market_substances_top_15)
-    # drop all cols except the substance col
-    df_2 = df_2.drop('latest_detected', axis=1)
-    # get the count for how many times a substance is found in a county_group
-    df_2['county_group_1'] = ''
-    df_2['county_group_2'] = ''
-    df_2['county_group_3'] = ''
-    df_2['county_group_4'] = ''
-    df_2['county_group_5'] = ''
-    df_2['county_group_6'] = ''
-    # map over each row in df_2 and get the substance name, then get the county_group and count how many times that substance is found in that county_group
-    for index, row in df_2.iterrows():
-        df_2.at[index, 'county_group_1'] = county_substance_count(index, 1, df_1)
-        df_2.at[index, 'county_group_2'] = county_substance_count(index, 2, df_1)
-        df_2.at[index, 'county_group_3'] = county_substance_count(index, 3, df_1)
-        df_2.at[index, 'county_group_4'] = county_substance_count(index, 4, df_1)
-        df_2.at[index, 'county_group_5'] = county_substance_count(index, 5, df_1)
-        df_2.at[index, 'county_group_6'] = county_substance_count(index, 6, df_1)
+df_1 = get_substance_county_df(nc_market_substances_top_15)
+# create a new df that has the nc_market_substances_top_15
+df_2 = pd.DataFrame(nc_market_substances_top_15)
+# drop all cols except the substance col
+df_2 = df_2.drop('latest_detected', axis=1)
+# get the count for how many times a substance is found in a county_group
+df_2['county_group_1'] = ''
+df_2['county_group_2'] = ''
+df_2['county_group_3'] = ''
+df_2['county_group_4'] = ''
+df_2['county_group_5'] = ''
+df_2['county_group_6'] = ''
+# map over each row in df_2 and get the substance name, then get the county_group and count how many times that substance is found in that county_group
+for index, row in df_2.iterrows():
+    df_2.at[index, 'county_group_1'] = county_substance_count(index, 1, df_1)
+    df_2.at[index, 'county_group_2'] = county_substance_count(index, 2, df_1)
+    df_2.at[index, 'county_group_3'] = county_substance_count(index, 3, df_1)
+    df_2.at[index, 'county_group_4'] = county_substance_count(index, 4, df_1)
+    df_2.at[index, 'county_group_5'] = county_substance_count(index, 5, df_1)
+    df_2.at[index, 'county_group_6'] = county_substance_count(index, 6, df_1)
 
-    st.dataframe(df_2)
+st.dataframe(df_2,
+              column_config={
+                'substance': 'Substance',
+                'county_group_1': st.column_config.NumberColumn(
+                    "Medicaid Region 1",
+                    disabled=True
+                ),
+                'county_group_2': st.column_config.NumberColumn(
+                    "Medicaid Region 2",
+                    disabled=True
+                ),
+                'county_group_3': st.column_config.NumberColumn(
+                    "Medicaid Region 3",
+                    disabled=True
+                ),
+                'county_group_4': st.column_config.NumberColumn(
+                    "Medicaid Region 4",
+                    disabled=True
+                ),
+                'county_group_5': st.column_config.NumberColumn(
+                    "Medicaid Region 5",
+                    disabled=True
+                ),
+                'county_group_6': st.column_config.NumberColumn(
+                    "Medicaid Region 6",
+                    disabled=True
+                ),
+                'total': None
+              },
+              height=400,
+              use_container_width=True
+            )
 with st.expander("View raw data table", ):
   with st.container():
-    df_1 = get_substance_county_df(nc_market_substances_top_15)
-    # create a new df that has the nc_market_substances_top_15
-    df_2 = pd.DataFrame(nc_market_substances_top_15)
-    # drop all cols except the substance col
-    df_2 = df_2.drop('latest_detected', axis=1)
-    # get the count for how many times a substance is found in a county_group
-    df_2['county_group_1'] = ''
-    df_2['county_group_2'] = ''
-    df_2['county_group_3'] = ''
-    df_2['county_group_4'] = ''
-    df_2['county_group_5'] = ''
-    df_2['county_group_6'] = ''
-    # map over each row in df_2 and get the substance name, then get the county_group and count how many times that substance is found in that county_group
-    for index, row in df_2.iterrows():
-        df_2.at[index, 'county_group_1'] = county_substance_count(index, 1, df_1)
-        df_2.at[index, 'county_group_2'] = county_substance_count(index, 2, df_1)
-        df_2.at[index, 'county_group_3'] = county_substance_count(index, 3, df_1)
-        df_2.at[index, 'county_group_4'] = county_substance_count(index, 4, df_1)
-        df_2.at[index, 'county_group_5'] = county_substance_count(index, 5, df_1)
-        df_2.at[index, 'county_group_6'] = county_substance_count(index, 6, df_1)
+    df = get_nc_merged_df(get_substances_list())
 
-    st.dataframe(df_2)
+    generate_filtering_tips()
 
-    csv = convert_df(df_2)
-    st.download_button(
-      "Download csv",
-      csv,
-      "file.csv",
-      "text/csv",
-      key='download-csv'
+    merged_df = df.sort_values(by=['sampleid'], ascending=False)
+    merged_df['sampleid'] = merged_df['sampleid'].astype('category')
+    merged_df['date_collect'] = pd.to_datetime(merged_df['date_collect'], format='mixed')
+    gb = GridOptionsBuilder.from_dataframe(merged_df)
+
+    #customize gridOptions
+    gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, editable=False)
+    gb.configure_column("date_collect", type=["dateColumnFilter","customDateTimeFormat"], pivot=True)
+    fit_columns_on_grid_load = True
+    gb.configure_pagination(paginationAutoPageSize=False, paginationPageSize=15)
+    gb.configure_grid_options(domLayout='single')
+    gb.configure_grid_options(
+        enableCellTextSelection=True,
+        ensureDomOrder=True,
     )
-    # drop the total col
-    df_2 = df_2.drop('total', axis=1)
-st.markdown("---")
-st.markdown("## How pure is the NC drug supply?")
-st.markdown("**the number of substances detected is a measurement of how contaminated the drug supply is*")
-with st.container():
-    st.dataframe(
-      nc_ds_purity_df,
-      height=200,
-      column_config={
-          'drug': st.column_config.TextColumn(
-              "Drug",
-              disabled=True
-          ),
-          'average': st.column_config.NumberColumn(
-              "Average",
-              disabled=True
-          ),
+    # sort the df by the date_collect col with most recent first
+    merged_df = merged_df.sort_values(by=['date_collect'], ascending=False)
+    gridOptions = gb.build()
+    LinkCellRenderer = JsCode('''
+      class LinkCellRenderer {
+          init(params) {
+              this.params = params;
+              this.eGui = document.createElement('div');
+              this.eGui.innerHTML = `
+              <span>
+                  <a id='click-button'
+                      class='btn-simple'
+                      href='https://www.streetsafe.supply/results/p/${this.params.getValue()}'
+                      target='_blank'
+                      style='color: ${this.params.color};}'>${this.params.getValue()}</a>
+              </span>
+            `;
+
+              this.eButton = this.eGui.querySelector('#click-button');
+
+              this.btnClickedHandler = this.btnClickedHandler.bind(this);
+              this.eButton.addEventListener('click', this.btnClickedHandler);
+
+          }
+
+          getGui() {
+              return this.eGui;
+          }
+
+          refresh() {
+              return true;
+          }
+
+          destroy() {
+              if (this.eButton) {
+                  this.eGui.removeEventListener('click', this.btnClickedHandler);
+              }
+          }
+
+          btnClickedHandler(event) {
+
+                      this.refreshTable('clicked');
+              }
+
+          refreshTable(value) {
+              this.params.setValue(value);
+          }
+      };
+    ''')
+
+    gridOptions['columnDefs'] = [
+        {
+        "field": "sampleid",
+        "headerName": "Sample ID",
+        "cellRenderer": LinkCellRenderer,
+        "cellRendererParams": {
+          "color": "blue",
+          "data": "sampleid",
+        },
+        "maxWidth": 120,
       },
-      hide_index=True,
-      use_container_width=True
-  )
+      {
+        "field": "substance",
+        "headerName": "Substance",
+        "minWidth": 120,
+      },
+      {
+         "field": "county",
+         "headerName": "County",
+      },
+      {
+        "field": "date_collect",
+        "headerName": "Sample Collection Date",
+        "type": ["dateColumnFilter","customDateTimeFormat"],
+        "custom_format_string":"yyyy-MM-dd",
+        "pivot": True,
+        "maxWidth": 200,
+      },
+      {
+        "field": "expectedsubstance",
+        "headerName": "Expected Substance(s)",
+      },
+    ]
+    with st.container():
+        custom_css = {
+          ".ag-root-wrapper": {
+            "max-width": "100% !important",
+            "margin": "0 auto",
+            },
+        }
+        grid_response = AgGrid(
+            merged_df,
+            custom_css=custom_css,
+            gridOptions=gridOptions,
+            allow_unsafe_jscode=True,
+            enable_enterprise_modules=False
+            )
 
 
-html_str = f"""
-<h4 class="">Number of Substances Detected: {nc_market_sub_count_number}</h4>
-"""
-st.markdown(html_str, unsafe_allow_html=True)
-st.markdown("**the number of substances detected by GCMS. GCMS is tuned to pick up small molecules that are likely to be psychoactive. Does not include cuts and fillers.*")
+        csv = convert_df(merged_df)
+        col1, col2 = st.columns(2)
+        with col1:
+          st.download_button(
+            "Download csv",
+            csv,
+            "file.csv",
+            "text/csv",
+            key='download-csv'
+          )
+        with col2:
+            st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary")
 
 
+st.markdown("---")
+st.markdown("## Detection of novel substances")
+st.markdown("Below is a table of drugs detected by our program for the first time in the past 6 months")
+generate_new_drugs_table()
+
+st.markdown("---")
+display_funding()

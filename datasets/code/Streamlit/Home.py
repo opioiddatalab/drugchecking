@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+from load_init import display_funding
 
 if 'sidebar_state_PERSIST' not in st.session_state:
     st.session_state.sidebar_state_PERSIST = 'auto'
@@ -25,14 +26,41 @@ st.markdown(
     ⬅️ 👀 Select a dashboard from the sidebar to see our latest data!
     """)
 with st.container():
-    st.header("Kits from the UNC Street Drug Analysis Lab")
-    tab1, tab2 = st.tabs(["Kit Info (English)", "Kit Info (Español)"])
+    st.header("Resources from the UNC Street Drug Analysis Lab")
+    tab1, tab2, tab3 = st.tabs(["Kit Info (English)", "Drug Testing Handout", "Drug Testing Poster"])
     with tab1:
-        eng1 = Image.open('datasets/code/Streamlit/images/kit_info_eng.png')
-        st.image(eng1)
+      with open("datasets/code/Streamlit/downloadables/kit_info.pdf", "rb") as pdf_file:
+          PDFbyte = pdf_file.read()
+
+          st.download_button(label="Download pdf",
+            data=PDFbyte,
+            file_name="kit_info.pdf",
+            mime='application/octet-stream')
+
+      eng1 = Image.open('datasets/code/Streamlit/images/kit_info_eng.png')
+      st.image(eng1)
     with tab2:
-        eng1 = Image.open('datasets/code/Streamlit/images/kit_info_eng.png')
-        st.image(eng1)
+      with open("datasets/code/Streamlit/downloadables/drug_checking_handout.pdf", "rb") as pdf_file:
+          PDFbyte = pdf_file.read()
+
+          st.download_button(label="Download pdf",
+            data=PDFbyte,
+            file_name="drug_checking_handout.pdf",
+            mime='application/octet-stream')
+
+      h_1 = Image.open('datasets/code/Streamlit/images/drug_checking_1.png')
+      st.image(h_1)
+    with tab3:
+      with open("datasets/code/Streamlit/downloadables/drug_checking_poster.pdf", "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+
+        st.download_button(label="Download pdf",
+          data=PDFbyte,
+          file_name="drug_checking_poster.pdf",
+          mime='application/octet-stream')
+
+        h_2 = Image.open('datasets/code/Streamlit/images/drug_checking_2.png')
+        st.image(h_2)
 st.markdown("---")
 st.markdown("""
     ### Want to learn more?
@@ -43,3 +71,6 @@ st.markdown("""
     - [A High-Tech Strategy for Keeping Drug Users Safe](https://www.nytimes.com/2022/12/24/us/politics/fentanyl-drug-testing.html)
 """
 )
+st.markdown("---")
+display_funding()
+st.markdown("---")

@@ -1,12 +1,11 @@
-from load_init import local_css, create_sidebar, convert_df, get_nc_merged_df, get_nc_intro_metrics, generate_drug_supply_table
+from load_init import local_css, create_sidebar, convert_df, get_nc_merged_df, get_nc_intro_metrics, generate_drug_supply_table, display_funding, generate_filtering_tips, button_as_page_link
 import streamlit as st
 from PIL import Image
 
 st.set_page_config(
     page_title="NC Stimulants",
-    # make the page_icon the lab_coat emoji
     page_icon="🥽",
-    # initial_sidebar_state="expanded",
+    initial_sidebar_state="expanded",
 )
 
 local_css("datasets/code/Streamlit/style.css")
@@ -156,7 +155,7 @@ coke_adulterants['latest'] = pd.to_datetime(coke_adulterants['latest']).dt.strft
 crack_adulterants['latest'] = pd.to_datetime(crack_adulterants['latest']).dt.strftime('%B %d, %Y')
 powder_meth_adulterants['latest'] = pd.to_datetime(powder_meth_adulterants['latest']).dt.strftime('%B %d, %Y')
 
-st.subheader("View substances by category")
+st.subheader("Unique substances detected in each type of simulant")
 with st.container():
   col1, col2, col3, col4 = st.columns(4)
   with col1:
@@ -390,35 +389,148 @@ nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_cocaine_any', axis=1
 nc_stimulants_with_fent = nc_stimulants_with_fent.drop('crystals', axis=1)
 nc_stimulants_with_fent = nc_stimulants_with_fent.drop('lab_fentanyl', axis=1)
 with st.expander("View full data table", ):
-  st.dataframe(
-    nc_stimulants_with_fent,
-    height=500,
-    column_config={
-          'sampleid': st.column_config.TextColumn(
-              "Sample ID",
-              disabled=True
-          ),
-          'substance': st.column_config.TextColumn(
-              "Substance",
-              disabled=True
-          ),
-          'county': st.column_config.TextColumn(
-              "County",
-              disabled=True
-          ),
-          'countygroup': st.column_config.TextColumn(
-              "County Group",
-              disabled=True
-          ),
-          'date_collect': st.column_config.DateColumn(
-              "Sample Date",
-              format="dddd MMMM DD, YYYY",
+  generate_filtering_tips()
+
+  gb = GridOptionsBuilder.from_dataframe(nc_stimulants_with_fent)
+
+  #customize gridOptions
+  gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, editable=False)
+  nc_stimulants_with_fent['date_collect'] = pd.to_datetime(nc_stimulants_with_fent['date_collect'], format='mixed')
+  fit_columns_on_grid_load = True
+  gb.configure_pagination(paginationAutoPageSize=False, paginationPageSize=15)
+  gb.configure_grid_options(domLayout='single')
+  gb.configure_grid_options(
+      enableCellTextSelection=True,
+      ensureDomOrder=True,
+  )
+  # sort the df by the date_collect col with most recent first
+  merged_df = nc_stimulants_with_fent.sort_values(by=['date_collect'], ascending=False)
+  gridOptions = gb.build()
+  LinkCellRenderer = JsCode('''
+    class LinkCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                <a id='click-button'
+                    class='btn-simple'
+                    href='https://www.streetsafe.supply/results/p/${this.params.getValue()}'
+                    target='_blank'
+                    style='color: ${this.params.color};}'>${this.params.getValue()}</a>
+            </span>
+          `;
+
+            this.eButton = this.eGui.querySelector('#click-button');
+
+            this.btnClickedHandler = this.btnClickedHandler.bind(this);
+            this.eButton.addEventListener('click', this.btnClickedHandler);
+
+        }
+
+        getGui() {
+            return this.eGui;
+        }
+
+        refresh() {
+            return true;
+        }
+
+        destroy() {
+            if (this.eButton) {
+                this.eGui.removeEventListener('click', this.btnClickedHandler);
+            }
+        }
+
+        btnClickedHandler(event) {
+
+                    this.refreshTable('clicked');
+            }
+
+        refreshTable(value) {
+            this.params.setValue(value);
+        }
+    };
+  ''')
+# ADD IN COUNTY COLUMN + EXPECTED SUBSTANCE (VERBATIM FROM COL) COL + TEXTURE/COLOR COLS + COUNTY REGION COL
+# LINK TO COUUNTY REGION MAP
+
+  gridOptions['columnDefs'] = [
+      {
+      "field": "sampleid",
+      "headerName": "Sample ID",
+      "cellRenderer": LinkCellRenderer,
+      "cellRendererParams": {
+        "color": "blue",
+        "data": "sampleid",
+      },
+      "maxWidth": 120,
+    },
+    {
+        "field": "county",
+        "headerName": "County",
+    },
+    {
+        "field": "color",
+        "headerName":"Color"
+    },
+    {
+        "field": "texture",
+        "headerName":"Textures"
+    },
+    {
+        "field": "sensations",
+        "headerName":"Sensations"
+    },
+    {
+        "field": "od",
+        "headerName":"Overdose"
+    },
+    {
+       "field": "countyfips",
+       "headerName": "County FIPS",
+       "type": "stringColumnFilter",
+    },
+    {
+        "field": "date_collect",
+        "headerName": "Sample Collection Date",
+        "type": ["dateColumnFilter","customDateTimeFormat"],
+        "custom_format_string":"yyyy-MM-dd",
+        "pivot": True,
+        "maxWidth": 200,
+      },
+  ]
+  with st.container():
+      custom_css = {
+        ".ag-root-wrapper": {
+          "margin": "0 auto",
+          "maxWidth": "100% !important"
+          },
+      }
+      # st.dataframe(nc_stimulants_with_fent, height=500, width=650)
+      grid_response = AgGrid(
+          nc_stimulants_with_fent,
+          custom_css=custom_css,
+          gridOptions=gridOptions,
+          allow_unsafe_jscode=True,
+          enable_enterprise_modules=False
           )
 
-      },
-      hide_index=True,
-      use_container_width=True,
-    )
+
+
+      csv = convert_df(nc_stimulants_with_fent)
+      col1, col2 = st.columns(2)
+      with col1:
+        st.download_button(
+          "Download csv",
+          csv,
+          "file.csv",
+          "text/csv",
+          key='download-csv-stim-with-fent'
+        )
+        with col2:
+          st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary", key='stim-with-fent-how-to-use'  )
+
 
 st.markdown("---")
 st.markdown("## Resources for overamping and stimulant OD prevention:")
@@ -466,3 +578,6 @@ with tab3:
   st.markdown("* De-escalate the situation, by creating a safe place for observation and monitoring of the person in crisis and reducing external stimulation—like excessive noises and touching–to promote calm and recovery. Help the individual avoid becoming overheated. Some ways this can be done is by providing water, a sports drink, or a cool washcloth.")
   st.write("Stimulant overdose can also produce varied and concerning mental health symptoms like extreme panic, paranoia, anxiety, hallucinations, or psychosis, which can be upsetting or frightening to the individual who consumed the stimulant and to bystanders.")
   st.write("When responding to an opioid overdose, helping the individual breathe is key—through the administration of naloxone and rescue breathing.")
+
+st.markdown("---")
+display_funding()

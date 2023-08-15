@@ -1,4 +1,4 @@
-from load_init import local_css, create_sidebar, convert_df
+from load_init import local_css, create_sidebar, convert_df, display_funding, generate_filtering_tips, generate_substance_od_table, generate_container_with_rows, pull_top_od_subs
 import streamlit as st
 st.set_page_config(
     page_title="NC Overdoses",
@@ -170,6 +170,7 @@ with col4:
     st.metric(label=label_, value=nc_od_count)
 with st.expander("View raw data table", ):
   with st.container():
+    generate_filtering_tips()
     grid_response = AgGrid(
         nc_od_color_df,
         gridOptions=gridOptions,
@@ -187,6 +188,15 @@ with st.expander("View raw data table", ):
             "text/csv",
             key='download-csv'
           )
+
+st.markdown("---")
+st.header("Top 15 substances involved in overdoses")
+
+generate_container_with_rows(pull_top_od_subs())
+
+with st.expander("View all substances involved in overdoses", expanded=False):
+  generate_substance_od_table()
+
 st.header("Naloxone in NC and the US")
 tab1, tab2, tab3 = st.tabs(['What is Naloxone?', 'How to Get Naloxone in NC', 'More naloxone resources'])
 with tab1:
@@ -239,3 +249,4 @@ with tab3:
 
 
 st.markdown("---")
+display_funding()

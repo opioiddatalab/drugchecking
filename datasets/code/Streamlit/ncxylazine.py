@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
-from load_init import local_css
-local_css("datasets/code/Streamlit/style.css")
 import streamlit as st
+st.set_page_config(
+    page_title="NC Xylazine",
+    # make the page_icon the lab_coat emoji
+    page_icon="🥽",
+    initial_sidebar_state="expanded",
+)
+from load_init import local_css, display_funding
+local_css("datasets/code/Streamlit/style.css")
 import streamlit_analytics
-
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -287,16 +292,13 @@ st.markdown("---")
 
 st.markdown("## Where did these drug samples come from?")
 st.markdown("A public service of the University of North Carolina. Data from North Carolina harm reduction programs. Full details at our [website](https://streetsafe.supply), at [UNC.edu](https://www.unc.edu/discover/drug-checking-project-cuts-overdoses/), and profiled in [_The New York Times_](https://www.nytimes.com/2022/12/24/us/politics/fentanyl-drug-testing.html))")
-st.video('https://youtu.be/cWbOeo6pm8A')
+st.video('https://youtu.be/_TnbruaCljM?t', start_time=304)
 
 st.markdown("Data documentation available [here](https://opioiddatalab.github.io/drugchecking/datasets/).")
 
 st.markdown("---")
 
-st.subheader("Funding")
-st.markdown("[Injury and Violence Prevention Branch](https://injuryfreenc.dph.ncdhhs.gov/) of the NC Department of Health and Human Services, via funding from the Centers for Disease Control and Prevention (2023, data visualizations)")
-st.markdown("North Carolina General Assembly via the [NC Collaboratory](https://collaboratory.unc.edu/), using Opioid Settlement Funds (2023-24, operations)")
-st.markdown("[Foundation for Opioid Response Efforts](https://forefdn.org) (2022-23, startup)")
+display_funding()
 
 st.markdown("---")
 streamlit_analytics.stop_tracking(unsafe_password="streetsafe")

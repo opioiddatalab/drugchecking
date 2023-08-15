@@ -52,9 +52,22 @@ div[data-testid="stMarkdownContainer"] hr {
 
 }
 
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] button{
+  border: 2px solid black;
+  margin: 0 auto;
+    color: #e39b33 !important;
+}
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] button:visited {
+  border: 2px solid black;
+  margin: 0 auto;
+  text-decoration: none !important;
+}
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] button:hover{
+  border: 2px solid black;
+  margin: 0 auto;
+  text-decoration: none !important;
+}
 div[data-testid="stHorizontalBlock"] div[data-testid="column"] {
-    /* border: 2px solid black; */
-    /* padding: 20px; */
     text-align: center;
     grid-template-columns: auto;
 }
@@ -62,21 +75,20 @@ div[data-testid="stHorizontalBlock"] div[data-testid="column"] label{
     text-align: center;
     grid-template-columns: auto;
 }
-.stButton>button {
-  border: none !important;
-  /* give it a transparent background-color */
+.stButton>button, .stDownloadButton>button {
+  /* border: none; */
   background-color: transparent !important;
-  /* on hover, add underline to text */
+    color: #e39b33 !important;
 }
 
-.stButton>button:hover {
+.stDownloadButton>button:hover, .stButton>button:hover {
   text-decoration: underline !important;
   /* make sure underline is black */
   text-decoration-color: black !important;
 }
 
 a.click-button {
-  color: black;
+  color: black !important;
   text-decoration: none;
 }
 p > a.click-button:hover, a.click-button:visited {

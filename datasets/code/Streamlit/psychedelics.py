@@ -1,11 +1,11 @@
-from load_init import local_css, create_sidebar, convert_df, get_nc_intro_metrics, get_nc_merged_df, get_nc_county_count, get_nc_program_count, get_nc_sample_count, generate_container_with_rows, generate_adulterant_df, generate_drug_supply_table
+from load_init import local_css, create_sidebar, convert_df, get_nc_intro_metrics, get_nc_merged_df, get_nc_county_count, get_nc_program_count, get_nc_sample_count, generate_container_with_rows, generate_adulterant_df, generate_drug_supply_table, display_funding
 from streamlit_elements import elements, mui, html, dashboard
 import streamlit as st
 st.set_page_config(
-    page_title="NC Psychedelics & Others",
+    page_title="NC Psychedelics & Emerging Drugs",
     # make the page_icon the lab_coat emoji
     page_icon="🥽",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 local_css("datasets/code/Streamlit/pages/psychedelics.css")
 local_css("datasets/code/Streamlit/style.css")
@@ -14,8 +14,7 @@ import webbrowser
 import pandas as pd
 import random
 import math
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
-
+from PIL import Image
 
 def get_hnc_lab_detail():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/selfservice/hnc/lab_detail.csv"
@@ -222,337 +221,77 @@ generate_drug_supply_table(nc_psychedelics_et_al_list)
 
 st.markdown("---")
 st.markdown("## Resources for party drug users")
-tab1, tab2 = st.tabs(['DanceSafe info' ,'DanceSafe kits?'])
+st.markdown(" ")
+col1, col2 = st.columns(2)
+with col1:
+  st.markdown("""
+              <div style='text-align: left;'>
+                As with all psychedelics, “set” and “setting” are important factors in determining whether someone has a positive or difficult experience. “Set” is a person’s mental state (their thoughts, mood, and expectations), while “setting” is the physical and social environment in which the drug is consumed. Being in a good mental state, with trusted people in a supportive environment, reduces the risk of having a difficult trip.
+              </div>
+              """, unsafe_allow_html=True)
+with col2:
+  set_setting = Image.open('datasets/code/Streamlit/images/set_setting.png')
+  st.image(set_setting)
+tab1, tab2, tab3, tab4, tab5 = st.tabs(['MDMA' ,'Ketamine', 'LSD', 'DMT', 'DanceSafe Kits'])
 with tab1:
-  st.write("Dance Safe")
+  st.markdown("""
+                    <ul>
+                      <li style='text-align: left'>Since MDMA increases core body temperature, overheating is a serious risk. This risk is compounded by being in a hot environment, taking a large dose, mixing with other temperature-raising drugs like cocaine or amphetamine, and/or lots of physical exertion.</li>
+                      <li style='text-align: left'>Severe headache on any stimulant may be a sign of dangerously high blood pressure. Seek medical attention for a severe, splitting headache.</li>
+                      <li style='text-align: left'>The feeling of being dehydrated due to dry mouth and high body temperature can lead people to drink way too much water. Drinking too much or too little water on MDMA can be deadly due to hypernatremia (dehydration) or hyponatremia (over hydration).</li>
+                      <li style='text-align: left'>MDMA is not physically dependence-forming, but it can take on great importance in people’s lives, and some people start compulsively using it every weekend.</li>
+                      <li style='text-align: left'>While it’s commonly believed that taking SSRIs with MDMA is very dangerous, it’s much more likely that the MDMA simply won’t work at all. Taking lots of MDMA to try and “break through” the blunting effects of SSRIs could become dangerous. Note: Some people may indeed react poorly to this combination, but it usually leads to letdowns as opposed to medical emergencies.</li>
+                    </ul>
+                    """, unsafe_allow_html=True)
+  text = "<div style='text-align: left'>Additional resources for party drugs such as MDMA can be found at <a href='https://dancesafe.org/ecstasy/' target=_blank>DanceSafe.org</a></div>"
+  st.markdown(text, unsafe_allow_html=True)
 with tab2:
-  st.write("Dance Safe kits")
+  st.markdown("""
+                    <ul>
+                      <li style='text-align: left'>Ketamine belongs to a class of drugs called “dissociative anesthetics” that separate perception from sensation. Other drugs in this category include PCP, DXM, and nitrous oxide.</li>
+                      <li style='text-align: left'>The effects of ketamine last about 45-60 minutes. Most people return completely to baseline within 1.5-2 hours.</li>
+                      <li style='text-align: left'>Although ketamine itself doesn’t slow down heart rate or breathing, it’s still risky to combine with depressants like alcohol, benzos, or GHB. These mixtures can lead to blackouts, spins, vomiting, erratic body temperature, and loss of consciousness.</li>
+                      <li style='text-align: left'>Try not to use high doses of ketamine alone. People have died after taking high doses of ketamine and choking on vomit or falling forward on pillows.</li>
+                      <li style='text-align: left'>“Racemic” ketamine is a mixture of r- and s-ketamine. All ketamine on the streets is racemic unless it’s made for a specific clinical purpose. There is no way to test whether ketamine is one isomer or another without the most advanced lab equipment available.</li>
+                    </ul>
+                    """, unsafe_allow_html=True)
+  text = "<div style='text-align: left'>Additional resources for party drugs such as ketamine can be found at <a href='https://dancesafe.org/ketamine/' target=_blank>DanceSafe.org</a></div>"
+  st.markdown(text, unsafe_allow_html=True)
+with tab3:
+  st.markdown("""
+                    <ul>
+                      <li style='text-align: left'>Acid should not have any strong taste. Metallic, bitter taste is a sign that you might have a different drug.</li>
+                      <li style='text-align: left'>LSD produces visuals for most (but not all!) people that range from slight color and shape distortions to full-blown changes to how a space or person appears. </li>
+                      <li style='text-align: left'>While many people think of psychedelics as being all about the visuals, perhaps the more significant defining factor is the change that occurs in perception of self and environment.</li>
+                      <li style='text-align: left'>Only an overseas lab like Energy Control can tell you how much LSD is in a given tab. Dealers might approximate, but no one can know for sure unless they laid the blotter themselves. Start with small doses of any new batch.</li>
+                      <li style='text-align: left'>As with other psychedelics (and emotionally intense drugs in general), people who have personal or family histories of mood or psychotic disorders may be at increased risk of psychological upset after taking LSD.</li>
+                    </ul>
+                    """, unsafe_allow_html=True)
+  text = "<div style='text-align: left'>Additional resources for party drugs such as LSD can be found at <a href='https://dancesafe.org/lsd/' target=_blank>DanceSafe.org</a></div>"
+  st.markdown(text, unsafe_allow_html=True)
+with tab4:
+  st.markdown("""
+                    <p>DMT</p>
+                    <ul>
+                      <li style='text-align: left'>DMT, or N,N-dimethyltryptamine, is a psychedelic chemical found naturally in many plants and animals. It is the main ingredient in ayahuasca, the centuries-old South American brew used by many indigenous communities for medical and spiritual purposes.</li>
+                      <li style='text-align: left'>Depending on how it is manufactured or extracted, DMT can come as crystals, powder, or a soft clumpy material. It often has a yellow-orange or brownish color, and a distinctive odor similar to mothballs or shoe leather.</li>
+                      <li style='text-align: left'>Be Careful! The rapid onset and extreme intensity from smoking DMT can be overwhelming. Do not be fooled by the short duration! DMT is one of the most powerful psychedelics on the planet.</li>
+                      <li style='text-align: left'>Injecting DMT is not typically advised, since improper drug sourcing or injection methods can be catastrophic.</li>
+                    </ul>
+                    <p>5-MeO-DMT</p>
+                    <ul>
+                      <li style='text-align: left'>The 5 experience is unique and cannot be directly compared to any other drug, including DMT. Its effects are not similar to those of other psychedelics like LSD or mushrooms.</li>
+                      <li style='text-align: left'>Bufo-harvested 5-MeO-DMT is generally crystalline, flake-like, and clear to golden brown in color, but may also contain other organic compounds or adulterants resulting from the collection, or “milking,” of the toad.</li>
+                      <li style='text-align: left'>Combining 5-MeO-DMT with other drugs, particularly stimulants (even one after the other), has resulted in deaths as well. Even on its own 5-MeO-DMT (and particularly the bufo extract) has occasionally caused seizures in some people.</li>
+                      <li style='text-align: left'>WARNING: 5-MeO-DMT should never be combined with monoamine oxidase inhibitors (MAOIs). MAOIs can be found naturally in plants like harmine, harmaline, and Syrian rue, or in prescription antidepressant medications. MAOI is also a critical ingredient in ayahuasca. This combination can cause serious adverse reactions including death.</li>
 
+                    </ul>
+                    """, unsafe_allow_html=True)
+  text = "<div style='text-align: left'>Additional resources for party drugs such as DMT / 5-meo-DMT can be found <a href='https://dancesafe.org/dmt/' target=_blank>here</a> or <a href='https://dancesafe.org/5-meo-dmt/' target=_blank>here</a> using DanceSafe.org</div>"
+  st.markdown(text, unsafe_allow_html=True)
+with tab5:
+  text = "<div style='text-align: left'>Resources for accessing testing drugs, kits, and more can be found at <a href='https://dancesafe.org/shop/' target=_blank>DanceSafe.org</a></div>"
+  st.markdown(text, unsafe_allow_html=  True)
 
-
-# THIS IS CODE FOR THE CARDS, HOLDING OFF ON THIS FOR NOW:
-
-# from load_css import local_css
-# local_css("datasets/code/Streamlit/style.css")
-# local_css("datasets/code/Streamlit/pages/psychedelics.css")
-# from streamlit_elements import elements, mui, html, dashboard
-# import streamlit as st
-# from persist import persist, load_widget_state
-# import webbrowser
-
-# def main():
-#     if "alpha_PERSIST" not in st.session_state:
-#         # Initialize session state.
-#         st.session_state.update({
-#             # Default page.
-#             "checkbox": False,
-#         })
-#     else:
-#         st.session_state.update({
-#             # Default page.
-#             "checkbox": True,
-#         })
-
-# if __name__ == "__main__":
-#     load_widget_state()
-#     main()
-
-# if 'first_PERSIST' not in st.session_state:
-#    st.session_state['first_PERSIST'] = False
-# if 'second_PERSIST' not in st.session_state:
-#    st.session_state['second_PERSIST'] = False
-# if 'third_PERSIST' not in st.session_state:
-#    st.session_state['third_PERSIST'] = False
-
-
-# def form_callback():
-#     st.session_state.first_PERSIST = not st.session_state.first_PERSIST
-# def form_callback2():
-#     st.session_state.second_PERSIST = not st.session_state.second_PERSIST
-# def form_callback3():
-#     st.session_state.third_PERSIST = not st.session_state.third_PERSIST
-# def safeSupplyResults():
-#   js = 'https://www.streetsafe.supply/results/p/801908'
-#   webbrowser.open(js)
-
-
-# with elements("dashboard"):
-#   if st.session_state['first_PERSIST'] == False:
-#     layout = [
-#           # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-#           dashboard.Item("first_item", 0, 0, 2.75, 2.15),
-#           dashboard.Item("second_item", 3, 0, 2.75, 6.15),
-#           dashboard.Item("third_item", 6, 0, 2.75, 6.15),
-#     ]
-#   if st.session_state['second_PERSIST'] == False:
-#     layout = [
-#           # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-#           dashboard.Item("first_item", 0, 0, 2.75, 6.15),
-#           dashboard.Item("second_item", 3, 0, 2.75, 2.15),
-#           dashboard.Item("third_item", 6, 0, 2.75, 6.15),
-#     ]
-#   if st.session_state['third_PERSIST'] == False:
-#     layout = [
-#           # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-#           dashboard.Item("first_item", 0, 0, 2.75, 6.15),
-#           dashboard.Item("second_item", 3, 0, 2.75, 6.15),
-#           dashboard.Item("third_item", 6, 0, 2.75, 2.15),
-#     ]
-#   else:
-#     layout = [
-#           # Parameters: element_identifier, x_pos, y_pos, width, height, [item properties...]
-#           dashboard.Item("first_item", 0, 0, 2.75, 6.15),
-#           dashboard.Item("second_item", 3, 0, 2.75, 6.15),
-#           dashboard.Item("third_item", 6, 0, 2.75, 6.15),
-#     ]
-
-#   with dashboard.Grid(layout):
-#     with mui.Paper(key="first_item"):
-#       with elements("nested_children3"):
-#             with elements("properties"):
-#               with elements("style_mui_sx"):
-#                 with mui.Paper(elevation=12, variant="outlined", sx={
-#                     "padding": "0 1rem 0",
-#                     "background-color": "#e39b33",
-#                     "text-align": "center",
-#                   }):
-#                     html.h5("Sample ID: 456789")
-#                     with mui.Paper(elevation=12, variant="outlined", sx={
-#                                   "padding": ".1rem .5rem",
-#                                   "text-align": "left",
-#                                   "font-size": ".95rem",
-#                                   "background-color": "white"
-#                                 }):
-#                         with mui.Grid(container=True):
-#                               with mui.Grid(item=True, xs=5, sx={"text-align": "left"}):
-#                                 html.p("Durham County, NC")
-#                                 html.p("Medicaid Region #6")
-#                               with mui.Grid(item=True, xs=7, sx={"text-align": "right"}):
-#                                 html.p("Aug 1, 2023")
-#                         html.hr()
-#                         html.h5("Expected Substances")
-#                         html.p("heroin")
-#                         html.p("fentanyl")
-#                         with mui.FormControlLabel(label="Show/Hide Lab Data", control=mui.Checkbox(key=persist('first'), onChange=form_callback)):
-#                           html.hr()
-#                         html.hr()
-#                         if st.session_state['first_PERSIST'] == True:
-#                             st.container()
-#                             # with mui.Container():
-#                               # with mui.Grid(container=True"):
-#                                 # with mui.Grid(item=True, xs=3):
-#                             mui.Typography("Lab Results")
-#                                 # with mui.Grid(item=True, xs=9):
-#                                 #   mui.icon.Science()
-#                             with mui.Grid(container=True):
-#                                 with mui.Grid(item=True, xs=6):
-#                                   # mui.icon.VerticalAlignTopRounded()
-#                                   html.p("Primary")
-#                                   mui.Chip(label="fentanyl", variant="filled")
-#                                 with mui.Grid(item=True, xs=6):
-#                                   # mui.icon.VerticalAlignBottomRounded()
-#                                   html.p("Trace")
-#                                   mui.Chip(label="quinine", variant="outlined")
-#                                   mui.Chip(label="4-ANPP", variant="outlined")
-#                                   mui.Chip(label="lidocaine", variant="outlined")
-#                                   mui.Chip(label="ethyl-4-ANPP", variant="outlined")
-#                                   mui.Chip(label="phenethyl 4-ANPP", variant="outlined")
-#                             html.h5("Description")
-#                             html.p("Click a tagged substance to learn more: ")
-#                             with mui.Paper(elevation=24, variant="outlined", sx={
-#                                 "padding": ".1rem",
-#                                 "text-align": "left",
-#                                 "font-size": ".95rem",
-#                                 "background-color": "lightgray",
-#                                 "margin": "0 auto",
-#                                 "width": "100%"
-#                               }):
-#                                 html.p("Fentanyl common potent opioid")
-#                             html.hr()
-#                             with mui.Paper(elevation=24, variant="outlined", sx={
-#                                   "padding": ".25rem",
-#                                   "margin": "0 .25rem",
-#                                   "font-size": ".95rem",
-#                                   "background-color": "lightblue"
-#                                 }):
-#                               html.h5("Physical Descriptions:")
-#                               html.ul([html.li("White"), html.li("Green"), html.li("Crystals; Powder")])
-#                             mui.icon.Share()
-#                             html.h5("Share this sample's result")
-#                             html.hr()
-#                             # with mui.Grid(container=True, spacing=4):
-#                               # with mui.Grid(item=True, xs=6):
-#                             # add space between buttons in the ButtonGroup
-#                             with mui.ButtonGroup(fullWidth=True, sx={"width": "100%"}):
-#                                 mui.Button("Hide Lab Data", variant="contained", color="info", size="small", sx={"width": "50%", "margin": "10px"}, onClick=form_callback)
-#                               # with mui.Grid(item=True, xs=6):
-#                                 mui.Button("View More Info", variant="contained", color="info", size="small", sx={"width": "50%",  "margin": "10px", "backgroundColor": "#1E2C4A"}, onClick=safeSupplyResults)
-#                                 mui.Collapse(in_=True)
-#                         else:
-#                           st.echo('')
-#     with mui.Paper(key="second_item"):
-#       with elements("nested_children3"):
-#             with elements("properties"):
-#               with elements("style_mui_sx"):
-#                 with mui.Paper(elevation=12, variant="outlined", sx={
-#                     "padding": "0 1rem 0",
-#                     "background-color": "#e39b33",
-#                     "text-align": "center",
-#                   }):
-#                     html.h5("Sample ID: 456789")
-#                     with mui.Paper(elevation=12, variant="outlined", sx={
-#                                   "padding": ".1rem .5rem",
-#                                   "text-align": "left",
-#                                   "font-size": ".95rem",
-#                                   "background-color": "white"
-#                                 }):
-#                         with mui.Grid(container=True):
-#                               with mui.Grid(item=True, xs=5, sx={"text-align": "left"}):
-#                                 html.p("Durham County, NC")
-#                                 html.p("Medicaid Region #6")
-#                               with mui.Grid(item=True, xs=7, sx={"text-align": "right"}):
-#                                 html.p("Aug 1, 2023")
-#                         html.hr()
-#                         html.h5("Expected Substances")
-#                         html.p("heroin")
-#                         html.p("fentanyl")
-#                         with mui.FormControlLabel(label="Show/Hide Lab Data", control=mui.Checkbox(key=persist('second'), onChange=form_callback2)):
-#                           html.hr()
-#                         html.hr()
-#                         if st.session_state['second_PERSIST'] == True:
-#                             st.container()
-#                             # with mui.Container():
-#                               # with mui.Grid(container=True"):
-#                                 # with mui.Grid(item=True, xs=3):
-#                             mui.Typography("Lab Results")
-#                                 # with mui.Grid(item=True, xs=9):
-#                                 #   mui.icon.Science()
-#                             with mui.Grid(container=True):
-#                                 with mui.Grid(item=True, xs=6):
-#                                   # mui.icon.VerticalAlignTopRounded()
-#                                   html.p("Primary")
-#                                   mui.Chip(label="fentanyl", variant="filled")
-#                                 with mui.Grid(item=True, xs=6):
-#                                   # mui.icon.VerticalAlignBottomRounded()
-#                                   html.p("Trace")
-#                                   mui.Chip(label="quinine", variant="outlined")
-#                                   mui.Chip(label="4-ANPP", variant="outlined")
-#                                   mui.Chip(label="lidocaine", variant="outlined")
-#                                   mui.Chip(label="ethyl-4-ANPP", variant="outlined")
-#                                   mui.Chip(label="phenethyl 4-ANPP", variant="outlined")
-#                             html.h5("Description")
-#                             html.p("Click a tagged substance to learn more: ")
-#                             with mui.Paper(elevation=24, variant="outlined", sx={
-#                                 "padding": ".1rem",
-#                                 "text-align": "left",
-#                                 "font-size": ".95rem",
-#                                 "background-color": "lightgray",
-#                                 "margin": "0 auto",
-#                                 "width": "100%"
-#                               }):
-#                                 html.p("Fentanyl common potent opioid")
-#                             html.hr()
-#                             with mui.Paper(elevation=24, variant="outlined", sx={
-#                                   "padding": ".25rem",
-#                                   "margin": "0 .25rem",
-#                                   "font-size": ".95rem",
-#                                   "background-color": "lightblue"
-#                                 }):
-#                               html.h5("Physical Descriptions:")
-#                               html.ul([html.li("White"), html.li("Green"), html.li("Crystals; Powder")])
-#                             mui.icon.Share()
-#                             html.h5("Share this sample's result")
-#                             html.hr()
-#                             # with mui.Grid(container=True, spacing=4):
-#                               # with mui.Grid(item=True, xs=6):
-#                             # add space between buttons in the ButtonGroup
-#                             with mui.ButtonGroup(fullWidth=True, sx={"width": "100%"}):
-#                                 mui.Button("Hide Lab Data", variant="contained", color="info", size="small", sx={"width": "50%", "margin": "10px"}, onClick=form_callback)
-#                               # with mui.Grid(item=True, xs=6):
-#                                 mui.Button("View More Info", variant="contained", color="info", size="small", sx={"width": "50%",  "margin": "10px", "backgroundColor": "#1E2C4A"}, onClick=safeSupplyResults)
-#                                 mui.Collapse(in_=True)
-#                         else:
-#                           st.echo('')
-#     with mui.Paper(key="third_item"):
-#       with elements("nested_children3"):
-#             with elements("properties"):
-#               with elements("style_mui_sx"):
-#                 with mui.Paper(elevation=12, variant="outlined", sx={
-#                     "padding": "0 1rem 0",
-#                     "background-color": "#e39b33",
-#                     "text-align": "center",
-#                   }):
-#                     html.h5("Sample ID: 456789")
-#                     with mui.Paper(elevation=12, variant="outlined", sx={
-#                                   "padding": ".1rem .5rem",
-#                                   "text-align": "left",
-#                                   "font-size": ".95rem",
-#                                   "background-color": "white"
-#                                 }):
-#                         with mui.Grid(container=True):
-#                               with mui.Grid(item=True, xs=5, sx={"text-align": "left"}):
-#                                 html.p("Durham County, NC")
-#                                 html.p("Medicaid Region #6")
-#                               with mui.Grid(item=True, xs=7, sx={"text-align": "right"}):
-#                                 html.p("Aug 1, 2023")
-#                         html.hr()
-#                         html.h5("Expected Substances")
-#                         html.p("heroin")
-#                         html.p("fentanyl")
-#                         with mui.FormControlLabel(label="Show/Hide Lab Data", control=mui.Checkbox(key=persist('third'), onChange=form_callback3)):
-#                           html.hr()
-#                         html.hr()
-#                         if st.session_state['third_PERSIST'] == True:
-#                             st.container()
-#                             # with mui.Container():
-#                               # with mui.Grid(container=True"):
-#                                 # with mui.Grid(item=True, xs=3):
-#                             mui.Typography("Lab Results")
-#                                 # with mui.Grid(item=True, xs=9):
-#                                 #   mui.icon.Science()
-#                             with mui.Grid(container=True):
-#                                 with mui.Grid(item=True, xs=6):
-#                                   # mui.icon.VerticalAlignTopRounded()
-#                                   html.p("Primary")
-#                                   mui.Chip(label="fentanyl", variant="filled")
-#                                 with mui.Grid(item=True, xs=6):
-#                                   # mui.icon.VerticalAlignBottomRounded()
-#                                   html.p("Trace")
-#                                   mui.Chip(label="quinine", variant="outlined")
-#                                   mui.Chip(label="4-ANPP", variant="outlined")
-#                                   mui.Chip(label="lidocaine", variant="outlined")
-#                                   mui.Chip(label="ethyl-4-ANPP", variant="outlined")
-#                                   mui.Chip(label="phenethyl 4-ANPP", variant="outlined")
-#                             html.h5("Description")
-#                             html.p("Click a tagged substance to learn more: ")
-#                             with mui.Paper(elevation=24, variant="outlined", sx={
-#                                 "padding": ".1rem",
-#                                 "text-align": "left",
-#                                 "font-size": ".95rem",
-#                                 "background-color": "lightgray",
-#                                 "margin": "0 auto",
-#                                 "width": "100%"
-#                               }):
-#                                 html.p("Fentanyl common potent opioid")
-#                             html.hr()
-#                             with mui.Paper(elevation=24, variant="outlined", sx={
-#                                   "padding": ".25rem",
-#                                   "margin": "0 .25rem",
-#                                   "font-size": ".95rem",
-#                                   "background-color": "lightblue"
-#                                 }):
-#                               html.h5("Physical Descriptions:")
-#                               html.ul([html.li("White"), html.li("Green"), html.li("Crystals; Powder")])
-#                             mui.icon.Share()
-#                             html.h5("Share this sample's result")
-#                             html.hr()
-#                             # with mui.Grid(container=True, spacing=4):
-#                               # with mui.Grid(item=True, xs=6):
-#                             # add space between buttons in the ButtonGroup
-#                             with mui.ButtonGroup(fullWidth=True, sx={"width": "100%"}):
-#                                 mui.Button("Hide Lab Data", variant="contained", color="info", size="small", sx={"width": "50%", "margin": "10px"}, onClick=form_callback)
-#                               # with mui.Grid(item=True, xs=6):
-#                                 mui.Button("View More Info", variant="contained", color="info", size="small", sx={"width": "50%",  "margin": "10px", "backgroundColor": "#1E2C4A"}, onClick=safeSupplyResults)
-#                                 mui.Collapse(in_=True)
-#                         else:
-#                           st.echo('')
+st.markdown("---")
+display_funding()

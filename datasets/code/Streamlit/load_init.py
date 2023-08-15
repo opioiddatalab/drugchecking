@@ -4,6 +4,8 @@ import re
 import pandas as pd
 import math
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
+from datetime import timedelta
+from datetime import datetime
 
 def local_css(file_name):
     with open(file_name) as f:
@@ -19,7 +21,7 @@ def create_sidebar():
       "NC Overdoses": "https://ncoverdoses.streamlit.app/",
       "NC Stimulants": "https://ncstimulants.streamlit.app/",
       "NC Drug Market": "https://ncdrugmarket.streamlit.app/",
-      "NC Psychedelics & Others": "https://ncpsychedelics.streamlit.app/",
+      "NC Psychedelics & Other": "https://ncpsychedelics.streamlit.app/",
       "Get Help": "https://www.streetsafe.supply/contact",
     }
     with st.sidebar:
@@ -253,8 +255,11 @@ def get_nc_merged_df(substance_list):
   df = df[['sampleid',  'substance', 'county', 'date_collect', 'expectedsubstance', 'lab_meth_any_y', 'lab_cocaine_any_y', 'crystals', 'lab_fentanyl_y' ]]
   return df[df['substance'].isin(substance_list)]
 
-def get_nc_intro_metrics(metrics, count, sub_list, df_2):
-   col1, col2, col3, col4 = st.columns(4)
+def get_nc_intro_metrics(metrics, count, sub_list, df_2, col_4_display=False):
+   if col_4_display == True:
+    col1, col2, col3, col4 = st.columns(4)
+   else:
+    col1, col2, col3 = st.columns(3)
    with col1:
     label = list(metrics.keys())[0]
     value = list(metrics.values())[0]
@@ -267,10 +272,10 @@ def get_nc_intro_metrics(metrics, count, sub_list, df_2):
     label = list(metrics.keys())[2]
     value = list(metrics.values())[2]
     st.metric(label=label, value=value)
-   with col4:
-        #  count the number of unique sampleids in the nc_main_dataset
-        label_="Stimulant Samples"
-        st.metric(label=label_, value=count)
+   if col_4_display == True:
+    with col4:
+      label = list(metrics.keys())[3]
+      st.metric(label=label, value=count)
    for s_ in sub_list:
       # check to see if s_ is in the df_2
       if s_ in df_2.index:
@@ -302,26 +307,21 @@ def generate_container_with_rows(items):
       first_column_items = items[:list_length_divided_by_three]
       second_column_items = items[list_length_divided_by_three:list_length_divided_by_three * 2]
       third_column_items = items[list_length_divided_by_three * 2:]
-      #  fill each col with corresponding list
-      if list_length == 0:
-        st.write("No items found")
-      else :
-        with col1:
-          for index, row in first_column_items.iterrows():
-            # check to see if the substance column exists
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-        with col2:
-          for index, row in second_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
-        with col3:
-          for index, row in third_column_items.iterrows():
-            substance = row['substance']
-            latest_detected = row['total']
-            st.metric(label=substance, value=latest_detected, help=substance)
+      with col1:
+        for item in first_column_items:
+          substance = item['substance']
+          latest_detected = item['total']
+          st.metric(label=substance, value=latest_detected, help=str(latest_detected) + " overdose-related samples have tested positive for " + substance + " in NC.")
+      with col2:
+        for item in second_column_items:
+          substance = item['substance']
+          latest_detected = item['total']
+          st.metric(label=substance, value=latest_detected, help=str(latest_detected) + " overdose-related samples have tested positive for " + substance + " in NC.")
+      with col3:
+        for item in third_column_items:
+          substance = item['substance']
+          latest_detected = item['total']
+          st.metric(label=substance, value=latest_detected, help=str(latest_detected) + " overdose-related samples have tested positive for " + substance + " in NC.")
       return st.container()
 
 def generate_adulterant_df(items):
@@ -333,7 +333,7 @@ def generate_adulterant_df(items):
                           width='medium'
                         ),
                         'total': st.column_config.NumberColumn(
-                          "Count",
+                          "Number of Samples",
                           width='medium'
                         ),
                         'latest_detected': st.column_config.DateColumn(
@@ -346,12 +346,13 @@ def generate_adulterant_df(items):
                       },
                      hide_index=True,
                   )
+
 def generate_drug_supply_table(df):
    with st.container():
     st.subheader("Does this represent the entire NC drug supply?")
     st.write("We have analyzed a limited number of these drugs. People may send us samples because the drugs caused unexpected effects. Our data don't represent the entire drug supply in North Carolina.")
-    st.expander("View raw data table", )
 
+    generate_filtering_tips()
     merged_df = get_nc_merged_df(df)
 
     merged_df = merged_df.sort_values(by=['sampleid'], ascending=False)
@@ -418,13 +419,11 @@ def generate_drug_supply_table(df):
           }
       };
     ''')
-  # ADD IN COUNTY COLUMN + EXPECTED SUBSTANCE (VERBATIM FROM COL) COL + TEXTURE/COLOR COLS + COUNTY REGION COL
-  # LINK TO COUUNTY REGION MAP
 
     gridOptions['columnDefs'] = [
         {
         "field": "sampleid",
-        "headerName": "Sample IDS",
+        "headerName": "Sample ID",
         "cellRenderer": LinkCellRenderer,
         "cellRendererParams": {
           "color": "blue",
@@ -453,7 +452,7 @@ def generate_drug_supply_table(df):
     with st.container():
         custom_css = {
           ".ag-root-wrapper": {
-            "max-width": "650px !important",
+            "max-width": "100% !important",
             "margin": "0 auto",
             },
         }
@@ -468,12 +467,466 @@ def generate_drug_supply_table(df):
 
 
         csv = convert_df(merged_df)
+        col1, col2 = st.columns(2)
+        with col1:
+          st.download_button(
+            "Download csv",
+            csv,
+            "file.csv",
+            "text/csv",
+            key='download-csv'
+          )
+        with col2:
+            st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary")
 
+def display_funding():
+  with st.container():
+    st.subheader("Funding")
+    st.markdown("Views expressed above do not necessarily reflect those of the funders.")
+    st.markdown("[Injury and Violence Prevention Branch](https://injuryfreenc.dph.ncdhhs.gov/) of the NC Department of Health and Human Services, via funding from the Centers for Disease Control and Prevention (2023, data visualizations)")
+    st.markdown("North Carolina General Assembly via the [NC Collaboratory](https://collaboratory.unc.edu/), using Opioid Settlement Funds (2023-24, operations)")
+    st.markdown("[Foundation for Opioid Response Efforts](https://forefdn.org) (2022-23, startup)")
+
+  return st.container()
+
+def generate_filtering_tips():
+  st.info("Use column headers to search, sort, and filter.", icon="ℹ️")
+
+def generate_substance_od_table():
+  with st.container():
+    generate_filtering_tips()
+  nc_lab_detail = get_nc_lab_detail_ds()
+  nc_analysis = get_nc_analysis_ds()
+  df = pd.merge(nc_lab_detail, nc_analysis, on='sampleid')
+  # drop any columns that start with 'lab'
+  df = df[df.columns.drop(list(df.filter(regex='lab')))]
+  # drop the card-confirmatory columns
+  df = df[df.columns.drop(list(df.filter(regex='card')))]
+  # drop the columns that start with 'confirmatory'
+  df = df[df.columns.drop(list(df.filter(regex='confirmatory')))]
+  # drop the columns cas, unii, abundance, and method
+  df = df.drop(['cas', 'unii', 'abundance', 'method'], axis=1)
+  df = df[~df['substance'].str.contains("no compounds")]
+  df = df[~df['substance'].str.contains("non-specific")]
+  df = df[~df['substance'].str.contains("pending")]
+
+  df = df.sort_values(by=['sampleid'], ascending=False)
+  df['sampleid'] = df['sampleid'].astype('category')
+  df['pubchemcid'] = df['pubchemcid'].astype('category')
+  df['date_collect'] = pd.to_datetime(df['date_collect'], format='mixed')
+  df = df.dropna(subset=['od'])
+  df = df[~df['od'].str.contains("not involved")]
+
+  gb = GridOptionsBuilder.from_dataframe(df)
+  gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, editable=False)
+  gb.configure_column("date_collect", type=["dateColumnFilter","customDateTimeFormat"], pivot=True)
+  gb.configure_pagination(paginationAutoPageSize=False, paginationPageSize=15)
+  gb.configure_grid_options(domLayout='single')
+  gb.configure_grid_options(
+      enableCellTextSelection=True,
+      ensureDomOrder=True,
+  )
+  # sort the df by the date_collect col with most recent first
+  gridOptions = gb.build()
+  LinkCellRenderer = JsCode('''
+    class LinkCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                <a id='click-button'
+                    class='btn-simple'
+                    href='https://www.streetsafe.supply/results/p/${this.params.getValue()}'
+                    target='_blank'
+                    style='color: ${this.params.color};}'>${this.params.getValue()}</a>
+            </span>
+          `;
+
+            this.eButton = this.eGui.querySelector('#click-button');
+
+            this.btnClickedHandler = this.btnClickedHandler.bind(this);
+            this.eButton.addEventListener('click', this.btnClickedHandler);
+
+        }
+
+        getGui() {
+            return this.eGui;
+        }
+
+        refresh() {
+            return true;
+        }
+
+        destroy() {
+            if (this.eButton) {
+                this.eGui.removeEventListener('click', this.btnClickedHandler);
+            }
+        }
+
+        btnClickedHandler(event) {
+
+                    this.refreshTable('clicked');
+            }
+
+        refreshTable(value) {
+            this.params.setValue(value);
+        }
+    };
+  ''')
+  LinkCellRenderer2 = JsCode('''
+    class LinkCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            if (this.params.getValue() !== null ) {
+              this.eGui.innerHTML = `
+              <span>
+                  <a id='click-button'
+                      class='btn-simple'
+                      href='https://pubchem.ncbi.nlm.nih.gov/compound/${this.params.getValue()}'
+                      target='_blank'
+                      style='color: ${this.params.color};}'>${this.params.getValue()}</a>
+              </span>
+            `;
+
+              this.eButton = this.eGui.querySelector('#click-button');
+
+              this.btnClickedHandler = this.btnClickedHandler.bind(this);
+              this.eButton.addEventListener('click', this.btnClickedHandler);
+            } else {
+                this.eGui.innerHTML = `<span>unavailalbe</span>`;
+            }
+
+        }
+
+        getGui() {
+            return this.eGui;
+        }
+
+        refresh() {
+            return true;
+        }
+
+        destroy() {
+            if (this.eButton) {
+                this.eGui.removeEventListener('click', this.btnClickedHandler);
+            }
+        }
+
+        btnClickedHandler(event) {
+
+                    this.refreshTable('clicked');
+            }
+
+        refreshTable(value) {
+            this.params.setValue(value);
+        }
+    };
+  ''')
+
+  gridOptions['columnDefs'] = [
+      {
+      "field": "sampleid",
+      "headerName": "Sample ID",
+      "cellRenderer": LinkCellRenderer,
+      "cellRendererParams": {
+        "color": "blue",
+        "data": "sampleid",
+      },
+      "maxWidth": 100,
+    },
+    {
+      "field": "substance",
+      "headerName": "Substance",
+      "type": ["setColumnFilter"],
+      "minWidth": 250,
+    },
+    {
+      "field": "date_collect",
+      "headerName": "Sample Collection Date",
+      "type": ["dateColumnFilter","customDateTimeFormat"],
+      "custom_format_string":"yyyy-MM-dd",
+      "pivot": True,
+      "maxWidth": 180,
+    },
+    {
+       "field" : "county",
+        "headerName": "County",
+        "maxWidth": 120,
+    },
+    {
+       "field" : "expectedsubstance",
+        "headerName": "Expected Substance",
+    },
+    {
+       "field" : "od",
+        "headerName": "Overdose",
+    },
+    {
+      "field": "pubchemcid",
+      "headerName": "PubChem CID",
+              "cellRenderer": LinkCellRenderer2,
+      "cellRendererParams": {
+        "color": "blue",
+        "data": "pubchemcid",
+      },
+      "maxWidth": 140
+
+    },
+  ]
+  with st.container():
+      custom_css = {
+        ".ag-root-wrapper": {
+          "max-width": "100% !important",
+          "margin": "0 auto",
+          },
+      }
+      grid_response = AgGrid(
+          df,
+          custom_css=custom_css,
+          gridOptions=gridOptions,
+          allow_unsafe_jscode=True,
+          enable_enterprise_modules=False
+          )
+
+
+      csv = convert_df(df)
+      col1, col2 = st.columns(2)
+      with col1:
         st.download_button(
           "Download csv",
           csv,
           "file.csv",
           "text/csv",
-          key='download-csv'
+          key='download-csv-recent'
         )
+      with col2:
+          st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary", key="recent_drug_table")
 
+def pull_top_od_subs():
+  nc_lab_detail = get_nc_lab_detail_ds()
+  nc_analysis = get_nc_analysis_ds()
+  df = pd.merge(nc_lab_detail, nc_analysis, on='sampleid')
+  df_od = df.copy()
+  df_od = df_od[~df_od['substance'].str.contains("no compounds")]
+  df = df_od[~df_od['substance'].str.contains("non-specific")]
+  df_od = df[~df_od['substance'].str.contains("pending")]
+  df_od = df_od.dropna(subset=['od'])
+  df_od = df_od[~df_od['od'].str.contains("not involved")]
+  df_od = df_od.reset_index()
+  top_fifteen = df_od['substance'].value_counts().nlargest(15).index.tolist()
+  df_od = df_od.sort_values(by=['date_collect'], ascending=False)
+  top_fifteen_list = []
+  for substance in top_fifteen:
+    substance_dict = {}
+    count = df_od['substance'].value_counts()[substance]
+    substance_dict['substance'] = substance
+    substance_dict['total'] = count
+    top_fifteen_list.append(substance_dict)
+  return top_fifteen_list
+
+def generate_new_drugs_table():
+  with st.container():
+    generate_filtering_tips()
+  url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/nc/nc_lab_detail.csv"
+  df = pd.read_csv(url)
+  # drop any columns that start with 'lab'
+  df = df[df.columns.drop(list(df.filter(regex='lab')))]
+  # drop the card-confirmatory columns
+  df = df[df.columns.drop(list(df.filter(regex='card')))]
+  # drop the columns that start with 'confirmatory'
+  df = df[df.columns.drop(list(df.filter(regex='confirmatory')))]
+  # drop the columns cas, unii, abundance, and method
+  df = df.drop(['cas', 'unii', 'abundance', 'method', 'primary', 'trace'], axis=1)
+  df = df[~df['substance'].str.contains("no compounds")]
+  df = df[~df['substance'].str.contains("non-specific")]
+  df = df[~df['substance'].str.contains("pending")]
+  # group the df by substance
+  df_sub = df.groupby('substance')
+  # sort by subgroup date
+  df = df_sub.first()
+  # keep the substance column
+  df = df.reset_index()
+  df = df.sort_values(by=['date_complete'], ascending=False)
+  # drop if date_complete is more than 183 days before today
+  df['date_complete'] = pd.to_datetime(df['date_complete'])
+  df = df[df['date_complete'] > (datetime.now() - timedelta(days=183))]
+  df = df.sort_values(by=['sampleid'], ascending=False)
+  df['sampleid'] = df['sampleid'].astype('category')
+  df['pubchemcid'] = df['pubchemcid'].astype('category')
+  df['date_complete'] = pd.to_datetime(df['date_complete'], format='mixed')
+  # st.dataframe(df)
+  gb = GridOptionsBuilder.from_dataframe(df)
+
+    #customize gridOptions
+  gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, editable=False)
+  gb.configure_column("date_complete", type=["dateColumnFilter","customDateTimeFormat"], pivot=True)
+  gb.configure_pagination(paginationAutoPageSize=False, paginationPageSize=15)
+  gb.configure_grid_options(domLayout='single')
+  gb.configure_grid_options(
+      enableCellTextSelection=True,
+      ensureDomOrder=True,
+  )
+  # sort the df by the date_collect col with most recent first
+  gridOptions = gb.build()
+  LinkCellRenderer = JsCode('''
+    class LinkCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                <a id='click-button'
+                    class='btn-simple'
+                    href='https://www.streetsafe.supply/results/p/${this.params.getValue()}'
+                    target='_blank'
+                    style='color: ${this.params.color};}'>${this.params.getValue()}</a>
+            </span>
+          `;
+
+            this.eButton = this.eGui.querySelector('#click-button');
+
+            this.btnClickedHandler = this.btnClickedHandler.bind(this);
+            this.eButton.addEventListener('click', this.btnClickedHandler);
+
+        }
+
+        getGui() {
+            return this.eGui;
+        }
+
+        refresh() {
+            return true;
+        }
+
+        destroy() {
+            if (this.eButton) {
+                this.eGui.removeEventListener('click', this.btnClickedHandler);
+            }
+        }
+
+        btnClickedHandler(event) {
+
+                    this.refreshTable('clicked');
+            }
+
+        refreshTable(value) {
+            this.params.setValue(value);
+        }
+    };
+  ''')
+  LinkCellRenderer2 = JsCode('''
+    class LinkCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            if (this.params.getValue() !== null ) {
+              this.eGui.innerHTML = `
+              <span>
+                  <a id='click-button'
+                      class='btn-simple'
+                      href='https://pubchem.ncbi.nlm.nih.gov/compound/${this.params.getValue()}'
+                      target='_blank'
+                      style='color: ${this.params.color};}'>${this.params.getValue()}</a>
+              </span>
+            `;
+
+              this.eButton = this.eGui.querySelector('#click-button');
+
+              this.btnClickedHandler = this.btnClickedHandler.bind(this);
+              this.eButton.addEventListener('click', this.btnClickedHandler);
+            } else {
+                this.eGui.innerHTML = `<span>unavailalbe</span>`;
+            }
+
+        }
+
+        getGui() {
+            return this.eGui;
+        }
+
+        refresh() {
+            return true;
+        }
+
+        destroy() {
+            if (this.eButton) {
+                this.eGui.removeEventListener('click', this.btnClickedHandler);
+            }
+        }
+
+        btnClickedHandler(event) {
+
+                    this.refreshTable('clicked');
+            }
+
+        refreshTable(value) {
+            this.params.setValue(value);
+        }
+    };
+  ''')
+
+  gridOptions['columnDefs'] = [
+      {
+      "field": "sampleid",
+      "headerName": "Sample ID",
+      "cellRenderer": LinkCellRenderer,
+      "cellRendererParams": {
+        "color": "blue",
+        "data": "sampleid",
+      },
+      "maxWidth": 120,
+    },
+    {
+      "field": "substance",
+      "headerName": "Substance",
+      "type": ["setColumnFilter"],
+    },
+    {
+      "field": "date_complete",
+      "headerName": "Sample Collection Date",
+      "type": ["dateColumnFilter","customDateTimeFormat"],
+      "custom_format_string":"yyyy-MM-dd",
+      "pivot": True,
+      "maxWidth": 200,
+    },
+    {
+      "field": "pubchemcid",
+      "headerName": "PubChem CID",
+              "cellRenderer": LinkCellRenderer2,
+      "cellRendererParams": {
+        "color": "blue",
+        "data": "pubchemcid",
+      },
+
+    },
+  ]
+  with st.container():
+      custom_css = {
+        ".ag-root-wrapper": {
+          "max-width": "100% !important",
+          "margin": "0 auto",
+          },
+      }
+      grid_response = AgGrid(
+          df,
+          custom_css=custom_css,
+          gridOptions=gridOptions,
+          allow_unsafe_jscode=True,
+          enable_enterprise_modules=False
+          )
+
+
+      csv = convert_df(df)
+      col1, col2 = st.columns(2)
+      with col1:
+        st.download_button(
+          "Download csv",
+          csv,
+          "file.csv",
+          "text/csv",
+          key='download-csv-recent'
+        )
+      with col2:
+          st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary", key="recent_drug_table")
