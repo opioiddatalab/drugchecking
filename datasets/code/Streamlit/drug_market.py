@@ -13,8 +13,7 @@ import random
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
-import re
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
+from st_aggrid import GridOptionsBuilder, AgGrid, JsCode
 
 def get_nc_most_recent():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/program_dashboards/elements/nc_most_recent.csv"
@@ -129,6 +128,7 @@ with st.expander("View Locations data table"):
     )
 st.markdown("---")
 st.markdown("## What substances are in the NC drug Supply?")
+st.write("This table displays the percentage of samples that contained a given substance for each NC Medicaid Region.")
 st.markdown("""
             <div style='display: flex; flex-direction: row; align-items: center; justify-content: space-between'>
               <p>Need to find a Medicaid Region number?</p>

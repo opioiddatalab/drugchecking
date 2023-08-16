@@ -331,8 +331,8 @@ generate_drug_supply_table(nc_stimulants_list)
 
 st.markdown("---")
 st.subheader("Fentanyl in stimulants")
-st.markdown("**This doesn't mean that crack is impervious to fentanyl**, [as in this NC case](https://www.justice.gov/usao-ednc/pr/drug-dealer-who-sold-fentanyl-laced-crack-sentenced-more-16-years-after-four-people). Also, keep in mind that people may send us samples because they caused unexpected effects, so these percents may be higher than in the normal drug supply.")
 st.markdown("There is concern that fentanyl is showing up in stimulants. [Our recent study](https://cdr.lib.unc.edu/concern/articles/zg64tx33c?locale=en) found that fentanyl mostly shows up in powder forms of methamphetamine and cocaine, and in crystal meth and or crack rarely. Nationally, we found that 12-15% of powder methamphetamine and powder cocaine samples sent to us also contained fentanyl, after adjusting for selection bias. Keep in mind that people may send us samples because they caused unexpected effects, so these NC percents may be higher than in the normal drug supply. (Note to programs: Please consider sending \"typical\" samples so we can get a sense of what's out there.)")
+st.markdown("**This doesn't mean that crack is impervious to fentanyl**, [as in this NC case](https://www.justice.gov/usao-ednc/pr/drug-dealer-who-sold-fentanyl-laced-crack-sentenced-more-16-years-after-four-people). Also, keep in mind that people may send us samples because they caused unexpected effects, so these percents may be higher than in the normal drug supply.")
 st.markdown("### Percentage of stimulant samples testing positive for fentanyl:")
 stimulant_substance_list = [
    "powder meth",

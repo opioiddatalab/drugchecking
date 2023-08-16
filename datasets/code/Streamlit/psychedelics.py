@@ -11,6 +11,7 @@ local_css("datasets/code/Streamlit/pages/psychedelics.css")
 local_css("datasets/code/Streamlit/style.css")
 import pandas as pd
 from PIL import Image
+from persist import persist, load_widget_state
 
 def get_hnc_lab_detail():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/selfservice/hnc/lab_detail.csv"

@@ -11,9 +11,7 @@ local_css("datasets/code/Streamlit/pages/overdose.css")
 import pandas as pd
 import numpy as np
 import altair as alt
-from itertools import cycle
-import streamlit.components.v1 as components
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
+from st_aggrid import GridOptionsBuilder, AgGrid, JsCode
 from PIL import Image
 
 
@@ -243,7 +241,7 @@ with tab2:
 
 with tab3:
     st.markdown("### Resources for support on Technical Assistance or for scaling up Naloxone to reverse opioid overdoses in your county:")
-    st.markdown("* [Remedy Alliance for the People](https://www.remedyap.org/) is a non-profit organization that negotiates with pharmaceutical companies for lower prices on generic injectable naloxone. Remedy Alliance also offers technical assistance for establishing and scaling up a naloxone distribution program. Technical assistance may be requested directly through their website.")
+    st.markdown("* [Remedy Alliance for the People](https://remedyallianceftp.org/) is a non-profit organization that negotiates with pharmaceutical companies for lower prices on generic injectable naloxone. Remedy Alliance also offers technical assistance for establishing and scaling up a naloxone distribution program. Technical assistance may be requested directly through their website.")
     st.markdown("* [The NHRTAC](https://harmreductionhelp.cdc.gov/s/) was established by the U.S. Centers for Disease Control and Prevention and the U.S. Substance Abuse and Mental Health Services Administration to provide free assistance to those implementing harm reduction services in their community. Technical assistance for implementing naloxone distribution programs may be requested through the NHRTAC website.")
     st.markdown("* [NASTAD](https://nastad.org/issues/syringe-services-programs) provides technical assistance for the implementation of naloxone distribution programs to health departments and community-based organizations. They also provide regional harm reduction support through a network of professional consultants working across the United States.")
 
