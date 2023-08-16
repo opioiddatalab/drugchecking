@@ -452,7 +452,7 @@ def generate_drug_supply_table(df):
     with st.container():
         custom_css = {
           ".ag-root-wrapper": {
-            "max-width": "100% !important",
+            "width": "80% !important",
             "margin": "0 auto",
             },
         }
@@ -477,7 +477,11 @@ def generate_drug_supply_table(df):
             key='download-csv'
           )
         with col2:
-            st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary")
+            st.markdown("""
+                        <a class='click-button button' href='https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md' target=_blank>How to use this data</a>
+                        """,
+                        unsafe_allow_html=True
+            )
 
 def display_funding():
   with st.container():
@@ -702,8 +706,11 @@ def generate_substance_od_table():
           key='download-csv-recent'
         )
       with col2:
-          st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary", key="recent_drug_table")
-
+            st.markdown("""
+                        <a class='click-button button' href='https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md' target=_blank>How to use this data</a>
+                        """,
+                        unsafe_allow_html=True
+            )
 def pull_top_od_subs():
   nc_lab_detail = get_nc_lab_detail_ds()
   nc_analysis = get_nc_analysis_ds()
@@ -929,4 +936,8 @@ def generate_new_drugs_table():
           key='download-csv-recent'
         )
       with col2:
-          st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary", key="recent_drug_table")
+            st.markdown("""
+                        <a class='click-button button' href='https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md' target=_blank>How to use this data</a>
+                        """,
+                        unsafe_allow_html=True
+            )

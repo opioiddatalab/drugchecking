@@ -9,11 +9,7 @@ st.set_page_config(
 )
 local_css("datasets/code/Streamlit/pages/psychedelics.css")
 local_css("datasets/code/Streamlit/style.css")
-from persist import persist, load_widget_state
-import webbrowser
 import pandas as pd
-import random
-import math
 from PIL import Image
 
 def get_hnc_lab_detail():

@@ -350,8 +350,11 @@ with st.expander("View raw data table", ):
             key='download-csv'
           )
         with col2:
-            st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary")
-
+            st.markdown("""
+                        <a class='click-button button' href='https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md' target=_blank>How to use this data</a>
+                        """,
+                        unsafe_allow_html=True
+            )
 
 st.markdown("---")
 st.markdown("## Detection of novel substances")

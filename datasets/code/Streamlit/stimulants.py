@@ -528,9 +528,12 @@ with st.expander("View full data table", ):
           "text/csv",
           key='download-csv-stim-with-fent'
         )
-        with col2:
-          st.button("How to use this data", on_click=button_as_page_link, args=("https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md",), type="secondary", key='stim-with-fent-how-to-use'  )
-
+      with col2:
+            st.markdown("""
+                        <a class='click-button button' href='https://github.com/opioiddatalab/drugchecking/blob/main/datasets/technical_details.md' target=_blank>How to use this data</a>
+                        """,
+                        unsafe_allow_html=True
+            )
 
 st.markdown("---")
 st.markdown("## Resources for overamping and stimulant OD prevention:")
