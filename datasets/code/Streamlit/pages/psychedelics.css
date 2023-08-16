@@ -1,0 +1,16 @@
+.element-container .css-9aoz2h {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.css-1wivap2  {
+  width: auto;
+}
+

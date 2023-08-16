@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 html, body, [class*="css"] {
-    font-family: 'Josefin Sans', sans-serif; 
+    font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
     font-weight: 400;
     color: #1a1919;
@@ -15,7 +15,7 @@ div[class*="appview-container"] section div[class*="block-container"][class*="cs
 h1 div span[class*="css"] {
     font-size: 2em;
     font-weight: 700;
-    width: 80%; 
+    width: 80%;
     /* text-align: center; */
 }
 
@@ -52,3 +52,68 @@ div[data-testid="stMarkdownContainer"] hr {
 
 }
 
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] button{
+  border: 2px solid black;
+  margin: 0 auto;
+    color: #e39b33 !important;
+}
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] button:visited {
+  border: 2px solid black;
+  margin: 0 auto;
+  text-decoration: none !important;
+}
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] button:hover{
+  border: 2px solid black;
+  margin: 0 auto;
+  text-decoration: none !important;
+}
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] {
+    text-align: center;
+    grid-template-columns: auto;
+}
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] label{
+    text-align: center;
+    grid-template-columns: auto;
+}
+.stButton>button, .stDownloadButton>button {
+  /* border: none; */
+  background-color: transparent !important;
+    color: #e39b33 !important;
+}
+
+.stDownloadButton>button:hover, .stButton>button:hover {
+  text-decoration: underline !important;
+  /* make sure underline is black */
+  text-decoration-color: black !important;
+}
+
+a.click-button {
+  color: black !important;
+  text-decoration: none;
+}
+p > a.click-button:hover, a.click-button:visited {
+  color: black;
+  text-decoration: line;
+  text-decoration-color: black;
+}
+a.click-button.button{
+  border: 2px solid black;
+  color: black !important;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+p > a.click-button.button:hover, a.click-button.button:visited {
+  color: black;
+  text-decoration: line;
+  text-decoration-color: black;
+}
+
+div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"].css-ocqkz7 {
+  display: flex;
+  flex-direction: row;
+  align-items: center !important;
+}
+div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"].css-ocqkz7 p {
+  margin-top: 0 !important;
+}

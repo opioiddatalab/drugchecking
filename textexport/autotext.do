@@ -525,3 +525,9 @@ frames reset
 
 // Trigger data set processing code
 do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/result_processing.do"
+
+// Trigger substances in stimulants
+do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/program_dashboards/substances_in_stimulants.do"
+
+// Trigger recently detected subsances
+do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/program_dashboards/recentlydetected.do"

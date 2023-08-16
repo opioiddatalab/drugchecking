@@ -1,2 +1,3 @@
 [theme]
-secondaryBackgroundColor = "#e39b33"
+secondaryBackgroundColor = '#e39b33'
+primaryColor = '#e39b33'

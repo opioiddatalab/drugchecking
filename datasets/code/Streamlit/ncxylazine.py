@@ -1,15 +1,22 @@
 # -*- coding: utf-8 -*-
-from load_css import local_css
+import streamlit as st
+st.set_page_config(
+    page_title="NC Xylazine",
+    # make the page_icon the lab_coat emoji
+    page_icon="🥽",
+    # initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
+)
+from load_init import local_css, display_funding
 local_css("datasets/code/Streamlit/style.css")
-
+import streamlit_analytics
 import pandas as pd
 import numpy as np
 import plotly.express as px
 from urllib.request import urlopen
 import json
-import streamlit as st
 from PIL import Image
-import streamlit_analytics
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 
 def get_data():
     url = "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/datasets/code/Streamlit/x_subs.csv"
@@ -50,10 +57,10 @@ rows_count = len(df.index)
 xyl_count = len(dfxyl.index)
 
 # Count total number of counties with any samples
-counties_sampled = df['county'].nunique() 
+counties_sampled = df['county'].nunique()
 
 # Count number of counties samples
-xyl_counties = dfxyl['county'].nunique() 
+xyl_counties = dfxyl['county'].nunique()
 
 # Latest date xylazine was detected
 latest = dfxyl['date_complete'].max()
@@ -65,14 +72,14 @@ def update_entries(grp):
     # update date_complete to most recent date
     grp['date_complete'] = grp['date_complete'].max()
     # if length of county is less than 1, then replace with "County not specified"
-    if len(grp['county']) < 1: 
+    if len(grp['county']) < 1:
         grp['county'] = "County not specified"
     return grp
 # remove all columns except date_complete and county
 dfxyl = dfxyl[['county', 'date_complete']]
 # only keep the first instance of each county
 dfxyl = dfxyl.groupby(by=["county"]).apply(update_entries)
-mostrecent = dfxyl.drop_duplicates(subset=['county'])    
+mostrecent = dfxyl.drop_duplicates(subset=['county'])
 
 # Sensations Graph
 import altair as alt
@@ -98,13 +105,14 @@ sensations = alt.Chart(url).mark_bar(size=40).encode(
 
 
 
-streamlit_analytics.start_tracking()
 # Streamlit
+streamlit_analytics.start_tracking()
 st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from UNC Drug Analysis Lab")
+
 st.markdown("[Our lab in Chapel Hill](https://streetsafe.supply) tests street drugs from 30+ North Carolina harm reduction programs, hospitals, clinics, and health departments. We analyze the samples using GCMS (mass spec). Part of the multi-disciplinary [Opioid Data Lab](https://www.opioiddata.org).")
 st.markdown("---")
-st.markdown("There is a new cut in street drugs and it causes terrible skin problems. But we didn't have a way to track it in North Carolina. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
+st.markdown("There is a new cut in street drugs (primarily fentanyl, heroin, and other opioids) and it causes terrible skin problems. But we didn't have a way to track it in North Carolina. Therefore, we are making data available from our street drug testing lab to prevent public health harms.")
 
 st.markdown("---")
 
@@ -133,13 +141,13 @@ with col1:
     label="Samples with xylazine",
     value=xyl_count
     )
-    
+
 with col2:
     st.metric(
     label="Counties with xylazine",
     value=xyl_counties
     )
-    
+
 st.markdown(":label: Our samples do not represent the entire drug supply. People may send us samples because they suspect xylazine or have unexpected reactions.")
 
 st.markdown("---")
@@ -149,7 +157,7 @@ st.write(
     value=latest
     )
 
-    
+
 # Latest late of xylazine detection
 st.header("Xylazine last detected on:")
 st.subheader(latest)
@@ -157,7 +165,7 @@ st.markdown("---")
 
 
 st.subheader(":hospital: [More info on xylazine](https://harmreduction.org/wp-content/uploads/2022/11/Xylazine-in-the-Drug-Supply-one-pager.pdf) in the street drug supply")
-st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. It can cause bad skin ulcers beyond the site of injection. Treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy unpleasant sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
+st.markdown("Xylazine (zie-la-zine) is a cut mixed in with other street drugs. It can cause bad skin ulcers beyond the site of injection. Treated early, we can prevent amputation. Drugs with xylazine in it can cause heavy sedation that make it *seem* like naloxone isn't working. But naloxone can still help with the fentanyl, so keep it on hand.")
 
 st.markdown("---")
 st.header("Where has xylazine been detected?")
@@ -194,7 +202,7 @@ agg_df["percent_str"] = np.round(agg_df["percent"], 1)
 with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
     counties = json.load(response)
 
-fig = px.choropleth_mapbox(agg_df, 
+fig = px.choropleth_mapbox(agg_df,
                            geojson=counties,
                            locations='countyfips',
                            color='percent',
@@ -208,11 +216,11 @@ fig = px.choropleth_mapbox(agg_df,
                            labels={'percent_str':'% Samples with Xylazine', 'county':'County', 'latest_date':'Most Recent Sample Date'},
                           )
 
-fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine')
+fig.update_layout(title_text='Percent of Samples Testing Positive for Xylazine in NC')
 
 st.plotly_chart(fig, use_container_width=True)
 
-                        
+
 st.markdown("We've detected xylazine in about half the places from where we received samples. We are working on better maps! Sorry this isn't perfect, but we will improve it soon.")
 
 st.subheader("Latest xylazine detection dates by location")
@@ -263,21 +271,21 @@ st.video('https://www.youtube.com/watch?v=orzgwi7sxFM')
 
 st.markdown("---")
 
-with st.container(): 
+with st.container():
     st.header("Skin Wounds and Xylazine")
     tab1, tab2 = st.tabs(["Xylazine Info (English)", "Xylazine Info (Español)"])
     with tab1:
         st.markdown("[Download PDF](https://www.addictiontraining.org/documents/resources/343_Xylazine_Handout_Large_size.pdf)")
         eng1 = Image.open('datasets/code/Streamlit/images/xylazine_eng_1.png')
         eng2 = Image.open('datasets/code/Streamlit/images/xylazine_eng_2.png')
-        st.image(eng1) 
-        st.image(eng2) 
+        st.image(eng1)
+        st.image(eng2)
     with tab2:
         st.markdown("[Descargar PDF](https://www.addictiontraining.org/documents/resources/342_Xylazine_Wounds_Handout_-_Spanish_Version_pocket_size.pdf)")
         esp1 = Image.open('datasets/code/Streamlit/images/xylazine_esp_1.png')
         esp2 = Image.open('datasets/code/Streamlit/images/xylazine_esp_2.png')
-        st.image(esp1) 
-        st.image(esp2) 
+        st.image(esp1)
+        st.image(esp2)
     st.subheader("Practical Guidance for Responding to Xylazine")
     st.video('https://youtu.be/MVs7ZfILCjE')
 
@@ -285,21 +293,18 @@ st.markdown("---")
 
 st.markdown("## Where did these drug samples come from?")
 st.markdown("A public service of the University of North Carolina. Data from North Carolina harm reduction programs. Full details at our [website](https://streetsafe.supply), at [UNC.edu](https://www.unc.edu/discover/drug-checking-project-cuts-overdoses/), and profiled in [_The New York Times_](https://www.nytimes.com/2022/12/24/us/politics/fentanyl-drug-testing.html))")
-st.video('https://youtu.be/cWbOeo6pm8A')
+st.video('https://youtu.be/_TnbruaCljM?t', start_time=304)
 
 st.markdown("Data documentation available [here](https://opioiddatalab.github.io/drugchecking/datasets/).")
 
 st.markdown("---")
 
-st.subheader("Funding")
-st.markdown("We are grateful to our funders:")
-st.markdown("[Injury and Violence Prevention Branch](https://injuryfreenc.dph.ncdhhs.gov/) of the NC Department of Health and Human Services, via funding from the Centers for Disease Control and Prevention (2023, data visualizations)")
-st.markdown("North Carolina General Assembly via the [NC Collaboratory](https://collaboratory.unc.edu/), using Opioid Settlement Funds (2023-24, operations)")
-st.markdown("[Foundation for Opioid Response Efforts](https://forefdn.org) (2022-23, startup)")
+display_funding()
 
 st.markdown("---")
 streamlit_analytics.stop_tracking(unsafe_password="streetsafe")
-# deleted code\n# commit 90661c07dd69631efb2b960bd6f846c91c3d5191
+# deleted code
+# commit 90661c07dd69631efb2b960bd6f846c91c3d5191
 # commit f7ff9cd6021d4680380a483db4957decd15fa39f
 # commit 28ac30685a5a32c6b71b935056308df6a587ce43
 # commit 6ee39e2c3fea3788af2f53516ad78ace23a5b835
@@ -310,5 +315,29 @@ streamlit_analytics.stop_tracking(unsafe_password="streetsafe")
 # commit 739e3453227b8998225d27042e20f409fbf109d3
 # commit a778b0a0ee8e03f7540a8ef4d35ba64e29867394
 # commit 52f19c11ae5a2c6046c909b784e3dfacf26d7624
-\n# commit f5821c2b743f7e74c988b6a30435019a9342928a
+# commit f5821c2b743f7e74c988b6a30435019a9342928a
 # commit 8c27d62cf3b5096be298874cb3749977ea8cf008
+# commit e8992a1a5f7c195d9b66cee56d8b091dd6fa4a14
+# commit a5d8096f69ce44418cf854c74b317cd0b1f64e4f
+# commit 5035a97faa8d57179bef1ad82b592df8f311941c
+# commit 657a3285a07003169a6d335bb0840489fbe5cd2e
+# commit 165d7cb78c695cca42683eefec17bdad1b3a6170
+# commit 67537a6ff6a9e6c309b376885091ef8561f82f4a
+# commit 1b32d8f7a1c36685d269f1f9568c226be890634c
+# commit 93c7b26baa88ed0fc51880c2c63c245fa061158d
+# commit f177cc2f2b7ef169fdc75322ed9c5084e04b6552
+# commit d2b7d64515f138a7545e7ac136fd35232b5ab4f6
+# commit 0777db9e8e8b5d84602f05aa8b2bd451fa22d4cd
+# commit 65a27034be2a1191cad86e1f014e7d34a3693f71
+# commit 8018931e815a42f3fa5e3d00a4c200247ab49b5d
+# commit d6151cffb4deba2ba5c8e6741ba8a89e53928807
+# commit 2f8ac5f381268a2c8f6488d915788de1619aa43f
+# commit 122d9345958f35caabddecf85c33558ee74f34e7
+# commit 834c3794451cada1f9bbfbb6b2ebaeac3dde3c4b
+# commit 1b6cb47695a9829626b858176074980599e41a2c
+# commit e662da332a801c50db81db77e44fb4ba80cf7795
+# commit 1722502de82978fe8cab7a09236656360db1b8ba
+# commit 49509de4bb3315594375e55fc929ea44f0290256
+# commit c351454aa1446278d42f7d9644ecb3045ad2c143
+# commit 05ce8683cbb2d13f0dda7e8f98b8677bdca610d2
+# commit a2bf95bdf747a19d0c7952e533313f4faab537cf
