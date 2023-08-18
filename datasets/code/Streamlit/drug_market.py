@@ -1,4 +1,4 @@
-from load_init import local_css, create_sidebar, convert_df, add_county_group, get_nc_merged_df, display_funding, button_as_page_link, generate_filtering_tips, generate_new_drugs_table
+from load_init import local_css, create_sidebar, convert_df, add_county_group, get_nc_merged_df, display_funding, button_as_page_link, generate_filtering_tips, generate_new_drugs_table, get_nc_county_count, get_nc_sample_count, get_nc_program_count, get_nc_intro_metrics
 import streamlit as st
 st.set_page_config(
     page_title="NC Drug Market",
@@ -92,15 +92,12 @@ html_str = f"""
 """
 st.markdown(html_str, unsafe_allow_html=True)
 
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    st.metric(label="Samples", value=712)
-with col2:
-    st.metric(label="Programs & Clinics", value=26)
-with col3:
-    st.metric(label="Counties", value=20)
-with col4:
-    st.metric(label="Substances Detected", value=104)
+get_nc_intro_metrics({
+  "All Samples": get_nc_sample_count(),
+  "Programs & Clinics": get_nc_program_count(),
+  "Counties": get_nc_county_count(),
+  "Substances Detected": nc_market_sub_count_number
+}, nc_market_sub_count_number, [], {}, True)
 
 with st.expander("View Locations data table"):
   with st.container():
