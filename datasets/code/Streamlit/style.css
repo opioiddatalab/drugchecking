@@ -76,7 +76,6 @@ div[data-testid="stHorizontalBlock"] div[data-testid="column"] label{
     grid-template-columns: auto;
 }
 .stButton>button, .stDownloadButton>button {
-  /* border: none; */
   background-color: transparent !important;
     color: #e39b33 !important;
 }

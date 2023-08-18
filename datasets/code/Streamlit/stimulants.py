@@ -108,22 +108,7 @@ get_nc_intro_metrics({
   "Counties": nc_countycount_int,
   "Stimulant Samples": len(nc_main_dataset['sampleid'])
 }, len(nc_main_dataset['sampleid']), nc_stimulants_list, nc_stimulants)
-# col1, col2, col3, col4 = st.columns(4)
-# with col1:
-#     st.metric(label="All Samples", value=nc_sample_count_int)
-# with col2:
-#     st.metric(label="Programs & Clinics", value=nc_program_count_int)
-# with col3:
-#     st.metric(label="Counties", value=nc_countycount_int)
-# with col4:
-#     #  count the number of unique sampleids in the nc_main_dataset
-#     nc_main_dataset_sampleid_count = len(nc_main_dataset['sampleid'])
-#     label_="Stimulant Samples"
-#     st.metric(label=label_, value=nc_main_dataset_sampleid_count)
-# for s_ in nc_stimulants_list:
-#   latest = nc_stimulants.loc[s_]['latest_detected']
-#   text = "<div style='display: flex; flex-direction: row; align-items: center; justify-content: space-between;'><h4>Most recent detection of "+s_+": </h4><h4>"+latest+"</h4></div>"
-#   st.markdown(text, unsafe_allow_html=True)
+
 
 st.markdown("---")
 
@@ -583,4 +568,5 @@ with tab3:
   st.write("When responding to an opioid overdose, helping the individual breathe is key—through the administration of naloxone and rescue breathing.")
 
 st.markdown("---")
-display_funding()
+display_funding()# commit 5f549b446e0766dbc23bce4a0d77ac3a92c514a7
+# commit 76c42f6c0d48783856e2c18f16c19d253da675df
