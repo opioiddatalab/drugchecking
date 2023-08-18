@@ -8,15 +8,15 @@ substance,samples,rank
 "cocaine",47,7
 "despropionyl p-fluorofentanyl",35,8
 "lidocaine",35,9
-"dimethyl sulfone (methylsulfonylmethane MSM)",29,10
-"ethyl-4-ANPP",29,11
+"ethyl-4-ANPP",29,10
+"dimethyl sulfone (methylsulfonylmethane MSM)",29,11
 "methamphetamine",29,12
 "N-phenylpropanamide",26,13
 "1,3-Diacetin",25,14
 "p-fluoro phenethyl 4-ANPP",25,15
 "acetylcodeine",22,16
-"caffeine",21,17
-"6-monoacetylmorphine (6-MAM)",21,18
+"6-monoacetylmorphine (6-MAM)",21,17
+"caffeine",21,18
 "tramadol",20,19
 "non-specific sugars",17,20
 "acetaminophen",16,21
@@ -25,49 +25,49 @@ substance,samples,rank
 "procaine",10,24
 "1-phenethyl-4-propionyloxypiperidine",7,25
 "bromazolam",5,26
-"N-propionyl norfentanyl",5,27
+"1-phenyl-1-propanamine",5,27
 "methyl ecgonidine (MED)",5,28
 "N-butyl-aniline",5,29
-"menthol",5,30
-"1-phenyl-1-propanamine",5,31
-"metonitazene",4,32
-"quinine",4,33
+"N-propionyl norfentanyl",5,30
+"menthol",5,31
+"quinine",4,32
+"metonitazene",4,33
 "mannitol",4,34
 "gabapentin",4,35
 "phenacetin",3,36
 "acetyl fentanyl",3,37
-"ketamine",2,38
-"N,N-dimethylpentylone",2,39
-"tropacocaine",2,40
-"benzoylecgonine (BZ)",2,41
-"1-propionyl-4-anilinopiperidine",2,42
-"valeryl fentanyl",2,43
-"hydrocotarnine",2,44
-"phenethyl chloride",2,45
-"benzyl benzoate",2,46
-"levamisole",2,47
-"sucrose",2,48
-"meconin",2,49
-"urea",2,50
-"melatonin",2,51
-"benzocaine",2,52
-"pending nitazene",2,53
-"lactose",1,54
-"methylparaben",1,55
-"benzoic acid",1,56
-"p-fluoroacetyl fentanyl",1,57
-"medetomidine",1,58
-"flualprazolam",1,59
-"papaverine",1,60
-"noscapine",1,61
-"ecgonine methylester (EME)",1,62
-"inositol",1,63
-"erythritol",1,64
-"niacinamide",1,65
-"4-Anilino-1-Boc-piperidine",1,66
-"delta-9-THC",1,67
-"non-specific phthalate",1,68
-"non-specific organic acids",1,69
-"nicotine",1,70
-"norcocaine",1,71
-"ibuprofen",1,72
+"urea",2,38
+"melatonin",2,39
+"pending nitazene",2,40
+"levamisole",2,41
+"ketamine",2,42
+"phenethyl chloride",2,43
+"1-propionyl-4-anilinopiperidine",2,44
+"tropacocaine",2,45
+"hydrocotarnine",2,46
+"N,N-dimethylpentylone",2,47
+"benzoylecgonine (BZ)",2,48
+"sucrose",2,49
+"valeryl fentanyl",2,50
+"benzyl benzoate",2,51
+"meconin",2,52
+"benzocaine",2,53
+"non-specific organic acids",1,54
+"delta-9-THC",1,55
+"nicotine",1,56
+"4-Anilino-1-Boc-piperidine",1,57
+"ibuprofen",1,58
+"erythritol",1,59
+"noscapine",1,60
+"norcocaine",1,61
+"medetomidine",1,62
+"niacinamide",1,63
+"flualprazolam",1,64
+"inositol",1,65
+"p-fluoroacetyl fentanyl",1,66
+"non-specific phthalate",1,67
+"benzoic acid",1,68
+"methylparaben",1,69
+"lactose",1,70
+"papaverine",1,71
+"ecgonine methylester (EME)",1,72
