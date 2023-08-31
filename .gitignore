@@ -8,8 +8,4 @@ textexport/autotext_smalllaptop.do
 .DS_Store
 node_modules
 .env
-<<<<<<< HEAD
 venv/
-=======
-venv
->>>>>>> 86dc46a7 (roughdraft triangular corr heatmap)
