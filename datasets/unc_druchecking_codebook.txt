@@ -3,17 +3,17 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:  26 Aug 2023, 10:52:56
+ opened on:  31 Aug 2023, 21:06:50
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 26 Aug 2023 10:52
+            Last saved: 31 Aug 2023 21:06
 
                  Label: [none]
    Number of variables: 94
 Number of observations: 20
-                  Size: 23,520 bytes ignoring labels, etc.
+                  Size: 24,120 bytes ignoring labels, etc.
 
 _dta:
   1.  "Example dataset (N=20) from UNC lab drug checking services. Lab results,
@@ -47,7 +47,7 @@ program                                                            Program name
 location                                                         City or County
 -------------------------------------------------------------------------------
 
-                  Type: String (str19), but longest is str12
+                  Type: String (str21), but longest is str12
 
          Unique values: 17                        Missing "": 0/20
 
@@ -67,7 +67,7 @@ location:
 county                                            County where sample collected
 -------------------------------------------------------------------------------
 
-                  Type: String (str21), but longest is str16
+                  Type: String (str41), but longest is str16
 
          Unique values: 17                        Missing "": 0/20
 
@@ -1528,7 +1528,7 @@ lon:
 state_county                                     Combined state and county name
 -------------------------------------------------------------------------------
 
-                  Type: String (str38), but longest is str14
+                  Type: String (str46), but longest is str14
 
          Unique values: 17                        Missing "": 0/20
 
@@ -1591,5 +1591,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:  26 Aug 2023, 10:52:56
+ closed on:  31 Aug 2023, 21:06:51
 -------------------------------------------------------------------------------
