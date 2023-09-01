@@ -39,6 +39,19 @@ nc_stimulants_list =[
   "cocaine",
 ]
 nc_main_dataset = get_nc_merged_df(nc_stimulants_list)
+# convert the date_collect col to a datetime object
+most_recent_dataset = nc_main_dataset
+most_recent_dataset['date_collect'] = pd.to_datetime(most_recent_dataset['date_collect'], format='%d%b%Y')
+# sort the df by the date_collect col with most recent first
+most_recent_dataset = most_recent_dataset.sort_values(by=['date_collect'], ascending=False)
+# convert the date_collect col to a human readable date
+most_recent_dataset['date_collect'] = pd.to_datetime(most_recent_dataset['date_collect']).dt.strftime('%B %d, %Y')
+# get the mostrecent row for 'methamphetamine' and 'cocaine' in the 'substance' col
+most_recent_dataset = most_recent_dataset.drop_duplicates(subset=['substance'], keep='first')
+# make the substance col the index
+most_recent_dataset.set_index('substance', inplace=True)
+# rename the date_collect col to 'latest_detected'
+most_recent_dataset.rename(columns={'date_collect': 'latest_detected'}, inplace=True)
 
 nc_main_dataset_crack = nc_main_dataset[nc_main_dataset['expectedsubstance'].str.contains("crack") & nc_main_dataset['lab_cocaine_any_y'] == 1]
 nc_main_dataset_powder_coke = nc_main_dataset[nc_main_dataset['expectedsubstance'].str.contains("crack") & nc_main_dataset['lab_cocaine_any_y'] == 1]
@@ -107,7 +120,7 @@ get_nc_intro_metrics({
   "Programs & Clinics": nc_program_count_int,
   "Counties": nc_countycount_int,
   "Stimulant Samples": len(nc_main_dataset['sampleid'])
-}, len(nc_main_dataset['sampleid']), nc_stimulants_list, nc_stimulants)
+}, len(nc_main_dataset['sampleid']), nc_stimulants_list, most_recent_dataset)
 
 
 st.markdown("---")
