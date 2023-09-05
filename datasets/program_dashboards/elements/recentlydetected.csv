@@ -1,4 +1,5 @@
 sampleid,substance,pubchemcid,first_detected
+600098,alpha-benzyl-N-methylphenethylamine,,05sep2023
 400896,4-anilinopiperidine,,02aug2023
 400745,benzyl benzoate,,30jul2023
 400706,lisdexamfetamine,,24jul2023
@@ -13,5 +14,5 @@ sampleid,substance,pubchemcid,first_detected
 400547,metonitazene,53316366,21apr2023
 400657,acetanilide,,17apr2023
 400444,1-phenethyl-4-hydroxypiperidine,,10apr2023
-400503,erythritol,,07apr2023
 400267,oxybutynin,,07apr2023
+400503,erythritol,,07apr2023
