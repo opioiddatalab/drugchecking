@@ -510,12 +510,11 @@ export delimited using "/Users/nabarun/Dropbox/Projects/Autotext for drug checki
 ! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
 
 
-
 python
 import pandas as pd
-df = pd.read_csv("/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", header=None)
+df = pd.read_csv("/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/Autotext for drug checking/textexport.csv", header=None)
 df.rename(columns={0: 'Product ID [Non Editable]', 1: 'Variant ID [Non Editable]', 2: 'Product Type [Non Editable]', 3: 'Product Page', 4: 'Product URL', 5: 'Title', 6: 'Description', 7: 'SKU', 8: 'Option Name 1', 9: 'Option Value 1', 10: 'Option Name 2', 11: 'Option Value 2', 12: 'Option Name 3', 13: 'Option Value 3', 14: 'Price', 15: 'Sale Price', 16: 'On Sale', 17: 'Stock', 18: 'Categories', 19: 'Tags', 20: 'Weight', 21: 'Length', 22: 'Width', 23: 'Height', 24: 'Visible', 25: 'Hosted Image URLs'}, inplace=True)
-df.to_csv("/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv", index=False)
+df.to_csv("/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/upload_for_import.csv", index=False)
 df.to_csv("/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv", index=False)
 
 end
