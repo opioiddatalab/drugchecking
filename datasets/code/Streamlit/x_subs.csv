@@ -8,8 +8,8 @@ substance,samples,rank
 "cocaine",51,7
 "lidocaine",37,8
 "despropionyl p-fluorofentanyl",36,9
-"dimethyl sulfone (methylsulfonylmethane MSM)",33,10
-"ethyl-4-ANPP",33,11
+"ethyl-4-ANPP",33,10
+"dimethyl sulfone (methylsulfonylmethane MSM)",33,11
 "methamphetamine",32,12
 "N-phenylpropanamide",29,13
 "1,3-Diacetin",27,14
@@ -24,50 +24,50 @@ substance,samples,rank
 "procaine",10,23
 "phenethyl bromide",10,24
 "1-phenethyl-4-propionyloxypiperidine",7,25
-"menthol",5,26
+"bromazolam",5,26
 "N-butyl-aniline",5,27
-"bromazolam",5,28
-"1-phenyl-1-propanamine",5,29
-"methyl ecgonidine (MED)",5,30
-"N-propionyl norfentanyl",5,31
-"quinine",5,32
+"N-propionyl norfentanyl",5,28
+"quinine",5,29
+"menthol",5,30
+"methyl ecgonidine (MED)",5,31
+"1-phenyl-1-propanamine",5,32
 "phenacetin",4,33
 "metonitazene",4,34
 "mannitol",4,35
 "gabapentin",4,36
 "melatonin",3,37
 "acetyl fentanyl",3,38
-"N,N-dimethylpentylone",2,39
-"benzyl benzoate",2,40
-"urea",2,41
-"benzoylecgonine (BZ)",2,42
-"meconin",2,43
-"1-propionyl-4-anilinopiperidine",2,44
-"benzocaine",2,45
-"levamisole",2,46
-"valeryl fentanyl",2,47
-"sucrose",2,48
-"phenethyl chloride",2,49
-"hydrocotarnine",2,50
-"ketamine",2,51
-"tropacocaine",2,52
-"flualprazolam",1,53
-"medetomidine",1,54
-"ibuprofen",1,55
-"lactose",1,56
-"protonitazene",1,57
-"non-specific phthalate",1,58
-"papaverine",1,59
-"p-fluoroacetyl fentanyl",1,60
-"delta-9-THC",1,61
+"benzyl benzoate",2,39
+"sucrose",2,40
+"1-propionyl-4-anilinopiperidine",2,41
+"urea",2,42
+"levamisole",2,43
+"N,N-dimethylpentylone",2,44
+"ketamine",2,45
+"tropacocaine",2,46
+"phenethyl chloride",2,47
+"benzocaine",2,48
+"hydrocotarnine",2,49
+"valeryl fentanyl",2,50
+"benzoylecgonine (BZ)",2,51
+"meconin",2,52
+"niacinamide",1,53
+"4-Anilino-1-Boc-piperidine",1,54
+"erythritol",1,55
+"inositol",1,56
+"methylparaben",1,57
+"medetomidine",1,58
+"benzoic acid",1,59
+"non-specific phthalate",1,60
+"papaverine",1,61
 "nicotine",1,62
 "non-specific organic acids",1,63
-"erythritol",1,64
-"4-Anilino-1-Boc-piperidine",1,65
-"benzoic acid",1,66
-"methylparaben",1,67
-"noscapine",1,68
-"inositol",1,69
-"norcocaine",1,70
-"niacinamide",1,71
+"p-fluoroacetyl fentanyl",1,64
+"protonitazene",1,65
+"ibuprofen",1,66
+"flualprazolam",1,67
+"lactose",1,68
+"norcocaine",1,69
+"noscapine",1,70
+"delta-9-THC",1,71
 "ecgonine methylester (EME)",1,72
