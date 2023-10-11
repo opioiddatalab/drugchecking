@@ -357,9 +357,8 @@ total_stimulant_fent_samples = len(nc_stimulants_with_fent.index)
 
 nc_main_dataset_crack = nc_analysis_data[(nc_analysis_data['lab_cocaine'] == 1) & (nc_analysis_data['expectedsubstance'].str.contains("crack"))]
 nc_main_dataset_crack_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_analysis_data['lab_cocaine'] == 1) & (nc_analysis_data['expectedsubstance'].str.contains("crack"))]
-
-nc_main_dataset_powder_coke = nc_analysis_data[(nc_analysis_data['lab_cocaine'] == 1) & (~nc_analysis_data['expectedsubstance'].str.contains("crack", case=False))]
-nc_main_dataset_powder_coke_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_stimulants_with_fent['lab_cocaine'] == 1) & (~nc_analysis_data['expectedsubstance'].str.contains("crack", case=False))]
+nc_main_dataset_powder_coke = nc_analysis_data[(nc_analysis_data['lab_cocaine'] == 1) & (nc_analysis_data['expectedsubstance'].str.contains("crack", case=False, na=False))]
+nc_main_dataset_powder_coke_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_stimulants_with_fent['lab_cocaine'] == 1) & (nc_analysis_data['expectedsubstance'].str.contains("crack", case=False, na=False))]
 
 nc_main_dataset_crystal_meth = nc_analysis_data[(nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals']==1)]
 nc_main_dataset_crystal_meth_w_fent = nc_analysis_data[(nc_analysis_data['lab_fentanyl'] == 1) & (nc_analysis_data['lab_meth'] == 1) & (nc_analysis_data['crystals']==1)]
