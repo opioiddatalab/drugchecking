@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="🥽",
     initial_sidebar_state="expanded",
 )
-from load_init import local_css, display_funding
+from load_init import local_css, display_funding, create_sidebar
 local_css("datasets/code/Streamlit/style.css")
 import streamlit_analytics
 import pandas as pd
@@ -106,6 +106,7 @@ sensations = alt.Chart(url).mark_bar(size=40).encode(
 
 # Streamlit
 streamlit_analytics.start_tracking()
+create_sidebar()
 st.title("North Carolina Xylazine Report")
 st.subheader("Real-time results from UNC Drug Analysis Lab")
 
