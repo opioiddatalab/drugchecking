@@ -175,7 +175,6 @@ drop date
 ** Color
 replace color=lower(color)
 replace color="" if color=="not specified"
-replace color="" if color=="not specified"
 
 *** Manual correction for complex color descriptions that did not meet validation rules of data entry sheet
 replace color="pink; lavendar; pale orange; light blue; aqua/teal" if sampleid=="300349"
