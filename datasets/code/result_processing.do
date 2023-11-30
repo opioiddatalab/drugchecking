@@ -34,13 +34,19 @@ save lab, replace
 
 
 // Import Card Data
+##### UPDATE #####
+
 import excel "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
-drop linkedsample howlongagowasthesampleobta lab_note* 
+drop linkedsample howlongagowasthesampleobta lab_note*
 
 * Keep only US samples
 drop if state=="international"
 
 * Replace missing location data on card with mailing location of program
+######### WATCH out for incorrect county/city info coming back from geo API
+######### On program page, make sure you can edit county (if it's missing)
+######### On card data entry, make sure UX autocompletes/allows selctions for location (Macon Township/County/City, etc. )
+
 merge m:1 program using programloc, keep(1 3) nogen
 replace location=p_city if location=="" | location=="not specified"
 replace state=p_state if state=="" | location=="not specified"
@@ -104,9 +110,9 @@ frame put sampleid substance abundance method date_complete peak, into(lab)
 * Link frames
 frame change lab
 frlink m:1 sampleid, frame(card)
- 
 
-// Describe lab sample 
+
+// Describe lab sample
 frame lab: distinct sampleid
 frame card: distinct sampleid
 
@@ -116,6 +122,7 @@ frame card: distinct sampleid
 frame change card
 
 * Sample type consolidation
+######### creation of new collection var - based on multiple methods in the csv
 gen collection=sampletype
 la var collection "Collection method, consolidated for reporting"
 order collection, a(sampletype)
@@ -191,6 +198,7 @@ order program location state , a(sampleid)
 ** Overdose involvement
 gen od=.
 replace od=0 if regexm(overdose,"not overdose related")
+########## FUNCTION to check for od indicators that aren't the exact string
 replace od=1 if overdose=="involved in OD" | regexm(lower(sensation_notes),"narcan|naloxone") | regexm(lower(overdose_notes),"narcan|naloxone|overdose|fell out|pass out|passed out") | regexm(overdose_notes,"OD")
 order od, a(overdose)
 la var od "Recoded overdose involvement for reporting"
@@ -219,7 +227,7 @@ label values sen_strength sennormal
 la var sen_strength "Derived 3-level flag where -1 weaker, 0 normal, 1 stronger"
 
 gen sen_weird=.
-replace sen_weird=1 if regexm(sensations,"weird|unpleasant") | regexm(lower(sensation_notes),"strange|not normal|bad feeling|weird|sick|dizzy|vertigo|nystagmus|hurt|odd|bad reaction") | regexm(lower(overdose_notes),"wierd")  
+replace sen_weird=1 if regexm(sensations,"weird|unpleasant") | regexm(lower(sensation_notes),"strange|not normal|bad feeling|weird|sick|dizzy|vertigo|nystagmus|hurt|odd|bad reaction") | regexm(lower(overdose_notes),"wierd")
 la var sen_weird "Derived flag (1) if sensation was noted as 'weird' or 'unpleasant' or notes indicating bad feelings."
 note sen_weird: "Check sensations and sensation_notes to verify. See code for search strings."
 
@@ -249,7 +257,7 @@ la var sen_long "Derived flag (1) if sensation was described as 'long'. Check se
 
 gen sen_burn=.
 replace sen_burn=1 if regexm(sensations,"burn") | regexm(lower(sensation_notes),"burn")
-replace sen_burn=. if regexm(lower(sensation_notes),"heart burn")
+replace sen_burn=. if regexm(lower(sensation_notes),"heart burn") (negation)
 la var sen_burn "Derived flag (1) if burning sensation was described. Check sensations and sensation_notes to verify."
 note sen_burn: "Contains negation rule for 'heart burn'"
 
@@ -331,6 +339,9 @@ replace lab_null=1 if substance=="no compounds of interest detected"
 la var lab_null "Derived flag (1) if no compounds of interest detected."
 note lab_null: "For non-derivitized GCMS, this means no small psychoactive or biological molecules detected."
 
+
+###### naming ocnvention on substances
+### _any -> includes trace
 bysort sampleid: gen temp=_n
 bysort sampleid: egen lab_num_substances_any=count(temp)
 drop temp
@@ -343,7 +354,7 @@ drop temp
 la var lab_num_substances "Total number of PRIMARY substances detected"
 note lab_num_substances: "Priamry substances only. Does NOT include substances in trace abundance."
 
-* Create indicator for if this sample was submitted to UNC as part of "confirmatory" testing for FTIR 
+* Create indicator for if this sample was submitted to UNC as part of "confirmatory" testing for FTIR
 ***  Uses regex for samples starting with ID numbers 800xxx. Excludes NC Survivors Union samples.
 gen confirmatory=0
 replace confirmatory=1 if regexm(sampleid,"^80")
@@ -380,9 +391,9 @@ drop gcms_peak
 * For specific substances, the convention is lab_ to indicate lab result, _any to indicate presence in trace or abundance
 * Conversely, if lab_substance, the substance was detected as a primary constituent.
 * In general, toxic substances (like levamisole or xylazine) are created with an "_any" match,
-* meaning they should be present in either primary or trace abundance. 
+* meaning they should be present in either primary or trace abundance.
 * On the other hand, psychoactive substances (like gabapentin) are matched in the derived
-* variables below if they are a primary constituent of the sample. 
+* variables below if they are a primary constituent of the sample.
 * Fentanyl and methamphetamine are execeptions, where both primary-only and primary+trace are created
 * as separate variables with the latter being designated with _any.
 
@@ -484,6 +495,7 @@ note lab_ketamine: "Exact match for ketamine as a primary substance."
 * the lab results.
 
 cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/"
+##### adding categories based on classes for substances in the chem_dict
 do categorize "designer_benzos"
 do categorize "benzos"
 do categorize "nitazenes"
@@ -511,7 +523,7 @@ replace substance="phenethyl bromide" if substance=="phenethylbromide"
 frame create temp
 frame change temp
 import delimited "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/chemdictionary/chemdictionary.csv"
-keep substance pubchemcid cas unii	
+keep substance pubchemcid cas unii
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta", replace
 frame change lab
 merge m:1 substance using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta", nogen keep(1 3)
@@ -525,7 +537,7 @@ la var unii "UNII Unique Ingredient Identifier from US FDA"
 note unii: https://precision.fda.gov/uniisearch
 sort sampleid
 
-// Save dataset for internal analysis 
+// Save dataset for internal analysis
 drop if substance==""
 quietly compress
 save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", replace
@@ -536,7 +548,7 @@ frame copy lab merge
 frame change merge
 
 collapse (max) confirmatory date_complete primary trace lab_*, by(sampleid)
-  
+
 * Clean up logic for samples with no substances detected
 replace lab_num_substances_any=0 if lab_null==1
 replace lab_num_substances=0 if lab_null==1
@@ -609,10 +621,10 @@ la var confirmatory "Sample for GCMS confirmatory or complementary testing"
 
 
 foreach var of varlist lab_designer_benzos_any-lab_substituted_cathinones_any {
-	
+
 	note `var': "Detected in primary or trace abundance."
 	note `var': "Specific substance classifications: go.unc.edu/chemdict"
-	
+
 }
 
 save merge, replace
@@ -787,10 +799,10 @@ export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/dat
 ** Delimited CSV (tab)
 export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/lab_detail.csv", quote replace
 
-	
+
 // Save custom datasets for each client in a separate GitHub repository
 
-** Western North Carolina 
+** Western North Carolina
 do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/export_wnc.do"
 
 
