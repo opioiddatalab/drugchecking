@@ -1,9 +1,2 @@
 mail,sampleid,lab_status,status_date
-"received by lab","400423","pending"," 1 Dec 2023"
-"received by lab","500450","pending"," 1 Dec 2023"
-"received by lab","802007","pending"," 1 Dec 2023"
-"received by lab","802235","pending"," 1 Dec 2023"
-"received by lab","802339","pending"," 1 Dec 2023"
-"received by lab","802517","pending"," 1 Dec 2023"
-"received by lab","802619","pending"," 1 Dec 2023"
-"received by lab","802967","pending"," 1 Dec 2023"
+"All received samples have been processed.","",""," 4 Dec 2023"
