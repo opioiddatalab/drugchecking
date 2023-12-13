@@ -6,15 +6,19 @@ clear all
 frames reset
 
 // Set directory
-cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/"
+// REPLACE WITH LINK IN repos/
+cd "/Users/drewhackelman/repos/dc_internal/"
 
 
 // Import results files
-
-cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/"
+// REPLACE WITH LINK IN repos/
+cd "/Users/drewhackelman/repos/dc_internal/"
 
 // Import City Locations for Programs
-import excel "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx", sheet("ProgramInfo") firstrow clear
+// ##### REPLACE THIS WITH AN API CALL TO RETURN PROGRAM INFO
+// https://sdc-admin-prod-dept-unc-drugchecking-service.apps.cloudapps.unc.edu/api/programs?rp=true
+// ##### DONE
+import excel "/Users/drewhackelman/repos/dc_internal/LabResults.xlsx", sheet("ProgramInfo") firstrow clear
 drop text
 rename county p_city
 rename state p_state
@@ -24,8 +28,9 @@ save programloc, replace
 
 
 // Import Lab Data
-import excel "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx", sheet("LAB data") firstrow clear
-
+// import excel "/Users/drewhackelman/repos/dc_internal/LabResults.xlsx", sheet("LAB data") firstrow clear
+// #### Replace with call to CMS API:
+// https://sdc-admin-prod-dept-unc-drugchecking-service.apps.cloudapps.unc.edu/api/lab_samples?rp=true&lab_status=complete&cd=true (get chem-dict info too)
 * Keep only samples with completed lab analysis and relevant variables
 keep if lab_status=="complete"
 keep sampleid substance abundance method date_complete peak
@@ -34,18 +39,17 @@ save lab, replace
 
 
 // Import Card Data
-##### UPDATE #####
 
-import excel "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
+// import excel "/Users/drewhackelman/repos/dc_internal/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
+// ### replace with call to https://sdc-admin-prod-dept-unc-drugchecking-service.apps.cloudapps.unc.edu/api/card_data?rp=true
+
 drop linkedsample howlongagowasthesampleobta lab_note*
 
 * Keep only US samples
 drop if state=="international"
 
 * Replace missing location data on card with mailing location of program
-######### WATCH out for incorrect county/city info coming back from geo API
-######### On program page, make sure you can edit county (if it's missing)
-######### On card data entry, make sure UX autocompletes/allows selctions for location (Macon Township/County/City, etc. )
+// ###### script to run geocage api city/state location if county is missing - COMPLETE
 
 merge m:1 program using programloc, keep(1 3) nogen
 replace location=p_city if location=="" | location=="not specified"
@@ -122,13 +126,15 @@ frame card: distinct sampleid
 frame change card
 
 * Sample type consolidation
-######### creation of new collection var - based on multiple methods in the csv
+// ######### API needs to return col on the csv for sampletype (I look for variables in the db) ?? -> looks like Nab renames cols on line 99 - confirm
 gen collection=sampletype
 la var collection "Collection method, consolidated for reporting"
 order collection, a(sampletype)
+
 replace collection="multiple methods" if regexm(sampletype,";")
 
 * Expected substance
+
 
 ** Create drug classes
 gen expect_opioid=0
@@ -141,6 +147,7 @@ replace expect_fentanyl=1 if regexm(lower(expectedsubstance),"fentanyl")
 la var expect_fentanyl "1 if expected fentanyl circled on card"
 
 gen expect_xylazine=0
+
 replace expect_xylazine=1 if regexm(lower(expectedsubstance),"xylazine") | regexm(lower(sensation_notes),"xylazine")
 la var expect_xylazine "1 if expected xylazine circled on card or mentioned in sensation notes"
 note expect_xylazine: "Added in version 3 of card"
@@ -173,6 +180,7 @@ note expect_hall: "lsd|mda|molly|mdma|mushroom|dmt|ketamine|ecstacy|psilocybin"
 order expect_*, a(expectedsubstance)
 
 ** Date of sample collection
+// ##### Do date formats need to change? ----- check this with Nab
 gen date_collect = date(date, "MDY")
 order date_collect, a(sampleid)
 format date_collect %td
@@ -198,7 +206,7 @@ order program location state , a(sampleid)
 ** Overdose involvement
 gen od=.
 replace od=0 if regexm(overdose,"not overdose related")
-########## FUNCTION to check for od indicators that aren't the exact string
+
 replace od=1 if overdose=="involved in OD" | regexm(lower(sensation_notes),"narcan|naloxone") | regexm(lower(overdose_notes),"narcan|naloxone|overdose|fell out|pass out|passed out") | regexm(overdose_notes,"OD")
 order od, a(overdose)
 la var od "Recoded overdose involvement for reporting"
@@ -209,6 +217,7 @@ label define odlabel 0 "not involved" 1 "Overdose reported"
 label values od odlabel
 
 gen fatal_od=.
+
 replace fatal_od=1 if regexm(lower(overdose_notes),"dead|death|fatal")
 replace fatal_od=. if regexm(lower(overdose_notes),"non-fatal|nonfatal")
 la var fatal_od "Derived flag (1) if fatal overdose was mentioned in overdose_notes."
@@ -340,8 +349,6 @@ la var lab_null "Derived flag (1) if no compounds of interest detected."
 note lab_null: "For non-derivitized GCMS, this means no small psychoactive or biological molecules detected."
 
 
-###### naming ocnvention on substances
-### _any -> includes trace
 bysort sampleid: gen temp=_n
 bysort sampleid: egen lab_num_substances_any=count(temp)
 drop temp
@@ -374,16 +381,20 @@ frame put sampleid substance abundance method date_complete confirmatory gcms_pe
 frame change confirmatory
 keep if confirmatory==1
 
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/labservice/unc_gcms.dta", replace
+//REPLACE with link to my repos
+save "/Users/drewhackelman/repos/drugchecking/datasets/labservice/unc_gcms.dta", replace
 
 ** SAS
-export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/labservice/unc_gcms.v8xpt", replace
+//REPLACE with link to my repos
+export sasxport8 "/Users/drewhackelman/repos/drugchecking/datasets/labservice/unc_gcms.v8xpt", replace
 
 ** Excel
-export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/labservice/unc_gcms.xlsx", firstrow(variables) replace
+//REPLACE with link to my repos
+export excel using "/Users/drewhackelman/repos/drugchecking/datasets/labservice/unc_gcms.xlsx", firstrow(variables) replace
 
 ** Delimited CSV (tab)
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/labservice/unc_gcms.csv", quote replace
+//REPLACE with link to my repos
+export delimited using "/Users/drewhackelman/repos/drugchecking/datasets/labservice/unc_gcms.csv", quote replace
 
 frame change lab
 drop gcms_peak
@@ -494,8 +505,8 @@ note lab_ketamine: "Exact match for ketamine as a primary substance."
 * The file categorize.do is a script that imports the metadata from GitHub and runs is against
 * the lab results.
 
-cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/"
-##### adding categories based on classes for substances in the chem_dict
+//REPLACE with link to my repos
+cd "/Users/drewhackelman/repos/drugchecking/datasets/code/"
 do categorize "designer_benzos"
 do categorize "benzos"
 do categorize "nitazenes"
@@ -522,13 +533,19 @@ replace substance="phenethyl bromide" if substance=="phenethylbromide"
 
 frame create temp
 frame change temp
-import delimited "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/chemdictionary/chemdictionary.csv"
-keep substance pubchemcid cas unii
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta", replace
-frame change lab
-merge m:1 substance using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta", nogen keep(1 3)
-order pubchemcid cas unii, a(substance)
-erase "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/labtemp.dta"
+// ## Pull from CMS?
+
+// // https://sdc-admin-prod-dept-unc-drugchecking-service.apps.cloudapps.unc.edu/api/lab_samples?with_chemical_dictionary
+//
+//     import delimited "https://raw.githubusercontent.com/opioiddatalab/drugchecking/main/chemdictionary/chemdictionary.csv"
+//     keep substance pubchemcid cas unii
+//     ###
+//     save "/Users/drewhackelman/repos/dc_internal/labtemp.dta", replace
+//     frame change lab
+//     merge m:1 substance using "/Users/drewhackelman/repos/dc_internal/labtemp.dta", nogen keep(1 3)
+//     order pubchemcid cas unii, a(substance)
+//     erase "/Users/drewhackelman/repos/dc_internal/labtemp.dta"
+// THESE fields below have been returned as part of the lab_samples csv
 la var pubchemcid "PubChem ID from NIH"
 note pubchemcid: https://pubchem.ncbi.nlm.nih.gov/
 la var cas "CAS from American Chemical Society"
@@ -540,7 +557,10 @@ sort sampleid
 // Save dataset for internal analysis
 drop if substance==""
 quietly compress
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", replace
+
+## make sure nab has API endpoints to get same data here
+//REPLACE with link to local repos
+save "/Users/drewhackelman/repos/dc_internal/lab_detail.dta", replace
 
 // Merge in lab results to card data to create analytic dataset
 
@@ -637,10 +657,13 @@ erase merge.dta
 
 // Geocode using GeoCage API
 ** Merge in canonical data to limit API calls
-merge 1:1 sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geo_canonical.dta", nogen keep(1 3)
+//REPLACE with link to local repos
+merge 1:1 sampleid using "/Users/drewhackelman/repos/dc_internal/geo_canonical.dta", nogen keep(1 3)
 
+###### Do we still need to run the geocage API here?
 ** API call using stored key
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geocode_samples.do"
+//REPLACE with link to local repos
+do "/Users/drewhackelman/repos/dc_internal/geocode_samples.do"
 
 ** Variable cleanup
 capture drop g_country g_city g_postcode g_street g_confidence g_formatted g_quality g_number
@@ -691,6 +714,7 @@ order program_county lat_program lon_program, b(lat)
 // Add County FIPS information
 
 ** Fix missing and irregular county locations
+### Do we need to script this to update the db?
 replace county="Kings County" if program=="NYC-KM" & county==""
 replace county="Suffolk County" if program=="Community Action for Social Justice" & county==""
 replace county="Rio Arriba County" if program=="The Mountain Center" & county==""
@@ -703,7 +727,7 @@ gen temp = subinstr(county," County", "", .)
 order temp, a(county)
 gen state_county = upper(state + " | " + temp)
 drop temp
-merge m:1 state_county using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/fips.dta", nogen keep(1 3)
+merge m:1 state_county using "/Users/drewhackelman/repos/drugchecking/datasets/code/fips.dta", nogen keep(1 3)
 drop stateabbr statename countyname
 la var statefips "2-digit FIPS for state"
 la var countyfips_3 "3-digit FIPS for county, without state"
@@ -716,139 +740,184 @@ format date_collect %tdDDMonCCYY
 format date_complete %tdDDMonCCYY
 
 ** Save dataset for internal analysis
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", replace
+//REPLACE with link to local repos
+save "/Users/drewhackelman/repos/dc_internal/analysis_dataset.dta", replace
 
 // Generate canonical list of geocoded locations
 keep sampleid county full_state lat lon
 duplicates drop sampleid, force
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/geo_canonical.dta", replace
+//REPLACE with link to local repos
+save "/Users/drewhackelman/repos/dc_internal/geo_canonical.dta", replace
 
 // Save NC Public Dataset without program name
-use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", clear
+//REPLACE with link to local repos
+use "/Users/drewhackelman/repos/dc_internal/analysis_dataset.dta", clear
 keep if state=="NC"
 sort county date_complete
 drop program lat* lon*
 
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.dta", replace
+//REPLACE with link to local repos
+save "/Users/drewhackelman/repos/drugchecking/datasets/nc/nc_analysis_dataset.dta", replace
 
 *** SAS
-export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.v8xpt", replace
+//REPLACE with link to local repos
+
+export sasxport8 "/Users/drewhackelman/repos/drugchecking/datasets/nc/nc_analysis_dataset.v8xpt", replace
 
 *** Excel
-export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.xlsx", firstrow(variables) nolabel replace
+//REPLACE with link to local repos
+
+export excel using "/Users/drewhackelman/repos/drugchecking/datasets/nc/nc_analysis_dataset.xlsx", firstrow(variables) nolabel replace
 
 *** Delimited CSV (tab)
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_analysis_dataset.csv", quote replace
+//REPLACE with link to local repos
+
+export delimited using "/Users/drewhackelman/repos/drugchecking/datasets/nc/nc_analysis_dataset.csv", quote replace
 
 ** Generate canonical list of NC samples to generate NC lab dataset
 keep sampleid
-merge 1:m sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", nogen keep(3)
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.dta", replace
+//REPLACE with link to local repos
+
+merge 1:m sampleid using "/Users/drewhackelman/repos/dc_internal/lab_detail.dta", nogen keep(3)
+//REPLACE with link to local repos
+
+save "/Users/drewhackelman/repos/drugchecking/datasets/nc/nc_lab_detail.dta", replace
 
 *** SAS
-export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.v8xpt", replace
+//REPLACE with link to local repos
+
+export sasxport8 "/Users/drewhackelman/repos/drugchecking/datasets/nc/nc_lab_detail.v8xpt", replace
 
 *** Excel
-export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.xlsx", firstrow(variables) nolabel replace
+
+export excel using "/Users/drewhackelman/repos/drugchecking/datasets/nc/nc_lab_detail.xlsx", firstrow(variables) nolabel replace
 
 *** Delimited CSV (tab)
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/nc/nc_lab_detail.csv", quote replace
+//REPLACE with link to local repos
+
+export delimited using "/Users/drewhackelman/repos/drugchecking/datasets/nc/nc_lab_detail.csv", quote replace
 
 
 // Save public demo datasets with name and location redacted
+//REPLACE with link to local repos
 
-use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", clear
+use "/Users/drewhackelman/repos/dc_internal/analysis_dataset.dta", clear
+//REPLACE with link to local repos
 
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/savepublic.do"
+do "/Users/drewhackelman/repos/dc_internal/savepublic.do"
 
 note: "Example dataset (N=20) from UNC lab drug checking services. Lab results, notes, sensations, etc. are real, but locations have been redacted."
 
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/analysis_dataset.dta", replace
+save "/Users/drewhackelman/repos/drugchecking/datasets/analysis_dataset.dta", replace
 
 *** SAS
-export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/analysis_dataset.v8xpt", replace
+//REPLACE with link to local repos
+
+export sasxport8 "/Users/drewhackelman/repos/drugchecking/datasets/analysis_dataset.v8xpt", replace
 
 *** Excel
-export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/analysis_dataset.xlsx", firstrow(variables) nolabel replace
+//REPLACE with link to local repos
+
+export excel using "/Users/drewhackelman/repos/drugchecking/datasets/analysis_dataset.xlsx", firstrow(variables) nolabel replace
 
 *** Delimited CSV (tab)
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/analysis_dataset.csv", quote replace
+//REPLACE with link to local repos
+
+export delimited using "/Users/drewhackelman/repos/drugchecking/datasets/analysis_dataset.csv", quote replace
 
 
 
 // Generate codebook on public data
+//REPLACE with link to local repos
 
-log using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/unc_druchecking_codebook.txt", text replace
+log using "/Users/drewhackelman/repos/drugchecking/datasets/unc_druchecking_codebook.txt", text replace
 codebook, n h
 log close
 
 // Save public lab detail file
 
 frame change lab
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/savepubliclab.do"
+//REPLACE with link to local repos
+
+do "/Users/drewhackelman/repos/dc_internal/savepubliclab.do"
+//REPLACE with link to local repos
 
 
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/lab_detail.dta", replace
+save "/Users/drewhackelman/repos/drugchecking/datasets/lab_detail.dta", replace
 
 ** SAS
-export sasxport8 "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/lab_detail.v8xpt", replace
+//REPLACE with link to local repos
+
+export sasxport8 "/Users/drewhackelman/repos/drugchecking/datasets/lab_detail.v8xpt", replace
 
 ** Excel
-export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/lab_detail.xlsx", firstrow(variables) nolabel replace
+//REPLACE with link to local repos
+
+export excel using "/Users/drewhackelman/repos/drugchecking/datasets/lab_detail.xlsx", firstrow(variables) nolabel replace
 
 ** Delimited CSV (tab)
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/lab_detail.csv", quote replace
+//REPLACE with link to local repos
+
+export delimited using "/Users/drewhackelman/repos/drugchecking/datasets/lab_detail.csv", quote replace
 
 
 // Save custom datasets for each client in a separate GitHub repository
 
 ** Western North Carolina
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/export_wnc.do"
+//REPLACE with link to local repos
+
+do "/Users/drewhackelman/repos/dc_internal/export_wnc.do"
 
 
 // Clean up files no longer needed
-! rm "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx"
+//REPLACE with link to local repos
+
+! rm "/Users/drewhackelman/repos/dc_internal/LabResults.xlsx"
 
 
 // Create frequency list of substances detected
-use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", clear
+//REPLACE with link to local repos
+
+use "/Users/drewhackelman/repos/dc_internal/lab_detail.dta", clear
 keep substance abundance
 gen any=1
 gen primary=1 if abundance==""
 gen trace=1 if abundance=="trace"
 collapse (sum) any primary trace, by(substance)
 gsort -any
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/substances_detected.csv", quote replace
+export delimited using "/Users/drewhackelman/repos/drugchecking/chemdictionary/substances_detected.csv", quote replace
 
-
+// /Users/drewhackelman/repos/dc_internal
+// /Users/drewhackelman/repos/drugchecking
 clear all
 frames reset
 
 // Create datasets for NC Xylazine Streamlit report
 
 ** x_subs.csv has substances detected along with xylazine
+//REPLACE with link to local repos
 
-use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta"
+use "/Users/drewhackelman/repos/dc_internal/analysis_dataset.dta"
 keep if state=="NC"
 keep if lab_xylazine_any==1
 frame put sampleid, into(xylazine)
 frame change xylazine
 gen samples=1
-save "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/temp.dta", replace
+save "/Users/drewhackelman/repos/dc_internal/temp.dta", replace
 
-use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/lab_detail.dta", clear
+use "/Users/drewhackelman/repos/dc_internal/lab_detail.dta", clear
 
-merge m:1 sampleid using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/temp.dta", keep(3) nogen
+merge m:1 sampleid using "/Users/drewhackelman/repos/dc_internal/temp.dta", keep(3) nogen
 
 collapse (sum) samples, by(substance)
 gsort -samples
 gen rank = _n
-erase "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/temp.dta"
+erase "/Users/drewhackelman/repos/dc_internal/temp.dta"
 
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/x_subs.csv", quote replace
+export delimited using "/Users/drewhackelman/repos/drugchecking/datasets/code/Streamlit/x_subs.csv", quote replace
 
 ** x_strength.csv has self-reported sensations
-use "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/analysis_dataset.dta", clear
+use "/Users/drewhackelman/repos/dc_internal/analysis_dataset.dta", clear
 keep if state=="NC"
 keep if lab_xylazine_any==1
 keep sen_strength
@@ -857,7 +926,7 @@ collapse (sum) samples, by(sen_strength)
 gen order = _n
 rename sen_strength sensations
 drop if sensations==.
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/Streamlit/x_strength.csv", quote replace
+export delimited using "/Users/drewhackelman/repos/drugchecking/datasets/code/Streamlit/x_strength.csv", quote replace
 
 clear all
 frames reset
