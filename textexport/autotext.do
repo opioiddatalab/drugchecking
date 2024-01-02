@@ -5,7 +5,8 @@ set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.1
 
 * state names and abbreviations
 clear all
-cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/List-of-US-States"
+// cd "/Users/drewhackelman/repos/List-of-US-States"
+cd "/Users/drewhackelman/repos/drugchecking/nab_files/states.dta"
 import delimited states.csv, varname(1)
 rename state statename
 rename abbreviation state
@@ -13,7 +14,7 @@ set obs `=_N+1'
 replace statename = "Puerto Rico" in 52
 replace state = "PR" in 52
 
-cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
+cd "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/"
 
 
 save states, replace
@@ -23,15 +24,16 @@ save states, replace
 ** Retrives last 50 sample ID numbers that have been posted to create canonical list
 ** Code hidden to protect endpoint
 
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/sqapi_last50.do"
+do "/Users/drewhackelman/repos/dc_internal/sqapi_last50.do"
 
 // Download the data file and modify
 * change file extension from .xlsm to .xlsx
-! mv "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
-! mv "LabResults.xlsm" "LabResults.xlsx"
-! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
+mv "/Users/drewhackelman/Downloads/LabResults.xlsm" "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/LabResults.xlsm"
+mv "LabResults.xlsm" "LabResults.xlsx"
+rm "/Users/drewhackelman/Downloads/LabResults.xlsm"
 
-* Import common names/explanations of substances 
+
+* Import common names/explanations of substances
 *import excel "LabResults.xlsx", sheet("druglist") firstrow case(lower) clear
 *keep chemicalname commonrole pronunciation
 *rename chemicalname substance
@@ -40,7 +42,7 @@ do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/sqapi_last50.do"
 
 // Harm Reduction Chemical Dictionary
 *frame change translation
-*export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/chemdictionary.csv", quote replace
+*export delimited using "/Users/drewhackelman/repos/drugchecking/chemdictionary/chemdictionary.csv", quote replace
 *frame change default
 
 
@@ -52,10 +54,10 @@ drop if lab_status== "pending"
 
 replace sampleid=subinstr(sampleid,"_","-",.)
 
-frame put *, into(lab) 
+frame put *, into(lab)
 
 * Import card data
-import excel "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
+import excel "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
 drop  linkedsample howlongagowasthesampleobta
 
 * Variable cleanup
@@ -80,12 +82,12 @@ gen pillflag = regexm(lower(sampletype), "pill") | regexm(lower(texture), "pill"
 	order pillflag, a(texture)
 		la var pillflag "Composite dichotomous flag for pills, real or counterfeit, 1=pill"
 
-		
+
 * add state names for search
 merge m:1 state using states, nogen keep(1 3)
 drop state
-rename statename state		
-		
+rename statename state
+
 * Generate text: Location and date
 replace date = subinstr(date," ", "",1)
 gen t_location = "From " + location + ", " + state + " on " + date
@@ -111,12 +113,12 @@ gen t_color="Looks = " + temp_color + " " + temp_texture + "<br><br>"
 gen t_sensations="Sensations = " + sensations + "<br><br>"
 	replace t_sensations="Sensations not reported" if regexm(lower(sensations), "not specified|not used by participant") | sensations==""
 	replace t_sensations = subinstr(t_sensations,";",",",.)
-			
+
 * Overdose involvement
 gen t_od = "<strong>Careful! This sample caused an overdose.</strong>" + "<br><br>" if regexm(overdose,"OD")
 	replace t_od = "Not involved in overdose." + "<br><br>" if regexm(overdose,"not")
 	replace t_od = "Not sure if caused overdose." + "<br><br>" if regexm(overdose,"unknown")
-	
+
 * Expected Drug
 gen t_expected = "Assumed to be " + expectedsubstance
 	replace expectedsubstance=subinstr(expectedsubstance, "Unknown", "unknown", 1)
@@ -125,19 +127,19 @@ gen t_expected = "Assumed to be " + expectedsubstance
 	replace t_expected = "Unclear what it was before the lab" if expectedsubstance=="unknown" | expectedsubstance=="other"
 		drop temp*
 		replace t_expected = subinstr(t_expected,";",",",.)
-		
+
 gen t_labnotes="<br> Lab Notes: " + lab_notes_share + "<br>"
-		
+
 // Flag recent samples
 gen catt8="recent" if date_sample>today()-62 & date_sample!=.
 
-		
+
 quietly compress
 frame put *, into(card)
 
-frame put sampleid  t_* date_sample catt8, into(text)  
+frame put sampleid  t_* date_sample catt8, into(text)
 sort date_sample
-	
+
 // Lab Results
 
 * Commonality of substances
@@ -159,9 +161,9 @@ means counter
 gen uncommon=0
 	replace uncommon=1 if counter<r(mean_h)
 		la var uncommon "Substances ocurring less frequently than harmonic mean of frequency in entire databse"
-		
+
 // Uncommon Substances
-		
+
 frame change lab
 frlink m:1 substance, frame(common)
 frget uncommon, from(common)
@@ -181,7 +183,7 @@ frame change text
 frlink 1:1 sampleid, frame(uncommontext)
 frget t_uncommon, from(uncommontext)
 drop uncommontext
-	
+
 * Frames for major and minor
 frame change lab
 frame put sampleid substance if abundance=="", into(major)
@@ -204,15 +206,15 @@ reshape wide substance, i(sampleid) j(counter)
 drop if substance1==""
 
 foreach var of varlist substance* {
-	
+
 	replace `var' = "<li>" + `var' + "</li>"
-	
+
 }
 
 foreach var of varlist substance* {
-	
+
 	replace `var' = "" if `var'=="<li></li>"
-	
+
 }
 
 
@@ -288,15 +290,15 @@ drop substance peak* spectra_uploaded lab_notes
 reshape wide text, i(sampleid) j(counter)
 
 foreach var of varlist text* {
-	
+
 	replace `var' = "<li>" + `var' + "</li>"
-	
+
 }
 
 foreach var of varlist text* {
-	
+
 	replace `var' = "" if `var'=="<li></li>"
-	
+
 }
 
 
@@ -356,7 +358,7 @@ replace t_hr = "The Xchange in Greensboro can help provide you with free supplie
 * Import lab data
 frame create labtemp
 frame change labtemp
-import excel "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx", sheet("LAB data") firstrow case(lower) clear
+import excel "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/LabResults.xlsx", sheet("LAB data") firstrow case(lower) clear
 frame put sampleid method, into(method)
 frame change method
 duplicates drop
@@ -404,7 +406,7 @@ order t_detail, last
 
 save text, replace
 
-export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/textexport/textexport.xls", firstrow(variables) replace
+export excel using "/Users/drewhackelman/repos/drugchecking/textexport/textexport.xls", firstrow(variables) replace
 
 * Delete original excel file
 *! rm "LabResults.xlsm" "LabResults.xlsx"
@@ -419,16 +421,16 @@ gen mail="received by lab"
 order mail, first
 drop if sampleid==""
 tab sampleid
-append using allcomplete 
+append using allcomplete
 tab lab_status
 drop if lab_status=="" & r(N)>1
 gen status_date="$S_DATE"
 duplicates drop
 sort sampleid
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
+export delimited using "/Users/drewhackelman/repos/drugchecking/status/pending.csv", quote replace
 ** Share copies to Dropbox for Erin
-! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
-export delimited using "/Users/nabarun/Dropbox/Drug Checking Autotext/pending.csv", quote replace
+// ! rm "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/upload_for_import.csv"
+// export delimited using "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/pending.csv", quote replace
 
 // Open final text file back up
 use text, clear
@@ -470,7 +472,7 @@ gen visible="Yes"
 	gen catt9="fake-pills" if regexm(lower(Description),"pill")
 	gen catt10="/location/texas" if regexm(lower(Description),"texas")
 	gen catt11="/location/new-york" if regexm(lower(Description),"new york")
-	
+
 	* Put categories together
 		egen categories=concat(catt*), punc(", ")
 			order categories, a(stock)
@@ -484,8 +486,8 @@ gen visible="Yes"
 				replace categories=regexr(categories,",$","")
 					drop catt*
 
-* Add images from GitHub				
-* (Separate multiple images with spaces or line breaks.)	
+* Add images from GitHub
+* (Separate multiple images with spaces or line breaks.)
 gen hostedimage="https://opioiddatalab.github.io/drugchecking/spectra/" + sampleid + ".PNG"
 
 
@@ -493,28 +495,28 @@ gen hostedimage="https://opioiddatalab.github.io/drugchecking/spectra/" + sample
 * keep if sampleid=="300398" | sampleid=="300349"
 
 // Check against canonical list to only keep samples that have not been uploaded to site
-merge 1:1 title using canonical_list, keep(1) 
+merge 1:1 title using canonical_list, keep(1)
 
 * Drop error sample
 drop if title=="06082021"
 
 drop sampleid
 
-export delimited using "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", novarnames quote replace
+export delimited using "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/textexport.csv", novarnames quote replace
 
 * Move file for results_processing.do
-! mv "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx" "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx" 
+! mv "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/LabResults.xlsx" "/Users/drewhackelman/repos/dc_internal/LabResults.xlsx"
 
 * Delete previous versions of files
-! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv"
-! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
+! rm "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/upload_for_import.csv"
+! rm "/Users/drewhackelman/repos/Drug Checking Autotext/upload_for_import.csv"
 
 
 python
 import pandas as pd
-df = pd.read_csv("/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", header=None)
+df = pd.read_csv("/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/textexport.csv", header=None)
 df.rename(columns={0: 'Product ID [Non Editable]', 1: 'Variant ID [Non Editable]', 2: 'Product Type [Non Editable]', 3: 'Product Page', 4: 'Product URL', 5: 'Title', 6: 'Description', 7: 'SKU', 8: 'Option Name 1', 9: 'Option Value 1', 10: 'Option Name 2', 11: 'Option Value 2', 12: 'Option Name 3', 13: 'Option Value 3', 14: 'Price', 15: 'Sale Price', 16: 'On Sale', 17: 'Stock', 18: 'Categories', 19: 'Tags', 20: 'Weight', 21: 'Length', 22: 'Width', 23: 'Height', 24: 'Visible', 25: 'Hosted Image URLs'}, inplace=True)
-df.to_csv("/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv", index=False)
+df.to_csv("/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/upload_for_import.csv", index=False)
 
 end
 
@@ -522,10 +524,10 @@ clear all
 frames reset
 
 // Trigger data set processing code
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/result_processing.do"
+do "/Users/drewhackelman/repos/drugchecking/datasets/code/result_processing.do"
 
 // Trigger substances in stimulants
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/program_dashboards/substances_in_stimulants.do"
+do "/Users/drewhackelman/repos/drugchecking/datasets/program_dashboards/substances_in_stimulants.do"
 
 // Trigger recently detected subsances
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/program_dashboards/recentlydetected.do"
+do "/Users/drewhackelman/repos/drugchecking/datasets/program_dashboards/recentlydetected.do"
