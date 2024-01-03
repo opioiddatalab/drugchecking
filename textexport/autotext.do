@@ -1,15 +1,14 @@
 
 
 // Set python environment
-set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
+set python_exec /usr/local/bin/python3
 
 * state names and abbreviations
 clear all
 // cd "/Users/drewhackelman/repos/List-of-US-States"
-cd "/Users/drewhackelman/repos/drugchecking/nab_files/states.dta"
+cd "/Users/drewhackelman/repos/drugchecking/nab_files"
 import delimited states.csv, varname(1)
-rename state statename
-rename abbreviation state
+
 set obs `=_N+1'
 replace statename = "Puerto Rico" in 52
 replace state = "PR" in 52
@@ -28,9 +27,8 @@ do "/Users/drewhackelman/repos/dc_internal/sqapi_last50.do"
 
 // Download the data file and modify
 * change file extension from .xlsm to .xlsx
-mv "/Users/drewhackelman/Downloads/LabResults.xlsm" "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/LabResults.xlsm"
-mv "LabResults.xlsm" "LabResults.xlsx"
-rm "/Users/drewhackelman/Downloads/LabResults.xlsm"
+! mv "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/LabResults.xlsm" "/Users/drewhackelman/repos/drugchecking/nab_files/Autotext for drug checking/LabResults.xlsx"
+
 
 
 * Import common names/explanations of substances

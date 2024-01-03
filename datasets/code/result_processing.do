@@ -14,13 +14,11 @@ cd "/Users/drewhackelman/repos/dc_internal/"
 cd "/Users/drewhackelman/repos/dc_internal/"
 
 // Import City Locations for Programs
-import excel "/Users/drewhackelman/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofNorthCarolinaatChapelHill/Drug Checking - Documents/Data/Sample Tracking Data/LabResults.xlsx"
-! mv "/Users/drewhackelman/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofNorthCarolinaatChapelHill/Drug Checking - Documents/Data/Sample Tracking Data/LabResults.xlsm" "/Users/drewhackelman/repos/Autotext for drug checking/LabResults.xlsm"
-! mv "LabResults.xlsm" "LabResults.xlsx"
+import excel "/Users/drewhackelman/Downloads/LabResults.xlsm", sheet("ProgramInfo") firstrow clear
+! mv "/Users/drewhackelman/Downloads/LabResults.xlsm" "/Users/drewhackelman/Downloads/LabResults.xlsx"
 
-//first 12848 rows 
+//first 12848 rows
 keep if ( _N>12847 )
-drop text
 rename county p_city
 rename state p_state
 drop if program==""
@@ -29,9 +27,9 @@ save programloc, replace
 
 
 // Import Lab Data
-import excel "/Users/drewhackelman/repos/Autotext for drug checking/LabResults.xlsx", sheet("LAB data") firstrow clear
+import excel "/Users/drewhackelman/Downloads/LabResults.xlsx", sheet("LAB data") firstrow clear
 
-* Keep only samples with completed lab analysis and relevant variables
+* Keep only samples with completed lab analysis and// Harm Reduction Chemical Dictionary relevant variables
 keep if lab_status=="complete"
 keep sampleid substance abundance method date_complete peak
 duplicates drop
@@ -39,9 +37,7 @@ save lab, replace
 
 
 // Import Card Data
-import excel "/Users/drewhackelman/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofNorthCarolinaatChapelHill/Drug Checking - Documents/Data/Sample Tracking Data/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
-//3506 rows
-keep if ( _N>3505 )
+import excel "/Users/drewhackelman/Downloads/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
 
 drop linkedsample howlongagowasthesampleobta lab_note*
 
