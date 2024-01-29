@@ -1,5 +1,5 @@
 mail,sampleid,lab_status,status_date
-received by lab,500692,pending,29-Jan-24
-received by lab,802666,pending,29-Jan-24
-received by lab,600652,pending,29-Jan-24
-received by lab,600747,pending,29-Jan-24
+"received by lab","500692","pending","29 Jan 2024"
+"received by lab","600652","pending","29 Jan 2024"
+"received by lab","600747","pending","29 Jan 2024"
+"received by lab","802666","pending","29 Jan 2024"
