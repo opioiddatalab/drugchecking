@@ -1,5 +1,11 @@
 mail,sampleid,lab_status,status_date
-"received by lab","500692","pending","29 Jan 2024"
-"received by lab","600652","pending","29 Jan 2024"
-"received by lab","600747","pending","29 Jan 2024"
-"received by lab","802666","pending","29 Jan 2024"
+received by lab,500692,pending,30-Jan-24
+received by lab,600546,pending,30-Jan-24
+received by lab,600652,pending,30-Jan-24
+received by lab,600747,pending,30-Jan-24
+received by lab,802666,pending,30-Jan-24
+received by lab,802766,pending,30-Jan-24
+received by lab,803279,pending,30-Jan-24
+received by lab,803457,pending,30-Jan-24
+received by lab,803461,pending,30-Jan-24
+received by lab,803496,pending,30-Jan-24
