@@ -1,93 +1,78 @@
 mail,sampleid,lab_status,status_date
-received by lab,500692,pending,5-Feb-24
-received by lab,600029,pending,5-Feb-24
-received by lab,600047,pending,5-Feb-24
-received by lab,600409,pending,5-Feb-24
-received by lab,600421,pending,5-Feb-24
-received by lab,600447,pending,5-Feb-24
-received by lab,600481,pending,5-Feb-24
-received by lab,600497,pending,5-Feb-24
-received by lab,600546,pending,5-Feb-24
-received by lab,600597,pending,5-Feb-24
-received by lab,600603,pending,5-Feb-24
-received by lab,600605,pending,5-Feb-24
-received by lab,600609,pending,5-Feb-24
-received by lab,600616,pending,5-Feb-24
-received by lab,600621,pending,5-Feb-24
-received by lab,600652,pending,5-Feb-24
-received by lab,600661,pending,5-Feb-24
-received by lab,600747,pending,5-Feb-24
-received by lab,600752,pending,5-Feb-24
-received by lab,600770,pending,5-Feb-24
-received by lab,600787,pending,5-Feb-24
-received by lab,600788,pending,5-Feb-24
-received by lab,801642,pending,5-Feb-24
-received by lab,801799,pending,5-Feb-24
-received by lab,801822,pending,5-Feb-24
-received by lab,802132,pending,5-Feb-24
-received by lab,802152,pending,5-Feb-24
-received by lab,802278,pending,5-Feb-24
-received by lab,802308,pending,5-Feb-24
-received by lab,802329,pending,5-Feb-24
-received by lab,802345,pending,5-Feb-24
-received by lab,802361,pending,5-Feb-24
-received by lab,802393,pending,5-Feb-24
-received by lab,802418,pending,5-Feb-24
-received by lab,802434,pending,5-Feb-24
-received by lab,802486,pending,5-Feb-24
-received by lab,802596,pending,5-Feb-24
-received by lab,802599,pending,5-Feb-24
-received by lab,802638,pending,5-Feb-24
-received by lab,802662,pending,5-Feb-24
-received by lab,802666,pending,5-Feb-24
-received by lab,802730,pending,5-Feb-24
-received by lab,802746,pending,5-Feb-24
-received by lab,802758,pending,5-Feb-24
-received by lab,802766,pending,5-Feb-24
-received by lab,802843,pending,5-Feb-24
-received by lab,802854,pending,5-Feb-24
-received by lab,802870,pending,5-Feb-24
-received by lab,802897,pending,5-Feb-24
-received by lab,802963,pending,5-Feb-24
-received by lab,803034,pending,5-Feb-24
-received by lab,803063,pending,5-Feb-24
-received by lab,803072,pending,5-Feb-24
-received by lab,803076,pending,5-Feb-24
-received by lab,803086,pending,5-Feb-24
-received by lab,803156,pending,5-Feb-24
-received by lab,803215,pending,5-Feb-24
-received by lab,803222,pending,5-Feb-24
-received by lab,803229,pending,5-Feb-24
-received by lab,803234,pending,5-Feb-24
-received by lab,803238,pending,5-Feb-24
-received by lab,803277,pending,5-Feb-24
-received by lab,803279,pending,5-Feb-24
-received by lab,803308,pending,5-Feb-24
-received by lab,803359,pending,5-Feb-24
-received by lab,803366,pending,5-Feb-24
-received by lab,803384,pending,5-Feb-24
-received by lab,803390,pending,5-Feb-24
-received by lab,803394,pending,5-Feb-24
-received by lab,803414,pending,5-Feb-24
-received by lab,803431,pending,5-Feb-24
-received by lab,803447,pending,5-Feb-24
-received by lab,803457,pending,5-Feb-24
-received by lab,803461,pending,5-Feb-24
-received by lab,803468,pending,5-Feb-24
-received by lab,803469,pending,5-Feb-24
-received by lab,803471,pending,5-Feb-24
-received by lab,803496,pending,5-Feb-24
-received by lab,803502,pending,5-Feb-24
-received by lab,803521,pending,5-Feb-24
-received by lab,803536,pending,5-Feb-24
-received by lab,803624,pending,5-Feb-24
-received by lab,803627,pending,5-Feb-24
-received by lab,803669,pending,5-Feb-24
-received by lab,803744,pending,5-Feb-24
-received by lab,803753,pending,5-Feb-24
-received by lab,803754,pending,5-Feb-24
-received by lab,803788,pending,5-Feb-24
-received by lab,803790,pending,5-Feb-24
-received by lab,803921,pending,5-Feb-24
-received by lab,803956,pending,5-Feb-24
-received by lab,803968,pending,5-Feb-24
+"received by lab","300389","pending"," 6 Feb 2024"
+"received by lab","500692","pending"," 6 Feb 2024"
+"received by lab","500789","pending"," 6 Feb 2024"
+"received by lab","500869","pending"," 6 Feb 2024"
+"received by lab","600029","pending"," 6 Feb 2024"
+"received by lab","600047","pending"," 6 Feb 2024"
+"received by lab","600409","pending"," 6 Feb 2024"
+"received by lab","600421","pending"," 6 Feb 2024"
+"received by lab","600447","pending"," 6 Feb 2024"
+"received by lab","600481","pending"," 6 Feb 2024"
+"received by lab","600497","pending"," 6 Feb 2024"
+"received by lab","600597","pending"," 6 Feb 2024"
+"received by lab","600605","pending"," 6 Feb 2024"
+"received by lab","600609","pending"," 6 Feb 2024"
+"received by lab","600621","pending"," 6 Feb 2024"
+"received by lab","600652","pending"," 6 Feb 2024"
+"received by lab","600661","pending"," 6 Feb 2024"
+"received by lab","600690","pending"," 6 Feb 2024"
+"received by lab","600693","pending"," 6 Feb 2024"
+"received by lab","600724","pending"," 6 Feb 2024"
+"received by lab","600747","pending"," 6 Feb 2024"
+"received by lab","600752","pending"," 6 Feb 2024"
+"received by lab","600770","pending"," 6 Feb 2024"
+"received by lab","600787","pending"," 6 Feb 2024"
+"received by lab","600788","pending"," 6 Feb 2024"
+"received by lab","801822","pending"," 6 Feb 2024"
+"received by lab","802132","pending"," 6 Feb 2024"
+"received by lab","802152","pending"," 6 Feb 2024"
+"received by lab","802308","pending"," 6 Feb 2024"
+"received by lab","802329","pending"," 6 Feb 2024"
+"received by lab","802361","pending"," 6 Feb 2024"
+"received by lab","802393","pending"," 6 Feb 2024"
+"received by lab","802418","pending"," 6 Feb 2024"
+"received by lab","802434","pending"," 6 Feb 2024"
+"received by lab","802486","pending"," 6 Feb 2024"
+"received by lab","802596","pending"," 6 Feb 2024"
+"received by lab","802599","pending"," 6 Feb 2024"
+"received by lab","802662","pending"," 6 Feb 2024"
+"received by lab","802666","pending"," 6 Feb 2024"
+"received by lab","802758","pending"," 6 Feb 2024"
+"received by lab","802843","pending"," 6 Feb 2024"
+"received by lab","802854","pending"," 6 Feb 2024"
+"received by lab","802870","pending"," 6 Feb 2024"
+"received by lab","802897","pending"," 6 Feb 2024"
+"received by lab","802963","pending"," 6 Feb 2024"
+"received by lab","803072","pending"," 6 Feb 2024"
+"received by lab","803086","pending"," 6 Feb 2024"
+"received by lab","803215","pending"," 6 Feb 2024"
+"received by lab","803222","pending"," 6 Feb 2024"
+"received by lab","803229","pending"," 6 Feb 2024"
+"received by lab","803234","pending"," 6 Feb 2024"
+"received by lab","803238","pending"," 6 Feb 2024"
+"received by lab","803277","pending"," 6 Feb 2024"
+"received by lab","803279","pending"," 6 Feb 2024"
+"received by lab","803308","pending"," 6 Feb 2024"
+"received by lab","803359","pending"," 6 Feb 2024"
+"received by lab","803366","pending"," 6 Feb 2024"
+"received by lab","803384","pending"," 6 Feb 2024"
+"received by lab","803390","pending"," 6 Feb 2024"
+"received by lab","803431","pending"," 6 Feb 2024"
+"received by lab","803457","pending"," 6 Feb 2024"
+"received by lab","803468","pending"," 6 Feb 2024"
+"received by lab","803469","pending"," 6 Feb 2024"
+"received by lab","803471","pending"," 6 Feb 2024"
+"received by lab","803496","pending"," 6 Feb 2024"
+"received by lab","803502","pending"," 6 Feb 2024"
+"received by lab","803521","pending"," 6 Feb 2024"
+"received by lab","803536","pending"," 6 Feb 2024"
+"received by lab","803624","pending"," 6 Feb 2024"
+"received by lab","803627","pending"," 6 Feb 2024"
+"received by lab","803669","pending"," 6 Feb 2024"
+"received by lab","803754","pending"," 6 Feb 2024"
+"received by lab","803788","pending"," 6 Feb 2024"
+"received by lab","803790","pending"," 6 Feb 2024"
+"received by lab","803921","pending"," 6 Feb 2024"
+"received by lab","803956","pending"," 6 Feb 2024"
+"received by lab","803968","pending"," 6 Feb 2024"

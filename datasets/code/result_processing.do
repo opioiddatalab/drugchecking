@@ -346,7 +346,7 @@ note lab_num_substances: "Priamry substances only. Does NOT include substances i
 * Create indicator for if this sample was submitted to UNC as part of "confirmatory" testing for FTIR 
 ***  Uses regex for samples starting with ID numbers 800xxx. Excludes NC Survivors Union samples.
 gen confirmatory=0
-replace confirmatory=1 if regexm(sampleid,"^80")
+replace confirmatory=1 if regexm(sampleid,"^8")
 *****  Initial OR samples with 300xxx numbering
 replace confirmatory=1 if regexm(sampleid,"300555|300561|300572|300577|300593|300715|300717|300748|300755|300760|300764|300788|300790|300796")
 ******** NYS state startup kits
