@@ -3,12 +3,12 @@
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- opened on:  23 Feb 2024, 15:28:15
+ opened on:  26 Feb 2024, 20:44:36
 
 . codebook, n h
 
                Dataset: */GitHub/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 23 Feb 2024 15:28
+            Last saved: 26 Feb 2024 20:44
 
                  Label: [none]
    Number of variables: 94
@@ -1591,5 +1591,5 @@ countyfips:
        log:  /Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/
 > unc_druchecking_codebook.txt
   log type:  text
- closed on:  23 Feb 2024, 15:28:15
+ closed on:  26 Feb 2024, 20:44:36
 -------------------------------------------------------------------------------
