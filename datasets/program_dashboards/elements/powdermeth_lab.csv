@@ -1,9 +1,9 @@
 substance,samples,pubchemcid,latest
-methamphetamine,112,10836,29feb2024
-fentanyl,35,3345,29feb2024
+methamphetamine,113,10836,13mar2024
+fentanyl,36,3345,13mar2024
 4-ANPP,28,88890,29feb2024
 cocaine,15,446220,29feb2024
-dimethyl sulfone (methylsulfonylmethane MSM),13,6213,09feb2024
+dimethyl sulfone (methylsulfonylmethane MSM),14,6213,13mar2024
 phenethyl 4-ANPP,13,165365057,29feb2024
 heroin,10,5462328,24jun2023
 xylazine,9,5707,29feb2024
@@ -17,20 +17,20 @@ despropionyl p-fluorofentanyl,4,21812144,28sep2022
 tramadol,3,33741,21mar2023
 ethyl-4-ANPP,3,156346345,29nov2022
 acetylcodeine,3,5486550,16aug2022
-p-fluoro phenethyl 4-ANPP,2,165361568,28sep2022
-N-phenylpropanamide,2,12107,16aug2022
 acetaminophen,2,1983,21mar2023
+N-phenylpropanamide,2,12107,16aug2022
+p-fluoro phenethyl 4-ANPP,2,165361568,28sep2022
 "3,4-MDMA",2,1615,25jan2024
-methyl ecgonidine (MED),1,119478,14nov2022
-alpha-benzyl-N-methylphenethylamine,1,,13sep2023
 non-specific phthalate,1,,22aug2023
 diphenhydramine,1,3100,09feb2022
 6-monoacetylmorphine (6-MAM),1,5462507,16aug2022
-delta-8-THC,1,638026,05aug2022
-p-fluoroacetyl fentanyl,1,137700043,28sep2022
-N-butyl-aniline,1,14310,29feb2024
-cannabinol,1,2543,05aug2022
-non-specific organic acids,1,,19oct2022
-"N,N-Dimethylamphetamine (DMA)",1,20006,23mar2023
+methyl ecgonidine (MED),1,119478,14nov2022
 delta-9-THC,1,16078,05aug2022
+cannabinol,1,2543,05aug2022
+alpha-benzyl-N-methylphenethylamine,1,,13sep2023
+delta-8-THC,1,638026,05aug2022
+non-specific organic acids,1,,19oct2022
+N-butyl-aniline,1,14310,29feb2024
+"N,N-Dimethylamphetamine (DMA)",1,20006,23mar2023
 MDA,1,1614,30jul2023
+p-fluoroacetyl fentanyl,1,137700043,28sep2022
