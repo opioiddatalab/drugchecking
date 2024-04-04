@@ -36,6 +36,7 @@ save lab, replace
 // Import Card Data
 import excel "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
 drop linkedsample howlongagowasthesampleobta lab_note* 
+drop if sampleid==""
 
 * Keep only US samples
 drop if state=="international"

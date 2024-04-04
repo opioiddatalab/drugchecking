@@ -137,6 +137,10 @@ frame put *, into(card)
 
 frame put sampleid  t_* date_sample catt8, into(text)  
 sort date_sample
+
+// Drop if sampleid is blank
+frame change text
+drop if sampleid == ""
 	
 // Lab Results
 
@@ -151,36 +155,36 @@ bysort sampleid: egen totalsubstances=count(substance)
 	la var totalsubstances "Total number of substances detected in sample"
 
 
-frame put sampleid substance, into(common)
-frame change common
-gen counter=1
-collapse (sum) counter, by(substance)
-means counter
-gen uncommon=0
-	replace uncommon=1 if counter<r(mean_h)
-		la var uncommon "Substances ocurring less frequently than harmonic mean of frequency in entire databse"
+*frame put sampleid substance, into(common)
+*frame change common
+*gen counter=1
+*collapse (sum) counter, by(substance)
+*means counter
+*gen uncommon=0
+*	replace uncommon=1 if counter<r(mean_h)
+*		la var uncommon "Substances ocurring less frequently than harmonic mean of frequency in entire databse"
 		
 // Uncommon Substances
 		
-frame change lab
-frlink m:1 substance, frame(common)
-frget uncommon, from(common)
+*frame change lab
+*frlink m:1 substance, frame(common)
+*frget uncommon, from(common)
 
-frame put sampleid substance if uncommon==1, into(uncommontext)
-frame change uncommontext
-bysort sampleid: gen counter=_n
-reshape wide substance, i(sampleid) j(counter)
-egen t_temp = concat(substance*), punct(" + ")
-replace t_temp=subinstr(t_temp,"  +  +","",.)
-replace t_temp=subinstr(t_temp," +  +","",.)
-replace t_temp=regexr(t_temp," \+$","")
-drop substance*
-gen t_uncommon = "Uncommon substance(s): " + t_temp
+*frame put sampleid substance if uncommon==1, into(uncommontext)
+*frame change uncommontext
+*bysort sampleid: gen counter=_n
+*reshape wide substance, i(sampleid) j(counter)
+*egen t_temp = concat(substance*), punct(" + ")
+*replace t_temp=subinstr(t_temp,"  +  +","",.)
+*replace t_temp=subinstr(t_temp," +  +","",.)
+*replace t_temp=regexr(t_temp," \+$","")
+*drop substance*
+*gen t_uncommon = "Uncommon substance(s): " + t_temp
 
-frame change text
-frlink 1:1 sampleid, frame(uncommontext)
-frget t_uncommon, from(uncommontext)
-drop uncommontext
+*frame change text
+*frlink 1:1 sampleid, frame(uncommontext)
+*frget t_uncommon, from(uncommontext)
+*drop uncommontext
 	
 * Frames for major and minor
 frame change lab
@@ -274,7 +278,7 @@ drop hint
 
 * Scientific info
 frame change lab
-drop date* method common uncommon
+drop date* method 
 drop if peak==""
 drop if abundance=="trace"
 drop abundance lab_status
