@@ -42,4 +42,4 @@ drop order* today
 
 rename date first_detected
 
-export delimited using"/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/program_dashboards/elements/recentlydetected.csv", replace
+export delimited using"/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/elements/recentlydetected.csv", replace
