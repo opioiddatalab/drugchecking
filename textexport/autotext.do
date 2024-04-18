@@ -5,7 +5,7 @@ set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.1
 
 * state names and abbreviations
 clear all
-cd "/Users/nabarun/Dropbox/Mac/Documents/GitHub/List-of-US-States"
+cd "/Users/nabarun/Documents/GitHub/List-of-US-States"
 import delimited states.csv, varname(1)
 rename state statename
 rename abbreviation state
@@ -23,26 +23,13 @@ save states, replace
 ** Retrives last 50 sample ID numbers that have been posted to create canonical list
 ** Code hidden to protect endpoint
 
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/sqapi_last50.do"
+do "/Users/nabarun/Documents/GitHub/dc_internal/sqapi_last50.do"
 
 // Download the data file and modify
 * change file extension from .xlsm to .xlsx
-! mv "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
+!cp "/Users/nabarun/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofNorthCarolinaatChapelHill/Drug Checking - Documents/Data/Sample Tracking Data/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
 ! mv "LabResults.xlsm" "LabResults.xlsx"
-! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
-
-* Import common names/explanations of substances 
-*import excel "LabResults.xlsx", sheet("druglist") firstrow case(lower) clear
-*keep chemicalname commonrole pronunciation
-*rename chemicalname substance
-*duplicates drop
-*frame put *, into(translation)
-
-// Harm Reduction Chemical Dictionary
-*frame change translation
-*export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/chemdictionary/chemdictionary.csv", quote replace
-*frame change default
-
+*! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
 
 * Import lab data
 import excel "LabResults.xlsx", sheet("LAB data") firstrow case(lower) allstring clear
@@ -154,37 +141,6 @@ distinct sampleid
 bysort sampleid: egen totalsubstances=count(substance)
 	la var totalsubstances "Total number of substances detected in sample"
 
-
-*frame put sampleid substance, into(common)
-*frame change common
-*gen counter=1
-*collapse (sum) counter, by(substance)
-*means counter
-*gen uncommon=0
-*	replace uncommon=1 if counter<r(mean_h)
-*		la var uncommon "Substances ocurring less frequently than harmonic mean of frequency in entire databse"
-		
-// Uncommon Substances
-		
-*frame change lab
-*frlink m:1 substance, frame(common)
-*frget uncommon, from(common)
-
-*frame put sampleid substance if uncommon==1, into(uncommontext)
-*frame change uncommontext
-*bysort sampleid: gen counter=_n
-*reshape wide substance, i(sampleid) j(counter)
-*egen t_temp = concat(substance*), punct(" + ")
-*replace t_temp=subinstr(t_temp,"  +  +","",.)
-*replace t_temp=subinstr(t_temp," +  +","",.)
-*replace t_temp=regexr(t_temp," \+$","")
-*drop substance*
-*gen t_uncommon = "Uncommon substance(s): " + t_temp
-
-*frame change text
-*frlink 1:1 sampleid, frame(uncommontext)
-*frget t_uncommon, from(uncommontext)
-*drop uncommontext
 	
 * Frames for major and minor
 frame change lab
@@ -408,10 +364,7 @@ order t_detail, last
 
 save text, replace
 
-export excel using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/textexport/textexport.xls", firstrow(variables) replace
-
-* Delete original excel file
-*! rm "LabResults.xlsm" "LabResults.xlsx"
+export excel using "/Users/nabarun/Documents/GitHub/drugchecking/textexport/textexport.xls", firstrow(variables) replace
 
 
 // Save pending list
@@ -429,7 +382,7 @@ drop if lab_status=="" & r(N)>1
 gen status_date="$S_DATE"
 duplicates drop
 sort sampleid
-export delimited using "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/status/pending.csv", quote replace
+export delimited using "/Users/nabarun/Documents/GitHub/drugchecking/status/pending.csv", quote replace
 ** Share copies to Dropbox for Erin
 ! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
 export delimited using "/Users/nabarun/Dropbox/Drug Checking Autotext/pending.csv", quote replace
@@ -493,9 +446,6 @@ gen visible="Yes"
 gen hostedimage="https://opioiddatalab.github.io/drugchecking/spectra/" + sampleid + ".PNG"
 
 
-// For manual updates of specific samples, keep the following line and comment out the merge with canonical_list.
-* keep if sampleid=="300398" | sampleid=="300349"
-
 // Check against canonical list to only keep samples that have not been uploaded to site
 merge 1:1 title using canonical_list, keep(1) 
 
@@ -507,7 +457,7 @@ drop sampleid
 export delimited using "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", novarnames quote replace
 
 * Move file for results_processing.do
-! mv "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx" "/Users/nabarun/Dropbox/Mac/Documents/GitHub/dc_internal/LabResults.xlsx" 
+! mv "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx" "/Users/nabarun/Documents/GitHub/dc_internal/LabResults.xlsx" 
 
 * Delete previous versions of files
 ! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv"
@@ -526,10 +476,10 @@ clear all
 frames reset
 
 // Trigger data set processing code
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/code/result_processing.do"
+do "/Users/nabarun/Documents/GitHub/drugchecking/datasets/code/result_processing.do"
 
 // Trigger substances in stimulants
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/program_dashboards/substances_in_stimulants.do"
+do "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/substances_in_stimulants.do"
 
 // Trigger recently detected subsances
-do "/Users/nabarun/Dropbox/Mac/Documents/GitHub/drugchecking/datasets/program_dashboards/recentlydetected.do"
+do "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/recentlydetected.do"
