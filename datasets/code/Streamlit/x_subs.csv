@@ -19,8 +19,8 @@ substance,samples,rank
 "acetylcodeine",22,18
 "acetaminophen",20,19
 "tramadol",20,20
-"diphenhydramine",17,21
-"non-specific sugars",17,22
+"non-specific sugars",17,21
+"diphenhydramine",17,22
 "phenethyl bromide",14,23
 "procaine",11,24
 "quinine",11,25
@@ -29,47 +29,47 @@ substance,samples,rank
 "bromazolam",8,28
 "menthol",6,29
 "N-propionyl norfentanyl",5,30
-"methyl ecgonidine (MED)",5,31
-"1-phenyl-1-propanamine",5,32
-"gabapentin",4,33
-"metonitazene",4,34
-"mannitol",4,35
-"phenacetin",4,36
-"tropacocaine",3,37
-"melatonin",3,38
-"benzocaine",3,39
-"acetyl fentanyl",3,40
-"phenethyl chloride",2,41
-"valeryl fentanyl",2,42
+"1-phenyl-1-propanamine",5,31
+"methyl ecgonidine (MED)",5,32
+"mannitol",4,33
+"gabapentin",4,34
+"phenacetin",4,35
+"metonitazene",4,36
+"acetyl fentanyl",3,37
+"tropacocaine",3,38
+"melatonin",3,39
+"benzocaine",3,40
+"levamisole",2,41
+"phenethyl chloride",2,42
 "meconin",2,43
 "urea",2,44
-"levamisole",2,45
-"benzoylecgonine (BZ)",2,46
-"ketamine",2,47
-"benzyl benzoate",2,48
-"sucrose",2,49
-"1-propionyl-4-anilinopiperidine",2,50
-"N,N-dimethylpentylone",2,51
-"hydrocotarnine",2,52
-"noscapine",1,53
-"flualprazolam",1,54
-"p-fluoroacetyl fentanyl",1,55
-"inositol",1,56
-"protonitazene",1,57
-"nicotine",1,58
-"medetomidine",1,59
-"niacinamide",1,60
-"benzoic acid",1,61
+"benzyl benzoate",2,45
+"valeryl fentanyl",2,46
+"sucrose",2,47
+"1-propionyl-4-anilinopiperidine",2,48
+"hydrocotarnine",2,49
+"N,N-dimethylpentylone",2,50
+"benzoylecgonine (BZ)",2,51
+"ketamine",2,52
+"inositol",1,53
+"non-specific organic acids",1,54
+"methylparaben",1,55
+"lactose",1,56
+"non-specific phthalate",1,57
+"4-anilinopiperidine",1,58
+"benzoic acid",1,59
+"flualprazolam",1,60
+"protonitazene",1,61
 "norcocaine",1,62
-"ibuprofen",1,63
+"4-Anilino-1-Boc-piperidine",1,63
 "papaverine",1,64
-"erythritol",1,65
-"4-Anilino-1-Boc-piperidine",1,66
-"1-phenethyl-4-hydroxypiperidine",1,67
-"delta-9-THC",1,68
-"lactose",1,69
-"ecgonine methylester (EME)",1,70
-"non-specific organic acids",1,71
-"non-specific phthalate",1,72
-"4-anilinopiperidine",1,73
-"methylparaben",1,74
+"niacinamide",1,65
+"nicotine",1,66
+"erythritol",1,67
+"medetomidine",1,68
+"ibuprofen",1,69
+"p-fluoroacetyl fentanyl",1,70
+"noscapine",1,71
+"1-phenethyl-4-hydroxypiperidine",1,72
+"ecgonine methylester (EME)",1,73
+"delta-9-THC",1,74
