@@ -483,3 +483,6 @@ do "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/sub
 
 // Trigger recently detected subsances
 do "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/recentlydetected.do"
+
+clear all
+frames reset
