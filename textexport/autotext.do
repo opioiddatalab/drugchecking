@@ -1,29 +1,18 @@
 
 
-// Set python environment
-set python_exec /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
-
-* state names and abbreviations
 clear all
-cd "/Users/nabarun/Documents/GitHub/List-of-US-States"
-import delimited states.csv, varname(1)
-rename state statename
-rename abbreviation state
-set obs `=_N+1'
-replace statename = "Puerto Rico" in 52
-replace state = "PR" in 52
+frames reset
 
-cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
-
-
-save states, replace
-
+// Set python environment
+*set python_exec /opt/anaconda3/bin/python3.11, permanently
 
 // Get posted products from Squarespace API
 ** Retrives last 50 sample ID numbers that have been posted to create canonical list
 ** Code hidden to protect endpoint
 
-do "/Users/nabarun/Documents/GitHub/dc_internal/sqapi_last50.do"
+cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
+
+do "/Users/nabarun/Documents/dc_internal/sqapi_last50.do"
 
 // Download the data file and modify
 * change file extension from .xlsm to .xlsx
@@ -364,7 +353,7 @@ order t_detail, last
 
 save text, replace
 
-export excel using "/Users/nabarun/Documents/GitHub/drugchecking/textexport/textexport.xls", firstrow(variables) replace
+export excel using "/Users/nabarun/Documents/drugchecking/textexport/textexport.xls", firstrow(variables) replace
 
 
 // Save pending list
@@ -382,7 +371,7 @@ drop if lab_status=="" & r(N)>1
 gen status_date="$S_DATE"
 duplicates drop
 sort sampleid
-export delimited using "/Users/nabarun/Documents/GitHub/drugchecking/status/pending.csv", quote replace
+export delimited using "/Users/nabarun/Documents/drugchecking/status/pending.csv", quote replace
 ** Share copies to Dropbox for Erin
 ! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
 export delimited using "/Users/nabarun/Dropbox/Drug Checking Autotext/pending.csv", quote replace
@@ -457,7 +446,7 @@ drop sampleid
 export delimited using "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/textexport.csv", novarnames quote replace
 
 * Move file for results_processing.do
-! mv "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx" "/Users/nabarun/Documents/GitHub/dc_internal/LabResults.xlsx" 
+! mv "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx" "/Users/nabarun/Documents/dc_internal/LabResults.xlsx" 
 
 * Delete previous versions of files
 ! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv"
@@ -476,13 +465,13 @@ clear all
 frames reset
 
 // Trigger data set processing code
-do "/Users/nabarun/Documents/GitHub/drugchecking/datasets/code/result_processing.do"
+do "/Users/nabarun/Documents/drugchecking/datasets/code/result_processing.do"
 
 // Trigger substances in stimulants
-do "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/substances_in_stimulants.do"
+do "/Users/nabarun/Documents/drugchecking/datasets/program_dashboards/substances_in_stimulants.do"
 
 // Trigger recently detected subsances
-do "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/recentlydetected.do"
+do "/Users/nabarun/Documents/drugchecking/datasets/program_dashboards/recentlydetected.do"
 
 clear all
 frames reset
