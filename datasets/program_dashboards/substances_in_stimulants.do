@@ -5,7 +5,7 @@ clear all
 
 // Directory - pull in both full datasets
 
-cd "/Users/nabarun/Documents/GitHub/dc_internal/"
+cd "/Users/nabarun/Documents/dc_internal/"
 
 frame create card
 frame change card
@@ -61,7 +61,7 @@ gen samples=1
 collapse (sum) samples (max) pubchemcid date_complete , by(substance)
 rename date_complete latest
 gsort -samples
-export delimited using "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/elements/crack_lab.csv", replace
+export delimited using "/Users/nabarun/Documents/drugchecking/datasets/program_dashboards/elements/crack_lab.csv", replace
 use lab_detail, clear
 
 ** Coke
@@ -70,7 +70,7 @@ gen samples=1
 collapse (sum) samples (max) pubchemcid date_complete , by(substance)
 rename date_complete latest
 gsort -samples
-export delimited using "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/elements/coke_lab.csv", replace
+export delimited using "/Users/nabarun/Documents/drugchecking/datasets/program_dashboards/elements/coke_lab.csv", replace
 use lab_detail, clear
 
 ** Crystal meth
@@ -79,7 +79,7 @@ gen samples=1
 collapse (sum) samples (max) pubchemcid date_complete , by(substance)
 rename date_complete latest
 gsort -samples
-export delimited using "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/elements/crystal_lab.csv", replace
+export delimited using "/Users/nabarun/Documents/drugchecking/datasets/program_dashboards/elements/crystal_lab.csv", replace
 use lab_detail, clear
 
 ** Powder meth
@@ -88,7 +88,7 @@ gen samples=1
 collapse (sum) samples (max) pubchemcid date_complete , by(substance)
 rename date_complete latest
 gsort -samples
-export delimited using "/Users/nabarun/Documents/GitHub/drugchecking/datasets/program_dashboards/elements/powdermeth_lab.csv", replace
+export delimited using "/Users/nabarun/Documents/drugchecking/datasets/program_dashboards/elements/powdermeth_lab.csv", replace
 
 erase crack.dta
 erase coke.dta
