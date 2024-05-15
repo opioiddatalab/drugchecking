@@ -710,6 +710,7 @@ save "/Users/nabarun/Documents/dc_internal/analysis_dataset.dta", replace
 // Generate canonical list of geocoded locations
 keep sampleid county full_state lat lon
 duplicates drop sampleid, force
+drop if county==""
 save "/Users/nabarun/Documents/dc_internal/geo_canonical.dta", replace
 
 // Save NC Public Dataset without program name
@@ -767,9 +768,9 @@ export delimited using "/Users/nabarun/Documents/drugchecking/datasets/analysis_
 
 // Generate codebook on public data
 
-log using "/Users/nabarun/Documents/drugchecking/datasets/unc_druchecking_codebook.txt", text replace
-codebook, n h
-log close
+*log using "/Users/nabarun/Documents/drugchecking/datasets/unc_druchecking_codebook.txt", text replace
+*codebook, n h
+*log close
 
 // Save public lab detail file
 
