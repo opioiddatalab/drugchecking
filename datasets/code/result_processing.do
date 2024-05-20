@@ -710,7 +710,7 @@ save "/Users/nabarun/Documents/dc_internal/analysis_dataset.dta", replace
 // Generate canonical list of geocoded locations
 keep sampleid county full_state lat lon
 duplicates drop sampleid, force
-drop if county==""
+*drop if county==""
 save "/Users/nabarun/Documents/dc_internal/geo_canonical.dta", replace
 
 // Save NC Public Dataset without program name
