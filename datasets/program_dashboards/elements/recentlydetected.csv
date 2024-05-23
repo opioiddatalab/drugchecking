@@ -1,14 +1,14 @@
 sampleid,substance,pubchemcid,first_detected
+601834,tiletamine,26533,21may2024
 601697,2-Fluoro-2-oxo PCE,,21may2024
-601648,tiletamine,26533,21may2024
-600977,N-pyrrolidino isotonitazene,,15may2024
 600977,N-desethyl isotonitazene,,15may2024
-903065,theobromine,,09may2024
-601880,4-methyl-5-phenylpyrimide,,08may2024
+600977,N-pyrrolidino isotonitazene,,15may2024
+500692,theobromine,,09may2024
+601880,4-benzylpyrimidine,,08may2024
 601880,"N,N-di(beta-phenylisopropyl)amine",,08may2024
+601880,4-methyl-5-phenylpyrimide,,08may2024
 601880,1-phenyl-2-propanol,,08may2024
 601971,N-ethyl hexedrone,,08may2024
-601880,4-benzylpyrimidine,,08may2024
 601565,flubromazolam,21930924,07may2024
 600085,3-methylmethcathinone,,03may2024
 500931,clonazepam,2802,03may2024
@@ -21,9 +21,9 @@ sampleid,substance,pubchemcid,first_detected
 901005,tianeptine,68870,15feb2024
 901005,tianeptine metabolite,,15feb2024
 500724,aniline,,09feb2024
-600693,Psilocybin / Psilocin,,09feb2024
-600568,methenolone enanthate,,17jan2024
+600724,Psilocybin / Psilocin,,09feb2024
 600599,trenbolone enanthate,,17jan2024
+600568,methenolone enanthate,,17jan2024
 600120,midazolam,,03jan2024
 600209,benzyl alcohol,,27nov2023
 600209,testosterone cypionate,,27nov2023
