@@ -9,10 +9,10 @@ If you have an FTIR machine and are interested in "secondary" testing with GCMS,
 - Low FTIR match scores for active ingredient
 - Drug mixtures that have 4+ substances
 - The first time you see a new drug (e.g., like a PCP analogue)
-- A random sample of FTIR spectra for quality assurance
 - If you're interested in synthesis methods (e.g., P2P methamphetamine)
 - Subset validation for research publication
 - Liquid drugs (can be handled on FTIR, but can be finicky)
-- Most pills 
+- Most pills
+- Benzodiazepines
 - Organic substances (cannabis leaf, mushrooms)
 - Random 10% to 20% of samples for quality assurance
