@@ -353,7 +353,9 @@ replace confirmatory=1 if regexm(sampleid,"300555|300561|300572|300577|300593|30
 ******** NYS state startup kits
 replace confirmatory=1 if regexm(sampleid,"300851|300839300848|300831|300821|300810|300878|300873|300887|300885|300672|300613|300644|300674|300736|300382|300804|300807|300839|300840|300880|300902|300916|300920|300921|300926|300931|300934|300935|300937|300938|300940|300947|300948|300949|300951|300958|300960|300961|300964|900047|900055|900065|900066|900081")
 ******* Errors found by Cole in June 2024
-replace confirmatory=1 if regexm(sampleid, "500732|500254|500405|500543|500931|500001|500935|802600")
+replace confirmatory=1 if regexm(sampleid, "500732|500254|500405|500543|500931|500001|500935|500732")
+******* Add NC Survivors Union to confirmatory going forward
+do "/Users/nabarun/Documents/dc_internal/confirmatory_program_switch.do"
 
 la var confirmatory "Sample for GCMS confirmatory/complementary testing"
 
