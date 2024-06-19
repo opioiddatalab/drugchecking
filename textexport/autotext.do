@@ -299,7 +299,7 @@ gen t_tracetext=" Trace substances in small quantities are usually harmless, but
 
 // Harm Reduction program information
 gen t_hr = "Need free supplies and advice to keep you safe? Find your nearest harm reduction program at harmreduction.org<br><br>"
-replace t_hr = "The Xchange in Greensboro can help provide you with free supplies and advice to stay safe. 'If you want to improve your life we are here to help you. One goal at a time. You make the goals... we listen to you.'<br>1114 Grove Street, Greensboro, NC 27403<br>Phone: 336-669-5543<br>Open: Mon 1-7pm, Tue 1-7pm, Thu 1-5pm, Fri 1-8pm<br>ncurbansurvivorunion.org<br><br>" if regexm(lower(t_location),"greensboro")
+*replace t_hr = "The Xchange in Greensboro can help provide you with free supplies and advice to stay safe. 'If you want to improve your life we are here to help you. One goal at a time. You make the goals... we listen to you.'<br>1114 Grove Street, Greensboro, NC 27403<br>Phone: 336-669-5543<br>Open: Mon 1-7pm, Tue 1-7pm, Thu 1-5pm, Fri 1-8pm<br>ncurbansurvivorunion.org<br><br>" if regexm(lower(t_location),"greensboro")
 
 // Methods details
 * Import lab data

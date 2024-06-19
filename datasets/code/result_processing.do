@@ -13,13 +13,15 @@ cd "/Users/nabarun/Documents/dc_internal/"
 
 cd "/Users/nabarun/Documents/dc_internal/"
 
+
+// THIS NEED TO BE FIXED June 19, 2024 WHEN UPDATED
 // Import City Locations for Programs
-import excel "/Users/nabarun/Documents/dc_internal/LabResults.xlsx", sheet("ProgramInfo") firstrow clear
+import excel "/Users/nabarun/Documents/dc_internal/LabResults.xlsx", sheet("ProgramInfo") firstrow case(lower) clear
 drop text
 rename county p_city
 rename state p_state
 drop if program==""
-drop I
+drop i
 save programloc, replace
 
 
@@ -684,9 +686,9 @@ order program_county lat_program lon_program, b(lat)
 // Add County FIPS information
 
 ** Fix missing and irregular county locations
-replace county="Kings County" if program=="NYC-KM" & county==""
-replace county="Suffolk County" if program=="Community Action for Social Justice" & county==""
-replace county="Rio Arriba County" if program=="The Mountain Center" & county==""
+replace county="Kings County" if program=="Ind-KM" & county==""
+replace county="Suffolk County" if program=="CASJ" & county==""
+replace county="Rio Arriba County" if program=="TMountain Ctr" & county==""
 replace county="San Francisco" if location=="San Francisco"
 replace county="Surry County" if location=="Pipers Gap"
 replace county="Randolph County" if program=="Community Hope Alliance" & county==""
