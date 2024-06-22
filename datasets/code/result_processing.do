@@ -22,6 +22,7 @@ rename county p_city
 rename state p_state
 drop if program==""
 drop i
+duplicates drop program, force
 save programloc, replace
 
 
