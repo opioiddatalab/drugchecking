@@ -32,7 +32,8 @@ frame put *, into(lab)
 
 * Import card data
 import excel "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx", sheet("CARD data") firstrow case(lower) clear
-drop  linkedsample howlongagowasthesampleobta
+drop  linkedsample howlongagowasthesampleobta counter
+drop if sampleid==""
 /// Add line of code to catch samples not sent in card df
 
 * Variable cleanup
