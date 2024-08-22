@@ -623,6 +623,11 @@ la var lab_fentanyl_impurities_any "Any fentanyl synthesis impurities detected"
 note lab_fentanyl_impurities_any: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
 la var lab_substituted_cathinones_any "Any substituted cathinone detected"
 la var confirmatory "Sample for GCMS confirmatory or complementary testing"
+la var lab_btmps_any "BTMPS detected in lab"
+note lab_btmps_any: "Exact match for bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate in primary or trace abundance."
+la var lab_btmps "BTMPS detected in lab"
+note lab_btmps: "Exact match for bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate as a primary substance."
+
 
 
 foreach var of varlist lab_designer_benzos_any-lab_substituted_cathinones_any {
@@ -784,9 +789,9 @@ export delimited using "/Users/nabarun/Documents/drugchecking/datasets/analysis_
 
 // Generate codebook on public data
 
-*log using "/Users/nabarun/Documents/drugchecking/datasets/unc_druchecking_codebook.txt", text replace
-*codebook, n h
-*log close
+log using "/Users/nabarun/Documents/drugchecking/datasets/unc_druchecking_codebook.txt", text replace
+codebook, n h
+log close
 
 // Save public lab detail file
 
