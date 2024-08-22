@@ -484,6 +484,15 @@ replace lab_ketamine=1 if substance=="ketamine" & abundance==""
 la var lab_ketamine "ketamine detected in lab"
 note lab_ketamine: "Exact match for ketamine as a primary substance."
 
+gen lab_btmps_any=0
+replace lab_btmps_any=1 if substance=="bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate"
+la var lab_btmps_any "BTMPS detected in lab"
+note lab_btmps_any: "Exact match for bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate in primary or trace abundance."
+
+gen lab_btmps=0
+replace lab_btmps=1 if substance=="bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate" & abundance==""
+la var lab_btmps "BTMPS detected in lab"
+note lab_btmps: "Exact match for bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate as a primary substance."
 
 // Impurities and drug categories
 * These commands pull in the chem dictionary from GitHub (chemdictionary.csv) and use
