@@ -705,8 +705,10 @@ replace county="Kings County" if program=="Ind-KM" & county==""
 replace county="Suffolk County" if program=="CASJ" & county==""
 replace county="Rio Arriba County" if program=="TMountain Ctr" & county==""
 replace county="San Francisco" if location=="San Francisco"
-replace county="Surry County" if location=="Pipers Gap"
-replace county="Randolph County" if program=="Community Hope Alliance" & county==""
+replace county="Surry" if location=="Pipers Gap"
+replace county="Macon" if location=="Macon" & state=="NC" & regexm(lower(program), "smoky")
+replace county="Randolph" if program=="Community Hope Alliance" & county==""
+replace county="Denver" if location=="Denver" & state=="CO"
 replace county=program_county if county==""
 
 gen temp = subinstr(county," County", "", .)
@@ -789,9 +791,9 @@ export delimited using "/Users/nabarun/Documents/drugchecking/datasets/analysis_
 
 // Generate codebook on public data
 
-log using "/Users/nabarun/Documents/drugchecking/datasets/unc_druchecking_codebook.txt", text replace
-codebook, n h
-log close
+*log using "/Users/nabarun/Documents/drugchecking/datasets/unc_druchecking_codebook.txt", text replace
+*codebook, n h
+*log close
 
 // Save public lab detail file
 

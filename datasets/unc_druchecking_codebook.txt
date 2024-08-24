@@ -2,12 +2,12 @@
       name:  <unnamed>
        log:  /Users/nabarun/Documents/drugchecking/datasets/unc_druchecking_codebook.txt
   log type:  text
- opened on:  23 Aug 2024, 21:36:34
+ opened on:  23 Aug 2024, 22:29:35
 
 . codebook, n h
 
                Dataset: /Users/nabarun/Documents/drugchecking/datasets/analysis_dataset.dta
-            Last saved: 23 Aug 2024 21:36
+            Last saved: 23 Aug 2024 22:29
 
                  Label: [none]
    Number of variables: 96
@@ -1584,5 +1584,5 @@ countyfips:
       name:  <unnamed>
        log:  /Users/nabarun/Documents/drugchecking/datasets/unc_druchecking_codebook.txt
   log type:  text
- closed on:  23 Aug 2024, 21:36:35
+ closed on:  23 Aug 2024, 22:29:36
 -----------------------------------------------------------------------------------------------------
