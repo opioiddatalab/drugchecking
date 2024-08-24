@@ -710,6 +710,7 @@ replace county="Macon" if location=="Macon" & state=="NC" & regexm(lower(program
 replace county="Randolph" if program=="Community Hope Alliance" & county==""
 replace county="Denver" if location=="Denver" & state=="CO"
 replace county=program_county if county==""
+replace county="Buncombe" if location=="Fairview" & state=="NC" & regexm(lower(program), "steady|holler|wncap")
 
 gen temp = subinstr(county," County", "", .)
 order temp, a(county)
