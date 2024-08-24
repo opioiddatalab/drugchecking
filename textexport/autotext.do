@@ -475,8 +475,6 @@ do "/Users/nabarun/Documents/drugchecking/datasets/program_dashboards/substances
 // Trigger recently detected subsances
 do "/Users/nabarun/Documents/drugchecking/datasets/program_dashboards/recentlydetected.do"
 
-// Push results to Google Drive
-// do "/Users/nabarun/Documents/dc_internal/Google Drive export.do"
 
 clear all
 frames reset
