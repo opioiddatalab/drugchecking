@@ -704,13 +704,14 @@ order program_county lat_program lon_program, b(lat)
 replace county="Kings County" if program=="Ind-KM" & county==""
 replace county="Suffolk County" if program=="CASJ" & county==""
 replace county="Rio Arriba County" if program=="TMountain Ctr" & county==""
-replace county="San Francisco" if location=="San Francisco"
-replace county="Surry" if location=="Pipers Gap"
-replace county="Macon" if location=="Macon" & state=="NC" & regexm(lower(program), "smoky")
-replace county="Randolph" if program=="Community Hope Alliance" & county==""
-replace county="Denver" if location=="Denver" & state=="CO"
+replace county="San Francisco County" if location=="San Francisco"
+replace county="Surry County" if location=="Pipers Gap"
+replace county="Macon County" if location=="Macon" & state=="NC" & regexm(lower(program), "smoky")
+replace county="Randolph County" if program=="Community Hope Alliance" & county==""
+replace county="Denver County" if location=="Denver" & state=="CO"
 replace county=program_county if county==""
-replace county="Buncombe" if location=="Fairview" & state=="NC" & regexm(lower(program), "steady|holler|wncap")
+** Added Aug 2024 because of "Ashville" typo --> Asheville, but was being geocoded to Dare Co.
+replace county="Buncombe County" if (location=="Asheville" | location=="Ashville") & state=="NC" & regexm(lower(program), "steady|holler|wncap")
 
 gen temp = subinstr(county," County", "", .)
 order temp, a(county)
