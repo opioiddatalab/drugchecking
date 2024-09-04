@@ -5,6 +5,12 @@
 clear all
 frames reset
 
+// Import ChemDict
+frame create chemdict
+frame change chemdict
+import delimited "https://deepnote.com/publish/3e23f525-d8bc-4a6e-9c0d-d8ad2f13b7a2/file?path=chemdict_exploded.csv"
+frame change default
+
 // Set directory
 cd "/Users/nabarun/Documents/dc_internal/"
 
@@ -494,18 +500,67 @@ replace lab_btmps=1 if substance=="bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate
 la var lab_btmps "BTMPS detected in lab"
 note lab_btmps: "Exact match for bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate as a primary substance."
 
-// Impurities and drug categories
-* These commands pull in the chem dictionary from GitHub (chemdictionary.csv) and use
+// CHEMDICT: Substance categories
+* These commands pull in the exploded chem dictionary from Deepnote (chemdictionary.csv) and uses
 * the categoriezed columns to create derived variables that classify the substance.
-* The file categorize.do is a script that imports the metadata from GitHub and runs is against
-* the lab results.
+
+frlink m:1 substance, frame(chemdict)
+
+gen lab_opioid=0
+replace lab_opioid = 1 if frval(chemdict, tag_opioid) == 1 & abundance == ""
+la var lab_opioid "Opioid detected primary"
+note: lab_opioid "At least one match for opioid in PRIMARY abundance."
+
+gen lab_opioid_any=0
+replace lab_opioid_any = 1 if frval(chemdict, tag_opioid) == 1
+la var lab_opioid_any "Opioid detected"
+note: lab_opioid_any "At least one match for opioid in primary or trace abundance."
+
+gen lab_synthetic_cannabinoid=0
+replace lab_synthetic_cannabinoid = 1 if frval(chemdict, tag_synthetic_cannabinoid) == 1 & abundance == ""
+la var lab_synthetic_cannabinoid "synthetic cannabinoid detected primary"
+note: lab_synthetic_cannabinoid "At least one match for synthetic cannabinoid in PRIMARY abundance."
+
+gen lab_synthetic_cannabinoid_any=0
+replace lab_synthetic_cannabinoid_any = 1 if frval(chemdict, tag_synthetic_cannabinoid) == 1
+la var lab_synthetic_cannabinoid_any "synthetic cannabinoid detected"
+note: lab_synthetic_cannabinoid_any "At least one match for synthetic cannabinoid in primary or trace abundance."
+
+gen lab_potent_benzodiazepine=0
+replace lab_potent_benzodiazepine = 1 if frval(chemdict, tag_potent_benzodiazepine) == 1 & abundance == ""
+la var lab_potent_benzodiazepine "potent benzodiazepine detected primary"
+note: lab_potent_benzodiazepine "At least one match for potent benzodiazepine in PRIMARY abundance."
+
+gen lab_potent_benzodiazepine_any=0
+replace lab_potent_benzodiazepine_any = 1 if frval(chemdict, tag_potent_benzodiazepine) == 1
+la var lab_potent_benzodiazepine_any "potent benzodiazepine detected"
+note: lab_potent_benzodiazepine_any "At least one match for potent benzodiazepine in primary or trace abundance."
+
+gen lab_benzodiazepine=0
+replace lab_benzodiazepine = 1 if frval(chemdict, tag_benzodiazepine) == 1 & abundance == ""
+la var lab_benzodiazepine "potent benzodiazepine detected primary"
+note: lab_benzodiazepine "At least one match for benzodiazepine in PRIMARY abundance."
+
+gen lab_benzodiazepine_any=0
+replace lab_benzodiazepine_any = 1 if frval(chemdict, tag_benzodiazepine) == 1
+la var lab_benzodiazepine_any "potent benzodiazepine detected"
+note: lab_benzodiazepine_any "At least one match for benzodiazepine in primary or trace abundance."
+
+gen lab_nitazene=0
+replace lab_nitazene = 1 if ( frval(chemdict, tag_nitazene)==1 | frval(chemdict, tag_nitazene_metabolite)==1 | frval(chemdict, tag_nitazene_impurity)==1 )  & abundance == ""
+la var lab_nitazene "Nitazene or impurity detected primary abundance"
+note: lab_nitazene "At least one match for nitazene or metabolite or impurity in PRIMARY abundance."
+
+gen lab_nitazene_any=0
+replace lab_nitazene_any = 1 if frval(chemdict, tag_nitazene) == 1
+la var lab_nitazene_any "potent benzodiazepine detected abundance"
+note: lab_nitazene_any "At least one match for nitazene or metabolite or impurity in primary or trace abundance."
+
+
+
+
 
 cd "/Users/nabarun/Documents/drugchecking/datasets/code/"
-do categorize "designer_benzos"
-do categorize "benzos"
-do categorize "nitazenes"
-do categorize "opiates_opioids"
-do categorize "synthetic_cannabinoids"
 do categorize "meth_impurities"
 do categorize "mdma_impurities"
 do categorize "cocaine_impurities"
@@ -552,6 +607,7 @@ save "/Users/nabarun/Documents/dc_internal/lab_detail.dta", replace
 frame copy lab merge
 frame change merge
 
+* Sets lab_ to equal 1 if any of the tags above were 1 using chemdict etc.
 collapse (max) confirmatory date_complete primary trace lab_*, by(sampleid)
   
 * Clean up logic for samples with no substances detected
@@ -612,10 +668,6 @@ note lab_heroin_impurities_any: "Known heroin processing impurities, metabolites
 note lab_common_cuts_any: "If only GCMS was used, this may not detect all large molecule (e.g., sugars) cuts. Derivitized GCMS and FTIR are more able to identify these molecules. Therefore this field should be more accurately interpreted as common small molecule  cuts that are likely to be psychoactive or have key physiological roles."
 la var lab_pf_fent_impurities_any "p-fluorofentanyl synthesis impurities"
 la var lab_designer_benzos_any "Any designer benzodizaepine detected"
-la var lab_benzos_any "Any benzodiazepine detected"
-la var lab_nitazenes_any "Any nitazene detected"
-la var lab_opiates_opioids_any "Any opioids detected"
-la var lab_synthetic_cannabinoids_any "Any synthetic cannabinoids detected"
 la var lab_meth_impurities_any "Any methamphetamine impurities"
 la var lab_mdma_impurities_any "Any MDMA impurities"
 la var lab_cannabinoids_any "Any natural or synthetic cannabinoids detected"
@@ -627,6 +679,36 @@ la var lab_btmps_any "BTMPS detected in lab"
 note lab_btmps_any: "Exact match for bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate in primary or trace abundance."
 la var lab_btmps "BTMPS detected in lab"
 note lab_btmps: "Exact match for bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate as a primary substance."
+
+la var lab_opioid "Opioid detected primary"
+note: lab_opioid "At least one match for opioid in PRIMARY abundance."
+
+la var lab_opioid_any "Opioid detected"
+note: lab_opioid_any "At least one match for opioid in primary or trace abundance."
+
+la var lab_synthetic_cannabinoid "synthetic cannabinoid detected primary"
+note: lab_synthetic_cannabinoid "At least one match for synthetic cannabinoid in PRIMARY abundance."
+
+la var lab_synthetic_cannabinoid_any "synthetic cannabinoid detected"
+note: lab_synthetic_cannabinoid_any "At least one match for synthetic cannabinoid in primary or trace abundance."
+
+la var lab_potent_benzodiazepine "potent benzodiazepine detected primary"
+note: lab_potent_benzodiazepine "At least one match for potent benzodiazepine in PRIMARY abundance."
+
+la var lab_potent_benzodiazepine_any "potent benzodiazepine detected"
+note: lab_potent_benzodiazepine_any "At least one match for potent benzodiazepine in primary or trace abundance."
+
+la var lab_benzodiazepine "potent benzodiazepine detected primary"
+note: lab_benzodiazepine "At least one match for benzodiazepine in PRIMARY abundance."
+
+la var lab_benzodiazepine_any "potent benzodiazepine detected"
+note: lab_benzodiazepine_any "At least one match for benzodiazepine in primary or trace abundance."
+
+la var lab_nitazene "Nitazene or impurity detected primary abundance"
+note: lab_nitazene "At least one match for nitazene or metabolite or impurity in PRIMARY abundance."
+
+la var lab_nitazene_any "potent benzodiazepine detected abundance"
+note: lab_nitazene_any "At least one match for nitazene or metabolite or impurity in primary or trace abundance."
 
 
 
