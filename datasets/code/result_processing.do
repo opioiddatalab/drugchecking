@@ -667,7 +667,6 @@ la var lab_heroin_impurities_any "Any heroin impurities detected"
 note lab_heroin_impurities_any: "Known heroin processing impurities, metabolites, and starting material detected in primary or trace abundance."
 note lab_common_cuts_any: "If only GCMS was used, this may not detect all large molecule (e.g., sugars) cuts. Derivitized GCMS and FTIR are more able to identify these molecules. Therefore this field should be more accurately interpreted as common small molecule  cuts that are likely to be psychoactive or have key physiological roles."
 la var lab_pf_fent_impurities_any "p-fluorofentanyl synthesis impurities"
-la var lab_designer_benzos_any "Any designer benzodizaepine detected"
 la var lab_meth_impurities_any "Any methamphetamine impurities"
 la var lab_mdma_impurities_any "Any MDMA impurities"
 la var lab_cannabinoids_any "Any natural or synthetic cannabinoids detected"
@@ -712,7 +711,7 @@ note: lab_nitazene_any "At least one match for nitazene or metabolite or impurit
 
 
 
-foreach var of varlist lab_designer_benzos_any-lab_substituted_cathinones_any {
+foreach var of varlist lab_*_any {
 	
 	note `var': "Detected in primary or trace abundance."
 	note `var': "Specific substance classifications: go.unc.edu/chemdict"
