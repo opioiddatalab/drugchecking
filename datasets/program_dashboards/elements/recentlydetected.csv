@@ -1,28 +1,28 @@
-sampleid,substance,pubchemcid,first_detected
-601732,estradiol enantate,,03sep2024
-601968,"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",,22aug2024
-602020,2-methylmethcathinone,,09aug2024
-601787,despropionyl ortho-methylfentanyl,,09aug2024
-601787,ortho-methylfentanyl,,09aug2024
-602486,2C-B,98527,08aug2024
-602165,4-acetoxy DMT,,08aug2024
-500903,N-phenyl-acetamide,,07aug2024
-400189,xylitol,,25jul2024
-903052,ergosterol,,05jul2024
-601697,2-Fluoro-2-oxo PCE,,21may2024
-601648,tiletamine,26533,21may2024
-601606,N-phenethyl-N-phenylpropionamide,,16may2024
-600977,N-desethyl isotonitazene,,15may2024
-600977,N-pyrrolidino isotonitazene,,15may2024
-903065,theobromine,,09may2024
-601880,"N,N-di(beta-phenylisopropyl)amine",,08may2024
-601880,1-phenyl-2-propanol,,08may2024
-601880,4-methyl-5-phenylpyrimide,,08may2024
-601971,N-ethyl hexedrone,,08may2024
-601880,4-benzylpyrimidine,,08may2024
-601565,flubromazolam,21930924,07may2024
-600085,3-methylmethcathinone,,03may2024
-500931,clonazepam,2802,03may2024
-601804,etizolam,3307,01may2024
-600046,"4-bromo-2,5-Dimethoxyamphetamine (DOB)",,12apr2024
-600040,oxycodone,5284603,10apr2024
+sampleid,substance,pubchemcid,first_detected,chemdict
+601732,estradiol enantate,,03sep2024,142
+601799,"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",,22aug2024,104
+601787,ortho-methylfentanyl,,09aug2024,
+601787,despropionyl ortho-methylfentanyl,,09aug2024,
+602020,2-methylmethcathinone,,09aug2024,
+602486,2C-B,98527,08aug2024,20
+602165,4-acetoxy DMT,,08aug2024,37
+500903,N-phenyl-acetamide,,07aug2024,
+400189,xylitol,,25jul2024,
+903052,ergosterol,,05jul2024,139
+601697,tiletamine,26533,21may2024,260
+601697,2-Fluoro-2-oxo PCE,,21may2024,15
+601606,N-phenethyl-N-phenylpropionamide,,16may2024,
+600977,N-pyrrolidino isotonitazene,,15may2024,
+600977,N-desethyl isotonitazene,,15may2024,72
+903065,theobromine,,09may2024,257
+601880,"N,N-di(beta-phenylisopropyl)amine",,08may2024,
+601880,4-benzylpyrimidine,,08may2024,39
+601880,4-methyl-5-phenylpyrimide,,08may2024,44
+601971,N-ethyl hexedrone,,08may2024,73
+601880,1-phenyl-2-propanol,,08may2024,12
+601565,flubromazolam,21930924,07may2024,153
+500931,clonazepam,2802,03may2024,116
+600085,3-methylmethcathinone,,03may2024,31
+601804,etizolam,3307,01may2024,147
+600046,"4-bromo-2,5-Dimethoxyamphetamine (DOB)",,12apr2024,
+600040,oxycodone,5284603,10apr2024,222

@@ -538,7 +538,7 @@ note: lab_potent_benzodiazepine_any "At least one match for potent benzodiazepin
 
 gen lab_benzodiazepine=0
 replace lab_benzodiazepine = 1 if frval(chemdict, tag_benzodiazepine) == 1 & abundance == ""
-la var lab_benzodiazepine "potent benzodiazepine detected primary"
+la var lab_benzodiazepine "potent benzodiazepine in primary abundance"
 note: lab_benzodiazepine "At least one match for benzodiazepine in PRIMARY abundance."
 
 gen lab_benzodiazepine_any=0
@@ -553,7 +553,7 @@ note: lab_nitazene "At least one match for nitazene or metabolite or impurity in
 
 gen lab_nitazene_any=0
 replace lab_nitazene_any = 1 if frval(chemdict, tag_nitazene) == 1
-la var lab_nitazene_any "potent benzodiazepine detected abundance"
+la var lab_nitazene_any "Nitazene or impurity detected"
 note: lab_nitazene_any "At least one match for nitazene or metabolite or impurity in primary or trace abundance."
 
 
