@@ -558,8 +558,6 @@ note: lab_nitazene_any "At least one match for nitazene or metabolite or impurit
 
 
 
-
-
 cd "/Users/nabarun/Documents/drugchecking/datasets/code/"
 do categorize "meth_impurities"
 do categorize "mdma_impurities"
