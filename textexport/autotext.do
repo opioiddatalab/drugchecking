@@ -19,10 +19,10 @@ do "/Users/nabarun/Documents/dc_internal/sqapi_last50.do"
 // If syncing, run lines 22 and 25
 
 * change file extension from .xlsm to .xlsx
-***!cp "/Users/nabarun/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofNorthCarolinaatChapelHill/Drug Checking - Documents/Data/Sample Tracking Data/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
+!cp "/Users/nabarun/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofNorthCarolinaatChapelHill/Drug Checking - Documents/Data/Sample Tracking Data/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
 
 ! mv "LabResults.xlsm" "LabResults.xlsx"
-***! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
+! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
 
 * Import lab data
 import excel "LabResults.xlsx", sheet("LAB data") firstrow case(lower) allstring clear
