@@ -1,33 +1,30 @@
 sampleid,substance,pubchemcid,first_detected,chemdict
 602542,"1,4-Butanediol",,30oct2024,3
-602281,7-hydroxymitragynine,,30sep2024,
-601672,mitragynine,,30sep2024,245
+601642,7-hydroxymitragynine,,30sep2024,
 602367,paynantheine,,30sep2024,277
+602367,mitragynine,,30sep2024,245
 500865,quetiapine,,18sep2024,293
 601812,PMK ethyl glycidate,,17sep2024,
 600918,4-piperidone,,11sep2024,62
 903023,glycerin,,11sep2024,
 601732,estradiol enantate,,03sep2024,183
 601799,"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",,22aug2024,135
+602020,2-methylmethcathinone,,09aug2024,21
 601787,ortho-methylfentanyl,,09aug2024,266
 601787,despropionyl ortho-methylfentanyl,,09aug2024,166
-602020,2-methylmethcathinone,,09aug2024,21
 602165,4-acetoxy DMT,,08aug2024,49
 602486,2C-B,98527,08aug2024,26
 500903,N-phenyl-acetamide,,07aug2024,102
 400189,xylitol,,25jul2024,325
 903052,ergosterol,,05jul2024,180
-601648,tiletamine,26533,21may2024,312
+601834,tiletamine,26533,21may2024,312
 601648,2-Fluoro-2-oxo PCE,,21may2024,17
 601606,N-phenethyl-N-phenylpropionamide,,16may2024,101
-600977,N-pyrrolidino isotonitazene,,15may2024,108
 600977,N-desethyl isotonitazene,,15may2024,94
+600977,N-pyrrolidino isotonitazene,,15may2024,108
 903065,theobromine,,09may2024,309
 601971,N-ethyl hexedrone,,08may2024,95
 601880,4-methyl-5-phenylpyrimide,,08may2024,61
-601880,4-benzylpyrimidine,,08may2024,51
-601880,1-phenyl-2-propanol,,08may2024,12
 601880,"N,N-di(beta-phenylisopropyl)amine",,08may2024,
-601565,flubromazolam,21930924,07may2024,194
-600085,3-methylmethcathinone,,03may2024,42
-500931,clonazepam,2802,03may2024,148
+601880,1-phenyl-2-propanol,,08may2024,12
+601880,4-benzylpyrimidine,,08may2024,51

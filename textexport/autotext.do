@@ -5,7 +5,7 @@ frames reset
 
 // Set python environment
 *set python_exec /opt/anaconda3/bin/python3.11, permanently
-
+	
 // Get posted products from Squarespace API
 ** Retrives last 50 sample ID numbers that have been posted to create canonical list
 ** Code hidden to protect endpoint
