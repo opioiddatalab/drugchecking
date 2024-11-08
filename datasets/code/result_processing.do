@@ -364,8 +364,9 @@ replace confirmatory=1 if regexm(sampleid,"300851|300839300848|300831|300821|300
 ******* Errors found by Cole in June 2024
 replace confirmatory=1 if regexm(sampleid, "500732|500254|500405|500543|500931|500001|500935|500732")
 
-******* Requested by Emily Payne Oct 2024
-replace confirmatory=1 if regexm(sampleid, "600539|600541|600555|600557|600559|600562|600564|600565|600569|600577")
+******* Requested by Emily Payne Oct/Nov 2024
+replace confirmatory=1 if regexm(sampleid, "600539|600541|600555|600557|600559|600562|600564|600565|600569|600577|600570|600574|600575|600579|600580|600583|600588|600590|600592|600593|600596")
+*replace confirmatory=1 if program="CASJ" & regexm(sampleid, "600")
 
 
 ******* Add NC Survivors Union to confirmatory going forward
