@@ -3,24 +3,24 @@ sampleid,substance,pubchemcid,first_detected,chemdict
 903011,desalkylgidazepam,,22jan2025,
 602535,ALD-52,,03jan2025,
 602538,MTMP (MMMP),,23dec2024,
-602537,4-Methylmethcathinone,,19dec2024,47
 602536,alpha-methyl tryptamine,,19dec2024,
+602537,4-Methylmethcathinone,,19dec2024,47
 600821,ortho-chlorofentanyl,12741858,18nov2024,265
-602114,psilocin,4980,15nov2024,291
+602466,psilocin,4980,15nov2024,291
 602543,N-cyclohexyl butylone,,14nov2024,
 602542,"1,4-Butanediol",,30oct2024,3
-601672,7-hydroxymitragynine,,30sep2024,
-601642,mitragynine,,30sep2024,245
+602367,mitragynine,,30sep2024,245
 602367,paynantheine,,30sep2024,277
+602281,7-hydroxymitragynine,,30sep2024,
 500865,quetiapine,,18sep2024,293
 601812,PMK ethyl glycidate,,17sep2024,
 600918,4-piperidone,,11sep2024,62
 903023,glycerin,,11sep2024,
 601732,estradiol enantate,,03sep2024,183
-601799,"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",,22aug2024,135
-601787,despropionyl ortho-methylfentanyl,,09aug2024,166
-602020,2-methylmethcathinone,,09aug2024,21
+601617,"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",,22aug2024,135
 601787,ortho-methylfentanyl,,09aug2024,266
+602020,2-methylmethcathinone,,09aug2024,21
+601787,despropionyl ortho-methylfentanyl,,09aug2024,166
 602165,4-acetoxy DMT,,08aug2024,49
 602486,2C-B,98527,08aug2024,26
 500903,N-phenyl-acetamide,,07aug2024,102
