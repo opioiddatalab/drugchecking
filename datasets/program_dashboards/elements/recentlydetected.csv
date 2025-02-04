@@ -1,27 +1,27 @@
 sampleid,substance,pubchemcid,first_detected,chemdict
-601519,"2,2,6,6-tetramethyl-4-piperidinol",,31jan2025,15
-903011,desalkylgidazepam,,22jan2025,
-602534,2-bromo-4'-methylpropiophenone,,22jan2025,
-602535,ALD-52,,03jan2025,
+601519,"2,2,6,6-tetramethyl-4-piperidinol",,31jan2025,17
+602534,2-bromo-4'-methylpropiophenone,,22jan2025,20
+903011,desalkylgidazepam,,22jan2025,190
+602535,ALD-52,,03jan2025,83
 602538,MTMP (MMMP),,23dec2024,
-602537,4-Methylmethcathinone,,19dec2024,47
-602536,alpha-methyl tryptamine,,19dec2024,
-600821,ortho-chlorofentanyl,12741858,18nov2024,265
-602466,psilocin,4980,15nov2024,291
-602543,N-cyclohexyl butylone,,14nov2024,
+602536,alpha-methyl tryptamine,,19dec2024,141
+602537,4-Methylmethcathinone,,19dec2024,52
+600821,ortho-chlorofentanyl,12741858,18nov2024,303
+602114,psilocin,4980,15nov2024,336
+602543,N-cyclohexyl butylone,,14nov2024,107
 602542,"1,4-Butanediol",,30oct2024,3
-602367,paynantheine,,30sep2024,277
-602281,mitragynine,,30sep2024,245
-601672,7-hydroxymitragynine,,30sep2024,
-500865,quetiapine,,18sep2024,293
-601812,PMK ethyl glycidate,,17sep2024,
-903023,glycerin,,11sep2024,
-600918,4-piperidone,,11sep2024,62
-601732,estradiol enantate,,03sep2024,183
-601617,"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",,22aug2024,135
-601787,ortho-methylfentanyl,,09aug2024,266
-601787,despropionyl ortho-methylfentanyl,,09aug2024,166
-602020,2-methylmethcathinone,,09aug2024,21
-602486,2C-B,98527,08aug2024,26
-602165,4-acetoxy DMT,,08aug2024,49
-500903,N-phenyl-acetamide,,07aug2024,102
+602367,paynantheine,,30sep2024,317
+601672,7-hydroxymitragynine,,30sep2024,76
+601642,mitragynine,,30sep2024,289
+500865,quetiapine,,18sep2024,339
+601812,PMK ethyl glycidate,,17sep2024,130
+600918,4-piperidone,,11sep2024,67
+903023,glycerin,,11sep2024,239
+601732,estradiol enantate,,03sep2024,216
+601968,"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",,22aug2024,156
+601787,ortho-methylfentanyl,,09aug2024,304
+602020,2-methylmethcathinone,,09aug2024,24
+601787,despropionyl ortho-methylfentanyl,,09aug2024,197
+602165,4-acetoxy DMT,,08aug2024,54
+602486,2C-B,98527,08aug2024,29
+500903,N-phenyl-acetamide,,07aug2024,117
