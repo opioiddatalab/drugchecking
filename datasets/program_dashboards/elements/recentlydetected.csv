@@ -7,18 +7,15 @@ sampleid,substance,pubchemcid,first_detected,chemdict
 602536,alpha-methyl tryptamine,,19dec2024,141
 602537,4-Methylmethcathinone,,19dec2024,52
 600821,ortho-chlorofentanyl,12741858,18nov2024,303
-602466,psilocin,4980,15nov2024,336
+602114,psilocin,4980,15nov2024,336
 602543,N-cyclohexyl butylone,,14nov2024,107
 602542,"1,4-Butanediol",,30oct2024,3
-601642,mitragynine,,30sep2024,289
-601672,7-hydroxymitragynine,,30sep2024,76
+602367,mitragynine,,30sep2024,289
 602367,paynantheine,,30sep2024,317
+601642,7-hydroxymitragynine,,30sep2024,76
 500865,quetiapine,,18sep2024,339
 601812,PMK ethyl glycidate,,17sep2024,130
-903023,glycerin,,11sep2024,239
 600918,4-piperidone,,11sep2024,67
+903023,glycerin,,11sep2024,239
 601732,estradiol enantate,,03sep2024,216
-601799,"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",,22aug2024,156
-601787,despropionyl ortho-methylfentanyl,,09aug2024,197
-601787,ortho-methylfentanyl,,09aug2024,304
-602020,2-methylmethcathinone,,09aug2024,24
+601968,"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",,22aug2024,156
