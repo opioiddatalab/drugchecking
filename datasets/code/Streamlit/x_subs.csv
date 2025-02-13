@@ -5,8 +5,8 @@ substance,samples,rank
 "phenethyl 4-ANPP",161,4
 "dimethyl sulfone (methylsulfonylmethane MSM)",123,5
 "p-fluorofentanyl",89,6
-"cocaine",87,7
-"heroin",87,8
+"heroin",87,7
+"cocaine",87,8
 "lidocaine",83,9
 "methamphetamine",67,10
 "caffeine",55,11
@@ -26,10 +26,10 @@ substance,samples,rank
 "non-specific sugars",17,25
 "medetomidine",16,26
 "phenethyl bromide",14,27
-"despropionyl ortho-methylfentanyl",12,28
-"bromazolam",12,29
-"1-phenethyl-4-propionyloxypiperidine",11,30
-"N-butyl-aniline",11,31
+"bromazolam",12,28
+"despropionyl ortho-methylfentanyl",12,29
+"N-butyl-aniline",11,30
+"1-phenethyl-4-propionyloxypiperidine",11,31
 "mannitol",10,32
 "menthol",9,33
 "gabapentin",9,34
@@ -37,54 +37,54 @@ substance,samples,rank
 "erythritol",7,36
 "papaverine",7,37
 "methyl ecgonidine (MED)",6,38
-"ketamine",5,39
+"4-anilinopiperidine",5,39
 "1-phenyl-1-propanamine",5,40
-"N-phenethyl-N-phenylpropionamide",5,41
+"ketamine",5,41
 "N-propionyl norfentanyl",5,42
-"4-anilinopiperidine",5,43
-"phenacetin",4,44
-"metonitazene",4,45
-"tiletamine",4,46
+"N-phenethyl-N-phenylpropionamide",5,43
+"non-specific sugar",4,44
+"tiletamine",4,45
+"phenacetin",4,46
 "benzocaine",4,47
-"2-Fluoro-2-oxo PCE",4,48
-"non-specific sugar",4,49
-"acetyl fentanyl",3,50
-"xylitol",3,51
-"tropacocaine",3,52
+"metonitazene",4,48
+"2-Fluoro-2-oxo PCE",4,49
+"xylitol",3,50
+"tropacocaine",3,51
+"acetyl fentanyl",3,52
 "melatonin",3,53
-"N,N-dimethylpentylone",2,54
-"phenethyl chloride",2,55
-"ortho-chlorofentanyl",2,56
-"delta-9-THC",2,57
-"1-propionyl-4-anilinopiperidine",2,58
+"levamisole",2,54
+"ortho-chlorofentanyl",2,55
+"tetracaine",2,56
+"non-specific phthalate",2,57
+"delta-9-THC",2,58
 "meconin",2,59
-"urea",2,60
-"valeryl fentanyl",2,61
-"sucrose",2,62
+"4-Anilino-1-Boc-piperidine",2,60
+"urea",2,61
+"1-propionyl-4-anilinopiperidine",2,62
 "benzoylecgonine (BZ)",2,63
-"4-Anilino-1-Boc-piperidine",2,64
-"levamisole",2,65
-"non-specific phthalate",2,66
-"tetracaine",2,67
-"benzyl benzoate",2,68
-"inositol",2,69
+"benzyl benzoate",2,64
+"N,N-dimethylpentylone",2,65
+"inositol",2,66
+"phenethyl chloride",2,67
+"valeryl fentanyl",2,68
+"sucrose",2,69
 "hydrocotarnine",2,70
-"niacinamide",1,71
-"p-fluoroacetyl fentanyl",1,72
-"protonitazene",1,73
-"N-cyclohexyl butylone",1,74
-"non-specific organic acids",1,75
-"naproxen",1,76
-"benzoic acid",1,77
-"flualprazolam",1,78
-"lactose",1,79
-"ibuprofen",1,80
-"methylparaben",1,81
+"flualprazolam",1,71
+"nicotine",1,72
+"lactose",1,73
+"PMK ethyl glycidate",1,74
+"N-cyclohexyl butylone",1,75
+"ecgonine methylester (EME)",1,76
+"naproxen",1,77
+"eutylone",1,78
+"ibuprofen",1,79
+"p-fluoroacetyl fentanyl",1,80
+"non-specific organic acids",1,81
 "norcocaine",1,82
-"1-phenethyl-4-hydroxypiperidine",1,83
-"ecgonine methylester (EME)",1,84
-"noscapine",1,85
-"eutylone",1,86
-"1,4-Butanediol",1,87
-"nicotine",1,88
-"PMK ethyl glycidate",1,89
+"protonitazene",1,83
+"1-phenethyl-4-hydroxypiperidine",1,84
+"methylparaben",1,85
+"benzoic acid",1,86
+"noscapine",1,87
+"1,4-Butanediol",1,88
+"niacinamide",1,89
