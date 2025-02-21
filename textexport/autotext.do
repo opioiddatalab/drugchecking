@@ -12,7 +12,7 @@ frames reset
 
 cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
 
-do "/Users/nabarun/Documents/dc_internal/sqapi_last50.do"
+*do "/Users/nabarun/Documents/dc_internal/sqapi_last50.do"
 
 // Download the data file and modify
 // If not syncing then download manually into Autotext directory, comment out lines 22 and 25
