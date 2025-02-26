@@ -369,6 +369,9 @@ replace confirmatory=1 if regexm(sampleid, "600539|600541|600555|600557|600559|6
 *replace confirmatory=1 if program="CASJ" & regexm(sampleid, "600")
 
 
+******* Requested by Cole Jarczyk on Feb 25, 2025
+replace confirmatory=1 if regexm(sampleid, "400977|400877|400887|400831|400748|602969|400820|400955|602968|603063|900061|900046|900072|601782|601766")
+
 ******* Add NC Survivors Union to confirmatory going forward
 do "/Users/nabarun/Documents/dc_internal/confirmatory_program_switch.do"
 
