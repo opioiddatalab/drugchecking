@@ -1,7 +1,7 @@
 sampleid,substance,pubchemcid,first_detected,chemdict
-601727,phenibut,,19feb2025,326
-601727,phenothiazine,,19feb2025,
 601727,promethazine,,19feb2025,333
+601727,phenothiazine,,19feb2025,
+601727,phenibut,,19feb2025,326
 603190,4-fluoro MDMB-BUTINACA,,13feb2025,
 602013,p-fluoro norfentanyl,,11feb2025,311
 602950,8-chlorotheophylline,,10feb2025,
@@ -16,11 +16,10 @@ sampleid,substance,pubchemcid,first_detected,chemdict
 602466,psilocin,4980,15nov2024,336
 602543,N-cyclohexyl butylone,,14nov2024,107
 602542,"1,4-Butanediol",,30oct2024,3
-602281,7-hydroxymitragynine,,30sep2024,76
-602281,mitragynine,,30sep2024,289
+601642,mitragynine,,30sep2024,289
 602367,paynantheine,,30sep2024,317
+601672,7-hydroxymitragynine,,30sep2024,76
 500865,quetiapine,,18sep2024,339
 601812,PMK ethyl glycidate,,17sep2024,130
 600918,4-piperidone,,11sep2024,67
 903023,glycerin,,11sep2024,239
-601732,estradiol enantate,,03sep2024,216
