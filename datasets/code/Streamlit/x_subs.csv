@@ -1,90 +1,94 @@
 substance,samples,rank
-"xylazine",413,1
-"fentanyl",408,2
-"4-ANPP",386,3
-"phenethyl 4-ANPP",162,4
+"xylazine",417,1
+"fentanyl",412,2
+"4-ANPP",390,3
+"phenethyl 4-ANPP",166,4
 "dimethyl sulfone (methylsulfonylmethane MSM)",124,5
-"p-fluorofentanyl",89,6
+"p-fluorofentanyl",90,6
 "cocaine",88,7
 "heroin",87,8
-"lidocaine",85,9
+"lidocaine",86,9
 "methamphetamine",68,10
 "caffeine",55,11
-"acetaminophen",51,12
-"despropionyl p-fluorofentanyl",45,13
-"1,3-Diacetin",43,14
-"ethyl-4-ANPP",42,15
+"acetaminophen",52,12
+"despropionyl p-fluorofentanyl",46,13
+"ethyl-4-ANPP",43,14
+"1,3-Diacetin",43,15
 "acetylcodeine",34,16
-"N-phenylpropanamide",32,17
+"N-phenylpropanamide",33,17
 "6-monoacetylmorphine (6-MAM)",29,18
 "diphenhydramine",28,19
 "p-fluoro phenethyl 4-ANPP",27,20
-"tramadol",25,21
-"procaine",24,22
-"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",21,23
+"procaine",26,21
+"tramadol",25,22
+"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",23,23
 "quinine",19,24
-"non-specific sugars",17,25
-"medetomidine",17,26
-"phenethyl bromide",14,27
-"despropionyl ortho-methylfentanyl",12,28
+"medetomidine",17,25
+"non-specific sugars",17,26
+"despropionyl ortho-methylfentanyl",14,27
+"phenethyl bromide",14,28
 "bromazolam",12,29
 "1-phenethyl-4-propionyloxypiperidine",11,30
 "N-butyl-aniline",11,31
 "mannitol",10,32
-"menthol",9,33
-"gabapentin",9,34
-"papaverine",7,35
-"erythritol",7,36
-"ortho-methylfentanyl",7,37
+"gabapentin",9,33
+"ortho-methylfentanyl",9,34
+"menthol",9,35
+"erythritol",8,36
+"papaverine",7,37
 "methyl ecgonidine (MED)",6,38
-"4-anilinopiperidine",5,39
-"1-phenyl-1-propanamine",5,40
-"ketamine",5,41
-"N-phenethyl-N-phenylpropionamide",5,42
+"N-phenethyl-N-phenylpropionamide",6,39
+"ketamine",5,40
+"4-anilinopiperidine",5,41
+"1-phenyl-1-propanamine",5,42
 "N-propionyl norfentanyl",5,43
 "benzocaine",4,44
-"2-Fluoro-2-oxo PCE",4,45
-"metonitazene",4,46
-"phenacetin",4,47
-"tiletamine",4,48
-"non-specific sugar",4,49
-"hydrocotarnine",3,50
-"melatonin",3,51
-"meconin",3,52
+"tiletamine",4,45
+"phenacetin",4,46
+"metonitazene",4,47
+"non-specific sugar",4,48
+"2-Fluoro-2-oxo PCE",4,49
+"meconin",3,50
+"hydrocotarnine",3,51
+"melatonin",3,52
 "tropacocaine",3,53
-"xylitol",3,54
-"acetyl fentanyl",3,55
-"inositol",2,56
-"benzyl benzoate",2,57
-"non-specific phthalate",2,58
-"sucrose",2,59
-"ortho-chlorofentanyl",2,60
-"urea",2,61
-"tetracaine",2,62
-"phenethyl chloride",2,63
-"1-propionyl-4-anilinopiperidine",2,64
-"valeryl fentanyl",2,65
-"noscapine",2,66
-"levamisole",2,67
-"4-Anilino-1-Boc-piperidine",2,68
-"delta-9-THC",2,69
-"N,N-dimethylpentylone",2,70
-"benzoylecgonine (BZ)",2,71
-"p-fluoroacetyl fentanyl",1,72
-"1,4-Butanediol",1,73
-"nicotine",1,74
-"lactose",1,75
-"protonitazene",1,76
-"ibuprofen",1,77
-"niacinamide",1,78
-"ecgonine methylester (EME)",1,79
-"benzoic acid",1,80
-"non-specific organic acids",1,81
-"PMK ethyl glycidate",1,82
-"methylparaben",1,83
-"naproxen",1,84
-"norcocaine",1,85
-"N-cyclohexyl butylone",1,86
+"acetyl fentanyl",3,54
+"xylitol",3,55
+"non-specific phthalate",2,56
+"valeryl fentanyl",2,57
+"ortho-chlorofentanyl",2,58
+"noscapine",2,59
+"benzoylecgonine (BZ)",2,60
+"N,N-dimethylpentylone",2,61
+"benzyl benzoate",2,62
+"delta-9-THC",2,63
+"sucrose",2,64
+"4-Anilino-1-Boc-piperidine",2,65
+"levamisole",2,66
+"inositol",2,67
+"1-propionyl-4-anilinopiperidine",2,68
+"phenethyl chloride",2,69
+"urea",2,70
+"tetracaine",2,71
+"PMK ethyl glycidate",1,72
+"ibuprofen",1,73
+"niacinamide",1,74
+"ecgonine methylester (EME)",1,75
+"norcocaine",1,76
+"non-specific organic acids",1,77
+"eutylone",1,78
+"2,2,6,6-tetramethyl-4-piperidinol",1,79
+"NPP",1,80
+"clonazepam",1,81
+"nicotine",1,82
+"protonitazene",1,83
+"N-cyclohexyl butylone",1,84
+"1,4-Butanediol",1,85
+"benzoic acid",1,86
 "1-phenethyl-4-hydroxypiperidine",1,87
-"flualprazolam",1,88
-"eutylone",1,89
+"acetanilide",1,88
+"lactose",1,89
+"flualprazolam",1,90
+"p-fluoroacetyl fentanyl",1,91
+"methylparaben",1,92
+"naproxen",1,93
