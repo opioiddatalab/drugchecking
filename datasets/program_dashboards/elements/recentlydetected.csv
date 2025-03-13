@@ -1,7 +1,8 @@
 sampleid,substance,pubchemcid,first_detected,chemdict
+602252,phenazolam,,07mar2025,320
+601727,phenibut,,19feb2025,326
 601727,promethazine,,19feb2025,333
 601727,phenothiazine,,19feb2025,
-601727,phenibut,,19feb2025,326
 603190,4-fluoro MDMB-BUTINACA,,13feb2025,
 602013,p-fluoro norfentanyl,,11feb2025,311
 602950,8-chlorotheophylline,,10feb2025,
@@ -10,16 +11,14 @@ sampleid,substance,pubchemcid,first_detected,chemdict
 602534,2-bromo-4'-methylpropiophenone,,22jan2025,20
 602535,ALD-52,,03jan2025,83
 602538,MTMP (MMMP),,23dec2024,
-602536,alpha-methyl tryptamine,,19dec2024,141
 602537,4-Methylmethcathinone,,19dec2024,52
+602536,alpha-methyl tryptamine,,19dec2024,141
 600821,ortho-chlorofentanyl,12741858,18nov2024,303
 602466,psilocin,4980,15nov2024,336
 602543,N-cyclohexyl butylone,,14nov2024,107
 602542,"1,4-Butanediol",,30oct2024,3
-602281,7-hydroxymitragynine,,30sep2024,76
+601642,mitragynine,,30sep2024,289
+601672,7-hydroxymitragynine,,30sep2024,76
 602367,paynantheine,,30sep2024,317
-602367,mitragynine,,30sep2024,289
 500865,quetiapine,,18sep2024,339
 601812,PMK ethyl glycidate,,17sep2024,130
-903023,glycerin,,11sep2024,239
-600918,4-piperidone,,11sep2024,67
