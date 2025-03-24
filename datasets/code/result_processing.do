@@ -802,6 +802,8 @@ replace county=program_county if county==""
 replace county="Buncombe County" if (location=="Asheville" | location=="Ashville") & state=="NC" & regexm(lower(program), "steady|holler|wncap")
 ** Added Sep 2024 because "Pittsburgh" was spelled incorrectly as "Pittsburg" and being geocoded to Lawrence County, PA
 replace county="Allegheny County" if inlist(sampleid,"903159", "903119","903118","903164","903070","903079","903068","903152","903071")
+** Added March 2025 because not geocoding properly
+replace county="Chaves County" if location=="Roswell" & state=="NM"
 
 
 gen temp = subinstr(county," County", "", .)
