@@ -9,3 +9,5 @@ textexport/autotext_smalllaptop.do
 node_modules
 .env
 venv/
+
+datasets/selfservice/DN
