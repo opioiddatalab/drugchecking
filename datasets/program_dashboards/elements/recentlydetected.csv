@@ -1,14 +1,14 @@
 sampleid,substance,pubchemcid,first_detected,chemdict
 602561,memantine,,07apr2025,269
-602598,dextromethorphan,,01apr2025,199
+602595,dextromethorphan,,01apr2025,199
 603236,estradiol,,28mar2025,215
 602954,flubromazepam,,24mar2025,229
 601846,NPP,,12mar2025,127
 601960,N-desethyl protonitazene,,10mar2025,
 602252,phenazolam,,07mar2025,320
-601727,phenothiazine,,19feb2025,
-601727,promethazine,,19feb2025,333
 601727,phenibut,,19feb2025,326
+601727,promethazine,,19feb2025,333
+601727,phenothiazine,,19feb2025,
 603190,4-fluoro MDMB-BUTINACA,,13feb2025,
 602013,p-fluoro norfentanyl,,11feb2025,311
 602950,8-chlorotheophylline,,10feb2025,
@@ -19,6 +19,6 @@ sampleid,substance,pubchemcid,first_detected,chemdict
 602538,MTMP (MMMP),,23dec2024,
 602536,alpha-methyl tryptamine,,19dec2024,141
 602537,4-Methylmethcathinone,,19dec2024,52
-602114,psilocin,4980,15nov2024,336
+602466,psilocin,4980,15nov2024,336
 602543,N-cyclohexyl butylone,,14nov2024,107
 602542,"1,4-Butanediol",,30oct2024,3
