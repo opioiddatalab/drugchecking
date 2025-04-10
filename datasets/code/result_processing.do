@@ -398,7 +398,7 @@ export excel using "/Users/nabarun/Documents/drugchecking/datasets/labservice/un
 export delimited using "/Users/nabarun/Documents/drugchecking/datasets/labservice/unc_gcms.csv", quote replace
 
 frame change lab
-drop gcms_peak
+* drop gcms_peak
 
 * For specific substances, the convention is lab_ to indicate lab result, _any to indicate presence in trace or abundance
 * Conversely, if lab_substance, the substance was detected as a primary constituent.
@@ -614,8 +614,10 @@ save "/Users/nabarun/Documents/dc_internal/lab_detail.dta", replace
 frame copy lab merge
 frame change merge
 
+destring gcms_peak, float replace
+
 * Sets lab_ to equal 1 if any of the tags above were 1 using chemdict etc.
-collapse (max) confirmatory date_complete primary trace lab_*, by(sampleid)
+collapse (max) confirmatory date_complete primary trace gcms_peak lab_*, by(sampleid)
   
 * Clean up logic for samples with no substances detected
 replace lab_num_substances_any=0 if lab_null==1
