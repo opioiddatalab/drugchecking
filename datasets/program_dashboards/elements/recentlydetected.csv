@@ -1,24 +1,24 @@
-sampleid,substance,pubchemcid,first_detected,chemdict
-602561,memantine,,07apr2025,269
-602595,dextromethorphan,,01apr2025,199
-603236,estradiol,,28mar2025,215
-602954,flubromazepam,,24mar2025,229
-601846,NPP,,12mar2025,127
-601960,N-desethyl protonitazene,,10mar2025,
-602252,phenazolam,,07mar2025,320
-601727,phenibut,,19feb2025,326
-601727,promethazine,,19feb2025,333
-601727,phenothiazine,,19feb2025,
-603190,4-fluoro MDMB-BUTINACA,,13feb2025,
-602013,p-fluoro norfentanyl,,11feb2025,311
-602950,8-chlorotheophylline,,10feb2025,
-601519,"2,2,6,6-tetramethyl-4-piperidinol",,31jan2025,17
-602534,2-bromo-4'-methylpropiophenone,,22jan2025,20
-903011,desalkylgidazepam,,22jan2025,190
-602535,ALD-52,,03jan2025,83
-602538,MTMP (MMMP),,23dec2024,
-602536,alpha-methyl tryptamine,,19dec2024,141
-602537,4-Methylmethcathinone,,19dec2024,52
-602466,psilocin,4980,15nov2024,336
-602543,N-cyclohexyl butylone,,14nov2024,107
-602542,"1,4-Butanediol",,30oct2024,3
+sampleid,substance,pubchemcid,first_detected,gcms_peak,chemdict
+602561,memantine,,07apr2025,4.5599999,269
+602598,dextromethorphan,,01apr2025,,199
+603236,estradiol,,28mar2025,10.02,215
+602954,flubromazepam,,24mar2025,9.71,229
+601846,NPP,,12mar2025,6.6700001,127
+601960,N-desethyl protonitazene,,10mar2025,18.16,
+602252,phenazolam,,07mar2025,14.21,320
+601727,phenibut,,19feb2025,6.6599998,326
+601727,promethazine,,19feb2025,8.6700001,333
+601727,phenothiazine,,19feb2025,7.8800001,
+603190,4-fluoro MDMB-BUTINACA,,13feb2025,9.6800003,
+602013,p-fluoro norfentanyl,,11feb2025,7.4499998,311
+602950,8-chlorotheophylline,,10feb2025,,
+601519,"2,2,6,6-tetramethyl-4-piperidinol",,31jan2025,,17
+903011,desalkylgidazepam,,22jan2025,9.29,190
+602534,2-bromo-4'-methylpropiophenone,,22jan2025,3.8900001,20
+602535,ALD-52,,03jan2025,17.82,83
+602538,MTMP (MMMP),,23dec2024,8.6000004,
+602537,4-Methylmethcathinone,,19dec2024,5.54,52
+602536,alpha-methyl tryptamine,,19dec2024,6.8499999,141
+602466,psilocin,4980,15nov2024,7.9000001,336
+602543,N-cyclohexyl butylone,,14nov2024,8.5799999,107
+602542,"1,4-Butanediol",,30oct2024,2.5599999,3
