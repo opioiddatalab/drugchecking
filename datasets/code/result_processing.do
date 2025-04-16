@@ -5,22 +5,35 @@
 clear all
 frames reset
 
+
+cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
+
+// Download the data file and modify
+
+* change file extension from .xlsm to .xlsx
+!cp "/Users/nabarun/Library/CloudStorage/OneDrive-SharedLibraries-UniversityofNorthCarolinaatChapelHill/Drug Checking - Documents/Data/Sample Tracking Data/LabResults.xlsm" "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsm"
+
+! mv "LabResults.xlsm" "LabResults.xlsx"
+! rm "/Users/nabarun/Dropbox/Mac/Downloads/LabResults.xlsm"
+
+* Move file for results_processing.do
+! mv "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/LabResults.xlsx" "/Users/nabarun/Documents/dc_internal/LabResults.xlsx" 
+
+* Delete previous versions of files
+! rm "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/upload_for_import.csv"
+! rm "/Users/nabarun/Dropbox/Drug Checking Autotext/upload_for_import.csv"
+
+
+
 // Import ChemDict
 frame create chemdict
 frame change chemdict
 import delimited "https://deepnote.com/publish/3e23f525-d8bc-4a6e-9c0d-d8ad2f13b7a2/file?path=chemdict_exploded.csv"
 frame change default
 
-// Set directory
-cd "/Users/nabarun/Documents/dc_internal/"
 
+cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
 
-// Import results files
-
-cd "/Users/nabarun/Documents/dc_internal/"
-
-
-// THIS NEED TO BE FIXED June 19, 2024 WHEN UPDATED
 // Import City Locations for Programs
 import excel "/Users/nabarun/Documents/dc_internal/LabResults.xlsx", sheet("ProgramInfo") firstrow case(lower) clear
 drop text
@@ -31,9 +44,11 @@ drop i
 duplicates drop program, force
 save programloc, replace
 
+import excel "/Users/nabarun/Documents/dc_internal/LabResults.xlsx", sheet("LAB data") firstrow clear
+
 
 // Import Lab Data
-import excel "/Users/nabarun/Documents/dc_internal/LabResults.xlsx", sheet("LAB data") firstrow clear
+*import excel "/Users/nabarun/Documents/dc_internal/LabResults.xlsx", sheet("LAB data") firstrow clear
 
 * Keep only samples with completed lab analysis and relevant variables
 keep if lab_status=="complete"
