@@ -7,7 +7,7 @@ frames reset
 
 
 cd "/Users/nabarun/Dropbox/Projects/Autotext for drug checking/"
-
+	
 // Download the data file and modify
 
 * change file extension from .xlsm to .xlsx
@@ -399,6 +399,8 @@ la var gcms_peak "Retention time in minutes"
 
 frame put sampleid substance abundance method date_complete confirmatory gcms_peak, into(confirmatory)
 frame change confirmatory
+
+******* Add Holler HR per Cole's request April 24, 2025
 keep if confirmatory==1
 
 save "/Users/nabarun/Documents/drugchecking/datasets/labservice/unc_gcms.dta", replace
