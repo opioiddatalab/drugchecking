@@ -387,7 +387,7 @@ replace confirmatory=1 if regexm(sampleid, "600539|600541|600555|600557|600559|6
 ******* Requested by Cole Jarczyk on Feb 25, 2025
 replace confirmatory=1 if regexm(sampleid, "400977|400877|400887|400831|400748|602969|400820|400955|602968|603063|900061|900046|900072|601782|601766")
 
-******* Add NC Survivors Union to confirmatory going forward
+******* Add NC Survivors Union and Holler to confirmatory going forward
 do "/Users/nabarun/Documents/dc_internal/confirmatory_program_switch.do"
 
 la var confirmatory "Sample for GCMS confirmatory/complementary testing"
@@ -397,10 +397,10 @@ tostring peak, g(gcms_peak) force
 drop peak
 la var gcms_peak "Retention time in minutes"
 
-frame put sampleid substance abundance method date_complete confirmatory gcms_peak, into(confirmatory)
+frame put sampleid substance abundance method date_complete confirmatory revert gcms_peak, into(confirmatory)
 frame change confirmatory
 
-******* Add Holler HR per Cole's request April 24, 2025
+******* Add Holler HR per Cole's request April 24, 2025 
 keep if confirmatory==1
 
 save "/Users/nabarun/Documents/drugchecking/datasets/labservice/unc_gcms.dta", replace
@@ -413,6 +413,10 @@ export excel using "/Users/nabarun/Documents/drugchecking/datasets/labservice/un
 
 ** Delimited CSV (tab)
 export delimited using "/Users/nabarun/Documents/drugchecking/datasets/labservice/unc_gcms.csv", quote replace
+
+** Revert non-FTIR programs using StreetCheck
+replace confirmatory=0 if revert==1
+drop revert
 
 frame change lab
 * drop gcms_peak
