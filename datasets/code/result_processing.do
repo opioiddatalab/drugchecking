@@ -629,6 +629,8 @@ sort sampleid
 drop if substance==""
 quietly compress
 save "/Users/nabarun/Documents/dc_internal/lab_detail.dta", replace
+export delimited using "/Users/nabarun/Documents/dc_internal/lab_detail.csv", replace quote
+
 
 // Merge in lab results to card data to create analytic dataset
 
@@ -847,6 +849,7 @@ format date_complete %tdDDMonCCYY
 
 ** Save dataset for internal analysis
 save "/Users/nabarun/Documents/dc_internal/analysis_dataset.dta", replace
+export delimited using "/Users/nabarun/Documents/dc_internal/analysis_dataset.csv", replace
 
 // Generate canonical list of geocoded locations
 keep sampleid county full_state lat lon
