@@ -1,97 +1,97 @@
 substance,samples,rank
-"xylazine",442,1
-"fentanyl",437,2
-"4-ANPP",413,3
+"xylazine",445,1
+"fentanyl",440,2
+"4-ANPP",416,3
 "phenethyl 4-ANPP",174,4
 "dimethyl sulfone (methylsulfonylmethane MSM)",127,5
-"lidocaine",101,6
-"cocaine",92,7
-"p-fluorofentanyl",91,8
-"heroin",90,9
+"lidocaine",102,6
+"cocaine",93,7
+"p-fluorofentanyl",92,8
+"heroin",91,9
 "methamphetamine",70,10
 "caffeine",57,11
 "acetaminophen",56,12
 "despropionyl p-fluorofentanyl",46,13
-"ethyl-4-ANPP",43,14
+"ethyl-4-ANPP",44,14
 "1,3-Diacetin",43,15
 "acetylcodeine",35,16
 "N-phenylpropanamide",34,17
-"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",32,18
-"6-monoacetylmorphine (6-MAM)",30,19
-"procaine",30,20
-"diphenhydramine",29,21
+"bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate",34,18
+"diphenhydramine",30,19
+"6-monoacetylmorphine (6-MAM)",30,20
+"procaine",30,21
 "p-fluoro phenethyl 4-ANPP",27,22
 "tramadol",25,23
-"medetomidine",23,24
-"despropionyl ortho-methylfentanyl",20,25
-"quinine",20,26
+"medetomidine",24,24
+"despropionyl ortho-methylfentanyl",21,25
+"quinine",21,26
 "non-specific sugars",17,27
 "ortho-methylfentanyl",16,28
-"phenethyl bromide",14,29
-"1-phenethyl-4-propionyloxypiperidine",14,30
-"erythritol",12,31
-"bromazolam",12,32
+"1-phenethyl-4-propionyloxypiperidine",14,29
+"phenethyl bromide",14,30
+"bromazolam",12,31
+"erythritol",12,32
 "N-butyl-aniline",11,33
 "mannitol",10,34
-"menthol",9,35
-"gabapentin",9,36
+"gabapentin",9,35
+"menthol",9,36
 "papaverine",7,37
 "N-phenethyl-N-phenylpropionamide",6,38
 "tetracaine",6,39
 "methyl ecgonidine (MED)",6,40
-"1-phenyl-1-propanamine",5,41
+"ketamine",5,41
 "N-propionyl norfentanyl",5,42
-"4-anilinopiperidine",5,43
-"ketamine",5,44
-"non-specific sugar",4,45
-"tiletamine",4,46
-"metonitazene",4,47
+"1-phenyl-1-propanamine",5,43
+"4-anilinopiperidine",5,44
+"metonitazene",4,45
+"2-Fluoro-2-oxo PCE",4,46
+"tiletamine",4,47
 "phenacetin",4,48
-"2-Fluoro-2-oxo PCE",4,49
+"non-specific sugar",4,49
 "benzocaine",4,50
-"tropacocaine",3,51
+"meconin",3,51
 "hydrocotarnine",3,52
-"melatonin",3,53
-"xylitol",3,54
-"meconin",3,55
+"carfentanil",3,53
+"levamisole",3,54
+"tropacocaine",3,55
 "acetyl fentanyl",3,56
-"carfentanil",3,57
-"clonazepam",2,58
-"1-phenethyl-4-hydroxypiperidine",2,59
-"non-specific phthalate",2,60
-"phenethyl chloride",2,61
-"valeryl fentanyl",2,62
-"4-Anilino-1-Boc-piperidine",2,63
-"inositol",2,64
-"delta-9-THC",2,65
-"benzoylecgonine (BZ)",2,66
-"noscapine",2,67
-"levamisole",2,68
-"benzyl benzoate",2,69
-"sucrose",2,70
-"NPP",2,71
-"urea",2,72
-"1-propionyl-4-anilinopiperidine",2,73
-"2,2,6,6-tetramethyl-4-piperidinol",2,74
-"N,N-dimethylpentylone",2,75
-"nicotine",1,76
-"N-cyclohexyl butylone",1,77
-"niacinamide",1,78
-"tetramethyl-4-AP",1,79
-"ecgonine methylester (EME)",1,80
-"1,4-Butanediol",1,81
-"benzoic acid",1,82
-"methylparaben",1,83
-"naproxen",1,84
-"flualprazolam",1,85
-"non-specific organic acids",1,86
-"lactose",1,87
-"eutylone",1,88
-"norcocaine",1,89
-"tetramethylnorfentanyl",1,90
-"protonitazene",1,91
-"PMK ethyl glycidate",1,92
-"ibuprofen",1,93
-"p-fluoroacetyl fentanyl",1,94
-"dextromethorphan",1,95
-"acetanilide",1,96
+"melatonin",3,57
+"xylitol",3,58
+"4-Anilino-1-Boc-piperidine",2,59
+"inositol",2,60
+"1-phenethyl-4-hydroxypiperidine",2,61
+"urea",2,62
+"clonazepam",2,63
+"1-propionyl-4-anilinopiperidine",2,64
+"benzoylecgonine (BZ)",2,65
+"non-specific phthalate",2,66
+"phenethyl chloride",2,67
+"delta-9-THC",2,68
+"2,2,6,6-tetramethyl-4-piperidinol",2,69
+"valeryl fentanyl",2,70
+"N,N-dimethylpentylone",2,71
+"sucrose",2,72
+"NPP",2,73
+"noscapine",2,74
+"benzyl benzoate",2,75
+"non-specific organic acids",1,76
+"acetanilide",1,77
+"methylparaben",1,78
+"p-fluoroacetyl fentanyl",1,79
+"N-cyclohexyl butylone",1,80
+"nicotine",1,81
+"tetramethylnorfentanyl",1,82
+"norcocaine",1,83
+"lactose",1,84
+"niacinamide",1,85
+"naproxen",1,86
+"dextromethorphan",1,87
+"ibuprofen",1,88
+"tetramethyl-4-AP",1,89
+"PMK ethyl glycidate",1,90
+"flualprazolam",1,91
+"1,4-Butanediol",1,92
+"protonitazene",1,93
+"benzoic acid",1,94
+"ecgonine methylester (EME)",1,95
+"eutylone",1,96
