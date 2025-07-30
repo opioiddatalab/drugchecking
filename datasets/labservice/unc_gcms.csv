@@ -795,6 +795,9 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "603517","caffeine","trace","GCMS","03jul2025",
 "603517","methamphetamine","trace","GCMS","03jul2025",
 "603517","4-ANPP","trace","GCMS","03jul2025",
+"603522","xylazine","","GCMS","29jul2025",7.5100002
+"603522","4-ANPP","","GCMS","29jul2025",9.1400003
+"603522","fentanyl","","GCMS","29jul2025",10.29
 "603523","4-ANPP","","GCMS","02jul2025",9.1599998
 "603523","heroin","","GCMS","02jul2025",9.8900003
 "603523","fentanyl","","GCMS","02jul2025",10.33
@@ -802,6 +805,10 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "603523","acetylcodeine","trace","GCMS","02jul2025",
 "603523","phenethyl 4-ANPP","trace","GCMS","02jul2025",
 "603524","methamphetamine","","GCMS","02jul2025",4.21
+"603528","levamisole","","GCMS","29jul2025",7.5799999
+"603528","cocaine","","GCMS","29jul2025",8.2600002
+"603528","methyl ecgonidine (MED)","trace","GCMS","29jul2025",
+"603528","tropacocaine","trace","GCMS","29jul2025",
 "603529","cocaine","","GCMS","24jul2025",8.2600002
 "603529","levamisole","trace","GCMS","24jul2025",
 "603529","tropacocaine","trace","GCMS","24jul2025",
@@ -19276,6 +19283,8 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "806177","lidocaine","","GCMS","27aug2024",7.27
 "806177","despropionyl p-fluorofentanyl","","GCMS","27aug2024",9.3599997
 "806177","p-fluorofentanyl","","GCMS","27aug2024",10.39
+"806178","methamphetamine","","GCMS","07jul2025",4.5100002
+"806178","alpha-benzyl-N-methylphenethylamine","","GCMS","07jul2025",6.9299998
 "806179","acetaminophen","","GCMS","02jan2025",6.48
 "806179","fentanyl","trace","GCMS","02jan2025",
 "806180","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","21aug2024",2.4200001
@@ -30058,6 +30067,7 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "809203","fentanyl","","GCMS","09jun2025",10.33
 "809204","4-ANPP","","GCMS","09jun2025",9.1700001
 "809204","fentanyl","","GCMS","09jun2025",10.34
+"809205","no compounds of interest detected","","","24jun2025",
 "809206","methamphetamine","","GCMS","16jun2025",4.5100002
 "809207","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","09jun2025",2.3
 "809207","methamphetamine","","GCMS","09jun2025",4.1700001
@@ -30090,9 +30100,24 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "809215","fentanyl","","GCMS","03jun2025",10.42
 "809215","4-ANPP","trace","GCMS","03jun2025",
 "809215","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","03jun2025",
+"809216","1-boc-4-hydroxypiperidine","","","24jun2025",5.4200001
+"809216","acetaminophen","","","24jun2025",6.3200002
+"809216","4-ANPP","","","24jun2025",9.1599998
+"809216","fentanyl","","","24jun2025",10.32
+"809217","methamphetamine","","GCMS","07jul2025",4.3800001
 "809219","methamphetamine","","GCMS","16jun2025",4.02
 "809220","cocaine","","GCMS","16jun2025",8.2600002
+"809221","4-ANPP","","GCMS","07jul2025",9.1599998
+"809221","ethyl 4-ANPP","","GCMS","07jul2025",9.3000002
+"809221","fentanyl","","GCMS","07jul2025",10.36
+"809221","N-phenylpropanamide","trace","GCMS","07jul2025",
+"809221","phenethyl 4-ANPP","trace","GCMS","07jul2025",
 "809222","cocaine","","GCMS","16jun2025",8.2600002
+"809223","acetaminophen","","GCMS","07jul2025",6.4699998
+"809223","lidocaine","","GCMS","07jul2025",7.1300001
+"809223","4-ANPP","","GCMS","07jul2025",9.1599998
+"809223","fentanyl","","GCMS","07jul2025",10.34
+"809223","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","07jul2025",12.32
 "809251","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","21feb2025",
 "809252","4-ANPP","","GCMS","28feb2025",9.2700005
 "809252","fentanyl","","GCMS","28feb2025",10.47
@@ -30221,9 +30246,59 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "809302","N-propionyl norfentanyl","trace","GCMS","10jun2025",
 "809302","ethyl 4-ANPP","trace","GCMS","10jun2025",
 "809302","phenethyl 4-ANPP","trace","GCMS","10jun2025",
+"809303","methamphetamine","","GCMS","07jul2025",4.4699998
 "809304","4-ANPP","","GCMS","10jun2025",9.1700001
 "809304","fentanyl","","GCMS","10jun2025",10.34
 "809305","methamphetamine","","GCMS","16jun2025",3.9400001
+"809306","4-ANPP","","GCMS","07jul2025",9.1599998
+"809306","ethyl 4-ANPP","","GCMS","07jul2025",9.3000002
+"809306","fentanyl","","GCMS","07jul2025",10.32
+"809306","N-phenylpropanamide","trace","GCMS","07jul2025",
+"809306","phenethyl 4-ANPP","trace","GCMS","07jul2025",
+"809307","acetaminophen","","GCMS","07jul2025",6.3499999
+"809307","despropionyl p-fluorofentanyl","","GCMS","07jul2025",9.1499996
+"809307","4-ANPP","","GCMS","07jul2025",9.1499996
+"809307","p-fluorofentanyl","","GCMS","07jul2025",10.1
+"809307","fentanyl","","GCMS","07jul2025",10.31
+"809308","4-ANPP","","GCMS","07jul2025",9.1700001
+"809308","fentanyl","","GCMS","07jul2025",10.33
+"809309","4-ANPP","","GCMS","07jul2025",9.1599998
+"809309","fentanyl","","GCMS","07jul2025",10.33
+"809309","N-phenylpropanamide","trace","GCMS","07jul2025",
+"809309","phenethyl 4-ANPP","trace","GCMS","07jul2025",
+"809310","acetaminophen","","GCMS","07jul2025",6.4499998
+"809310","lidocaine","trace","GCMS","07jul2025",
+"809310","4-ANPP","trace","GCMS","07jul2025",
+"809310","fentanyl","trace","GCMS","07jul2025",
+"809310","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","07jul2025",
+"809312","1,4-Butanediol","","GCMS","25jul2025",2.4100001
+"809315","methamphetamine","","GCMS","29jul2025",4.4699998
+"809317","methamphetamine","","GCMS","10jul2025",3.9300001
+"809318","carfentanil","","GCMS","07jul2025",11.1
+"809319","4-ANPP","","GCMS","07jul2025",9.1499996
+"809319","fentanyl","","GCMS","07jul2025",10.31
+"809320","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","07jul2025",12.33
+"809320","fentanyl","trace","GCMS","07jul2025",
+"809320","2,2,6,6-tetramethyl-4-piperidinol","trace","GCMS","07jul2025",
+"809320","methamphetamine","","GCMS","07jul2025",4.25
+"809321","fentanyl","","GCMS","25jul2025",10.3
+"809321","4-ANPP","trace","GCMS","25jul2025",
+"809322","fentanyl","","GCMS","29jul2025",10.29
+"809322","4-ANPP","","GCMS","29jul2025",9.1400003
+"809323","4-ANPP","","GCMS","07jul2025",9.1599998
+"809323","fentanyl","","GCMS","07jul2025",10.35
+"809323","N-phenylpropanamide","trace","GCMS","07jul2025",
+"809323","phenethyl 4-ANPP","trace","GCMS","07jul2025",
+"809324","lysergic acid diethylamide (LSD)","","GCMS","07jul2025",13.81
+"809325","4-ANPP","","GCMS","07jul2025",9.1599998
+"809325","fentanyl","","GCMS","07jul2025",10.34
+"809325","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","07jul2025",12.31
+"809325","N-phenylpropanamide","trace","GCMS","07jul2025",
+"809325","acetaminophen","trace","GCMS","07jul2025",
+"809325","lidocaine","trace","GCMS","07jul2025",
+"809325","xylazine","trace","GCMS","07jul2025",
+"809325","procaine","trace","GCMS","07jul2025",
+"809325","1-phenethyl-4-propionyloxypiperidine","trace","GCMS","07jul2025",
 "809327","acetaminophen","","GCMS","12mar2025",6.4099998
 "809327","4-ANPP","","GCMS","12mar2025",9.2700005
 "809327","fentanyl","","GCMS","12mar2025",10.47
@@ -30272,6 +30347,31 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "809349","fentanyl","","GCMS","10mar2025",10.47
 "809350","4-ANPP","","GCMS","10mar2025",9.2700005
 "809350","fentanyl","","GCMS","10mar2025",10.47
+"809361","4-ANPP","","GCMS","29jul2025",9.1499996
+"809361","ethyl 4-ANPP","trace","GCMS","29jul2025",
+"809361","fentanyl","","GCMS","29jul2025",10.34
+"809361","phenethyl 4-ANPP","","GCMS","29jul2025",13.73
+"809364","4-ANPP","","GCMS","25jul2025",9.1599998
+"809364","fentanyl","","GCMS","25jul2025",10.3
+"809364","phenethyl 4-ANPP","trace","GCMS","25jul2025",
+"809364","ethyl 4-ANPP","trace","GCMS","25jul2025",
+"809365","4-ANPP","","GCMS","25jul2025",9.1599998
+"809365","fentanyl","","GCMS","25jul2025",10.3
+"809365","ethyl 4-ANPP","trace","GCMS","25jul2025",
+"809368","4-ANPP","","GCMS","29jul2025",9.1400003
+"809368","ethyl 4-ANPP","","GCMS","29jul2025",9.29
+"809368","fentanyl","","GCMS","29jul2025",10.29
+"809369","methamphetamine","","GCMS","25jul2025",4.3000002
+"809370","4-ANPP","","GCMS","25jul2025",9.1599998
+"809370","fentanyl","","GCMS","25jul2025",10.3
+"809371","fentanyl","","GCMS","25jul2025",10.3
+"809371","4-ANPP","","GCMS","25jul2025",9.1599998
+"809371","lidocaine","trace","GCMS","25jul2025",
+"809373","fentanyl","","GCMS","25jul2025",10.3
+"809373","4-ANPP","trace","GCMS","25jul2025",
+"809374","methamphetamine","","GCMS","25jul2025",4.0999999
+"809375","fentanyl","","GCMS","25jul2025",10.3
+"809375","4-ANPP","","GCMS","25jul2025",
 "809376","lidocaine","","GCMS","01apr2025",7.1900001
 "809376","1-phenethyl-4-propionyloxypiperidine","","GCMS","01apr2025",7.5100002
 "809376","tetracaine","","GCMS","01apr2025",8.3999996
@@ -31445,7 +31545,10 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "809659","acetaminophen","","GCMS","15apr2025",6.7600002
 "809659","4-ANPP","","GCMS","15apr2025",9.2600002
 "809659","fentanyl","","GCMS","15apr2025",10.46
+"809660","lysergic acid diethylamide (LSD)","trace","GCMS","29jul2025",
 "809663","cocaine","","GCMS","25jul2025",8.2600002
+"809665","2C-B","","GCMS","29jul2025",6.8800001
+"809668","morphine","","GCMS","29jul2025",9.1700001
 "809669","ketamine","","GCMS","25jul2025",7.1199999
 "809675","acetaminophen","","GCMS","14jul2025",6.3200002
 "809675","4-ANPP","","GCMS","14jul2025",9.1499996
@@ -32263,6 +32366,16 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "809960","despropionyl ortho-methylfentanyl","trace","GCMS","26may2025",13.98
 "809960","N-phenethyl-N-phenylpropionamide","trace","GCMS","26may2025",
 "809974","cocaine","","GCMS","03jun2025",8.3199997
+"809975","acetaminophen","","","24jun2025",6.3299999
+"809975","xylazine","","","24jun2025",7.52
+"809975","fentanyl","","","24jun2025",10.32
+"809975","mannitol","trace","","24jun2025",
+"809975","caffeine","trace","","24jun2025",
+"809975","lidocaine","trace","","24jun2025",
+"809975","medetomidine","trace","","24jun2025",
+"809975","procaine","trace","","24jun2025",
+"809975","4-ANPP","trace","","24jun2025",
+"809975","heroin","trace","","24jun2025",
 "809976","methamphetamine","","GCMS","29may2025",4.52
 "809977","4-ANPP","","GCMS","20may2025",9.2399998
 "809977","fentanyl","","GCMS","20may2025",10.43
@@ -33255,13 +33368,31 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810279","dimethyl sulfone (methylsulfonylmethane MSM)","trace","GCMS","25apr2025",
 "810279","fentanyl","trace","GCMS","25apr2025",
 "810280","no compounds of interest detected","","GCMS","16jun2025",
+"810281","dimethyl sulfone (methylsulfonylmethane MSM)","","","24jun2025",2.3399999
+"810281","erythritol","trace","","24jun2025",
+"810281","lidocaine","trace","","24jun2025",
+"810281","fentanyl","trace","","24jun2025",
 "810282","no compounds of interest detected","","GCMS","11jun2025",
 "810283","lidocaine","","GCMS","10jun2025",7.1100001
 "810283","4-ANPP","","GCMS","10jun2025",9.1700001
 "810283","fentanyl","","GCMS","10jun2025",10.33
 "810284","methamphetamine","","GCMS","09jun2025",4.0799999
+"810285","methamphetamine","","GCMS","24jul2025",4.0999999
+"810286","methamphetamine","","GCMS","24jul2025",3.97
+"810287","no compounds of interest detected","","GCMS","29jul2025",
+"810289","methamphetamine","","GCMS","24jul2025",3.9400001
+"810289","acetaminophen","","GCMS","24jul2025",6.3299999
+"810290","methamphetamine","","","24jun2025",4.27
+"810291","methamphetamine","","GCMS","17jul2025",3.97
+"810292","acetaminophen","","GCMS","24jul2025",6.3299999
+"810294","methamphetamine","","GCMS","18jul2025",3.95
+"810295","erythritol","","","24jun2025",4.6500001
+"810295","4-ANPP","","","24jun2025",9.1599998
+"810295","fentanyl","","","24jun2025",10.32
+"810295","heroin","trace","","24jun2025",
 "810296","no compounds of interest detected","","GCMS","13jun2025",
 "810298","methamphetamine","","GCMS","10jun2025",4.2399998
+"810299","methamphetamine","","","23jun2025",3.98
 "810300","no compounds of interest detected","","GCMS","10jun2025",
 "810301","methamphetamine","","GCMS","09jun2025",4.3299999
 "810302","no compounds of interest detected","","GCMS","13jun2025",
@@ -33317,6 +33448,7 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810334","lidocaine","trace","GCMS","02jun2025",
 "810334","morphine","trace","GCMS","02jun2025",
 "810334","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","02jun2025",
+"810335","no compounds of interest detected","","GCMS","25jun2025",
 "810336","methamphetamine","","GCMS","13jun2025",3.95
 "810337","erythritol","","GCMS","02jun2025",4.3099999
 "810337","non-specific sugar","","GCMS","02jun2025",5.96
@@ -33386,6 +33518,21 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810381","fentanyl","","","24jun2025",10.32
 "810381","ethyl 4-ANPP","trace","","24jun2025",
 "810382","phenazolam","","GCMS","04jun2025",14.07
+"810383","caffeine","","GCMS","16jul2025",6.98
+"810383","procaine","","GCMS","16jul2025",7.6999998
+"810383","methamphetamine","trace","GCMS","16jul2025",
+"810383","medetomidine","trace","GCMS","16jul2025",
+"810383","xylazine","trace","GCMS","16jul2025",
+"810383","4-ANPP","trace","GCMS","16jul2025",
+"810383","fentanyl","","GCMS","16jul2025",10.3
+"810384","medetomidine","","GCMS","10jul2025",7.3400002
+"810384","xylazine","","GCMS","10jul2025",7.52
+"810384","cocaine","","GCMS","10jul2025",8.25
+"810384","fentanyl","","GCMS","10jul2025",10.31
+"810384","procaine","trace","GCMS","10jul2025",
+"810384","4-ANPP","trace","GCMS","10jul2025",
+"810384","ethyl 4-ANPP","trace","GCMS","10jul2025",
+"810384","bromazolam","trace","GCMS","10jul2025",
 "810385","acetaminophen","trace","GCMS","11jun2025",
 "810385","lidocaine","","GCMS","11jun2025",7.1100001
 "810385","medetomidine","","GCMS","11jun2025",7.3499999
@@ -33402,6 +33549,15 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810387","cocaine","trace","GCMS","11jun2025",
 "810387","ethyl 4-ANPP","trace","GCMS","11jun2025",
 "810387","phenethyl 4-ANPP","trace","GCMS","11jun2025",
+"810389","acetaminophen","","GCMS","11jul2025",6.3200002
+"810389","lidocaine","","GCMS","11jul2025",7.0999999
+"810389","medetomidine","","GCMS","11jul2025",7.3400002
+"810389","4-ANPP","trace","GCMS","11jul2025",
+"810389","6-monoacetylmorphine (6-MAM)","","GCMS","11jul2025",9.4499998
+"810389","heroin","","GCMS","11jul2025",9.8699999
+"810389","fentanyl","","GCMS","11jul2025",10.31
+"810389","diphenhydramine","trace","GCMS","11jul2025",
+"810389","procaine","trace","GCMS","11jul2025",
 "810391","cocaine","","GCMS","26jun2025",810391
 "810392","caffeine","","","24jun2025",6.9699998
 "810392","lidocaine","","","24jun2025",7.0999999
@@ -33508,6 +33664,14 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810438","heroin","","GCMS","01may2025",9.9799995
 "810438","fentanyl","","GCMS","01may2025",10.43
 "810439","methamphetamine","","GCMS","23apr2025",4.0300002
+"810440","medetomidine","","GCMS","10jul2025",7.3400002
+"810440","procaine","","GCMS","10jul2025",7.6700001
+"810440","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","10jul2025",12.33
+"810440","heroin","trace","GCMS","10jul2025",
+"810440","6-monoacetylmorphine (6-MAM)","trace","GCMS","10jul2025",
+"810440","tetracaine","trace","GCMS","10jul2025",
+"810440","caffeine","trace","GCMS","10jul2025",
+"810440","acetaminophen","trace","GCMS","10jul2025",
 "810441","caffeine","","GCMS","22may2025",7.04
 "810441","procaine","","GCMS","22may2025",7.73
 "810441","heroin","","GCMS","22may2025",9.9799995
@@ -33730,6 +33894,7 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810591","4-ANPP","","GCMS","10jul2025",9.1599998
 "810591","fentanyl","","GCMS","10jul2025",10.31
 "810591","xylazine","trace","GCMS","10jul2025",
+"810592","methamphetamine","","GCMS","29jul2025",4.2199998
 "810593","cocaine","","GCMS","09jul2025",8.2700005
 "810593","methyl ecgonidine (MED)","trace","GCMS","09jul2025",
 "810593","fentanyl","trace","GCMS","09jul2025",
@@ -33986,6 +34151,10 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810687","bromazolam","","GCMS","16apr2025",13.13
 "810688","cocaine","","GCMS","21apr2025",8.3299999
 "810689","alprazolam","","GCMS","30apr2025",12.1
+"810704","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","29jul2025",2.29
+"810704","methamphetamine","","GCMS","29jul2025",4.5599999
+"810711","cocaine","","GCMS","29jul2025",8.25
+"810713","methamphetamine","","GCMS","29jul2025",4.52
 "810716","4-ANPP","","GCMS","19may2025",9.2399998
 "810716","fentanyl","","GCMS","19may2025",10.42
 "810716","xylazine","trace","GCMS","19may2025",
@@ -34166,6 +34335,42 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810789","heroin","trace","GCMS","01may2025",
 "810789","fentanyl","trace","GCMS","01may2025",
 "810789","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","01may2025",
+"810790","diphenhydramine","","GCMS","09jul2025",7.0799999
+"810790","4-ANPP","","GCMS","09jul2025",9.1599998
+"810790","fentanyl","","GCMS","09jul2025",10.31
+"810790","ethyl 4-ANPP","trace","GCMS","09jul2025",
+"810790","quinine","trace","GCMS","09jul2025",
+"810792","acetaminophen","","GCMS","10jul2025",6.3299999
+"810792","diphenhydramine","","GCMS","10jul2025",7.0799999
+"810792","fentanyl","","GCMS","10jul2025",10.31
+"810792","4-ANPP","trace","GCMS","10jul2025",
+"810792","ethyl 4-ANPP","trace","GCMS","10jul2025",
+"810793","diphenhydramine","","GCMS","01jul2025",7.0799999
+"810793","procaine","","GCMS","01jul2025",7.6700001
+"810793","dextromethorphan","","GCMS","01jul2025",8.0900002
+"810793","quinine","","GCMS","01jul2025",10.94
+"810793","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","01jul2025",12.32
+"810793","medetomidine","trace","GCMS","01jul2025",
+"810793","4-ANPP","trace","GCMS","01jul2025",
+"810793","ethylbromazolam","trace","GCMS","01jul2025",
+"810793","fentanyl","trace","GCMS","01jul2025",
+"810794","diphenhydramine","","GCMS","02jul2025",7.0799999
+"810794","medetomidine","trace","GCMS","02jul2025",
+"810794","lidocaine","trace","GCMS","02jul2025",
+"810794","4-ANPP","trace","GCMS","02jul2025",
+"810794","fentanyl","trace","GCMS","02jul2025",
+"810794","erythritol","trace","GCMS","02jul2025",
+"810795","diphenhydramine","","GCMS","10jul2025",7.0799999
+"810795","fentanyl","","GCMS","10jul2025",10.31
+"810795","methamphetamine","trace","GCMS","10jul2025",
+"810795","4-ANPP","trace","GCMS","10jul2025",
+"810795","ethyl 4-ANPP","trace","GCMS","10jul2025",
+"810796","caffeine","","GCMS","02jul2025",6.9699998
+"810796","diphenhydramine","","GCMS","02jul2025",7.0799999
+"810796","fentanyl","","GCMS","02jul2025",10.31
+"810796","4-ANPP","trace","GCMS","02jul2025",
+"810796","heroin","trace","GCMS","02jul2025",
+"810796","quinine","trace","GCMS","02jul2025",
 "810797","diphenhydramine","","GCMS","11jun2025",7.0900002
 "810797","cocaine","","GCMS","11jun2025",8.25
 "810797","fentanyl","","GCMS","11jun2025",10.32
@@ -34175,6 +34380,23 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810798","procaine","trace","GCMS","11jun2025",
 "810798","4-ANPP","trace","GCMS","11jun2025",
 "810798","fentanyl","trace","GCMS","11jun2025",
+"810800","caffeine","","GCMS","02jul2025",6.98
+"810800","diphenhydramine","","GCMS","02jul2025",7.0799999
+"810800","lidocaine","trace","GCMS","02jul2025",
+"810800","4-ANPP","trace","GCMS","02jul2025",
+"810800","heroin","trace","GCMS","02jul2025",
+"810800","p-fluorofentanyl","trace","GCMS","02jul2025",
+"810800","fentanyl","trace","GCMS","02jul2025",
+"810800","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","02jul2025",
+"810801","diphenhydramine","","GCMS","01jul2025",7.0799999
+"810801","4-ANPP","","GCMS","01jul2025",9.1499996
+"810801","heroin","","GCMS","01jul2025",9.8699999
+"810801","fentanyl","","GCMS","01jul2025",10.31
+"810801","medetomidine","trace","GCMS","01jul2025",
+"810803","gabapentin","","GCMS","11jul2025",5.9699998
+"810803","diphenhydramine","","GCMS","11jul2025",7.0799999
+"810803","caffeine","trace","GCMS","11jul2025",
+"810803","trazodone","trace","GCMS","11jul2025",
 "810804","cocaine","","GCMS","10jun2025",8.2799997
 "810806","diphenhydramine","","","23jun2025",7.0799999
 "810806","lidocaine","trace","","23jun2025",
@@ -34184,6 +34406,14 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810806","fentanyl","trace","","23jun2025",
 "810806","quinine","trace","","23jun2025",
 "810806","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","","23jun2025",
+"810807","caffeine","","GCMS","10jul2025",6.98
+"810807","diphenhydramine","","GCMS","10jul2025",7.0799999
+"810807","lidocaine","trace","GCMS","10jul2025",
+"810807","4-ANPP","trace","GCMS","10jul2025",
+"810807","heroin","trace","GCMS","10jul2025",
+"810807","p-fluorofentanyl","trace","GCMS","10jul2025",
+"810807","fentanyl","trace","GCMS","10jul2025",
+"810807","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","10jul2025",12.31
 "810808","diphenhydramine","","GCMS","11jun2025",7.0799999
 "810808","procaine","","GCMS","11jun2025",7.6700001
 "810808","dextromethorphan","","GCMS","11jun2025",8.1000004
@@ -34191,6 +34421,40 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810808","medetomidine","trace","GCMS","11jun2025",
 "810808","cocaine","trace","GCMS","11jun2025",
 "810808","quinine","trace","GCMS","11jun2025",
+"810809","gabapentin","","GCMS","09jul2025",5.9899998
+"810809","diphenhydramine","","GCMS","09jul2025",7.0700002
+"810809","4-ANPP","","GCMS","09jul2025",9.1499996
+"810809","fentanyl","","GCMS","09jul2025",10.31
+"810809","xylazine","trace","GCMS","09jul2025",
+"810810","diphenhydramine","","GCMS","10jul2025",7.0799999
+"810810","fentanyl","","GCMS","10jul2025",10.3
+"810810","erythritol","trace","GCMS","10jul2025",
+"810810","acetaminophen","trace","GCMS","10jul2025",
+"810810","medetomidine","trace","GCMS","10jul2025",
+"810810","4-ANPP","trace","GCMS","10jul2025",
+"810810","heroin","trace","GCMS","10jul2025",
+"810811","diphenhydramine","","GCMS","10jul2025",7.0700002
+"810811","lidocaine","trace","GCMS","10jul2025",
+"810811","medetomidine","","GCMS","10jul2025",7.3299999
+"810811","4-ANPP","","GCMS","10jul2025",9.1599998
+"810811","6-monoacetylmorphine (6-MAM)","","GCMS","10jul2025",9.4499998
+"810811","heroin","","GCMS","10jul2025",9.8699999
+"810811","fentanyl","","GCMS","10jul2025",10.3
+"810811","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","10jul2025",
+"810813","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","09jul2025",2.3
+"810813","erythritol","","GCMS","09jul2025",4.1900001
+"810813","caffeine","trace","GCMS","09jul2025",
+"810813","diphenhydramine","","GCMS","09jul2025",7.0700002
+"810813","lidocaine","trace","GCMS","09jul2025",
+"810813","medetomidine","trace","GCMS","09jul2025",
+"810813","4-ANPP","trace","GCMS","09jul2025",
+"810813","fentanyl","trace","GCMS","09jul2025",
+"810813","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","09jul2025",
+"810814","diphenhydramine","","GCMS","10jul2025",7.0799999
+"810814","lidocaine","","GCMS","10jul2025",7.0999999
+"810814","p-fluorofentanyl","trace","GCMS","10jul2025",
+"810814","fentanyl","","GCMS","10jul2025",10.3
+"810814","quinine","trace","GCMS","10jul2025",
 "810815","methamphetamine","","GCMS","28may2025",4.5599999
 "810816","4-ANPP","","GCMS","26may2025",9.2399998
 "810816","fentanyl","","GCMS","26may2025",10.42
@@ -34342,7 +34606,25 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810854","fentanyl","","GCMS","04jun2025",10.41
 "810854","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","04jun2025",12.47
 "810854","heroin","trace","GCMS","04jun2025",
+"810855","cocaine","","GCMS","29jul2025",8.2600002
+"810855","tropacocaine","trace","GCMS","29jul2025",
+"810857","no compounds of interest detected","","GCMS","26jun2025",
 "810858","cocaine","","GCMS","09jun2025",8.2700005
+"810861","cocaine","","GCMS","30jun2025",8.2600002
+"810862","caffeine","","GCMS","02jul2025",6.9899998
+"810862","heroin","","GCMS","02jul2025",9.8800001
+"810862","acetylcodeine","trace","GCMS","02jul2025",
+"810862","fentanyl","trace","GCMS","02jul2025",
+"810863","caffeine","","GCMS","02jul2025",6.9699998
+"810863","medetomidine","","GCMS","02jul2025",7.3299999
+"810863","heroin","","GCMS","02jul2025",9.8699999
+"810863","fentanyl","trace","GCMS","02jul2025",
+"810863","cocaine","","GCMS","02jul2025",8.25
+"810863","lidocaine","","GCMS","02jul2025",7.0999999
+"810863","ketamine","trace","GCMS","02jul2025",
+"810863","phenacetin","trace","GCMS","02jul2025",
+"810863","acetaminophen","trace","GCMS","02jul2025",
+"810864","methamphetamine","","GCMS","30jun2025",4.4699998
 "810867","caffeine","","GCMS","10jun2025",6.98
 "810867","xylazine","","GCMS","10jun2025",7.5300002
 "810867","procaine","","GCMS","10jun2025",7.6700001
@@ -34351,12 +34633,27 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810867","lidocaine","trace","GCMS","10jun2025",
 "810867","medetomidine","trace","GCMS","10jun2025",
 "810867","bromazolam","trace","GCMS","10jun2025",
+"810868","heroin","","GCMS","25jun2025",
+"810868","acetylcodeine","trace","GCMS","25jun2025",
+"810868","6-monoacetylmorphine (6-MAM)","trace","GCMS","25jun2025",
 "810869","mannitol","","GCMS","10jun2025",7.1100001
 "810869","4-ANPP","","GCMS","10jun2025",9.1700001
 "810869","heroin","","GCMS","10jun2025",9.8900003
 "810869","fentanyl","","GCMS","10jun2025",10.33
 "810869","NPP","trace","GCMS","10jun2025",
 "810869","xylazine","trace","GCMS","10jun2025",
+"810870","cocaine","","GCMS","30jun2025",8.2700005
+"810871","cocaine","","GCMS","29jul2025",8.2399998
+"810872","cocaine","","GCMS","30jun2025",8.2600002
+"810873","caffeine","","GCMS","30jun2025",6.98
+"810873","diphenhydramine","","GCMS","30jun2025",7.0799999
+"810873","procaine","","GCMS","30jun2025",7.6700001
+"810873","promethazine","","GCMS","30jun2025",8.54
+"810873","phenibut","trace","GCMS","30jun2025",
+"810873","medetomidine","trace","GCMS","30jun2025",
+"810873","phenothiazine","trace","GCMS","30jun2025",
+"810876","methamphetamine","","","24jun2025",4.48
+"810876","dimethyl sulfone (methylsulfonylmethane MSM)","trace","","24jun2025",
 "810877","caffeine","","GCMS","09jun2025",6.9899998
 "810877","diphenhydramine","","GCMS","09jun2025",7.0799999
 "810877","procaine","","GCMS","09jun2025",7.6799998
@@ -34366,6 +34663,18 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810877","medetomidine","trace","GCMS","09jun2025",
 "810877","phenibut","trace","GCMS","09jun2025",
 "810877","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","09jun2025",
+"810878","cocaine","","GCMS","29jul2025",8.2600002
+"810879","caffeine","","GCMS","25jun2025",6.9699998
+"810879","procaine","","GCMS","25jun2025",7.6700001
+"810879","ortho-methyl 4-AP-1-ethyl Carbamate","","GCMS","25jun2025",8.1199999
+"810879","despropionyl ortho-methylfentanyl","","GCMS","25jun2025",9.4099998
+"810879","heroin","","GCMS","25jun2025",9.8800001
+"810879","fentanyl","","GCMS","25jun2025",10.31
+"810879","ortho-methylfentanyl","","GCMS","25jun2025",10.64
+"810879","quinine","","GCMS","25jun2025",10.9
+"810879","4-piperidone","trace","GCMS","25jun2025",
+"810879","6-monoacetylmorphine (6-MAM)","trace","GCMS","25jun2025",
+"810879","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","25jun2025",
 "810885","lidocaine","","GCMS","26may2025",7.1700001
 "810885","tetracaine","","GCMS","26may2025",8.3800001
 "810885","4-ANPP","","GCMS","26may2025",9.2399998
@@ -34714,6 +35023,12 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810946","4-ANPP","trace","GCMS","23may2025",
 "810946","heroin","trace","GCMS","23may2025",
 "810946","fentanyl","trace","GCMS","23may2025",
+"810948","medetomidine","","GCMS","26jun2025",7.3400002
+"810948","xylazine","","GCMS","26jun2025",7.52
+"810948","procaine","","GCMS","26jun2025",7.6700001
+"810948","ethyl 4-ANPP","","GCMS","26jun2025",9.3000002
+"810948","fentanyl","","GCMS","26jun2025",10.31
+"810948","quinine","","GCMS","26jun2025",10.9
 "810949","caffeine","","GCMS","09jun2025",7
 "810949","lidocaine","","GCMS","09jun2025",7.1100001
 "810949","4-ANPP","","GCMS","09jun2025",9.1700001
@@ -34744,6 +35059,47 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810959","cannabidiol","","GCMS","23may2025",8.8900003
 "810959","delta-9-THC","","GCMS","23may2025",9.25
 "810959","cannabinol","","GCMS","23may2025",9.5100002
+"810960","medetomidine","","GCMS","16jul2025",7.3400002
+"810960","xylazine","","GCMS","16jul2025",7.52
+"810960","procaine","","GCMS","16jul2025",7.6199999
+"810960","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","16jul2025",
+"810960","quinine","trace","GCMS","16jul2025",
+"810960","fentanyl","trace","GCMS","16jul2025",
+"810960","6-monoacetylmorphine (6-MAM)","trace","GCMS","16jul2025",
+"810960","4-ANPP","trace","GCMS","16jul2025",
+"810960","mannitol","trace","GCMS","16jul2025",
+"810961","caffeine","","GCMS","10jul2025",6.9699998
+"810961","lidocaine","","GCMS","10jul2025",7.1100001
+"810961","4-ANPP","","GCMS","10jul2025",9.1499996
+"810961","fentanyl","","GCMS","10jul2025",10.3
+"810961","heroin","trace","GCMS","10jul2025",
+"810961","fluoro-MBZP (isomer not determined)","trace","GCMS","10jul2025",
+"810961","phenethyl 4-ANPP","trace","GCMS","10jul2025",
+"810962","denatonium","","GCMS","16jul2025",9.1499996
+"810962","phenazolam","","GCMS","16jul2025",13.91
+"810963","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","16jul2025",2.3
+"810963","methamphetamine","","GCMS","16jul2025",4.02
+"810963","caffeine","","GCMS","16jul2025",6.9699998
+"810963","fentanyl","trace","GCMS","16jul2025",
+"810966","estradiol enantate","","GCMS","17jul2025",14.88
+"810967","3,4-MDMA","","GCMS","17jul2025",5.77
+"810968","estradiol","","GCMS","17jul2025",9.8699999
+"810971","methamphetamine","","GCMS","26jun2025",3.9300001
+"810972","caffeine","","GCMS","30jun2025",6.9699998
+"810972","4-ANPP","","GCMS","30jun2025",9.1499996
+"810972","ethyl 4-ANPP","","GCMS","30jun2025",9.3000002
+"810972","fentanyl","","GCMS","30jun2025",10.31
+"810972","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","30jun2025",12.31
+"810972","diphenhydramine","trace","GCMS","30jun2025",
+"810972","medetomidine","trace","GCMS","30jun2025",
+"810972","xylazine","trace","GCMS","30jun2025",
+"810972","phenethyl 4-ANPP","trace","GCMS","30jun2025",
+"810974","acetaminophen","","GCMS","14jul2025",6.3200002
+"810974","lidocaine","","GCMS","14jul2025",7.0999999
+"810974","4-ANPP","","GCMS","14jul2025",9.1499996
+"810974","fentanyl","","GCMS","14jul2025",10.3
+"810974","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","14jul2025",
+"810974","erythritol","","GCMS","14jul2025",4.4000001
 "810975","dimethyl sulfone (methylsulfonylmethane MSM)","trace","GCMS","09jun2025",
 "810975","erythritol","","GCMS","09jun2025",4.6599998
 "810975","caffeine","","GCMS","09jun2025",6.98
@@ -34767,6 +35123,11 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "810978","methamphetamine","","GCMS","12jun2025",4.3200002
 "810979","4-ANPP","","GCMS","09jun2025",9.1700001
 "810979","fentanyl","","GCMS","09jun2025",10.33
+"810982","no compounds of interest detected","","GCMS","25jun2025",
+"810984","caffeine","","GCMS","26jun2025",6.9699998
+"810984","lidocaine","trace","GCMS","26jun2025",
+"810984","4-ANPP","trace","GCMS","26jun2025",
+"810984","fentanyl","trace","GCMS","26jun2025",
 "810985","phenothiazine","","GCMS","26may2025",7.8400002
 "810985","6-monoacetylmorphine (6-MAM)","","GCMS","26may2025",9.54
 "810985","heroin","","GCMS","26may2025",9.9700003
@@ -35124,6 +35485,9 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811144","glycerin","trace","GCMS","16jun2025",
 "811144","guaifenesin","trace","GCMS","16jun2025",
 "811144","fentanyl","trace","GCMS","16jun2025",
+"811145","bromazolam","","","24jun2025",12.93
+"811145","delta-9-THC","trace","","24jun2025",
+"811145","cannabinol","trace","","24jun2025",
 "811146","N-phenyl-acetamide","","GCMS","16jun2025",4.9299998
 "811146","acetaminophen","","GCMS","16jun2025",6.3800001
 "811146","1-phenethyl-4-propionyloxypiperidine","","GCMS","16jun2025",7.4400001
@@ -35135,6 +35499,22 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811147","acetaminophen","","GCMS","16jun2025",6.46
 "811147","4-ANPP","","GCMS","16jun2025",9.1700001
 "811147","fentanyl","","GCMS","16jun2025",10.33
+"811148","4-ANPP","","GCMS","30jun2025",9.1599998
+"811148","fentanyl","","GCMS","30jun2025",10.33
+"811149","4-ANPP","","GCMS","30jun2025",9.1599998
+"811149","fentanyl","","GCMS","30jun2025",10.34
+"811149","phenethyl 4-ANPP","","GCMS","30jun2025",13.76
+"811149","diphenhydramine","trace","GCMS","30jun2025",
+"811150","acetaminophen","","GCMS","30jun2025",6.4299998
+"811151","methamphetamine","","GCMS","30jun2025",4.6399999
+"811152","methamphetamine","","GCMS","27jun2025",4.52
+"811153","4-ANPP","","GCMS","30jun2025",9.1599998
+"811153","fentanyl","","GCMS","30jun2025",10.32
+"811153","ethyl 4-ANPP","trace","GCMS","30jun2025",
+"811154","acetaminophen","","GCMS","02jul2025",6.3499999
+"811154","4-ANPP","","GCMS","02jul2025",9.1599998
+"811154","ethyl 4-ANPP","","GCMS","02jul2025",9.3000002
+"811154","fentanyl","","GCMS","02jul2025",10.34
 "811155","bromobenzene","","GCMS","20may2025",2.55
 "811155","1-piperidino-1-cyclohexene","trace","GCMS","20may2025",
 "811155","biphenyl","","GCMS","20may2025",5.1100001
@@ -35216,6 +35596,48 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811178","4-ANPP","","GCMS","13may2025",9.2399998
 "811178","fentanyl","","GCMS","13may2025",10.47
 "811179","methamphetamine","","GCMS","09jun2025",4.54
+"811180","ketamine","","GCMS","09jul2025",7.1199999
+"811180","cocaine","","GCMS","09jul2025",8.2700005
+"811180","dimethyl sulfone (methylsulfonylmethane MSM)","trace","GCMS","09jul2025",
+"811180","methyl ecgonidine (MED)","trace","GCMS","09jul2025",
+"811180","benzoylecgonine (BZ)","trace","GCMS","09jul2025",
+"811182","methamphetamine","","GCMS","29jul2025",4.52
+"811183","acetaminophen","","GCMS","10jul2025",6.54
+"811183","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","10jul2025",12.34
+"811185","cocaine","","GCMS","29jul2025",8.2600002
+"811185","fentanyl","trace","GCMS","29jul2025",
+"811185","4-ANPP","trace","GCMS","29jul2025",
+"811186","acetaminophen","","GCMS","10jul2025",6.6799998
+"811186","4-ANPP","","GCMS","10jul2025",9.1599998
+"811186","fentanyl","","GCMS","10jul2025",10.32
+"811187","no compounds of interest detected","","GCMS","10jul2025",
+"811190","acetaminophen","","GCMS","30jun2025",6.73
+"811190","4-ANPP","","GCMS","30jun2025",9.1199999
+"811190","fentanyl","","GCMS","30jun2025",10.37
+"811190","phenethyl 4-ANPP","","GCMS","30jun2025",13.78
+"811191","cocaine","","GCMS","27jun2025",8.2700005
+"811191","methyl ecgonidine (MED)","trace","GCMS","27jun2025",
+"811191","tropacocaine","trace","GCMS","27jun2025",
+"811191","benzoylecgonine (BZ)","trace","GCMS","27jun2025",
+"811195","methamphetamine","","GCMS","09jul2025",4.4899998
+"811196","cocaine","","GCMS","29jul2025",8.2700005
+"811197","methamphetamine","","GCMS","09jul2025",4.4899998
+"811198","methamphetamine","","GCMS","10jul2025",4.46
+"811198","acetylcodeine","","GCMS","10jul2025",9.3699999
+"811198","6-monoacetylmorphine (6-MAM)","","GCMS","10jul2025",9.4499998
+"811198","heroin","","GCMS","10jul2025",9.8900003
+"811200","acetaminophen","","GCMS","10jul2025",6.3600001
+"811200","lidocaine","","GCMS","10jul2025",7.1199999
+"811200","4-ANPP","","GCMS","10jul2025",9.1700001
+"811200","fentanyl","","GCMS","10jul2025",10.32
+"811201","carfentanil","","GCMS","10jul2025",1.11
+"811203","acetaminophen","","GCMS","30jun2025",6.5799999
+"811203","tetramethyl-4-AP","","GCMS","30jun2025",6.6999998
+"811203","tetramethylnorfentanyl","","GCMS","30jun2025",7.4499998
+"811203","fentanyl","","GCMS","30jun2025",10.32
+"811203","2,2,6,6-tetramethyl-4-piperidinol","trace","GCMS","30jun2025",
+"811203","xylazine","trace","GCMS","30jun2025",
+"811204","methamphetamine","","GCMS","09jul2025",4.4899998
 "811207","alprazolam","","GCMS","16jul2025",11.9
 "811230","4-ANPP","","GCMS","20may2025",9.2399998
 "811230","fentanyl","","GCMS","20may2025",10.44
@@ -35538,8 +35960,105 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811378","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","","24jun2025",12.32
 "811378","2,2,6,6-tetramethyl-4-piperidinol","trace","","24jun2025",
 "811379","cocaine","","GCMS","26jun2025",8.2600002
+"811405","caffeine","","GCMS","25jun2025",6.9699998
+"811405","lidocaine","","GCMS","25jun2025",7.1100001
+"811405","xylazine","","GCMS","25jun2025",7.52
+"811405","procaine","","GCMS","25jun2025",7.6700001
+"811405","4-ANPP","","GCMS","25jun2025",9.1599998
+"811405","fentanyl","","GCMS","25jun2025",10.31
+"811405","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","25jun2025",12.32
+"811405","tramadol","trace","GCMS","25jun2025",
+"811405","cocaine","trace","GCMS","25jun2025",
+"811405","heroin","trace","GCMS","25jun2025",
+"811405","phenethyl 4-ANPP","trace","GCMS","25jun2025",
+"811406","lidocaine","","GCMS","17jul2025",7.0999999
+"811406","xylazine","","GCMS","17jul2025",7.5100002
+"811406","4-ANPP","","GCMS","17jul2025",9.1499996
+"811406","fentanyl","","GCMS","17jul2025",10.3
+"811406","heroin","","GCMS","17jul2025",9.8599997
+"811406","tramadol","trace","GCMS","17jul2025",
+"811406","procaine","trace","GCMS","17jul2025",
+"811406","phenethyl 4-ANPP","trace","GCMS","17jul2025",
+"811407","cocaine","","","24jun2025",8.2600002
 "811408","no compounds of interest detected","","GCMS","16jun2025",
+"811410","cocaine","","GCMS","16jul2025",8.25
+"811411","procaine","","GCMS","25jun2025",7.6700001
+"811411","4-ANPP","","GCMS","25jun2025",9.1599998
+"811411","fentanyl","","GCMS","25jun2025",10.31
+"811411","diphenhydramine","trace","GCMS","25jun2025",
+"811411","lidocaine","trace","GCMS","25jun2025",
+"811411","xylazine","trace","GCMS","25jun2025",
+"811411","cocaine","trace","GCMS","25jun2025",
+"811412","diphenhydramine","","GCMS","17jul2025",7.0700002
+"811412","procaine","","GCMS","17jul2025",7.6599998
+"811412","4-ANPP","","GCMS","17jul2025",9.1499996
+"811412","fentanyl","","GCMS","17jul2025",10.3
+"811412","xylazine","trace","GCMS","17jul2025",
+"811412","cocaine","trace","GCMS","17jul2025",
+"811412","heroin","trace","GCMS","17jul2025",
+"811412","p-fluorofentanyl","trace","GCMS","17jul2025",
+"811412","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","17jul2025",
+"811412","phenethyl 4-ANPP","trace","GCMS","17jul2025",
+"811413","xylazine","","GCMS","17jul2025",7.5100002
+"811413","4-ANPP","","GCMS","17jul2025",9.1499996
+"811413","heroin","","GCMS","17jul2025",9.8599997
+"811413","p-fluorofentanyl","","GCMS","17jul2025",10.09
+"811413","fentanyl","","GCMS","17jul2025",10.31
+"811413","diphenhydramine","trace","GCMS","17jul2025",
+"811413","cocaine","trace","GCMS","17jul2025",
+"811413","phenethyl 4-ANPP","trace","GCMS","17jul2025",
+"811414","procaine","","GCMS","14jul2025",7.6700001
+"811414","cocaine","","GCMS","14jul2025",8.2600002
+"811414","fentanyl","trace","GCMS","14jul2025",
+"811414","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","14jul2025",
+"811414","lidocaine","trace","GCMS","14jul2025",
+"811415","phenacetin","","GCMS","11jul2025",6.3699999
+"811415","cocaine","","GCMS","11jul2025",8.25
+"811415","methyl ecgonidine (MED)","trace","GCMS","11jul2025",
 "811416","no compounds of interest detected","","GCMS","16jun2025",
+"811417","cocaine","","GCMS","14jul2025",8.25
+"811418","procaine","","GCMS","14jul2025",7.6599998
+"811418","cocaine","","GCMS","14jul2025",8.2399998
+"811418","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","14jul2025",12.3
+"811418","acetaminophen","trace","GCMS","14jul2025",
+"811418","caffeine","trace","GCMS","14jul2025",
+"811418","lidocaine","trace","GCMS","14jul2025",
+"811418","xylazine","trace","GCMS","14jul2025",
+"811418","fentanyl","trace","GCMS","14jul2025",
+"811422","cocaine","","GCMS","14jul2025",8.2399998
+"811423","no compounds of interest detected","","GCMS","17jul2025",
+"811428","no compounds of interest detected","","GCMS","14jul2025",
+"811429","no compounds of interest detected","","GCMS","14jul2025",
+"811430","acetaminophen","","GCMS","30jun2025",6.3200002
+"811430","4-ANPP","","GCMS","30jun2025",9.1599998
+"811430","ethyl 4-ANPP","","GCMS","30jun2025",9.3000002
+"811430","fentanyl","","GCMS","30jun2025",10.31
+"811431","4-ANPP","","GCMS","16jul2025",9.1499996
+"811431","fentanyl","","GCMS","16jul2025",10.3
+"811431","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","16jul2025",12.3
+"811431","acetaminophen","trace","GCMS","16jul2025",
+"811431","lidocaine","trace","GCMS","16jul2025",
+"811431","medetomidine","trace","GCMS","16jul2025",
+"811431","xylazine","trace","GCMS","16jul2025",
+"811431","procaine","trace","GCMS","16jul2025",
+"811432","despropionyl p-fluorofentanyl","","","24jun2025",9.1599998
+"811432","4-ANPP","","","24jun2025",9.1599998
+"811432","p-fluorofentanyl","","","24jun2025",10.11
+"811432","fentanyl","","","24jun2025",10.32
+"811432","p-fluoro phenethyl 4-ANPP","trace","","24jun2025",
+"811433","caffeine","","","24jun2025",6.9699998
+"811433","diphenhydramine","","","24jun2025",7.0799999
+"811433","4-ANPP","","","24jun2025",9.1599998
+"811433","fentanyl","","","24jun2025",10.32
+"811433","4-Anilino-1-Boc-piperidine","trace","","24jun2025",
+"811434","caffeine","","GCMS","30jun2025",6.9699998
+"811434","lidocaine","","GCMS","30jun2025",7.1100001
+"811434","heroin","","GCMS","30jun2025",9.8800001
+"811434","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","30jun2025",12.32
+"811434","acetaminophen","trace","GCMS","30jun2025",
+"811434","diphenhydramine","trace","GCMS","30jun2025",
+"811434","xylazine","trace","GCMS","30jun2025",
+"811434","procaine","trace","GCMS","30jun2025",
 "811435","acetaminophen","","GCMS","21may2025",6.4000001
 "811435","lidocaine","","GCMS","21may2025",7.1700001
 "811435","4-ANPP","","GCMS","21may2025",9.2399998
@@ -35595,10 +36114,64 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811443","acetaminophen","trace","GCMS","06jun2025",
 "811443","xylazine","trace","GCMS","06jun2025",
 "811444","methamphetamine","","GCMS","03jun2025",4.0300002
+"811445","4-ANPP","","GCMS","11jul2025",9.1499996
+"811445","fentanyl","","GCMS","11jul2025",10.31
+"811445","lidocaine","trace","GCMS","11jul2025",
+"811445","xylazine","trace","GCMS","11jul2025",
+"811445","carfentanil","trace","GCMS","11jul2025",
+"811446","4-ANPP","","GCMS","16jul2025",9.1499996
+"811446","fentanyl","","GCMS","16jul2025",10.3
+"811446","caffeine","trace","GCMS","16jul2025",
+"811446","lidocaine","trace","GCMS","16jul2025",
+"811446","medetomidine","trace","GCMS","16jul2025",
+"811446","xylazine","trace","GCMS","16jul2025",
+"811446","procaine","trace","GCMS","16jul2025",
+"811446","tetracaine","trace","GCMS","16jul2025",
+"811446","heroin","trace","GCMS","16jul2025",
+"811447","procaine","","GCMS","30jun2025",7.6700001
+"811447","erythritol","trace","GCMS","30jun2025",
+"811447","lidocaine","trace","GCMS","30jun2025",
+"811447","medetomidine","trace","GCMS","30jun2025",
+"811447","xylazine","trace","GCMS","30jun2025",
+"811447","tetracaine","trace","GCMS","30jun2025",
+"811447","fentanyl","trace","GCMS","30jun2025",
+"811447","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","30jun2025",
+"811448","acetaminophen","","GCMS","11jul2025",6.3200002
+"811448","lidocaine","","GCMS","11jul2025",7.0999999
+"811448","procaine","","GCMS","11jul2025",7.6599998
+"811448","4-ANPP","","GCMS","11jul2025",9.1499996
+"811448","fentanyl","","GCMS","11jul2025",10.31
+"811448","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","11jul2025",12.31
+"811448","heroin","trace","GCMS","11jul2025",
+"811448","6-monoacetylmorphine (6-MAM)","trace","GCMS","11jul2025",
+"811448","ethyl 4-ANPP","trace","GCMS","11jul2025",
+"811449","4-ANPP","","GCMS","16jul2025",9.1499996
+"811449","fentanyl","","GCMS","16jul2025",10.31
+"811450","xylitol","","GCMS","16jul2025",5.4200001
+"811450","acetaminophen","","GCMS","16jul2025",6.3200002
+"811450","fentanyl","","GCMS","16jul2025",10.3
+"811450","4-ANPP","trace","GCMS","16jul2025",
+"811450","ethyl 4-ANPP","trace","GCMS","16jul2025",
+"811451","acetaminophen","","GCMS","02jul2025",6.3200002
+"811451","phenacetin","","GCMS","02jul2025",6.3800001
+"811451","caffeine","","GCMS","02jul2025",6.9699998
+"811451","diphenhydramine","trace","GCMS","02jul2025",
+"811451","lidocaine","","GCMS","02jul2025",7.1100001
+"811451","ketamine","","GCMS","02jul2025",7.1100001
+"811451","medetomidine","","GCMS","02jul2025",7.3299999
+"811451","xylazine","","GCMS","02jul2025",7.52
+"811451","procaine","","GCMS","02jul2025",7.6700001
+"811451","4-ANPP","","GCMS","02jul2025",9.1499996
+"811451","fentanyl","","GCMS","02jul2025",10.31
+"811451","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","02jul2025",12.32
 "811452","erythritol","","GCMS","16jun2025",4.3699999
 "811452","4-ANPP","","GCMS","16jun2025",9.1700001
 "811452","fentanyl","","GCMS","16jun2025",10.32
 "811452","methamphetamine","trace","GCMS","16jun2025",
+"811453","methamphetamine","","GCMS","02jul2025",3.96
+"811454","3,4-Methylenedioxy-Î±-Cyclohexylaminopropiophenone","","GCMS","16jul2025",8.2600002
+"811455","3,4-MDMA","","GCMS","29jul2025",5.8299999
+"811456","3,4-MDMA","","GCMS","29jul2025",5.8099999
 "811480","4-ANPP","","GCMS","30jun2025",6.3400002
 "811480","lidocaine","","GCMS","30jun2025",7.1100001
 "811480","4-ANPP","","GCMS","30jun2025",9.1599998
@@ -35620,6 +36193,8 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811483","phenethyl 4-ANPP","trace","GCMS","30jun2025",
 "811484","4-ANPP","","GCMS","18jul2025",9.1499996
 "811484","fentanyl","","GCMS","18jul2025",10.31
+"811485","methamphetamine","","GCMS","29jul2025",4.2600002
+"811486","methamphetamine","","GCMS","29jul2025",4.3099999
 "811495","alprazolam","","GCMS","03jun2025",12.07
 "811496","acetaminophen","","GCMS","05jun2025",6.4499998
 "811496","4-ANPP","","GCMS","05jun2025",9.2399998
@@ -35684,6 +36259,121 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811529","fentanyl","","GCMS","30jun2025",10.32
 "811529","cocaine","trace","GCMS","30jun2025",
 "811529","phenethyl 4-ANPP","trace","GCMS","30jun2025",
+"811530","acetaminophen","","GCMS","14jul2025",6.5999999
+"811530","lidocaine","","GCMS","14jul2025",7.1300001
+"811530","4-ANPP","","GCMS","14jul2025",9.1700001
+"811530","fentanyl","","GCMS","14jul2025",10.34
+"811530","xylazine","trace","GCMS","14jul2025",
+"811531","caffeine","","GCMS","18jul2025",7
+"811531","4-ANPP","","GCMS","18jul2025",9.1499996
+"811531","fentanyl","","GCMS","18jul2025",10.32
+"811532","acetaminophen","","GCMS","10jul2025",6.3899999
+"811532","4-ANPP","","GCMS","10jul2025",9.1599998
+"811532","fentanyl","","GCMS","10jul2025",10.34
+"811532","phenethyl 4-ANPP","trace","GCMS","10jul2025",
+"811533","acetaminophen","","GCMS","14jul2025",6.5
+"811533","norfentanyl","","GCMS","14jul2025",7.5100002
+"811533","4-Anilino-1-Boc-piperidine","","GCMS","14jul2025",8.04
+"811533","despropionyl p-fluorofentanyl","","GCMS","14jul2025",9.1599998
+"811533","4-ANPP","","GCMS","14jul2025",9.1599998
+"811533","p-fluoroacetyl fentanyl","","GCMS","14jul2025",9.8800001
+"811533","p-fluorofentanyl","","GCMS","14jul2025",10.11
+"811533","fentanyl","","GCMS","14jul2025",10.32
+"811533","p-fluoro phenethyl 4-ANPP","","GCMS","14jul2025",13.41
+"811533","phenethyl 4-ANPP","","GCMS","14jul2025",13.74
+"811534","4-ANPP","","GCMS","14jul2025",9.1599998
+"811534","fentanyl","","GCMS","14jul2025",10.32
+"811535","4-ANPP","","GCMS","18jul2025",9.1499996
+"811535","ethyl 4-ANPP","","GCMS","18jul2025",9.3000002
+"811535","fentanyl","","GCMS","18jul2025",10.3
+"811536","acetaminophen","","GCMS","14jul2025",6.4499998
+"811536","4-ANPP","","GCMS","14jul2025",9.1599998
+"811536","fentanyl","","GCMS","14jul2025",10.33
+"811536","xylazine","trace","GCMS","14jul2025",
+"811536","ethyl 4-ANPP","trace","GCMS","14jul2025",
+"811537","acetaminophen","","GCMS","14jul2025",6.4400001
+"811537","4-ANPP","","GCMS","14jul2025",9.1599998
+"811537","fentanyl","","GCMS","14jul2025",10.33
+"811538","acetaminophen","","GCMS","14jul2025",6.4200001
+"811538","4-ANPP","","GCMS","14jul2025",9.1599998
+"811538","fentanyl","","GCMS","14jul2025",10.34
+"811539","acetaminophen","","GCMS","02jul2025",6.4299998
+"811539","lidocaine","","GCMS","02jul2025",7.1599998
+"811539","4-ANPP","","GCMS","02jul2025",9.1599998
+"811539","fentanyl","","GCMS","02jul2025",10.34
+"811539","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","02jul2025",12.34
+"811539","N-phenylpropanamide","trace","GCMS","02jul2025",
+"811540","4-ANPP","","GCMS","18jul2025",9.1599998
+"811540","ethyl 4-ANPP","","GCMS","18jul2025",9.3000002
+"811540","fentanyl","","GCMS","18jul2025",10.35
+"811541","4-ANPP","","GCMS","18jul2025",9.1599998
+"811541","ethyl 4-ANPP","","GCMS","18jul2025",9.3000002
+"811541","fentanyl","","GCMS","18jul2025",10.33
+"811542","acetaminophen","","GCMS","18jul2025",6.3299999
+"811542","4-ANPP","","GCMS","18jul2025",9.1499996
+"811542","ethyl 4-ANPP","","GCMS","18jul2025",9.3000002
+"811542","fentanyl","","GCMS","18jul2025",10.34
+"811542","phenethyl 4-ANPP","trace","GCMS","18jul2025",
+"811543","acetaminophen","","GCMS","18jul2025",6.3699999
+"811543","lidocaine","","GCMS","18jul2025",7.1100001
+"811543","4-ANPP","","GCMS","18jul2025",9.1499996
+"811543","fentanyl","","GCMS","18jul2025",10.33
+"811544","no compounds of interest detected","","GCMS","03jul2025",
+"811545","acetaminophen","","GCMS","02jul2025",6.3699999
+"811545","4-ANPP","","GCMS","02jul2025",9.1599998
+"811545","despropionyl p-fluorofentanyl","","GCMS","02jul2025",9.1599998
+"811545","p-fluorofentanyl","","GCMS","02jul2025",10.1
+"811545","fentanyl","","GCMS","02jul2025",10.31
+"811545","4-Anilino-1-Boc-piperidine","trace","GCMS","02jul2025",
+"811545","p-fluoro phenethyl 4-ANPP","trace","GCMS","02jul2025",
+"811545","phenethyl 4-ANPP","trace","GCMS","02jul2025",
+"811545","p-fluoroacetyl fentanyl","trace","GCMS","02jul2025",
+"811546","4-ANPP","","GCMS","18jul2025",9.1599998
+"811546","ethyl 4-ANPP","","GCMS","18jul2025",9.3000002
+"811546","fentanyl","","GCMS","18jul2025",10.35
+"811547","acetaminophen","","GCMS","02jul2025",6.7199998
+"811548","acetaminophen","trace","GCMS","02jul2025",
+"811548","NPP","trace","GCMS","02jul2025",
+"811548","lidocaine","trace","GCMS","02jul2025",
+"811548","xylazine","","GCMS","02jul2025",7.52
+"811548","4-ANPP","","GCMS","02jul2025",9.1599998
+"811548","fentanyl","","GCMS","02jul2025",10.32
+"811549","xylazine","","GCMS","02jul2025",7.52
+"811549","4-ANPP","","GCMS","02jul2025",9.1599998
+"811549","fentanyl","","GCMS","02jul2025",10.32
+"811549","acetaminophen","trace","GCMS","02jul2025",
+"811549","NPP","trace","GCMS","02jul2025",
+"811550","acetaminophen","","GCMS","10jul2025",6.3899999
+"811550","lidocaine","","GCMS","10jul2025",7.1199999
+"811550","4-ANPP","","GCMS","10jul2025",9.1599998
+"811550","fentanyl","","GCMS","10jul2025",10.34
+"811550","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","10jul2025",12.32
+"811550","phenethyl 4-ANPP","trace","GCMS","10jul2025",
+"811550","p-fluorofentanyl","trace","GCMS","10jul2025",
+"811550","heroin","trace","GCMS","10jul2025",
+"811550","despropionyl ortho-methylfentanyl","trace","GCMS","10jul2025",
+"811550","ethyl 4-ANPP","trace","GCMS","10jul2025",
+"811550","dextromethorphan","trace","GCMS","10jul2025",
+"811550","xylazine","trace","GCMS","10jul2025",
+"811550","tetramethyl-4-AP","trace","GCMS","10jul2025",
+"811550","tetramethylnorfentanyl","trace","GCMS","10jul2025",
+"811551","4-ANPP","","GCMS","10jul2025",9.1499996
+"811551","fentanyl","","GCMS","10jul2025",10.3
+"811551","ethyl 4-ANPP","trace","GCMS","10jul2025",
+"811551","phenethyl 4-ANPP","trace","GCMS","10jul2025",
+"811552","NPP","trace","GCMS","02jul2025",
+"811552","xylazine","","GCMS","02jul2025",7.52
+"811552","4-ANPP","","GCMS","02jul2025",9.1599998
+"811552","heroin","","GCMS","02jul2025",9.8800001
+"811552","fentanyl","","GCMS","02jul2025",10.32
+"811552","ethyl 4-ANPP","trace","GCMS","02jul2025",
+"811552","6-monoacetylmorphine (6-MAM)","trace","GCMS","02jul2025",
+"811552","phenethyl 4-ANPP","trace","GCMS","02jul2025",
+"811553","acetaminophen","","GCMS","14jul2025",6.46
+"811553","4-ANPP","","GCMS","14jul2025",9.1599998
+"811553","fentanyl","","GCMS","14jul2025",10.34
+"811554","4-ANPP","","GCMS","14jul2025",9.1599998
+"811554","fentanyl","","GCMS","14jul2025",10.33
 "811555","acetaminophen","","GCMS","09jun2025",6.4699998
 "811555","lidocaine","","GCMS","09jun2025",7.1199999
 "811555","4-ANPP","trace","GCMS","09jun2025",
@@ -35791,8 +36481,14 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811593","fentanyl","","GCMS","17jul2025",10.31
 "811594","4-ANPP","","GCMS","18jul2025",9.1499996
 "811594","fentanyl","","GCMS","18jul2025",10.3
+"811595","ketamine","","GCMS","29jul2025",7.1170001
 "811596","cocaine","","GCMS","17jul2025",8.2600002
 "811596","tropacocaine","trace","GCMS","17jul2025",
+"811598","cocaine","","GCMS","29jul2025",8.2600002
+"811598","methyl ecgonidine (MED)","trace","GCMS","29jul2025",
+"811598","tropacocaine","trace","GCMS","29jul2025",
+"811599","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","29jul2025",2.29
+"811599","ketamine","","GCMS","29jul2025",7.1100001
 "811601","4-ANPP","","GCMS","18jul2025",9.1499996
 "811601","fentanyl","","GCMS","18jul2025",10.35
 "811601","N-phenylpropanamide","trace","GCMS","18jul2025",
@@ -35888,6 +36584,23 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811668","no compounds of interest detected","","GCMS","04jun2025",
 "811669","4-ANPP","","GCMS","04jun2025",9.2299995
 "811669","fentanyl","","GCMS","04jun2025",10.41
+"811671","acetaminophen","","GCMS","14jul2025",6.5
+"811671","lidocaine","","GCMS","14jul2025",7.1100001
+"811671","fentanyl","trace","GCMS","14jul2025",
+"811671","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","14jul2025",
+"811672","fentanyl","","GCMS","14jul2025",10.3
+"811672","phenazolam","","GCMS","14jul2025",13.86
+"811672","cocaine","trace","GCMS","14jul2025",
+"811672","4-ANPP","trace","GCMS","14jul2025",
+"811674","acetaminophen","","GCMS","17jul2025",6.3200002
+"811674","lidocaine","","GCMS","17jul2025",
+"811674","fentanyl","trace","GCMS","17jul2025",
+"811674","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","17jul2025",12.29
+"811676","phenazolam","","GCMS","14jul2025",13.86
+"811678","4-ANPP","","GCMS","14jul2025",9.1599998
+"811678","fentanyl","","GCMS","14jul2025",10.35
+"811678","phenethyl 4-ANPP","","GCMS","14jul2025",13.75
+"811691","oxycodone","","GCMS","09jul2025",9.54
 "811695","4-ANPP","","GCMS","30may2025",9.2399998
 "811695","ethyl 4-ANPP","","GCMS","30may2025",9.3800001
 "811695","fentanyl","","GCMS","30may2025",10.47
@@ -36070,12 +36783,53 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811828","4-ANPP","trace","GCMS","13jun2025",
 "811828","fentanyl","trace","GCMS","13jun2025",
 "811828","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","13jun2025",12.35
+"811840","4-ANPP","","","24jun2025",9.1599998
+"811840","fentanyl","","","24jun2025",10.32
+"811840","methamphetamine","trace","","24jun2025",
+"811840","phenethyl 4-ANPP","trace","","24jun2025",
+"811842","methamphetamine","","GCMS","26jun2025",3.99
+"811842","N,N-Dimethylamphetamine (DMA)","trace","GCMS","26jun2025",
+"811844","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","26jun2025",2.3
+"811844","methamphetamine","","GCMS","26jun2025",4.3299999
+"811845","no compounds of interest detected","","GCMS","30jun2025",
+"811846","methamphetamine","","GCMS","26jun2025",4.4899998
+"811846","dimethyl sulfone (methylsulfonylmethane MSM)","trace","GCMS","26jun2025",
+"811847","methamphetamine","","GCMS","26jun2025",4.3800001
+"811848","methamphetamine","","GCMS","26jun2025",4.54
+"811849","methamphetamine","","GCMS","26jun2025",4.2399998
+"811849","cocaine","trace","GCMS","26jun2025",
+"811850","cocaine","","GCMS","25jun2025",8.2700005
+"811851","methamphetamine","","GCMS","26jun2025",4.2199998
+"811851","dimethyl sulfone (methylsulfonylmethane MSM)","trace","GCMS","26jun2025",
+"811851","N,N-Dimethylamphetamine (DMA)","trace","GCMS","26jun2025",
+"811852","4-ANPP","","GCMS","26jun2025",9.1599998
+"811852","fentanyl","","GCMS","26jun2025",10.31
+"811855","cocaine","","GCMS","26jun2025",8.2600002
+"811856","medetomidine","","GCMS","26jun2025",7.3400002
+"811856","4-ANPP","","GCMS","26jun2025",9.1599998
+"811856","fentanyl","","GCMS","26jun2025",10.31
+"811856","ethyl 4-ANPP","trace","GCMS","26jun2025",
+"811857","no compounds of interest detected","","GCMS","30jun2025",
+"811858","no compounds of interest detected","","GCMS","02jul2025",
+"811859","methamphetamine","","GCMS","26jun2025",4.48
+"811860","cocaine","","GCMS","25jun2025",8.2700005
+"811861","no compounds of interest detected","","GCMS","02jul2025",
+"811863","methamphetamine","","GCMS","26jun2025",4.0300002
+"811863","acetaminophen","","GCMS","26jun2025",6.3600001
+"811863","fentanyl","","GCMS","26jun2025",10.31
+"811863","lidocaine","trace","GCMS","26jun2025",
+"811863","4-ANPP","trace","GCMS","26jun2025",
+"811864","4-ANPP","","GCMS","30jun2025",9.1499996
+"811864","fentanyl","","GCMS","30jun2025",10.31
+"811864","methamphetamine","","GCMS","30jun2025",3.9400001
+"811864","cocaine","","GCMS","30jun2025",8.25
 "811865","no compounds of interest detected","","GCMS","13jun2025",
 "811867","methamphetamine","","GCMS","12jun2025",3.9400001
 "811867","cocaine","","GCMS","12jun2025",8.2600002
 "811868","methamphetamine","","GCMS","11jun2025",4.6100001
 "811869","no compounds of interest detected","","GCMS","13jun2025",
 "811870","methamphetamine","","GCMS","11jun2025",4.3000002
+"811871","no compounds of interest detected","","GCMS","25jun2025",
 "811872","methamphetamine","","GCMS","09jun2025",4.23
 "811873","acetaminophen","","GCMS","11jun2025",6.3299999
 "811873","lidocaine","","GCMS","11jun2025",7.1100001
@@ -36194,6 +36948,37 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811944","4-ANPP","","GCMS","26may2025",9.2399998
 "811944","fentanyl","","GCMS","26may2025",10.43
 "811944","1-phenethyl-4-hydroxypiperidine","trace","GCMS","26may2025",
+"811945","lidocaine","","GCMS","02jul2025",7.1100001
+"811945","4-ANPP","","GCMS","02jul2025",9.1599998
+"811945","fentanyl","","GCMS","02jul2025",10.31
+"811945","xylazine","trace","GCMS","02jul2025",
+"811946","tetramethyl-4-AP","","GCMS","02jul2025",6.7399998
+"811946","caffeine","","GCMS","02jul2025",6.9699998
+"811946","tetramethylnorfentanyl","","GCMS","02jul2025",7.46
+"811946","procaine","","GCMS","02jul2025",7.6700001
+"811946","tetracaine","","GCMS","02jul2025",8.3199997
+"811946","fentanyl","","GCMS","02jul2025",10.31
+"811946","4-ANPP","trace","GCMS","02jul2025",
+"811946","erythritol","trace","GCMS","02jul2025",
+"811946","lidocaine","trace","GCMS","02jul2025",
+"811946","medetomidine","trace","GCMS","02jul2025",
+"811946","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","02jul2025",
+"811947","caffeine","","GCMS","07jul2025",6.9699998
+"811947","diphenhydramine","","GCMS","07jul2025",7.0700002
+"811947","4-ANPP","","GCMS","07jul2025",9.1599998
+"811947","fentanyl","","GCMS","07jul2025",10.35
+"811947","phenethyl 4-ANPP","","GCMS","07jul2025",13.75
+"811947","heroin","","GCMS","07jul2025",9.8699999
+"811947","N-phenylpropanamide","trace","GCMS","07jul2025",
+"811947","ethyl 4-ANPP","trace","GCMS","07jul2025",
+"811948","lidocaine","","GCMS","02jul2025",7.1199999
+"811948","6-monoacetylmorphine (6-MAM)","","GCMS","02jul2025",9.46
+"811948","heroin","","GCMS","02jul2025",9.8900003
+"811948","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","02jul2025",12.33
+"811948","acetylcodeine","trace","GCMS","02jul2025",
+"811948","fentanyl","trace","GCMS","02jul2025",
+"811948","morphine","trace","GCMS","02jul2025",
+"811948","4-ANPP","trace","GCMS","02jul2025",
 "811949","caffeine","","GCMS","16jun2025",6.98
 "811949","4-ANPP","","GCMS","16jun2025",9.1599998
 "811949","fentanyl","","GCMS","16jun2025",10.34
@@ -36202,6 +36987,11 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811949","phenethyl 4-ANPP","trace","GCMS","16jun2025",
 "811955","3,4-MDMA","","GCMS","13jun2025",5.8400002
 "811956","ketamine","","GCMS","13jun2025",7.1199999
+"811957","caffeine","","GCMS","02jul2025",6.9699998
+"811957","medetomidine","","GCMS","02jul2025",7.3400002
+"811957","xylazine","","GCMS","02jul2025",7.52
+"811957","procaine","","GCMS","02jul2025",7.6700001
+"811957","lidocaine","trace","GCMS","02jul2025",
 "811958","lidocaine","","GCMS","16jun2025",7.1100001
 "811958","4-ANPP","","GCMS","16jun2025",9.1700001
 "811958","fentanyl","","GCMS","16jun2025",10.32
@@ -36214,6 +37004,32 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "811959","xylazine","trace","GCMS","16jun2025",
 "811959","acetylcodeine","trace","GCMS","16jun2025",
 "811959","quinine","trace","GCMS","16jun2025",
+"811960","4-ANPP","","GCMS","03jul2025",9.1499996
+"811960","6-monoacetylmorphine (6-MAM)","","GCMS","03jul2025",9.4499998
+"811960","heroin","","GCMS","03jul2025",9.8699999
+"811960","fentanyl","","GCMS","03jul2025",10.31
+"811960","phenethyl 4-ANPP","trace","GCMS","03jul2025",
+"811960","acetylcodeine","trace","GCMS","03jul2025",
+"811960","dimethyl sulfone (methylsulfonylmethane MSM)","trace","GCMS","03jul2025",
+"811960","meconin","trace","GCMS","03jul2025",
+"811961","alprazolam","","GCMS","07jul2025",11.92
+"811961","cocaine","trace","GCMS","07jul2025",
+"811962","glycerin","","GCMS","08jul2025",2.5699999
+"811962","menthol","","GCMS","08jul2025",3.8800001
+"811962","nicotine","","GCMS","08jul2025",4.8499999
+"811962","vitamin E","trace","GCMS","08jul2025",
+"811963","acetaminophen","","GCMS","07jul2025",6.3200002
+"811963","lidocaine","","GCMS","07jul2025",7.0999999
+"811963","cocaine","","GCMS","07jul2025",8.25
+"811963","heroin","","GCMS","07jul2025",9.8699999
+"811963","fentanyl","","GCMS","07jul2025",10.31
+"811963","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","07jul2025",12.31
+"811964","lidocaine","","GCMS","07jul2025",7.1100001
+"811964","4-ANPP","","GCMS","07jul2025",9.1599998
+"811964","fentanyl","","GCMS","07jul2025",10.31
+"811964","acetaminophen","","GCMS","07jul2025",6.3299999
+"811964","xylazine","trace","GCMS","07jul2025",
+"811964","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","07jul2025",
 "812035","erythritol","","GCMS","06jun2025",4.6799998
 "812035","heroin","","GCMS","06jun2025",9.96
 "812035","fentanyl","","GCMS","06jun2025",10.4
@@ -36325,19 +37141,26 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "812065","4-ANPP","trace","GCMS","13jun2025",
 "812065","fentanyl","trace","GCMS","13jun2025",
 "812069","3,4-MDMA","","GCMS","12jun2025",5.79
+"812080","cocaine","","GCMS","02jul2025",8.2700005
+"812081","4-ANPP","","GCMS","02jul2025",9.1599998
+"812081","fentanyl","","GCMS","02jul2025",10.31
 "812082","methamphetamine","","GCMS","10jun2025",3.9300001
 "812083","methamphetamine","","GCMS","06jun2025",4.1199999
 "812083","lidocaine","trace","GCMS","06jun2025",
 "812083","fentanyl","trace","GCMS","06jun2025",
 "812083","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","06jun2025",
+"812084","methamphetamine","","GCMS","02jul2025",4.6399999
 "812085","methamphetamine","","GCMS","03jun2025",4.1999998
 "812085","fentanyl","","GCMS","03jun2025",10.41
 "812085","medetomidine","trace","GCMS","03jun2025",
 "812085","4-ANPP","trace","GCMS","03jun2025",
+"812086","methamphetamine","","GCMS","02jul2025",4.52
+"812087","methamphetamine","","GCMS","02jul2025",4.5500002
 "812088","despropionyl p-fluorofentanyl","","GCMS","09jun2025",9.1700001
 "812088","4-ANPP","","GCMS","09jun2025",9.1700001
 "812088","p-fluorofentanyl","","GCMS","09jun2025",10.12
 "812088","fentanyl","","GCMS","09jun2025",10.33
+"812089","methamphetamine","","GCMS","02jul2025",4.98
 "812090","methamphetamine","","GCMS","09jun2025",4.3800001
 "812092","methamphetamine","","GCMS","03jun2025",4.2399998
 "812092","cocaine","","GCMS","03jun2025",8.3199997
@@ -36352,9 +37175,42 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "812096","4-ANPP","trace","GCMS","03jun2025",
 "812096","methamphetamine","trace","GCMS","03jun2025",
 "812096","2,2,6,6-tetramethyl-4-piperidinol","trace","GCMS","03jun2025",
+"812097","4-ANPP","","GCMS","02jul2025",9.1599998
+"812097","fentanyl","","GCMS","02jul2025",10.32
+"812097","phenethyl 4-ANPP","trace","GCMS","02jul2025",
 "812098","methamphetamine","","GCMS","13jun2025",4
 "812099","methamphetamine","","","24jun2025",3.9000001
 "812100","methamphetamine","","GCMS","13jun2025",4
+"812102","methamphetamine","","GCMS","02jul2025",4.9299998
+"812103","methamphetamine","","GCMS","02jul2025",4.3899999
+"812104","methamphetamine","","GCMS","02jul2025",4.0599999
+"812104","fentanyl","","GCMS","02jul2025",10.31
+"812104","lidocaine","trace","GCMS","02jul2025",
+"812104","medetomidine","trace","GCMS","02jul2025",
+"812104","4-ANPP","trace","GCMS","02jul2025",
+"812105","methamphetamine","","GCMS","08jul2025",4.5700002
+"812113","methamphetamine","","GCMS","16jul2025",4.29
+"812113","4-ANPP","","GCMS","16jul2025",9.1499996
+"812113","fentanyl","","GCMS","16jul2025",10.3
+"812114","methamphetamine","","GCMS","09jul2025",4.3299999
+"812116","no compounds of interest detected","","GCMS","11jul2025",
+"812118","methamphetamine","","GCMS","16jul2025",4.3499999
+"812120","methamphetamine","trace","GCMS","16jul2025",
+"812120","4-ANPP","trace","GCMS","16jul2025",
+"812120","fentanyl","","GCMS","16jul2025",10.3
+"812121","no compounds of interest detected","","GCMS","11jul2025",
+"812123","no compounds of interest detected","","GCMS","11jul2025",
+"812124","methamphetamine","trace","GCMS","17jul2025",
+"812124","1-propionyl-4-anilinopiperidine","","GCMS","17jul2025",8.1999998
+"812124","N-propionyl norfentanyl","","GCMS","17jul2025",9.0299997
+"812124","4-ANPP","","GCMS","17jul2025",9.1499996
+"812124","fentanyl","","GCMS","17jul2025",10.3
+"812124","phenethyl 4-ANPP","","GCMS","17jul2025",13.73
+"812125","methamphetamine","","GCMS","29jul2025",4.25
+"812127","4-ANPP","","GCMS","16jul2025",9.1499996
+"812127","fentanyl","","GCMS","16jul2025",10.3
+"812127","phenethyl 4-ANPP","trace","GCMS","16jul2025",
+"812127","ethyl 4-ANPP","trace","GCMS","16jul2025",
 "812132","methamphetamine","","GCMS","06jun2025",4.02
 "812132","caffeine","trace","GCMS","06jun2025",
 "812132","lidocaine","trace","GCMS","06jun2025",
@@ -36633,6 +37489,175 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "812727","4-ANPP","","GCMS","02jul2025",9.1599998
 "812727","fentanyl","","GCMS","02jul2025",10.31
 "812727","1-phenethyl-4-propionyloxypiperidine","trace","GCMS","02jul2025",
+"812861","4-ANPP","","GCMS","29jul2025",9.1499996
+"812861","fentanyl","","GCMS","29jul2025",10.25
+"812861","phenethyl 4-ANPP","trace","GCMS","29jul2025",
+"812861","acetyl fentanyl","trace","GCMS","29jul2025",
+"812861","ethyl 4-ANPP","trace","GCMS","29jul2025",
+"812861","cocaine","trace","GCMS","29jul2025",
+"812861","N-phenylpropanamide","trace","GCMS","29jul2025",
+"812863","caffeine","","GCMS","29jul2025",7
+"812910","4-ANPP","","GCMS","26jun2025",9.1599998
+"812910","fentanyl","","GCMS","26jun2025",10.32
+"812910","acetaminophen","","GCMS","26jun2025",6.3499999
+"812910","lidocaine","trace","GCMS","26jun2025",
+"812910","N-phenylpropanamide","","GCMS","26jun2025",5.3200002
+"812911","amphetamine","","GCMS","30jun2025",3.6099999
+"812911","methamphetamine","","GCMS","30jun2025",4.4000001
+"812912","phenacetin","","GCMS","03jul2025",6.3699999
+"812912","cocaine","","GCMS","03jul2025",8.2700005
+"812912","methyl ecgonidine (MED)","trace","GCMS","03jul2025",
+"812912","benzoylecgonine (BZ)","trace","GCMS","03jul2025",
+"812913","methamphetamine","trace","GCMS","07jul2025",
+"812914","4-ANPP","","GCMS","03jul2025",9.1599998
+"812914","ethyl 4-ANPP","","GCMS","03jul2025",9.3000002
+"812914","fentanyl","","GCMS","03jul2025",10.32
+"812914","carfentanil","trace","GCMS","03jul2025",
+"812914","xylazine","trace","GCMS","03jul2025",
+"812914","N-phenylpropanamide","trace","GCMS","03jul2025",
+"812915","methamphetamine","","GCMS","11jul2025",4.3699999
+"812916","methamphetamine","","GCMS","03jul2025",4.9000001
+"812917","methamphetamine","","GCMS","03jul2025",4.79
+"812917","N-phenylpropanamide","","GCMS","03jul2025",5.3200002
+"812917","4-ANPP","","GCMS","03jul2025",9.1599998
+"812917","fentanyl","","GCMS","03jul2025",10.35
+"812918","methamphetamine","","GCMS","02jul2025",4.6399999
+"812919","methamphetamine","","GCMS","02jul2025",5.2600002
+"812919","acetaminophen","trace","GCMS","02jul2025",
+"812919","delta-9-THC","trace","GCMS","02jul2025",
+"812919","cannabinol","trace","GCMS","02jul2025",
+"812920","methamphetamine","","GCMS","03jul2025",4.02
+"812920","cocaine","trace","GCMS","03jul2025",
+"812921","methamphetamine","","GCMS","02jul2025",4.9699998
+"812922","acetaminophen","","GCMS","03jul2025",6.71
+"812922","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","03jul2025",12.34
+"812923","cocaine","","GCMS","11jul2025",8.2600002
+"812924","4-ANPP","","GCMS","11jul2025",9.1599998
+"812924","fentanyl","","GCMS","11jul2025",10.33
+"812925","cocaine","","GCMS","02jul2025",8.25
+"812925","methamphetamine","trace","GCMS","02jul2025",
+"812925","methyl ecgonidine (MED)","trace","GCMS","02jul2025",
+"812927","4-ANPP","","GCMS","01jul2025",9.1599998
+"812927","fentanyl","","GCMS","01jul2025",10.33
+"812928","cocaine","","GCMS","30jun2025",8.2600002
+"812929","methamphetamine","","GCMS","30jun2025",4.2800002
+"812930","mannitol","","GCMS","26jun2025",7.8400002
+"812930","4-ANPP","","GCMS","26jun2025",9.1599998
+"812930","ethyl 4-ANPP","","GCMS","26jun2025",9.3000002
+"812930","fentanyl","","GCMS","26jun2025",10.31
+"812930","cocaine","trace","GCMS","26jun2025",
+"812931","cocaine","","GCMS","30jun2025",8.2600002
+"812931","norcocaine","trace","GCMS","30jun2025",
+"812932","4-ANPP","","GCMS","30jun2025",9.1599998
+"812932","fentanyl","","GCMS","30jun2025",10.34
+"812932","methamphetamine","trace","GCMS","30jun2025",
+"812932","N-phenylpropanamide","trace","GCMS","30jun2025",
+"812932","1-phenethyl-4-propionyloxypiperidine","trace","GCMS","30jun2025",
+"812932","phenethyl 4-ANPP","trace","GCMS","30jun2025",
+"812934","methamphetamine","","GCMS","07jul2025",4.23
+"812934","N,N-Dimethylamphetamine (DMA)","","GCMS","07jul2025",4.3200002
+"812934","amphetamine","trace","GCMS","07jul2025",
+"812935","methamphetamine","","GCMS","02jul2025",4.8299999
+"812936","methamphetamine","","GCMS","02jul2025",4.5599999
+"812937","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","03jul2025",2.3199999
+"812937","methamphetamine","","GCMS","03jul2025",4.9699998
+"812938","methamphetamine","","GCMS","11jul2025",4.6300001
+"812939","methamphetamine","","GCMS","14jul2025",3.9300001
+"812940","cocaine","","GCMS","11jul2025",8.2600002
+"812941","N,N-Dimethylamphetamine (DMA)","","GCMS","11jul2025",4.3299999
+"812941","methamphetamine","","GCMS","11jul2025",4.46
+"812941","amphetamine","trace","GCMS","11jul2025",
+"812942","no compounds of interest detected","","GCMS","14jul2025",
+"812943","methamphetamine","","GCMS","14jul2025",3.9300001
+"812943","nicotine","","GCMS","14jul2025",4.8499999
+"812943","4-ANPP","","GCMS","14jul2025",9.1599998
+"812943","fentanyl","","GCMS","14jul2025",10.31
+"812943","delta-9-THC","trace","GCMS","14jul2025",
+"812944","4-ANPP","","GCMS","11jul2025",9.1499996
+"812944","fentanyl","","GCMS","11jul2025",10.31
+"812945","4-ANPP","","GCMS","07jul2025",9.1499996
+"812945","fentanyl","","GCMS","07jul2025",10.31
+"812945","carfentanil","trace","GCMS","07jul2025",
+"812945","cocaine","trace","GCMS","07jul2025",
+"812945","ethyl 4-ANPP","trace","GCMS","07jul2025",
+"812946","no compounds of interest detected","","GCMS","07jul2025",
+"812947","acetaminophen","","GCMS","02jul2025",6.4200001
+"812948","4-ANPP","","GCMS","03jul2025",9.1599998
+"812948","fentanyl","","GCMS","03jul2025",10.33
+"812948","N-phenylpropanamide","trace","GCMS","03jul2025",
+"812948","tramadol","trace","GCMS","03jul2025",
+"812949","acetaminophen","","GCMS","02jul2025",6.6799998
+"812950","methamphetamine","","GCMS","18jul2025",4.1799998
+"812950","N,N-Dimethylamphetamine (DMA)","trace","GCMS","18jul2025",
+"812951","methamphetamine","","GCMS","18jul2025",4.3499999
+"812952","hydromorphone","","GCMS","18jul2025",9.29
+"812953","hydromorphone","","GCMS","18jul2025",9.2799997
+"813237","diphenhydramine","","GCMS","14jul2025",7.0700002
+"813237","caffeine","trace","GCMS","14jul2025",
+"813237","medetomidine","trace","GCMS","14jul2025",
+"813237","4-ANPP","trace","GCMS","14jul2025",
+"813237","fentanyl","trace","GCMS","14jul2025",
+"813237","quinine","trace","GCMS","14jul2025",
+"813238","diphenhydramine","","GCMS","14jul2025",7.0799999
+"813238","heroin","","GCMS","14jul2025",9.8699999
+"813238","acetylcodeine","trace","GCMS","14jul2025",
+"813238","6-monoacetylmorphine (6-MAM)","trace","GCMS","14jul2025",
+"813238","medetomidine","trace","GCMS","14jul2025",
+"813240","diphenhydramine","","GCMS","14jul2025",7.0799999
+"813240","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","14jul2025",2.3
+"813240","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","trace","GCMS","14jul2025",
+"813240","fentanyl","trace","GCMS","14jul2025",
+"813240","cocaine","trace","GCMS","14jul2025",
+"813240","medetomidine","trace","GCMS","14jul2025",
+"813240","erythritol","","GCMS","14jul2025",4.6999998
+"813240","acetaminophen","trace","GCMS","14jul2025",
+"813241","diphenhydramine","","GCMS","14jul2025",7.0799999
+"813241","procaine","","GCMS","14jul2025",7.6599998
+"813241","dextromethorphan","","GCMS","14jul2025",8.0900002
+"813241","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","14jul2025",12.31
+"813241","ethylbromazolam","trace","GCMS","14jul2025",
+"813241","quinine","trace","GCMS","14jul2025",
+"813241","medetomidine","trace","GCMS","14jul2025",
+"813247","diphenhydramine","","GCMS","14jul2025",7.0799999
+"813247","heroin","","GCMS","14jul2025",9.8699999
+"813247","acetylcodeine","trace","GCMS","14jul2025",
+"813247","6-monoacetylmorphine (6-MAM)","trace","GCMS","14jul2025",
+"813247","medetomidine","trace","GCMS","14jul2025",
+"813249","acetaminophen","","GCMS","14jul2025",6.3400002
+"813249","diphenhydramine","","GCMS","14jul2025",7.0799999
+"813249","fentanyl","","GCMS","14jul2025",10.3
+"813249","medetomidine","trace","GCMS","14jul2025",
+"813249","xylazine","trace","GCMS","14jul2025",
+"813249","clonidine","trace","GCMS","14jul2025",
+"813250","acetaminophen","","GCMS","14jul2025",6.3699999
+"813250","diphenhydramine","","GCMS","14jul2025",7.0799999
+"813250","heroin","","GCMS","14jul2025",9.8800001
+"813250","medetomidine","trace","GCMS","14jul2025",
+"813250","cocaine","trace","GCMS","14jul2025",
+"813250","4-ANPP","trace","GCMS","14jul2025",
+"813250","acetylcodeine","trace","GCMS","14jul2025",
+"813250","6-monoacetylmorphine (6-MAM)","trace","GCMS","14jul2025",
+"813250","fentanyl","trace","GCMS","14jul2025",
+"813251","diphenhydramine","","GCMS","14jul2025",7.0700002
+"813251","4-ANPP","trace","GCMS","14jul2025",
+"813251","fentanyl","trace","GCMS","14jul2025",
+"813255","diphenhydramine","","GCMS","14jul2025",7.0700002
+"813255","4-ANPP","","GCMS","14jul2025",9.1499996
+"813255","fentanyl","","GCMS","14jul2025",10.3
+"813255","ethyl 4-ANPP","trace","GCMS","14jul2025",
+"813258","caffeine","","GCMS","14jul2025",6.9699998
+"813258","diphenhydramine","","GCMS","14jul2025",7.0799999
+"813258","despropionyl ortho-methylfentanyl","trace","GCMS","14jul2025",
+"813258","heroin","trace","GCMS","14jul2025",
+"813258","fentanyl","trace","GCMS","14jul2025",
+"813258","ortho-methylfentanyl","trace","GCMS","14jul2025",
+"813287","1,3-Diacetin","","GCMS","29jul2025",4.6599998
+"813287","lidocaine","trace","GCMS","29jul2025",
+"813287","cocaine","","GCMS","29jul2025",8.25
+"813287","4-ANPP","","GCMS","29jul2025",9.1499996
+"813287","fentanyl","","GCMS","29jul2025",10.3
+"813288","methamphetamine","","GCMS","29jul2025",4.6700001
+"813288","fentanyl","trace","GCMS","29jul2025",
 "813289","acetaminophen","","GCMS","16jul2025",6.3200002
 "813289","lidocaine","","GCMS","16jul2025",7.0999999
 "813289","4-ANPP","","GCMS","16jul2025",9.1499996
@@ -36652,13 +37677,17 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "813291","heroin","","GCMS","14jul2025",9.8699999
 "813291","fentanyl","","GCMS","14jul2025",10.3
 "813291","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","14jul2025",12.3
+"813292","1,3-Diacetin","","GCMS","29jul2025",4.6599998
+"813292","cocaine","","GCMS","29jul2025",8.25
+"813292","4-ANPP","trace","GCMS","29jul2025",
+"813292","fentanyl","trace","GCMS","29jul2025",
 "813293","4-ANPP","","GCMS","16jul2025",9.1499996
 "813293","fentanyl","","GCMS","16jul2025",10.3
 "813293","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","16jul2025",12.32
 "813293","N-phenylpropanamide","trace","GCMS","16jul2025",
 "813293","N-phenethyl-N-phenylpropionamide","trace","GCMS","16jul2025",
-"813294","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","28jul2025",2.3
-"813294","methamphetamine","","GCMS","28jul2025",4.9099998
+"813294","dimethyl sulfone (methylsulfonylmethane MSM)","","GCMS","29jul2025",2.3
+"813294","methamphetamine","","GCMS","29jul2025",4.9099998
 "813295","lidocaine","","GCMS","17jul2025",7.0999999
 "813295","cocaine","","GCMS","17jul2025",8.2399998
 "813295","4-ANPP","","GCMS","17jul2025",9.1499996
@@ -36715,6 +37744,53 @@ sampleid,substance,abundance,method,date_complete,gcms_peak
 "813309","fentanyl","","GCMS","16jul2025",10.31
 "813309","cocaine","trace","GCMS","16jul2025",
 "813309","xylazine","trace","GCMS","16jul2025",
+"813423","methamphetamine","","GCMS","17jul2025",3.9400001
+"813427","methamphetamine","","GCMS","18jul2025",3.97
+"813427","erythritol","","GCMS","18jul2025",4.1700001
+"813427","4-ANPP","","GCMS","18jul2025",9.1499996
+"813427","fentanyl","","GCMS","18jul2025",10.3
+"813427","p-fluorofentanyl","trace","GCMS","18jul2025",
+"813430","cocaine","","GCMS","17jul2025",8.25
+"813435","4-ANPP","","GCMS","16jul2025",9.1499996
+"813435","fentanyl","","GCMS","16jul2025",10.31
+"813435","heroin","trace","GCMS","16jul2025",
+"813435","ethyl 4-ANPP","trace","GCMS","16jul2025",
+"813436","acetaminophen","","GCMS","16jul2025",6.3299999
+"813436","4-ANPP","","GCMS","16jul2025",9.1499996
+"813436","fentanyl","","GCMS","16jul2025",10.31
+"813436","xylazine","trace","GCMS","16jul2025",
+"813436","ethyl 4-ANPP","trace","GCMS","16jul2025",
+"813436","despropionyl ortho-methylfentanyl","trace","GCMS","16jul2025",
+"813437","acetaminophen","","GCMS","16jul2025",6.3200002
+"813437","fentanyl","","GCMS","16jul2025",10.3
+"813437","4-ANPP","trace","GCMS","16jul2025",
+"813437","ethyl 4-ANPP","trace","GCMS","16jul2025",
+"813438","4-ANPP","","GCMS","16jul2025",9.1499996
+"813438","fentanyl","","GCMS","16jul2025",10.3
+"813438","bis(2,2,6,6-tetramethyl-4-piperidyl) sebacate","","GCMS","16jul2025",12.31
+"813438","acetaminophen","trace","GCMS","16jul2025",
+"813438","lidocaine","trace","GCMS","16jul2025",
+"813438","medetomidine","trace","GCMS","16jul2025",
+"813438","xylazine","trace","GCMS","16jul2025",
+"813438","procaine","trace","GCMS","16jul2025",
+"813439","4-ANPP","","GCMS","16jul2025",9.1499996
+"813439","fentanyl","","GCMS","16jul2025",10.31
+"813439","lidocaine","trace","GCMS","16jul2025",
+"813439","xylazine","trace","GCMS","16jul2025",
+"813439","carfentanil","trace","GCMS","16jul2025",
+"813450","acetaminophen","","GCMS","18jul2025",6.3200002
+"813450","caffeine","","GCMS","18jul2025",6.9699998
+"813450","4-ANPP","","GCMS","18jul2025",9.1499996
+"813450","heroin","","GCMS","18jul2025",9.8699999
+"813450","fentanyl","","GCMS","18jul2025",10.32
+"813451","acetaminophen","","GCMS","18jul2025",6.3200002
+"813451","caffeine","","GCMS","18jul2025",6.9699998
+"813451","procaine","","GCMS","18jul2025",7.6599998
+"813451","4-ANPP","","GCMS","18jul2025",9.1499996
+"813451","fentanyl","","GCMS","18jul2025",10.3
+"813452","4-ANPP","","GCMS","16jul2025",9.1499996
+"813452","fentanyl","","GCMS","16jul2025",10.3
+"813453","cocaine","","GCMS","17jul2025",8.2700005
 "900046","acetaminophen","","GCMS","23sep2024",6.4699998
 "900046","acetaminophen","","GCMS","23sep2024",6.5999999
 "900046","tetracaine","","GCMS","23sep2024",8.5
